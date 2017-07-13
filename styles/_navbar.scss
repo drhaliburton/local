@@ -1,0 +1,15 @@
+.navbar {
+    height: 5rem;
+    .button {
+      border-radius: 10px;
+      color: #363636;
+      background-color:#01BABD
+    }
+    .button:hover, .button.is-hovered {
+      background-color: #363636;
+    } 
+    .fa-pencil-square:before {
+      color:white;
+      
+  }
+}
