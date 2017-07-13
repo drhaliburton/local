@@ -1,0 +1,30 @@
+.card {
+  margin: 30px 20px;
+  width: 25%;
+  display: inline-block;
+  border: 0.5px solid $light-grey;
+  box-shadow: none;
+
+  a {
+    color: $green;
+   &:hover {
+     color: $dark-green;
+   } 
+  }
+
+  .is-pulled-right {
+    color: $orange;
+    &:hover{
+      color: $dark-orange;
+      cursor: pointer;
+    }
+  }
+
+  small {
+    font-style: italic;
+  }
+
+  .card-details {
+    display: none;
+  }
+}
