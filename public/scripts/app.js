@@ -7,4 +7,9 @@ $(() => {
       $("<div>").text(user.name).appendTo($("body"));
     }
   });;
+
+
+  $('.card-toggle').on('click', function() {
+    $('.card-details').slideToggle();
+  })
 });
