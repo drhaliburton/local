@@ -17,6 +17,11 @@
       transform: rotate(360deg);
     }
   }
+  .filter-button {
+    &.active .button {
+      background-color:$green;
+    }
+  }
   .filter-brand{
     display: none;
     margin: 1rem;

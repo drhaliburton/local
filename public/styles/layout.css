@@ -176,6 +176,10 @@
   transform: rotate(360deg);
 }
 
+.filter .filter-button.active .button {
+  background-color: #00CFBF;
+}
+
 .filter .filter-brand {
   display: none;
   margin: 1rem;
