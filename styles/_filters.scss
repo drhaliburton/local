@@ -1,5 +1,26 @@
 .filter{
-  .filter-details {
+  .filter-toggle {
+    margin:auto;
+    transform: rotate(180deg);
+  }
+  .filter-brand{
+    display: none;
+    margin: 1rem;
+  }
+  .title {
+    margin-top: 1.5rem;
+  }
+  .button {
+    margin: auto;
+    border-radius: 10px;
+    &:hover{
+      border-color: $green;
+    }
+  }
+  .filter-content {
+    margin-top: 1rem;
+    margin-bottom: 1rem; 
+    padding: 1rem;
     display: none;
   }
 }

@@ -64,6 +64,32 @@
   color: white;
 }
 
-.filter .filter-details {
+.filter .filter-toggle {
+  margin: auto;
+  transform: rotate(180deg);
+}
+
+.filter .filter-brand {
+  display: none;
+  margin: 1rem;
+}
+
+.filter .title {
+  margin-top: 1.5rem;
+}
+
+.filter .button {
+  margin: auto;
+  border-radius: 10px;
+}
+
+.filter .button:hover {
+  border-color: #00CFBF;
+}
+
+.filter .filter-content {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  padding: 1rem;
   display: none;
 }
