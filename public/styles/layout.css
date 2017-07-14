@@ -55,11 +55,15 @@
 }
 
 .navbar .button:hover, .navbar .button.is-hovered {
-  border-color: #01BABD;
-  color: #01BABD;
-  background-color: #01BABD;
+  border-color: #00CFBF;
+  color: #00CFBF;
+  background-color: #00CFBF;
 }
 
 .navbar .fa-pencil-square:before {
   color: white;
+}
+
+.filter .filter-details {
+  display: none;
 }
