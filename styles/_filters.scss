@@ -1,0 +1,45 @@
+.filter{
+  .filter-toggle {
+    margin:auto;
+    top: 5px;
+    .fa-chevron-down {
+      transition: all 0.5s ease-in-out;
+      left: 45%;
+    }
+
+    .chev-rotate {
+      transition: all 0.5s ease-in-out;
+      transform: rotate(180deg);
+    }
+
+    .chev-rotate-again {
+      transition: all 0.5s ease-in-out;
+      transform: rotate(360deg);
+    }
+  }
+  .filter-button {
+    &.active .button {
+      background-color:$green;
+    }
+  }
+  .filter-brand{
+    display: none;
+    margin: 1rem;
+  }
+  .title {
+    margin-top: 1.5rem;
+  }
+  .button {
+    margin: auto;
+    border-radius: 10px;
+    &:hover{
+      border-color: $green;
+    }
+  }
+  .filter-content {
+    margin-top: 1rem;
+    margin-bottom: 1rem; 
+    padding: 1rem;
+    display: none;
+  }
+}
