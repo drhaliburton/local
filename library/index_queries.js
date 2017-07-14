@@ -1,18 +1,33 @@
-//select all from cards where name of location is x (string)
-//select all from cards where category = ''
-// select all from cards where  duration is blah
+
 module.exports = (knex) => {
 const obj = {};
 
-obj.getIndex = function(location){
+obj.makeFavorite = function(card_id, user_id){
+  knex('favorite')
+  .insert({
+    card_id,
+    user_id
+  })
+  .where('user_id', user.id)
+  .and('card_id', card.id)
+}
+
+
+// coordinates = {result. geometry.location}
+// name = result.name
+
+obj.getIndex = function(latitude, longitude){
     knex('card')
-    .where("location", location)
+    .where('latitude', latitude)
+    .and('longitude', longitude)
   }
 
-obj.getFiltered = function(object){
+obj.getFiltered = function(category){
+  knex('card')
+  .where('category', category)
 
 };
 
-
 return obj;
 }
+
