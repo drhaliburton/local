@@ -7,9 +7,12 @@ $(() => {
     $('.card').toggleClass('expanded');
   })
   $('.filter-toggle').on('click', function() {
+    $('.fa-chevron-down').toggleClass('chev-rotate');
     $('.filter-content').slideToggle(function() {
+      $('.filter-content').toggleClass(':visible');
       if($('.filter-content').is(':visible')){
         $('.filter-toggle').on('click', function() {
+          $('.fa-chevron-down').toggleClass('chev-rotate-again');
           $('.filter-brand').slideUp("slow", function(){
           });
         });
