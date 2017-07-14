@@ -3,13 +3,16 @@
 }
 
 .navbar .button {
+  border-color: #363636;
   border-radius: 10px;
   color: #363636;
-  background-color: #01BABD;
+  background-color: #363636;
 }
 
 .navbar .button:hover, .navbar .button.is-hovered {
-  background-color: #363636;
+  border-color: #01BABD;
+  color: #01BABD;
+  background-color: #01BABD;
 }
 
 .navbar .fa-pencil-square:before {
