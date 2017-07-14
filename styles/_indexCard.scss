@@ -5,6 +5,9 @@
   border: 0.5px solid $light-grey;
   box-shadow: none;
 
+  .card-content {
+    padding: 15px;
+  }
   a {
     color: $green;
    &:hover {
@@ -26,5 +29,13 @@
 
   .card-details {
     display: none;
+  }
+
+  .fa-chevron-up {
+    margin: 0 50%;
+  }
+
+  .subtitle {
+    margin-bottom: 5px;
   }
 }
