@@ -16,18 +16,12 @@ obj.makeFavorite = function(card_id, user_id){
 // coordinates = {result. geometry.location}
 // name = result.name
 
-obj.getIndex = function(latitude, longitude){
-    knex('card')
-    .where('latitude', latitude)
-    .and('longitude', longitude)
-  }
+obj.getFiltered = function(lat1, lng1, lat2, lng2){
 
-obj.getFiltered = function(category){
   knex('card')
-  .where('category', category)
+  .where(box((lat1, lng1),(lat2, lng2)) @> location);
 
 };
 
 return obj;
 }
-
