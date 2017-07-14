@@ -2,7 +2,7 @@
 
 const express = require('express');
 const router  = express.Router();
-const queries = require("../library/itinerary-queries.js")
+const queries = require("../library/index_queries.js")
 
 const testCards = {
    cards: [{
@@ -31,7 +31,7 @@ const testCards = {
 
 
 module.exports = (knex) => {
-  const {getIndex, getFiltered, makeFavorite} = queries(knex);
+  const {getFiltered, makeFavorite} = queries(knex);
 
   // Route will be "/:filter" once we implement geolocation
   router.get("/", (req, res) => { 

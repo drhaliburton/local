@@ -2,7 +2,7 @@
 
 const express = require('express');
 const router  = express.Router();
-const queries = require("../library/itinerary-queries.js")
+const queries = require("../library/itinerary_queries.js")
 
 const testItn = {
   title: "My Trip",
