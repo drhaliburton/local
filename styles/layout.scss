@@ -1,1 +1,10 @@
+$green: #00CFBF;
+$light-green: #B5EDA0;
+$pale-green: #AADDD5;
+$dark-green: darken(#30B9BC, 10%);
+$orange: #FCB737;
+$dark-orange: darken(#FCB737, 10%);
+$light-grey: #CCCCCC;
+
 @import 'indexCard';
+@import 'navbar';

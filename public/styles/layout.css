@@ -1,0 +1,65 @@
+.card {
+  margin: 30px 20px;
+  width: 25%;
+  display: inline-block;
+  border: 0.5px solid #CCCCCC;
+  box-shadow: none;
+}
+
+.card .card-content {
+  padding: 15px;
+}
+
+.card a {
+  color: #00CFBF;
+}
+
+.card a:hover {
+  color: #269193;
+}
+
+.card .is-pulled-right {
+  color: #FCB737;
+}
+
+.card .is-pulled-right:hover {
+  color: #fba505;
+  cursor: pointer;
+}
+
+.card small {
+  font-style: italic;
+}
+
+.card .card-details {
+  display: none;
+}
+
+.card .fa-chevron-up {
+  margin: 0 50%;
+}
+
+.card .subtitle {
+  margin-bottom: 5px;
+}
+
+.navbar {
+  height: 5rem;
+}
+
+.navbar .button {
+  border-color: #363636;
+  border-radius: 10px;
+  color: #363636;
+  background-color: #363636;
+}
+
+.navbar .button:hover, .navbar .button.is-hovered {
+  border-color: #01BABD;
+  color: #01BABD;
+  background-color: #01BABD;
+}
+
+.navbar .fa-pencil-square:before {
+  color: white;
+}

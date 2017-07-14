@@ -1,0 +1,41 @@
+.card {
+  margin: 30px 20px;
+  width: 25%;
+  display: inline-block;
+  border: 0.5px solid $light-grey;
+  box-shadow: none;
+
+  .card-content {
+    padding: 15px;
+  }
+  a {
+    color: $green;
+   &:hover {
+     color: $dark-green;
+   } 
+  }
+
+  .is-pulled-right {
+    color: $orange;
+    &:hover{
+      color: $dark-orange;
+      cursor: pointer;
+    }
+  }
+
+  small {
+    font-style: italic;
+  }
+
+  .card-details {
+    display: none;
+  }
+
+  .fa-chevron-up {
+    margin: 0 50%;
+  }
+
+  .subtitle {
+    margin-bottom: 5px;
+  }
+}
