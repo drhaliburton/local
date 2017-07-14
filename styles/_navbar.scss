@@ -7,9 +7,9 @@
       background-color:#363636
     }
     .button:hover, .button.is-hovered {
-    border-color: #01BABD;
-    color: #01BABD;
-    background-color:#01BABD;
+    border-color: $green;
+    color: $green;
+    background-color:$green;
     } 
     .fa-pencil-square:before {
       color:white;
