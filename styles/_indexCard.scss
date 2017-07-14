@@ -1,12 +1,16 @@
 .card {
   margin: 30px 20px;
-  width: 25%;
+  width: 22%;
+  min-width: 200px;
   display: inline-block;
   border: 0.5px solid $light-grey;
   box-shadow: none;
+  background-color: #fff;
+  overflow: none;
 
   .card-content {
     padding: 15px;
+    z-index: 10;
   }
   a {
     color: $green;
@@ -14,8 +18,14 @@
      color: $dark-green;
    } 
   }
+  .content {
+    height: auto;
+  }
 
-  .is-pulled-right {
+  .fa-star {
+    position: relative;
+    top: 15px;
+    right: 15px;
     color: $orange;
     &:hover{
       color: $dark-orange;
@@ -23,19 +33,101 @@
     }
   }
 
+  .title {
+    font-size: 1.1em;
+  }
+
+  .subtitle {
+    font-size: .9em;
+  }
+
   small {
     font-style: italic;
+    font-size: .7em;
   }
 
   .card-details {
+    transition: all 0.5s ease-in-out;
     display: none;
   }
+  .card-toggle {
+    margin-top: 10px;
+    .fa-chevron-up {
+      transition: all 0.5s ease-in-out;
+      position: relative;
+      top: 5px;
+      left: 45%;
+    }
 
-  .fa-chevron-up {
-    margin: 0 50%;
+    .chev-rotate {
+      transition: all 0.5s ease-in-out;
+      transform: rotate(180deg);
+    }
+
+    .chev-rotate-again {
+      transition: all 0.5s ease-in-out;
+      transform: rotate(360deg);
+    }
   }
 
   .subtitle {
     margin-bottom: 5px;
+  }
+
+  .card-image, figure, img {
+    z-index: 1;
+  }
+  
+  .card-image {
+    text-align: center;
+    height: 250px;
+    overflow: hidden;
+    text-align: center;
+    transition: all 0.5s ease-in-out;
+
+    img {
+      width: 300px; 
+      height: auto;
+    }
+  }
+  
+  .content-container {
+    z-index: 20;
+    background-color: white;
+    transition: 0.5s all ease-in-out;
+    
+    .icon-container {
+      z-index: 100;
+      background-color: white;
+      text-align: center;
+      padding: 10px;
+      
+      a {
+        background-color: white;
+       
+        .card-toggle {
+          cursor: pointer;
+          background-color: white;
+        } 
+      }
+    }
+  }
+  
+  &.expanded {
+
+    .card-image {
+      height: 0px;
+      overflow: hidden;
+      transition: 0.5s all ease-in-out;
+    }
+    
+    .content-container {
+      margin-top: 0%;
+      margin-bottom: 20px;
+    }
+
+    .content {
+      transition: all 0.5s ease-in-out;
+    }
   }
 }
