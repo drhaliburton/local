@@ -136,6 +136,10 @@
 }
 
 .navbar {
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> 6afc33ff16f27df6b985292fda8f80cf169e965b
   height: 5rem;
 }
 
@@ -147,14 +151,36 @@
 }
 
 .navbar .button:hover, .navbar .button.is-hovered {
+<<<<<<< HEAD
   border-color: #00CFBF;
   color: #00CFBF;
   background-color: #00CFBF;
+=======
+  border-color: #01BABD;
+  color: #01BABD;
+  background-color: #01BABD;
+>>>>>>> 6afc33ff16f27df6b985292fda8f80cf169e965b
 }
 
 .navbar .fa-pencil-square:before {
   color: white;
 }
+<<<<<<< HEAD
+=======
+=======
+  height: 5rem; }
+  .navbar .button {
+    border-color: #363636;
+    border-radius: 10px;
+    color: #363636;
+    background-color: #363636; }
+  .navbar .button:hover, .navbar .button.is-hovered {
+    border-color: #00CFBF;
+    color: #00CFBF;
+    background-color: #00CFBF; }
+  .navbar .fa-pencil-square:before {
+    color: white; }
+>>>>>>> 6afc33ff16f27df6b985292fda8f80cf169e965b
 
 .filter .filter-toggle {
   margin: auto;
@@ -217,6 +243,11 @@
   border-color: #00CFBF;
 }
 
+<<<<<<< HEAD
 .landing-content .brand img {
   width: 80%;
 }
+=======
+/*# sourceMappingURL=layout.css.map */
+>>>>>>> 6bf05cc6a3be72a4bc25abb8fc46d983c799154b
+>>>>>>> 6afc33ff16f27df6b985292fda8f80cf169e965b
