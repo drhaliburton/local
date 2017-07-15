@@ -31,7 +31,7 @@ const testCards = {
 
 
 module.exports = (knex) => {
-  const {getIndex, getFiltered, makeFavorite} = queries(knex);
+  const {getFiltered, makeFavorite} = queries(knex);
 
   // Route will be "/:filter" once we implement geolocation
   router.get("/", (req, res) => {
