@@ -2,7 +2,7 @@
 
 const express = require('express');
 const router  = express.Router();
-const queries = require("../library/itinerary-queries.js")
+const queries = require("../library/itinerary_queries.js")
 
 const testItn = {
   title: "My Trip",
@@ -56,7 +56,7 @@ const testFavs = {
     duration: 60,
     start_time: "4:00pm"
   }]
-};  
+};
 
 module.exports = (knex) => {
 
@@ -81,7 +81,7 @@ module.exports = (knex) => {
   router.post("/:id", (req, res) => {
   // Save itinerary to DB
   // Form will include favorite.card_id, itinerary-card.start_time, itinerary.date
-  // Delete each card used from favorite 
+  // Delete each card used from favorite
   });
 
   return router;
