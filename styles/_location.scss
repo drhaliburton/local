@@ -1,0 +1,12 @@
+.landing-content{
+  margin-top:5rem;
+.input {
+  border-color:$dark-orange;
+  &:focus{
+    border-color:$green;
+  }
+}
+  .brand img {
+    width: 70%;
+  }
+}
