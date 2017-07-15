@@ -12,10 +12,6 @@ obj.makeFavorite = function(card_id, user_id){
   .and('card_id', card.id)
 }
 
-
-// coordinates = {result. geometry.location}
-// name = result.name
-
 obj.getFiltered = function(lat1, lng1, lat2, lng2){
   return knex('cards')
     .whereRaw(`box '((${lat1}, ${lng1}),(${lat2}, ${lng2}))' @> ("location")`)
