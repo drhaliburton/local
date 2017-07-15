@@ -21,6 +21,9 @@
     &.active .button {
       background-color:$green;
     }
+    &.active .fa {
+      color:black;
+    }
   }
   .filter-brand{
     display: none;

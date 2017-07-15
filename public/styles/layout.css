@@ -180,6 +180,10 @@
   background-color: #00CFBF;
 }
 
+.filter .filter-button.active .fa {
+  color: black;
+}
+
 .filter .filter-brand {
   display: none;
   margin: 1rem;
@@ -220,8 +224,6 @@
 .landing-content .brand img {
   width: 80%;
 }
-<<<<<<< HEAD
-=======
 
 .columns {
   margin-top: 2rem;
@@ -255,4 +257,3 @@
 .columns .article.media.large {
   height: 10rem;
 }
->>>>>>> feature/itinerary-card
