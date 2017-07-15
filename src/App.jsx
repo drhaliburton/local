@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import IndexCard from "./card/IndexCard.jsx";
-import Navbar from "./navbar/Navbar.jsx";
+import Navbar from "./landing/Navbar.jsx";
+import Search from "./landing/Search.jsx";
 
 class App extends Component {
 
@@ -18,7 +19,8 @@ class App extends Component {
     return (
       <div>
         <Navbar />
-        {/* <IndexCard /> */}
+        <IndexCard /> 
+        <Search />
       </div>
     );
   }

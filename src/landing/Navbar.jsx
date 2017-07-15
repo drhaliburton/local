@@ -27,12 +27,7 @@ class Navbar extends Component {
               </a>
               </p>
               </p>
-            </div>
-            <div className="navbar-item">
-                <span className="search">
-                  <i className="search-bar"><Search /></i>
-                </span>
-            </div>      
+            </div>   
           </div>
         </div>
       </nav>
