@@ -2,7 +2,7 @@
 
 require('dotenv').config();
 
-const PORT        = process.env.PORT || 8080;
+// const PORT        = process.env.PORT || 8080;
 const ENV         = process.env.ENV || "development";
 const express     = require("express");
 const bodyParser  = require("body-parser");
@@ -67,9 +67,9 @@ new WebpackDevServer(webpack(config), {
 app.get("/", (req, res) => {
   res.render("landingPage");
 });
-app.get("/itinerary", (req, res) => {
-  res.render("itinerary");
-});
+// app.get("/itinerary", (req, res) => {
+//   res.render("itinerary");
+// });
 
 // app.listen(PORT, () => {
 //   console.log("Local is listening on port " + PORT);

@@ -28,7 +28,7 @@ module.exports = (knex) => {
     // })
 
     //This is a temporary response, for testing purposes
-    res.render("index")
+    res.render("/index")
   });
 
   //this route adds a favorite from the list to a user's id
