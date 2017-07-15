@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import IndexCard from "./card/IndexCard.jsx";
 
 class App extends Component {
 
@@ -15,7 +16,7 @@ class App extends Component {
       console.log("Rendering <App />");
     return (
       <div>
-        <h1>It works!</h1>
+        <IndexCard />
       </div>
     );
   }
