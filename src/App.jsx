@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import IndexCard from "./card/IndexCard.jsx";
 import Navbar from "./landing/Navbar.jsx";
 import Search from "./landing/Search.jsx";
+import Filter from "./landing/Filter.jsx"
 
 class App extends Component {
 
@@ -19,6 +20,7 @@ class App extends Component {
     return (
       <div>
         <Navbar />
+        <Filter />
         <IndexCard /> 
         <Search />
       </div>
