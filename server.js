@@ -44,6 +44,9 @@ app.use("/index",indexRoutes(knex));
 app.get("/", (req, res) => {
   res.render("landingPage");
 });
+app.get("/itinerary", (req, res) => {
+  res.render("itinerary");
+});
 
 app.listen(PORT, () => {
   console.log("Local is listening on port " + PORT);
