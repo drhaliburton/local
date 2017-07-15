@@ -155,6 +155,18 @@
 .navbar .fa-pencil-square:before {
   color: white;
 }
+  height: 5rem; }
+  .navbar .button {
+    border-color: #363636;
+    border-radius: 10px;
+    color: #363636;
+    background-color: #363636; }
+  .navbar .button:hover, .navbar .button.is-hovered {
+    border-color: #00CFBF;
+    color: #00CFBF;
+    background-color: #00CFBF; }
+  .navbar .fa-pencil-square:before {
+    color: white; }
 
 .filter .filter-toggle {
   margin: auto;
@@ -204,3 +216,20 @@
   padding: 1rem;
   display: none;
 }
+
+.landing-content {
+  margin-top: 5rem;
+}
+
+.landing-content .input {
+  border-color: #fba505;
+}
+
+.landing-content .input:focus {
+  border-color: #00CFBF;
+}
+
+.landing-content .brand img {
+  width: 80%;
+}
+

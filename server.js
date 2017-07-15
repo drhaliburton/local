@@ -44,7 +44,7 @@ app.use("/index",indexRoutes(knex));
 
 // Home page
 app.get("/", (req, res) => {
-  res.render("index");
+  res.render("landingPage");
 });
 
 app.listen(PORT, () => {
