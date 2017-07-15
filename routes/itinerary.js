@@ -3,7 +3,7 @@
 const express = require('express');
 const router  = express.Router();
 const queries = require("../library/itinerary_queries.js")
-
+// Test Data - Remove when DB seeded
 const testItn = {
   title: "My Trip",
   date: "July 22, 2017",
@@ -30,7 +30,7 @@ const testItn = {
     start_time: "4:00pm"
   }]
 };
-
+// Test Data - Remove when DB seeded
 const testFavs = {
   favs: [{
     title: "Food Place",
@@ -67,7 +67,8 @@ module.exports = (knex) => {
    //Need user favorites
   });
 
-  router.get("/:id/:date", (req, res) => {
+  //Will be "/:id/:date" after testing
+  router.get("/", (req, res) => {
   //View specific Itinerary
   //Link from Navbar
     res.render("itinerary", testItn)
