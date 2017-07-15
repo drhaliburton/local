@@ -221,6 +221,16 @@
   width: 80%;
 }
 
-.fa {
+.columns {
+  margin-top: 5rem;
+  margin-left: 1rem;
+  margin-right: 1rem;
+}
+
+.columns .brand .afternoon {
+  width: 103px;
+}
+
+.columns .fa {
   color: #00CFBF;
 }
