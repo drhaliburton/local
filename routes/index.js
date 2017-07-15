@@ -39,9 +39,9 @@ module.exports = (knex) => {
     //The following response will be used once geolocation has been implemented
 
     // const lat1 = req.body.results[0].geometry.viewport.northeast.lat;
-    // const lng1 =req.body.results[0].geometry.viewport.northeast.lng;
-    // const lat2 =req.body.results[0].geometry.viewport.southwest.lat;
-    // const lng2 =req.body.results[0].geometry.viewport.southwest.lng;
+    // const lng1 = req.body.results[0].geometry.viewport.northeast.lng;
+    // const lat2 = req.body.results[0].geometry.viewport.southwest.lat;
+    // const lng2 = req.body.results[0].geometry.viewport.southwest.lng;
     // getFiltered(lat1, lng1, lat2, lng2)
     // .then(data => {
     //   res.render("itinerary", {cards: data})
