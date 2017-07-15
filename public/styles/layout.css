@@ -208,3 +208,15 @@
 .landing-content {
   margin-top: 5rem;
 }
+
+.landing-content .input {
+  border-color: #fba505;
+}
+
+.landing-content .input:focus {
+  border-color: #00CFBF;
+}
+
+.landing-content .brand img {
+  width: 70%;
+}
