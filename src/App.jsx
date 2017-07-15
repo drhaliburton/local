@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import IndexCard from "./card/IndexCard.jsx";
+import IndexCard from "./IndexCard/IndexCard.jsx";
 
 class App extends Component {
 
