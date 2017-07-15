@@ -155,18 +155,6 @@
 .navbar .fa-pencil-square:before {
   color: white;
 }
-  height: 5rem; }
-  .navbar .button {
-    border-color: #363636;
-    border-radius: 10px;
-    color: #363636;
-    background-color: #363636; }
-  .navbar .button:hover, .navbar .button.is-hovered {
-    border-color: #00CFBF;
-    color: #00CFBF;
-    background-color: #00CFBF; }
-  .navbar .fa-pencil-square:before {
-    color: white; }
 
 .filter .filter-toggle {
   margin: auto;
@@ -232,4 +220,3 @@
 .landing-content .brand img {
   width: 80%;
 }
-
