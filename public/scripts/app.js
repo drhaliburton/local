@@ -34,17 +34,15 @@ $(() => {
       if($('.filter-content').is(':visible')){
         $('.filter-toggle').on('click', function() {
           $('.fa-chevron-down').toggleClass('chev-rotate-again');
-          $('.filter-brand').slideUp("slow", function(){
-          });
         });
       }
     });
   });
   $('.filter-toggle').mouseover(function() {
-    if($('.filter-content').is(':hidden')){
-      $('.filter-brand').slideDown("medium", function() {
-      });
-    }
+    $('.filter-brand').slideDown("medium", function() {});
+  });
+  $('.filter-toggle').mouseleave(function() {
+    $('.filter-brand').slideUp("medium", function() {});
   });
   $('.filter-button').on('click', function() {
     $(this).toggleClass('active');
