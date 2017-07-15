@@ -46,6 +46,15 @@ function createIndexCard(resource) {
   </div>`;
 };
 
+function addDescriptionToggle($card) {
+  $card.find('.card-toggle').on('click', function() {
+    $card.find('.card-details').slideToggle();
+    $card.toggleClass('expanded');
+    $card.find('.fa-chevron-up').toggleClass('chev-rotate');
+    $card.find('.fa-chevron-up').toggleClass('chev-rotate-again');
+  });
+};
+
 function renderIndexCards(resources) {
   console.log(resources);
   var $resources = $('.all-cards');
@@ -54,5 +63,10 @@ function renderIndexCards(resources) {
     var card = createIndexCard(item);
     var $card = $(card);
     $resources.prepend($card);
+    addDescriptionToggle($card);
   }
 };
+
+
+
+

@@ -27,13 +27,6 @@ $(() => {
 
   renderIndexCards(testCards);
 
-  $('.card-toggle').on('click', function() {
-    $('.card-details').slideToggle();
-    $('.fa-chevron-up').toggleClass('chev-rotate');
-    $('.fa-chevron-up').toggleClass('chev-rotate-again');
-    $('.card').toggleClass('expanded');
-  })
-  
   $('.filter-toggle').on('click', function() {
     $('.fa-chevron-down').toggleClass('chev-rotate');
     $('.filter-content').slideToggle(function() {
