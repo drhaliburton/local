@@ -1,11 +1,27 @@
 .columns{
-  margin-top: 5rem;
+  margin-top: 2rem;
   margin-left: 1rem;
   margin-right: 1rem;
-  .brand .afternoon {
-    width: 103px;
+  .morning {
+    margin-top: 1rem;
+    height:80px;
+  }
+  .afternoon {
+    margin-top: 12rem;
+    height:80px;
+  }
+  .night {
+    margin-top: 12rem;
+    height:80px;
+  }
+  .media-content.large{
+    height:10rem;
   }
   .fa {
   color:$green;
   }
+  .article.media.large{
+      height: 10rem;
+  }
+  
 }

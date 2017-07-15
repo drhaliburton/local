@@ -222,15 +222,34 @@
 }
 
 .columns {
-  margin-top: 5rem;
+  margin-top: 2rem;
   margin-left: 1rem;
   margin-right: 1rem;
 }
 
-.columns .brand .afternoon {
-  width: 103px;
+.columns .morning {
+  margin-top: 1rem;
+  height: 80px;
+}
+
+.columns .afternoon {
+  margin-top: 12rem;
+  height: 80px;
+}
+
+.columns .night {
+  margin-top: 12rem;
+  height: 80px;
+}
+
+.columns .media-content.large {
+  height: 10rem;
 }
 
 .columns .fa {
   color: #00CFBF;
+}
+
+.columns .article.media.large {
+  height: 10rem;
 }
