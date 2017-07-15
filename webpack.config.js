@@ -18,7 +18,11 @@ module.exports = {
       {
         test: /\.jsx?$/,
         loader: 'babel-loader',
-        include: path.join(__dirname, 'src')
+        include: path.join(__dirname, 'src'),
+           query:
+        {
+          presets:['react']
+        }
       },
       {
         test: /\.scss$/,

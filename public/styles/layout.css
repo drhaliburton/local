@@ -183,6 +183,10 @@
   background-color: #00CFBF;
 }
 
+.filter .filter-button.active .fa {
+  color: black;
+}
+
 .filter .filter-brand {
   display: none;
   margin: 1rem;
@@ -222,4 +226,37 @@
 
 .landing-content .brand img {
   width: 80%;
+}
+
+.columns {
+  margin-top: 2rem;
+  margin-left: 1rem;
+  margin-right: 1rem;
+}
+
+.columns .morning {
+  margin-top: 1rem;
+  height: 80px;
+}
+
+.columns .afternoon {
+  margin-top: 12rem;
+  height: 80px;
+}
+
+.columns .night {
+  margin-top: 12rem;
+  height: 80px;
+}
+
+.columns .media-content.large {
+  height: 10rem;
+}
+
+.columns .fa {
+  color: #00CFBF;
+}
+
+.columns .article.media.large {
+  height: 10rem;
 }

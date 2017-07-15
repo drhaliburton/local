@@ -16,6 +16,11 @@ const morgan      = require('morgan');
 const knexLogger  = require('knex-logger');
 const request     = require('request');
 
+
+const webpack = require('webpack');
+const WebpackDevServer = require('webpack-dev-server');
+const config = require('./webpack.config');
+
 // Seperated Routes for each Resource
 const itineraryRoutes = require("./routes/itinerary");
 const indexRoutes = require("./routes/index");
@@ -42,11 +47,30 @@ app.use(express.static("public"));
 app.use("/itinerary", itineraryRoutes(knex));
 app.use("/index",indexRoutes(knex));
 
+new WebpackDevServer(webpack(config), {
+    publicPath: config.output.publicPath,
+    watchOptions: {
+      aggregateTimeout: 300,
+      poll: 1000,
+      ignored: /node_modules/
+    }
+  })
+  .listen(3000, '0.0.0.0', function (err, result) {
+    if (err) {
+      console.log(err);
+    }
+
+    console.log('Running at http://0.0.0.0:3000');
+  });
+
 // Home page
 app.get("/", (req, res) => {
   res.render("landingPage");
 });
-
-app.listen(PORT, () => {
-  console.log("Local is listening on port " + PORT);
+app.get("/itinerary", (req, res) => {
+  res.render("itinerary");
 });
+
+// app.listen(PORT, () => {
+//   console.log("Local is listening on port " + PORT);
+// });
