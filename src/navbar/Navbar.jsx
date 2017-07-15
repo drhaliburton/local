@@ -1,4 +1,7 @@
 import React, {Component} from 'react';
+//Importing filters and searchbar components
+import Filter from './Filter.jsx';
+import Search from './Search.jsx';
 
 class Navbar extends Component {
   render() {
