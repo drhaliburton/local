@@ -8,9 +8,7 @@ class Navbar extends Component {
     return (
       <nav className="navbar">
         <div className="navbar-item">
-            <a href="/"><img src="http://imgur.com/cyM42ng.png" alt="local - travel like you live there" width="75" height="28"></a>
-          </a>
-
+          <a href="/"><img src="http://imgur.com/cyM42ng.png" alt="local - travel like you live there" width="75" height="28"></img></a>
           <div className="navbar-burger burger" data-target="navMenuExample">
             <span></span>
             <span></span>
@@ -19,16 +17,22 @@ class Navbar extends Component {
         </div>
         <div className="navbar-end">
           <div id="navMenuExample" className="navbar-menu">
-          <div className="navbar-item">
+            <div className="navbar-item">
               <p className="control">
-                <p className="field">
-                <a className="button is-medium">
-                  <span className="icon is-large">
-                    <i className="fa fa-pencil-square"></i>
-                  </span>
-                </a>
+              <p className="field">
+              <a className="button is-medium">
+                <span className="icon is-large">
+                  <i className="fa fa-pencil-square"></i>
+                </span>
+              </a>
+              </p>
               </p>
             </div>
+            <div className="navbar-item">
+                <span className="search">
+                  <i className="search-bar"><Search /></i>
+                </span>
+            </div>      
           </div>
         </div>
       </nav>
