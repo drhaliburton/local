@@ -136,7 +136,6 @@
 }
 
 .navbar {
-<<<<<<< HEAD
   height: 5rem;
 }
 
@@ -148,57 +147,60 @@
 }
 
 .navbar .button:hover, .navbar .button.is-hovered {
-  border-color: #01BABD;
-  color: #01BABD;
-  background-color: #01BABD;
+  border-color: #00CFBF;
+  color: #00CFBF;
+  background-color: #00CFBF;
 }
 
 .navbar .fa-pencil-square:before {
   color: white;
 }
-=======
-  height: 5rem; }
-  .navbar .button {
-    border-color: #363636;
-    border-radius: 10px;
-    color: #363636;
-    background-color: #363636; }
-  .navbar .button:hover, .navbar .button.is-hovered {
-    border-color: #00CFBF;
-    color: #00CFBF;
-    background-color: #00CFBF; }
-  .navbar .fa-pencil-square:before {
-    color: white; }
 
 .filter .filter-toggle {
   margin: auto;
-  top: 5px; }
-  .filter .filter-toggle .fa-chevron-down {
-    transition: all 0.5s ease-in-out;
-    left: 45%; }
-  .filter .filter-toggle .chev-rotate {
-    transition: all 0.5s ease-in-out;
-    transform: rotate(180deg); }
-  .filter .filter-toggle .chev-rotate-again {
-    transition: all 0.5s ease-in-out;
-    transform: rotate(360deg); }
+  top: 5px;
+}
+
+.filter .filter-toggle .fa-chevron-down {
+  transition: all 0.5s ease-in-out;
+  left: 45%;
+}
+
+.filter .filter-toggle .chev-rotate {
+  transition: all 0.5s ease-in-out;
+  transform: rotate(180deg);
+}
+
+.filter .filter-toggle .chev-rotate-again {
+  transition: all 0.5s ease-in-out;
+  transform: rotate(360deg);
+}
+
 .filter .filter-button.active .button {
-  background-color: #00CFBF; }
+  background-color: #00CFBF;
+}
+
 .filter .filter-brand {
   display: none;
-  margin: 1rem; }
+  margin: 1rem;
+}
+
 .filter .title {
-  margin-top: 1.5rem; }
+  margin-top: 1.5rem;
+}
+
 .filter .button {
   margin: auto;
-  border-radius: 10px; }
-  .filter .button:hover {
-    border-color: #00CFBF; }
+  border-radius: 10px;
+}
+
+.filter .button:hover {
+  border-color: #00CFBF;
+}
+
 .filter .filter-content {
   margin-top: 1rem;
   margin-bottom: 1rem;
   padding: 1rem;
-  display: none; }
-
-/*# sourceMappingURL=layout.css.map */
->>>>>>> 6bf05cc6a3be72a4bc25abb8fc46d983c799154b
+  display: none;
+}
