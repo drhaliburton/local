@@ -3,11 +3,11 @@ import React, {Component} from 'react';
 class Search extends Component {
   render() {
     return (
-      <div className="landing-content <is-vcentered></is-vcentered>">
+      <div className="landing-content">
         <div className="columns has-text-centered">
-          <div className="column is-6 is-offset-3">
+          <div className="column is-6">
             <p className="control landing"></p>
-              <input className="input" type="text" placeholder="Where do you want to go?"></input>
+              <input className="input" type="text" placeholder="Where are you going?"></input>
           </div>
         </div>
       </div>

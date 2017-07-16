@@ -7,26 +7,12 @@ class Navbar extends Component {
       <nav className="navbar">
         <div className="navbar-item">
           <a href="/"><img src="http://imgur.com/cyM42ng.png" alt="local - travel like you live there" width="75" height="28"></img></a>
-          <div className="navbar-burger burger" data-target="navMenuExample">
-            <span></span>
-            <span></span>
-            <span></span>
-          </div>
         </div>
-        <div className="navbar-end">
-          <div id="navMenuExample" className="navbar-menu">
-            <div className="navbar-item">
-              <p className="control">
-              <p className="field">
-              <a className="button is-medium">
-                <span className="icon is-large">
-                  <i className="fa fa-pencil-square"></i>
-                </span>
-              </a>
-              </p>
-              </p>
-            </div>   
-          </div>
+          <div className="navbar-end"></div>
+        <div className="navbar-brand">
+          <div className="navbar-item">
+            <p><span className="itinierary"><i className="fa fa-map-o"></i>&nbsp;&nbsp;itinerary</span></p>
+          </div>   
         </div>
       </nav>
     );

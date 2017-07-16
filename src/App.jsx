@@ -29,6 +29,30 @@ const testCards = [ {
      type:"sight",
      duration: 60,
      start_time: "4:00pm"
+   }, {
+     title: "Art Place",
+     image: "http://bulma.io/images/placeholders/480x480.png",
+     description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque interdum rutrum sodales. Nullam mattis fermentum libero, non volutpat.",
+     location: "Somewhere",
+     type:"sight",
+     duration: 60,
+     start_time: "4:00pm"
+   }, {
+     title: "Art Place",
+     image: "http://bulma.io/images/placeholders/480x480.png",
+     description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque interdum rutrum sodales. Nullam mattis fermentum libero, non volutpat.",
+     location: "Somewhere",
+     type:"sight",
+     duration: 60,
+     start_time: "4:00pm"
+   }, {
+     title: "Art Place",
+     image: "http://bulma.io/images/placeholders/480x480.png",
+     description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque interdum rutrum sodales. Nullam mattis fermentum libero, non volutpat.",
+     location: "Somewhere",
+     type:"sight",
+     duration: 60,
+     start_time: "4:00pm"
    }
 ];
 
@@ -47,11 +71,11 @@ class App extends Component {
   render() {
       console.log("Rendering <App />");
     return (
-      <div>
+      <div>    
         <Navbar />
+        <Search />
         <Filter />
         <IndexCard cards={this.state.cards}/> 
-        <Search />
         <Itinerary />
       </div>
     );

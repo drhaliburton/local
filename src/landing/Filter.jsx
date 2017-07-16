@@ -6,7 +6,7 @@ class Filter extends Component {
     return (
       <div className="filter has-text-centered">
         <span className="filter-toggle">
-          <a className="icon is-large"><i className="fa fa-chevron-down"></i></a>
+          <a className="icon is-medium"><i className="fa fa-chevron-down"></i></a>
         </span>
         <h4 className="filter-brand title is-4">filters</h4>
         <div className="filter-content">
