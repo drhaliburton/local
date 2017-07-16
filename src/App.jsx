@@ -4,7 +4,7 @@ import Navbar from "./landing/Navbar.jsx";
 import Search from "./landing/Search.jsx";
 import Filter from "./landing/Filter.jsx"
 import ItineraryCard from "./itinerary/ItineraryCard.jsx"
-
+import ItineraryTime from "./itinerary/ItineraryTime.jsx"
 
 class App extends Component {
 
@@ -26,7 +26,8 @@ class App extends Component {
         <Search />  
         <IndexCard />
         <div>
-          <ItineraryCard /> 
+          <ItineraryCard />
+          <ItineraryTime /> 
         </div>
       </div>
     );
