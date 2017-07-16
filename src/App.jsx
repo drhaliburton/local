@@ -3,8 +3,7 @@ import IndexCard from "./IndexCard/IndexCard.jsx";
 import Navbar from "./landing/Navbar.jsx";
 import Search from "./landing/Search.jsx";
 import Filter from "./landing/Filter.jsx"
-import ItineraryCard from "./itinerary/ItineraryCard.jsx"
-import ItineraryTime from "./itinerary/ItineraryTime.jsx"
+import Itinerary from "./itinerary/Itinerary.jsx"
 
 class App extends Component {
 
@@ -21,14 +20,8 @@ class App extends Component {
       console.log("Rendering <App />");
     return (
       <div>
-        <Navbar />
-        <Filter />
-        <Search />  
-        <IndexCard />
-        <div>
-          <ItineraryCard />
-          <ItineraryTime /> 
-        </div>
+
+          <Itinerary />
       </div>
     );
   }
