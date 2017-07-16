@@ -21,8 +21,8 @@ class App extends Component {
       <div>
         <Navbar />
         <Filter />
+        <Search />  
         <IndexCard /> 
-        <Search />
       </div>
     );
   }
