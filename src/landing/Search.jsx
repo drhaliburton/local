@@ -7,7 +7,7 @@ class Search extends Component {
         <div className="columns has-text-centered">
           <div className="column is-6 is-offset-3">
             <p className="control landing"></p>
-              <input className="input" type="text" placeholder="Where do you want to go?"></input>
+              <input className="input" type="text" placeholder="Where are you going?"></input>
           </div>
         </div>
       </div>
