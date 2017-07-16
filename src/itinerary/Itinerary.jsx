@@ -15,4 +15,5 @@ class Itinerary extends Component {
     );
   }
 }
+
 export default Itinerary;

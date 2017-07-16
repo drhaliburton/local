@@ -5,6 +5,7 @@ $dark-green: darken(#30B9BC, 10%);
 $orange: #FCB737;
 $dark-orange: darken(#FCB737, 10%);
 $light-grey: #CCCCCC;
+$drop-shadow: lighten(#CCCCCC, 15%);
 
 @import 'indexCard';
 @import 'navbar';

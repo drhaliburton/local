@@ -33,7 +33,7 @@ app.use(morgan('dev'));
 // Log knex SQL queries to STDOUT as well
 app.use(knexLogger(knex));
 
-app.set("view engine", "ejs");
+app.set("view engine", "jsx");
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use("/styles", sass({
   src: __dirname + "/styles",
@@ -64,9 +64,9 @@ new WebpackDevServer(webpack(config), {
   });
 
 // Home page
-app.get("/", (req, res) => {
-  res.render("landingPage");
-});
+// app.get("/", (req, res) => {
+//   res.render("landingPage");
+// });
 // app.get("/itinerary", (req, res) => {
 //   res.render("itinerary");
 // });

@@ -9,13 +9,13 @@ class Content extends Component {
           <div className="media-content">
             <p className="title">{this.props.title}</p>
             <p className="subtitle"><a>{this.props.location}</a></p>
-            <p className="subtitle is-small">Recommended duration: ~{this.props.duration}</p>
+            <p className="duration">Time: ~{this.props.duration} minutes</p>
           </div>
         </div>
         <div className="card-details">
-            <p className="icon is-small"><i className="fa fa-tree" aria-hidden="true"></i> Outdoors</p>
+            <p><span className="icon is-small fa fa-tree"></span> Outdoors</p>
           <div className="content">
-            <p className="subtitle is-small">{this.props.description}</p>
+            <p className="description">{this.props.description}</p>
           </div>
         </div>
       </div>
