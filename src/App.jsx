@@ -71,11 +71,11 @@ class App extends Component {
   render() {
       console.log("Rendering <App />");
     return (
-      <div>
+      <div>    
         <Navbar />
+        <Search />
         <Filter />
         <IndexCard cards={this.state.cards}/> 
-        <Search />
         <Itinerary />
       </div>
     );

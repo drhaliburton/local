@@ -18,9 +18,9 @@
       .cards .card .card-content .media {
         margin: 0px; }
     .cards .card a {
-      color: #00CFBF; }
+      color: #00caba; }
       .cards .card a:hover {
-        color: #269193; }
+        color: #00645c; }
     .cards .card .content {
       height: auto; }
     .cards .card .fa-star {
@@ -106,33 +106,43 @@
   .navbar .navbar-brand {
     margin: 13px 30px; }
     .navbar .navbar-brand .itinierary {
+      overflow: hidden;
       transition: all 0.2s ease-in-out;
-      border-color: #363636;
-      border-radius: 10px;
       color: #363636; }
       .navbar .navbar-brand .itinierary .fa {
         display: inline; }
       .navbar .navbar-brand .itinierary:hover {
         transition: all 0.2s ease-in-out;
-        border-color: #00CFBF;
-        color: #00CFBF;
+        border-color: #00caba;
+        color: #00caba;
         cursor: pointer; }
+  @media screen and (max-width: 999px) {
+    .navbar {
+      overflow: visible; }
+      .navbar .navbar-brand {
+        margin: auto;
+        display: inline-block; } }
 
 .filter .filter-toggle {
   margin: auto;
   top: 5px;
   padding: 20px; }
   .filter .filter-toggle .fa-chevron-down {
-    transition: all 0.4s ease-in-out;
-    left: 45%; }
+    color: #00caba;
+    transition: all 0.3s ease-in-out;
+    left: 35%; }
+    .filter .filter-toggle .fa-chevron-down:hover {
+      transition: all 0.3s ease-in-out;
+      color: #363636;
+      cursor: pointer; }
   .filter .filter-toggle .chev-rotate {
-    transition: all 0.4s ease-in-out;
+    transition: all 0.3s ease-in-out;
     transform: rotate(180deg); }
   .filter .filter-toggle .chev-rotate-again {
-    transition: all 0.4s ease-in-out;
+    transition: all 0.3s ease-in-out;
     transform: rotate(360deg); }
 .filter .filter-button.active .button {
-  background-color: #00CFBF; }
+  background-color: #00caba; }
 .filter .filter-button.active .fa {
   color: black; }
 .filter .filter-brand {
@@ -144,7 +154,7 @@
   margin: auto;
   border-radius: 10px; }
   .filter .button:hover {
-    border-color: #00CFBF; }
+    border-color: #00caba; }
 .filter .filter-content {
   margin-top: 1rem;
   margin-bottom: 1rem;
@@ -152,11 +162,11 @@
   display: none; }
 
 .landing-content {
-  margin-top: 5rem; }
+  margin-top: 2rem; }
   .landing-content .input {
     border-color: #fba505; }
     .landing-content .input:focus {
-      border-color: #00CFBF; }
+      border-color: #00caba; }
   .landing-content .brand img {
     width: 80%; }
 
@@ -176,7 +186,7 @@
   .columns .media-content.large {
     height: 10rem; }
   .columns .fa {
-    color: #00CFBF; }
+    color: #00caba; }
   .columns .article.media.large {
     height: 10rem; }
 

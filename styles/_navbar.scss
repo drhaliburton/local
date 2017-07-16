@@ -4,10 +4,9 @@
   .navbar-brand {
     margin: 13px 30px;
     .itinierary {
+      overflow: hidden;
       transition: all 0.2s ease-in-out;
-      border-color: #363636;
-      border-radius: 10px;
-      color: #363636;
+      color: $dark-grey;
       .fa {
         display: inline;
       }
@@ -17,6 +16,13 @@
         color: $green;
         cursor: pointer;
       } 
+    }
+  }
+  @media screen and (max-width: 999px) {
+    overflow: visible;
+    .navbar-brand{
+      margin: auto;
+      display: inline-block;
     }
   }
 }
