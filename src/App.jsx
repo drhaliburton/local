@@ -3,6 +3,8 @@ import IndexCard from "./IndexCard/IndexCard.jsx";
 import Navbar from "./landing/Navbar.jsx";
 import Search from "./landing/Search.jsx";
 import Filter from "./landing/Filter.jsx"
+import ItineraryCard from "./itinerary/ItineraryCard.jsx"
+
 
 class App extends Component {
 
@@ -22,7 +24,10 @@ class App extends Component {
         <Navbar />
         <Filter />
         <Search />  
-        <IndexCard /> 
+        <IndexCard />
+        <div>
+          <ItineraryCard /> 
+        </div>
       </div>
     );
   }
