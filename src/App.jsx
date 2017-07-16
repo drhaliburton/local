@@ -20,8 +20,11 @@ class App extends Component {
       console.log("Rendering <App />");
     return (
       <div>
-
-          <Itinerary />
+        <Navbar />
+        <Filter />
+        <IndexCard />
+        <Search />
+        <Itinerary />
       </div>
     );
   }
