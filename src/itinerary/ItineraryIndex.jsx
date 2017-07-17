@@ -3,12 +3,12 @@ import ItineraryTime from "./ItineraryTime.jsx";
 import ItineraryCard from "./ItineraryCard.jsx";
 
 //Contains
-class Itinerary extends Component {
+class ItineraryIndex extends Component {
   render() {
     return (
-      <div class="columns">
+      <div className="columns">
         < ItineraryTime />
-        <div class="column is-10">
+        <div className="column is-10">
           < ItineraryCard />
         </div>
       </div>
@@ -16,4 +16,4 @@ class Itinerary extends Component {
   }
 }
 
-export default Itinerary;
+export default ItineraryIndex;
