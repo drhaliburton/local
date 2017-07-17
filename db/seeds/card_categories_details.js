@@ -1,7 +1,6 @@
 exports.seed = function(knex, Promise) {
   // Deletes ALL existing entries
-    return knex('card_categories').del()
-    .then(function () {
+    
       return Promise.all([
         // Inserts seed entries
         knex('card_categories').insert({type: 'outdoors'}),
@@ -10,6 +9,6 @@ exports.seed = function(knex, Promise) {
         knex('card_categories').insert({type: 'culture'}),
         knex('card_categories').insert({type: 'spas & wellness'}),
       ]);
-    });
+    
 
 };
