@@ -4,6 +4,8 @@ import Navbar from "./landing/Navbar.jsx";
 import Search from "./landing/Search.jsx";
 import Filter from "./landing/Filter.jsx"
 import Itinerary from "./itinerary/Itinerary.jsx"
+import FavoriteBar from "./itinerary/FavoriteBar.jsx"
+
 
 const testCards = [ {
      title: "Food Place",
@@ -77,6 +79,7 @@ class App extends Component {
         <Filter />
         <IndexCard cards={this.state.cards}/> 
         <Itinerary />
+        <FavoriteBar />
       </div>
     );
   }

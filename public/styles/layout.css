@@ -105,13 +105,13 @@
   padding-left: 10px; }
   .navbar .navbar-brand {
     margin: 13px 30px; }
-    .navbar .navbar-brand .itinierary {
+    .navbar .navbar-brand .itinerary {
       overflow: hidden;
       transition: all 0.2s ease-in-out;
       color: #363636; }
-      .navbar .navbar-brand .itinierary .fa {
+      .navbar .navbar-brand .itinerary .fa {
         display: inline; }
-      .navbar .navbar-brand .itinierary:hover {
+      .navbar .navbar-brand .itinerary:hover {
         transition: all 0.2s ease-in-out;
         border-color: #00caba;
         color: #00caba;
