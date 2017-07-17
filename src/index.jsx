@@ -1,7 +1,24 @@
 require('../styles/layout.scss');
 
-import React from "react";
-import ReactDOM from "react-dom";
-import App from "./App.jsx";
+import React from 'react';
+import { render } from 'react-dom';
+import { HashRouter as Router, Link, Route } from 'react-router-dom';
+import Navbar from './nav/Navbar.jsx';
+import HomepageIndex from './homepage/HomepageIndex.jsx';
+import ItineraryIndex from './itinerary/ItineraryIndex.jsx';
+import MapIndex from './map/MapIndex.jsx';
 
-ReactDOM.render(<App />, document.getElementById("react-root"));
+const reactRoot = document.querySelector('#react-root');
+
+render(
+  <Router>
+    <div>
+      <div>
+        <Navbar />
+      </div>
+      <Route exact path="/" component={HomepageIndex} />
+      <Route path="/itinerary" component={ItineraryIndex} />
+      <Route path="/map" component={MapIndex} />
+    </div>
+  </Router>
+  , reactRoot);
