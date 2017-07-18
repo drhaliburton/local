@@ -18,7 +18,7 @@ obj.postCardCategory = function(object){
       .insert({
         title: object.title,
         location: object.location,
-        description: ,
+        description: object.description,
         duration: object.duration,
         user_id: object.user_id
       })
