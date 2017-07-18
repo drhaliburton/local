@@ -8,7 +8,10 @@ class Search extends Component {
           <div className="column is-6">
             <div className="accent-font">Travel Like You Live Here.</div>
             <p className="control landing"></p>
-              <input className="input" type="text" placeholder="Where are you going?"></input>
+              <input className="input" type="text" placeholder="Where are you going?" onKeyDown={(event) => {
+          if (event.key === 'Enter') {
+            this.props.locate(event.target.value)}}}
+            />
           </div>
         </div>
       </div>

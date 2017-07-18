@@ -19,12 +19,22 @@ componentDidMount() {
       })
     );
   }
+
+  locationSearch(event) {
+    fetch(`/index/locate?find=${event}`)
+      .then((res) => res.json())
+      .then((cards) => this.setState({
+        cards: cards
+      })
+    );
+  }
   
   render() {
     return (
       <div>
-        <Search />
-        <Filter cards={this.state.cards}/>
+  
+        <Filter cards={this.state.cards}/>  
+        <Search locate={this.locationSearch.bind(this)} />
         <IndexCard cards={this.state.cards}/> 
       </div>
     );
