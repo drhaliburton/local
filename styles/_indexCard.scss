@@ -11,9 +11,33 @@
     background-color: #fff;
     overflow: none;
 
+    .content-container {
+      z-index: 20;
+      margin-bottom: 10px;
+      background-color: white;
+      transition: 0.5s all ease-in-out;
+      
+      .icon-container {
+        z-index: 100;
+        background-color: white;
+        text-align: center;
+        padding: 10px;
+        
+        a {
+          background-color: white;
+          .card-toggle {
+            cursor: pointer;
+            background-color: white;
+          } 
+        }
+      }
+    }
+
     .card-content {
       padding: 0;
       z-index: 10;
+      transition: 0.5s all ease-in-out !important;
+
       .duration {
       font-size: .7em;
       }
@@ -21,11 +45,12 @@
         margin: 0px;
       }
     }
+
     a {
       color: $green;
-    &:hover {
-      color: $dark-green;
-    } 
+      &:hover {
+        color: $dark-green;
+      } 
     }
     .content {
       height: auto;
@@ -62,28 +87,31 @@
       line-height: 15px;
       transition: all 0.5s ease-in-out;
       .description{
+        transition: all 0.5s ease-in-out;
         font-size: 1em;
         padding-top: 8px;
         .rating {
           display: inline;
           margin: 40%;
+          transition: all 0.5s ease-in-out;
         }
       }
     }
+
     .card-toggle {
       margin-top: 10px;
+      transition: 0.5s all ease-in-out !important;
+
       .fa-chevron-up {
         transition: all 0.5s ease-in-out;
         position: relative;
         top: 5px;
         left: 45%;
       }
-
       .chev-rotate {
         transition: all 0.5s ease-in-out;
         transform: rotate(180deg);
       }
-
       .chev-rotate-again {
         transition: all 0.5s ease-in-out;
         transform: rotate(360deg);
@@ -96,6 +124,8 @@
 
     .card-image, figure, img {
       z-index: 1;
+      transition: 0.5s all ease-in-out !important;
+
     }
     
     .card-image {
@@ -108,52 +138,26 @@
         width: 280px; 
       }
     }
-    
-    .content-container {
-      z-index: 20;
-      margin-bottom: 10px;
-      background-color: white;
-      transition: 0.5s all ease-in-out;
-      
-      .icon-container {
-        z-index: 100;
-        background-color: white;
-        text-align: center;
-        padding: 10px;
-        
-        a {
-          background-color: white;
-        
-          .card-toggle {
-            cursor: pointer;
-            background-color: white;
-          } 
-        }
-      }
-      .description {
-        display: none;
-      }
-      &.expanded {
-
-      .card-image {
-        height: 0px;
-        overflow: hidden;
-        transition: 0.5s all ease-in-out;
-      }
-      
-      .content-container {
-        margin-top: 0%;
-        margin-bottom: 20px;
-        height: 300px;
-      }
-
-      .content {
-        transition: all 0.5s ease-in-out;
-      }
-    }
   }
 }
 
 .columns {
   justify-content: center;
+}
+
+.expanded {
+  .content-container {
+    transition: 0.5s all ease-in-out !important;
+    margin-top: 0% !important;
+    margin-bottom: 20px !important;
+    height: 300px !important;
+  }
+  .card-image {
+    height: 0px !important;
+    overflow: hidden !important;
+    transition: 0.5s all ease-in-out !important;
+  }
+  .content {
+    transition: all 0.5s ease-in-out !important;
+  }
 }

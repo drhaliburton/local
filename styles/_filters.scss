@@ -3,6 +3,8 @@
     margin:auto;
     top: 5px;
     padding: 20px;
+    transition: all 0.3s ease-in-out;
+
     .fa-chevron-down {
       color: $green;
       transition: all 0.3s ease-in-out;
@@ -17,11 +19,7 @@
     .chev-rotate {
       transition: all 0.3s ease-in-out;
       transform: rotate(180deg);
-    }
-
-    .chev-rotate-again {
       transition: all 0.3s ease-in-out;
-      transform: rotate(360deg);
     }
   }
   .filter-button {
@@ -47,12 +45,10 @@
     }
   }
   .filter-content {
+    transition: all 0.3s ease-in-out;
     margin-top: 1rem;
     margin-bottom: 1rem; 
     padding: 1rem;
     display: none;
-  .visible {
-    display: inline;
-  }
   }
 }

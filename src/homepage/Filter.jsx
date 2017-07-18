@@ -11,24 +11,27 @@ class Filter extends Component {
   }
 
   filterCards(event) {
-    console.log(this.state.cards);
+    console.log(this.props.cards);
   }
 
   toggleFilters(event){
     console.log('filters clicked');
     this.setState({
       filtersVisible: !this.state.filtersVisible,
+      isRotated: !this.state.isRotated
     });  
   }  
 
   render() {
 
   const toggledFilter = this.state.filtersVisible ? 'visible' : '';
+  const rotatedToggle = this.state.isRotated ? 'is-rotated' : '';
+
 
     return (
       <div className="filter has-text-centered">
-        <span className="filter-toggle" onClick={this.filterCards.bind(this)}>
-          <a className="icon is-medium"><i className="fa fa-chevron-down"></i></a>
+        <span className="filter-toggle" onClick={this.toggleFilters.bind(this)}>
+          <a className="icon is-medium"><i className={`fa fa-chevron-down ${rotatedToggle}`}></i></a>
         </span>
         <h4 className="filter-brand title is-4">filters</h4>
         <div className={`filter-content ${toggledFilter}`}>
@@ -41,7 +44,7 @@ class Filter extends Component {
             </div>
             <div className="column">
               <h5 className="title is-5">Category</h5>
-              <span className="filter-button">
+              <span className="filter-button" onClick={this.filterCards.bind(this)}>
                 <a className="button is-small">
               <span className="header">Nature</span>
               <span className="icon is-small"></span>

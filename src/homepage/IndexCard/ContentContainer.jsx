@@ -15,7 +15,6 @@ class ContentContainer extends Component {
   }
 
   toggleDescription(event){
-    console.log('clicked');
     this.setState({
       isExpanded: !this.state.isExpanded,
       isRotated: !this.state.isRotated,
@@ -29,7 +28,6 @@ class ContentContainer extends Component {
     const detailsVisible = this.state.isVisible ? 'visible'  : '';
 
     let card = this.props.cardContent;
-    console.log(card);
     return (
       <div className={`content-container ${expandedToggle}`}>
         <span className="card-toggle" onClick={this.toggleDescription.bind(this)}>
@@ -44,7 +42,7 @@ class ContentContainer extends Component {
               <p className="duration">Time: ~{card.duration} minutes</p>
             </div>
           </div>
-          <div className={`description ${detailsVisible}`}>
+          <div className={`card-details ${detailsVisible}`}>
               <p><span className="icon is-small fa fa-tree"></span> Outdoors</p>
             <div className="content">
               <div className="description"><p>{card.description}</p>
