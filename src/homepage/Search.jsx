@@ -5,7 +5,8 @@ class Search extends Component {
     return (
       <div className="landing-content">
         <div className="columns has-text-centered">
-          <div className="column is-5">
+          <div className="column is-6">
+            <div className="accent-font">Travel Like You Live Here.</div>
             <p className="control landing"></p>
               <input className="input" type="text" placeholder="Where are you going?"></input>
           </div>
