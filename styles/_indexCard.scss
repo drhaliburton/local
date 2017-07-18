@@ -1,133 +1,158 @@
-.card {
-  margin: 30px 20px;
-  width: 22%;
-  min-width: 200px;
-  display: inline-block;
-  border: 0.5px solid $light-grey;
-  box-shadow: none;
-  background-color: #fff;
-  overflow: none;
+.cards {
+  margin: 7% 10%;
+  .card {
+    margin: 30px 20px 10px;
+    width: 22%;
+    min-width: 200px;
+    max-width: 300px;
+    display: inline-block;
+    border: 0.5px solid $light-grey;
+    box-shadow: none;
+    background-color: #fff;
+    overflow: none;
 
-  .card-content {
-    padding: 15px;
-    z-index: 10;
-  }
-  a {
-    color: $green;
-   &:hover {
-     color: $dark-green;
-   } 
-  }
-  .content {
-    height: auto;
-  }
-
-  .fa-star {
-    position: relative;
-    top: 15px;
-    right: 15px;
-    color: $orange;
-    &:hover{
-      color: $dark-orange;
-      cursor: pointer;
-    }
-  }
-
-  .title {
-    font-size: 1.1em;
-  }
-
-  .subtitle {
-    font-size: .9em;
-  }
-
-  small {
-    font-style: italic;
-    font-size: .7em;
-  }
-
-  .card-details {
-    transition: all 0.5s ease-in-out;
-    display: none;
-  }
-  .card-toggle {
-    margin-top: 10px;
-    .fa-chevron-up {
-      transition: all 0.5s ease-in-out;
-      position: relative;
-      top: 5px;
-      left: 45%;
-    }
-
-    .chev-rotate {
-      transition: all 0.5s ease-in-out;
-      transform: rotate(180deg);
-    }
-
-    .chev-rotate-again {
-      transition: all 0.5s ease-in-out;
-      transform: rotate(360deg);
-    }
-  }
-
-  .subtitle {
-    margin-bottom: 5px;
-  }
-
-  .card-image, figure, img {
-    z-index: 1;
-  }
-  
-  .card-image {
-    text-align: center;
-    height: 250px;
-    overflow: hidden;
-    text-align: center;
-    transition: all 0.5s ease-in-out;
-
-    img {
-      width: 300px; 
-      height: auto;
-    }
-  }
-  
-  .content-container {
-    z-index: 20;
-    background-color: white;
-    transition: 0.5s all ease-in-out;
-    
-    .icon-container {
-      z-index: 100;
-      background-color: white;
-      text-align: center;
-      padding: 10px;
-      
-      a {
-        background-color: white;
-       
-        .card-toggle {
-          cursor: pointer;
-          background-color: white;
-        } 
+    .card-content {
+      padding: 0;
+      z-index: 10;
+      .duration {
+      font-size: .7em;
+      }
+      .media{
+        margin: 0px;
       }
     }
-  }
-  
-  &.expanded {
+    a {
+      color: $green;
+    &:hover {
+      color: $dark-green;
+    } 
+    }
+    .content {
+      height: auto;
+    }
 
+    .fa-star {
+      position: relative;
+      top: 12px;
+      color: $orange;
+      box-shadow: 1px grey;
+      &:hover{
+        color: $dark-orange;
+        cursor: pointer;
+      }
+    }
+
+    .title {
+      font-size: 1.1em;
+    }
+
+    .subtitle {
+      font-size: .9em;
+    }
+
+    small {
+      font-style: italic;
+      font-size: .7em;
+    }
+
+    .card-details {
+      display: none;
+      font-size: 0.8em;
+      padding-top: 10px;
+      line-height: 15px;
+      transition: all 0.5s ease-in-out;
+      .description{
+        font-size: 1em;
+        padding-top: 8px;
+        .rating {
+          display: inline;
+          margin: 40%;
+        }
+      }
+    }
+    .card-toggle {
+      margin-top: 10px;
+      .fa-chevron-up {
+        transition: all 0.5s ease-in-out;
+        position: relative;
+        top: 5px;
+        left: 45%;
+      }
+
+      .chev-rotate {
+        transition: all 0.5s ease-in-out;
+        transform: rotate(180deg);
+      }
+
+      .chev-rotate-again {
+        transition: all 0.5s ease-in-out;
+        transform: rotate(360deg);
+      }
+    }
+
+    .subtitle {
+      margin-bottom: 5px;
+    }
+
+    .card-image, figure, img {
+      z-index: 1;
+    }
+    
     .card-image {
-      height: 0px;
+      text-align: center;
       overflow: hidden;
-      transition: 0.5s all ease-in-out;
+      text-align: center;
+      transition: all 0.5s ease-in-out;
+
+      img {
+        width: 280px; 
+      }
     }
     
     .content-container {
-      margin-top: 0%;
-      margin-bottom: 20px;
+      z-index: 20;
+      margin-bottom: 10px;
+      background-color: white;
+      transition: 0.5s all ease-in-out;
+      
+      .icon-container {
+        z-index: 100;
+        background-color: white;
+        text-align: center;
+        padding: 10px;
+        
+        a {
+          background-color: white;
+        
+          .card-toggle {
+            cursor: pointer;
+            background-color: white;
+          } 
+        }
+      }
     }
+    
+    &.expanded {
 
-    .content {
-      transition: all 0.5s ease-in-out;
+      .card-image {
+        height: 0px;
+        overflow: hidden;
+        transition: 0.5s all ease-in-out;
+      }
+      
+      .content-container {
+        margin-top: 0%;
+        margin-bottom: 20px;
+        height: 300px;
+      }
+
+      .content {
+        transition: all 0.5s ease-in-out;
+      }
     }
   }
+}
+
+.columns {
+  justify-content: center;
 }

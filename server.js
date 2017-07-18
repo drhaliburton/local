@@ -2,7 +2,7 @@
 
 require('dotenv').config();
 
-const PORT        = process.env.PORT || 8080;
+// const PORT        = process.env.PORT || 8080;
 const ENV         = process.env.ENV || "development";
 const express     = require("express");
 const bodyParser  = require("body-parser");
@@ -13,20 +13,18 @@ const knexConfig  = require("./knexfile");
 const knex        = require("knex")(knexConfig[ENV]);
 const morgan      = require('morgan');
 const knexLogger  = require('knex-logger');
+const request     = require('request');
 
-// Seperated Routes for each Resource
-const itineraryRoutes = require("./routes/itinerary");
-const indexRoutes = require("./routes/index");
+const webpack = require('webpack');
+const WebpackDevServer = require('webpack-dev-server');
+const config = require('./webpack.config');
 
-// Load the logger first so all (static) HTTP requests are logged to STDOUT
-// 'dev' = Concise output colored by response status for development use.
-//         The :status token will be colored red for server error codes, yellow for client error codes, cyan for redirection codes, and uncolored for all other codes.
 app.use(morgan('dev'));
 
 // Log knex SQL queries to STDOUT as well
 app.use(knexLogger(knex));
 
-app.set("view engine", "ejs");
+app.set("view engine", "jsx");
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use("/styles", sass({
   src: __dirname + "/styles",
@@ -36,15 +34,19 @@ app.use("/styles", sass({
 }));
 app.use(express.static("public"));
 
-// Mount all resource routes
-app.use("/itinerary", itineraryRoutes(knex));
-app.use("/index",indexRoutes(knex));
 
-// Home page
-app.get("/", (req, res) => {
-  res.render("landingPage");
-});
+new WebpackDevServer(webpack(config), {
+    publicPath: config.output.publicPath,
+    watchOptions: {
+      aggregateTimeout: 300,
+      poll: 1000,
+      ignored: /node_modules/
+    }
+  })
+  .listen(3000, '0.0.0.0', function (err, result) {
+    if (err) {
+      console.log(err);
+    }
 
-app.listen(PORT, () => {
-  console.log("Local is listening on port " + PORT);
-});
+    console.log('Running at http://0.0.0.0:3000');
+  });
