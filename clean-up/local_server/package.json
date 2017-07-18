@@ -1,3 +1,4 @@
+<<<<<<< HEAD:clean-up/local_server/package.json
 {
   "name": "y",
   "version": "1.0.0",
@@ -15,3 +16,24 @@
     "ws": "3.0.0"
   }
 }
+=======
+{
+  "name": "y",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "proxy": "http://localhost:3000",
+
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "4.15.3",
+    "ws": "3.0.0"
+  },
+  "devDependencies": {},
+  "description": ""
+}
+>>>>>>> favbar:local_server/package.json
