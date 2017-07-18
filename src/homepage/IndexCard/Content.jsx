@@ -16,10 +16,11 @@ class Content extends Component {
         <div className="card-details">
             <p><span className="icon is-small fa fa-tree"></span> Outdoors</p>
           <div className="content">
-            <p className="description">{this.props.description}</p>
+            <div className="description"><p>{this.props.description}</p>
+              <Rating />
+            </div>
           </div>
         </div>
-        <Rating />
       </div>
     );
   }

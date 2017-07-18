@@ -8,6 +8,10 @@ $light-grey: #CCCCCC;
 $medium-grey: darken($light-grey, 40%);
 $dark-grey: #363636;
 
+.is-rotated {
+  transform: rotate(180deg);
+}
+
 @import 'indexCard';
 @import 'navbar';
 @import 'filters';
