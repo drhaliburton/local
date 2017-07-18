@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import Rating from "./Rating.jsx";
 
 //Contains
 class Content extends Component {
@@ -18,6 +19,7 @@ class Content extends Component {
             <p className="description">{this.props.description}</p>
           </div>
         </div>
+        <Rating />
       </div>
     );
   }
