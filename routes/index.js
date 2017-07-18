@@ -32,11 +32,15 @@ module.exports = (knex) => {
           title: card.title,
           // location: card.location,
           description: card.description,
-          duration: card.duration
+          duration: card.duration,
+          category: card.name,
+          user: card.given_name,
+          photos: card.url,
+          ratings: card.rating 
          }
       });
-      console.log(cards)
-      res.json(cards)
+        
+    res.json(cards)
       
     })
     .catch(err => {
@@ -51,4 +55,8 @@ module.exports = (knex) => {
 
 
   return router;
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 71a90256828909e07a6d378fa268d011e4d650e1
