@@ -31,11 +31,11 @@ class HomepageIndex extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      cards: testCards
+      cards: []
     }
   }
 componentDidMount() {
-    fetch('/')
+    fetch('/index')
       .then((res) => res.json())
       .then((cards) => this.setState({ 
         cards: cards 
