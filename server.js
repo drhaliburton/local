@@ -1,52 +1,35 @@
 "use strict";
 
 require('dotenv').config();
-
-// const PORT        = process.env.PORT || 8080;
+const webpack = require('webpack');
+const config = require('./webpack.config');
+const webpackDevMiddleware = require('webpack-dev-middleware')
+const webpackHotMiddleware = require('webpack-hot-middleware')
 const ENV         = process.env.ENV || "development";
-const express     = require("express");
-const bodyParser  = require("body-parser");
-const sass        = require("node-sass-middleware");
-const app         = express();
-
-const knexConfig  = require("./knexfile");
-const knex        = require("knex")(knexConfig[ENV]);
+const express = require('express');
+const knexConfig  = require('./knexfile');
+const knex        = require('knex')(knexConfig[ENV]);
 const morgan      = require('morgan');
 const knexLogger  = require('knex-logger');
-const request     = require('request');
+const PORT = 3000;
+// Seperated Routes for each Resource
+const itineraryRoutes = require("./routes/itinerary");
+const indexRoutes = require("./routes/index");
+const compiler = webpack(config)
+const path = require('path')
+const indexPath = path.join(__dirname, 'index.html');
+const publicPath = express.static(path.join(__dirname, 'build'));
+const app = express()
 
-const webpack = require('webpack');
-const WebpackDevServer = require('webpack-dev-server');
-const config = require('./webpack.config');
-
-app.use(morgan('dev'));
-
-// Log knex SQL queries to STDOUT as well
-app.use(knexLogger(knex));
-
-app.set("view engine", "jsx");
-app.use(bodyParser.urlencoded({ extended: true }));
-app.use("/styles", sass({
-  src: __dirname + "/styles",
-  dest: __dirname + "/public/styles",
-  debug: true,
-  outputStyle: 'expanded'
-}));
-app.use(express.static("public"));
-
-
-new WebpackDevServer(webpack(config), {
-    publicPath: config.output.publicPath,
-    watchOptions: {
-      aggregateTimeout: 300,
-      poll: 1000,
-      ignored: /node_modules/
-    }
-  })
-  .listen(3000, '0.0.0.0', function (err, result) {
-    if (err) {
-      console.log(err);
-    }
-
-    console.log('Running at http://0.0.0.0:3000');
-  });
+  app.use(webpackHotMiddleware(compiler))
+  app.use(webpackDevMiddleware(compiler, {
+      noInfo: true,
+      publicPath: config.output.publicPath
+    }))
+  app.use('/build', publicPath);
+  app.use(morgan('dev'))
+  app.use(knexLogger(knex))
+  app.get('/', function (_, res) { res.sendFile(indexPath) });
+  app.use("/itinerary", itineraryRoutes(knex))
+  app.use("/index",indexRoutes(knex))
+  app.listen(PORT, '0.0.0.0', 'localhost', () => console.log(`Listening on ${ PORT }`));
