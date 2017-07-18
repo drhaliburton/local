@@ -10,7 +10,7 @@
     "knex": "./node_modules/.bin/knex",
     "lint": "eslint --ext .jsx,.js src"
   },
-  "author": "Lighthouse Labs",
+  "author": "Rebecca, Aisha, Shauna & Holden",
   "license": "ISC",
   "dependencies": {
     "babel-preset-react": "^6.23.0",
