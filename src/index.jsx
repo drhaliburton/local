@@ -8,6 +8,7 @@ import HomepageIndex from './homepage/HomepageIndex.jsx';
 import ItineraryIndex from './itinerary/ItineraryIndex.jsx';
 import MapIndex from './map/MapIndex.jsx';
 import SignInIndex from './signin/SignInIndex.jsx';
+import DndIndex from './dnd/DndIndex.jsx';
 
 
 
@@ -21,7 +22,7 @@ render(
       </div>
       <Route exact path="/" component={HomepageIndex} />
       <Route path="/itinerary" component={ItineraryIndex} />
-      <Route path="/map" component={MapIndex} />
+      <Route path="/map" component={DndIndex} />
       <Route path="/signin" component={SignInIndex} />
     </div>
   </Router>
