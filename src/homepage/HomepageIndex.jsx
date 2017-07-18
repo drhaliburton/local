@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import IndexCard from "./IndexCard/IndexCard.jsx";
 import Search from "./Search.jsx";
 import Filter from "./Filter.jsx";
+import Styles from "../../styles/layout.scss";
 
 class HomepageIndex extends Component {
   constructor(props) {
@@ -21,7 +22,7 @@ componentDidMount() {
   
   render() {
     return (
-      <div>    
+      <div>
         <Search />
         <Filter cards={this.state.cards}/>
         <IndexCard cards={this.state.cards}/> 
