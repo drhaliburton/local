@@ -35,7 +35,7 @@ module.exports = (knex) => {
          }
       });
       console.log(cards)
-    res.json(cards)
+      res.json(cards)
       
     })
     .catch(err => {

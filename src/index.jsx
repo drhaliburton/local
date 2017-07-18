@@ -8,6 +8,8 @@ import HomepageIndex from './homepage/HomepageIndex.jsx';
 import ItineraryIndex from './itinerary/ItineraryIndex.jsx';
 import MapIndex from './map/MapIndex.jsx';
 import SignInIndex from './signin/SignInIndex.jsx';
+import Styles from '../styles/layout.scss';
+
 
 
 const reactRoot = document.querySelector('#react-root');
