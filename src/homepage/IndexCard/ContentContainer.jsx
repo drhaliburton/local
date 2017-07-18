@@ -44,7 +44,7 @@ class ContentContainer extends Component {
               <p className="duration">Time: ~{card.duration} minutes</p>
             </div>
           </div>
-          <div className={`card-details ${detailsVisible}`}>
+          <div className={`description ${detailsVisible}`}>
               <p><span className="icon is-small fa fa-tree"></span> Outdoors</p>
             <div className="content">
               <div className="description"><p>{card.description}</p>

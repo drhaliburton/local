@@ -51,5 +51,8 @@
     margin-bottom: 1rem; 
     padding: 1rem;
     display: none;
+  .visible {
+    display: inline;
+  }
   }
 }

@@ -24,8 +24,7 @@ class DetailToggle extends Component {
   render() {
     const expandedToggle = this.state.isExpanded ? 'expanded'  : '';
     const rotatedToggle = this.state.isRotated ? 'is-rotated'  : '';
-    const detailsVisible = this.state.detailsVisible ? 'visible'  : '';
-
+    const detailsVisible = this.state.visibleDetails ? 'visible'  : '';
 
     return (
     <span className={`card-toggle ${expandedToggle}`} onClick={this.toggleDescription.bind(this)}>

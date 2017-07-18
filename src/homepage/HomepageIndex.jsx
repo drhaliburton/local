@@ -31,10 +31,10 @@ class HomepageIndex extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      cards: testCards
+      cards: []
     }
   }
-componentDidMount() {
+  componentDidMount() {
     fetch('/')
       .then((res) => res.json())
       .then((cards) => this.setState({ 
@@ -44,11 +44,10 @@ componentDidMount() {
   }
   
   render() {
-      console.log("Rendering <App />");
     return (
       <div>    
         <Search />
-        <Filter />
+        <Filter cards={this.state.cards}/>
         <IndexCard cards={this.state.cards}/> 
       </div>
     );
