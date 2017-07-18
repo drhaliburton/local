@@ -34,8 +34,8 @@ class HomepageIndex extends Component {
       cards: []
     }
   }
-  componentDidMount() {
-    fetch('/')
+componentDidMount() {
+    fetch('/index')
       .then((res) => res.json())
       .then((cards) => this.setState({ 
         cards: cards 
