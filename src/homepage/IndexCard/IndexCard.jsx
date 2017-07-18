@@ -10,10 +10,10 @@ class IndexCard extends Component {
     return (
       <div className="columns is-multiline cards">
         {cardsArray.map((card) => {
-        return <div className="column is-one-quarter card">
-          <Image image={card.image}/>
-          <ContentContainer cardContent={card} />
-        </div>;
+          return <div className="column is-one-quarter card">
+              <Image image={card.image}/>
+              <ContentContainer cardContent={card} />
+            </div>;
           })
         }
       </div>
