@@ -129,23 +129,26 @@
             background-color: white;
           } 
         }
-      }    
-      .expanded {
-        .card-image {
-          height: 0px;
-          overflow: hidden;
-          transition: 0.5s all ease-in-out;
-        }
-        
-        .content-container {
-          margin-top: 0%;
-          margin-bottom: 20px;
-          height: 300px;
-        }
+      }
+      .description {
+        display: none;
+      }
+      &.expanded {
 
-        .content {
-          transition: all 0.5s ease-in-out;
-        }
+      .card-image {
+        height: 0px;
+        overflow: hidden;
+        transition: 0.5s all ease-in-out;
+      }
+      
+      .content-container {
+        margin-top: 0%;
+        margin-bottom: 20px;
+        height: 300px;
+      }
+
+      .content {
+        transition: all 0.5s ease-in-out;
       }
     }
   }
