@@ -11,6 +11,7 @@ const knexConfig  = require('./knexfile');
 const knex        = require('knex')(knexConfig[ENV]);
 const morgan      = require('morgan');
 const knexLogger  = require('knex-logger');
+const bodyParser = require("body-parser");
 const PORT = 3000;
 // Seperated Routes for each Resource
 const itineraryRoutes = require("./routes/itinerary");
@@ -20,13 +21,19 @@ const compiler = webpack(config)
 const path = require('path')
 const indexPath = path.join(__dirname, 'index.html');
 const publicPath = express.static(path.join(__dirname, 'build'));
+//
 const app = express()
+  app.use(bodyParser.urlencoded({extended: true}));
 
-  app.use(webpackHotMiddleware(compiler))
   app.use(webpackDevMiddleware(compiler, {
-      noInfo: true,
+      watchOptions: {
+        poll: 1000,
+        aggregateTimeout: 300,
+        ignored: /node_modules/
+      },
       publicPath: config.output.publicPath
     }))
+  app.use(webpackHotMiddleware(compiler))
   app.use('/build', publicPath);
   app.use(morgan('dev'))
   app.use(knexLogger(knex))
