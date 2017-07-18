@@ -64,6 +64,10 @@
       .description{
         font-size: 1em;
         padding-top: 8px;
+        .rating {
+          display: inline;
+          margin: 40%;
+        }
       }
     }
     .card-toggle {

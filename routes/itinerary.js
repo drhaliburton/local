@@ -3,60 +3,6 @@
 const express = require('express');
 const router  = express.Router();
 const queries = require("../library/itinerary_queries.js")
-// Test Data - Remove when DB seeded
-const testItn = {
-  title: "My Trip",
-  date: "July 22, 2017",
-  cards: [{
-    title: "Food Place",
-    description: "Yum!",
-    location: "here",
-    type: "food",
-    duration: 120,
-    start_time: "11:00am"
-  }, {
-    title: "Hike Time",
-    description: "Wow!",
-    location: "There",
-    type: "outdoors",
-    duration: 180,
-    start_time: "1:00pm"
-  }, {
-    title: "Art Place",
-    description: "Cool!",
-    location: "Somewhere",
-    type: "sight",
-    duration: 60,
-    start_time: "4:00pm"
-  }]
-};
-// Test Data - Remove when DB seeded
-const testFavs = {
-  favs: [{
-    title: "Food Place",
-    description: "Yum!",
-    location: "here",
-    type: "food",
-    duration: 120,
-    start_time: "11:00am"
-  },
-  {
-    title: "Hike Time",
-    description: "Wow!",
-    location: "There",
-    type: "outdoors",
-    duration: 180,
-    start_time: "1:00pm"
-  },
-  {
-    title: "Art Place",
-    description: "Cool!",
-    location: "Somewhere",
-    type: "sight",
-    duration: 60,
-    start_time: "4:00pm"
-  }]
-};
 
 module.exports = (knex) => {
 

@@ -15,6 +15,7 @@ const PORT = 3000;
 // Seperated Routes for each Resource
 const itineraryRoutes = require("./routes/itinerary");
 const indexRoutes = require("./routes/index");
+//
 const compiler = webpack(config)
 const path = require('path')
 const indexPath = path.join(__dirname, 'index.html');

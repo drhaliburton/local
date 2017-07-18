@@ -4,60 +4,6 @@ const express = require('express');
 const router  = express.Router();
 const queries = require("../library/index_queries.js")
 
-// Test Data - Remove when DB seeded
-const testCards = [ {
-     title: "Food Place",
-     image: "http://bulma.io/images/placeholders/480x480.png",
-     description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque interdum rutrum sodales. Nullam mattis fermentum libero, non volutpat.",
-     location: "here",
-     type: "food",
-     duration: 120,
-     start_time: "11:00am"
-   }, {
-     title: "Hike Time",
-     image: "http://bulma.io/images/placeholders/480x480.png",     
-     description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque interdum rutrum sodales. Nullam mattis fermentum libero, non volutpat.",
-     location: "There",
-     type: "outdoors",
-     duration: 180,
-     start_time: "1:00pm"
-   }, {
-     title: "Art Place",
-     image: "http://bulma.io/images/placeholders/480x480.png",
-     description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque interdum rutrum sodales. Nullam mattis fermentum libero, non volutpat.",
-     location: "Somewhere",
-     type:"sight",
-     duration: 60,
-     start_time: "4:00pm"
-   }, {
-     title: "Art Place",
-     image: "http://bulma.io/images/placeholders/480x480.png",
-     description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque interdum rutrum sodales. Nullam mattis fermentum libero, non volutpat.",
-     location: "Somewhere",
-     type:"sight",
-     duration: 60,
-     start_time: "4:00pm"
-   }, {
-     title: "Art Place",
-     image: "http://bulma.io/images/placeholders/480x480.png",
-     description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque interdum rutrum sodales. Nullam mattis fermentum libero, non volutpat.",
-     location: "Somewhere",
-     type:"sight",
-     duration: 60,
-     start_time: "4:00pm"
-   }, {
-     title: "Art Place",
-     image: "http://bulma.io/images/placeholders/480x480.png",
-     description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque interdum rutrum sodales. Nullam mattis fermentum libero, non volutpat.",
-     location: "Somewhere",
-     type:"sight",
-     duration: 60,
-     start_time: "4:00pm"
-   }
-];
-
-
-
 module.exports = (knex) => {
   const {getFiltered, makeFavorite, allCards} = queries(knex);
 

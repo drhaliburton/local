@@ -7,6 +7,8 @@ import Navbar from './nav/Navbar.jsx';
 import HomepageIndex from './homepage/HomepageIndex.jsx';
 import ItineraryIndex from './itinerary/ItineraryIndex.jsx';
 import MapIndex from './map/MapIndex.jsx';
+import SignInIndex from './signin/SignInIndex.jsx';
+
 
 const reactRoot = document.querySelector('#react-root');
 
@@ -19,6 +21,7 @@ render(
       <Route exact path="/" component={HomepageIndex} />
       <Route path="/itinerary" component={ItineraryIndex} />
       <Route path="/map" component={MapIndex} />
+      <Route path="/signin" component={SignInIndex} />
     </div>
   </Router>
   , reactRoot);
