@@ -6,36 +6,33 @@ class DetailToggle extends Component {
       super(props);
       this.state = {
         isExpanded: false,
-        isRotated: false
+        isRotated: false,
+        visibleDetails: false
       };
     }
 
   toggleDescription(event){
     console.log('clicked');
-    document.querySelector('.card-details').classList.add('expanded');
+    this.setState({
+      isExpanded: !this.state.isExpanded,
+      isRotated: !this.state.isRotated,
+      visibleDetails: !this.state.visibleDetails
+    });  
   }  
 
 
   render() {
+    const expandedToggle = this.state.isExpanded ? 'expanded'  : '';
+    const rotatedToggle = this.state.isRotated ? 'is-rotated'  : '';
+    const detailsVisible = this.state.detailsVisible ? 'visible'  : '';
+
+
     return (
-    <span className="card-toggle" onClick={this.toggleDescription.bind(this)}>
-      <a><span className={"icon fa fa-chevron-up" + `${isRotated}`}></span></a>
+    <span className={`card-toggle ${expandedToggle}`} onClick={this.toggleDescription.bind(this)}>
+      <a><span className={`icon fa fa-chevron-up ${rotatedToggle}`}></span></a>
     </span>
     );
   }
 }
 
 export default DetailToggle;
-
-
-// this.state = {
-// 	isLoading: false,
-// }
-
-// // on event 
-// this.setState({isLoading: !this.state.isLoading});
-
-// // in render
-// const loadingCls = this.state.isLoading ? 'appear'  : 'hidden';
-
-// <div className={`  donation-form__loading-spinner text-center`}>
