@@ -55,8 +55,4 @@ module.exports = (knex) => {
 
 
   return router;
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> 71a90256828909e07a6d378fa268d011e4d650e1
