@@ -10,6 +10,7 @@ import MapIndex from './map/MapIndex.jsx';
 import SignInIndex from './signin/SignInIndex.jsx';
 
 
+
 const reactRoot = document.querySelector('#react-root');
 
 render(

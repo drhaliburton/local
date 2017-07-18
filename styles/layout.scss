@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 $green: darken(#00CFBF, 1%);
 $light-green: #B5EDA0;
 $pale-green: #AADDD5;
@@ -18,21 +17,4 @@ $dark-grey: #363636;
 @import 'filters';
 @import 'location';
 @import 'itineraryCard';
-=======
-$green: darken(#00CFBF, 1%);
-$light-green: #B5EDA0;
-$pale-green: #AADDD5;
-$dark-green: darken($green, 20%);
-$orange: #FCB737;
-$dark-orange: darken($orange, 10%);
-$light-grey: #CCCCCC;
-$medium-grey: darken($light-grey, 40%);
-$dark-grey: #363636;
-
-@import 'indexCard';
-@import 'navbar';
-@import 'filters';
-@import 'location';
-@import 'itineraryCard';
 @import 'favoriteBar';
->>>>>>> favbar
