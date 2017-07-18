@@ -20,8 +20,10 @@ const obj = {};
 
   obj.allCards = function() {
     return knex('cards')
-    .join('categories', 'cards.category_id', '=', 'categories.id')
-    .join('users', 'cards.user_id', '=', 'users.id')
+    .leftJoin('categories', 'cards.category_id', '=', 'categories.id')
+    .leftJoin('users', 'cards.user_id', '=', 'users.id')
+    .leftJoin('photos', 'cards.id', '=', 'photos.card_id')
+    .leftJoin('ratings', 'cards.id', '=', 'ratings.card_id')
   }
 
 return obj;
