@@ -14,9 +14,10 @@ class Content extends Component {
           </div>
         </div>
         <div className="card-details">
-            <p><span className="icon is-small fa fa-tree"></span> Outdoors</p>
+          <p><span className="icon is-small fa fa-tree"></span> Outdoors</p>
           <div className="content">
-            <div className="description"><p>{this.props.description}</p>
+            <div className="description">
+              <p>{this.props.description}</p>
               <Rating />
             </div>
           </div>
