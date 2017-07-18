@@ -12,6 +12,10 @@ import SignInIndex from './signin/SignInIndex.jsx';
 
 const reactRoot = document.querySelector('#react-root');
 
+if (module.hot) {
+  module.hot.accept();
+}
+
 render(
   <Router>
     <div>
