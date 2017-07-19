@@ -1,8 +1,6 @@
 import React, {Component} from 'react';
 import { fadeInDown } from 'react-animations';
-import Radium from 'radium';
 
-@Radium()
 class Filter extends Component {
 
   constructor(props) {
@@ -10,10 +8,6 @@ class Filter extends Component {
     this.state = {
       filtersVisible: false
     };
-  }
-
-  filterCards(event) {
-    console.log(this.props.cards);
   }
 
   toggleFilters(event){
@@ -25,14 +19,13 @@ class Filter extends Component {
   }  
 
   render() {
-  const styles = {
-    fadeInDown: {
-      animation: 'x 1s',
+    const styles = {
+      fadeInDown: {
+        animation: 'x 1s',
+      }
     }
-  }
-  const toggledFilter = this.state.filtersVisible ? 'visible' : '';
-  const rotatedToggle = this.state.isRotated ? 'is-rotated' : '';
-
+    const toggledFilter = this.state.filtersVisible ? 'visible' : '';
+    const rotatedToggle = this.state.isRotated ? 'is-rotated' : '';
 
     return (
       <div className="filter has-text-centered">
@@ -51,31 +44,30 @@ class Filter extends Component {
                 <span className="filter-button"><a className="button is-small">Neighborhood</a></span>
                 <span className="filter-button"><a className="button is-small">City</a></span>
               </div>
-
               <div className="column is-one-third">
                 <h5 className="title is-5">Category</h5>
-                <span className="filter-button" onClick={this.filterCards.bind(this)}>
+                <span className="filter-button" onClick={() => this.props.categoryFilter('outdoors')}>
                   <a className="button is-small">
                     <span className="header">Nature</span>
                     <span className="icon is-small"></span>
                     <i className="fa fa-tree"></i>
                   </a>
                 </span>
-                <span className="filter-button">
+                <span className="filter-button" onClick={() => this.props.categoryFilter('food')}>
                   <a className="button is-small">
                     <span className="header">Food</span>
                     <span className="icon is-small"></span>
                     <i className="fa fa-cutlery"></i>
                   </a>
                 </span>
-                <span className="filter-button">
+                <span className="filter-button" onClick={() => this.props.categoryFilter('spas & wellness')}>
                   <a className="button is-small">
                     <span className="header">Shopping</span>
                     <span className="icon is-small"></span>
                     <i className="fa fa-shopping-bag"></i>
                   </a>
                 </span>
-                <span className="filter-button">
+                <span className="filter-button" onClick={() => this.props.categoryFilter('culture')}>
                   <a className="button is-small">
                     <span className="header">Sights</span>
                     <span className="icon is-small"></span>

@@ -1,15 +1,18 @@
 .cards {
   margin: 7% 10%;
+  transition: 2s all ease-in-out !important;
   .card {
     margin: 30px 20px 10px;
     width: 22%;
     min-width: 200px;
     max-width: 300px;
+    min-height: 300px;
     display: inline-block;
     border: 0.5px solid $light-grey;
     box-shadow: none;
     background-color: #fff;
     overflow: none;
+    transition: 2s all ease-in-out !important;
 
     .content-container {
       z-index: 20;
@@ -17,6 +20,20 @@
       background-color: white;
       transition: 0.5s all ease-in-out;
       
+      &.expanded {
+        transition: 2s all ease-in-out !important;
+        margin: 0% !important;
+        height: 300px !important;
+        .card-image {
+          height: 0% !important;
+          overflow: hidden !important;
+          transition: 0.5s all ease-in-out !important;
+        }
+        .content {
+          transition: all 0.5s ease-in-out !important;
+        }
+      }
+
       .icon-container {
         z-index: 100;
         background-color: white;
@@ -29,22 +46,6 @@
             cursor: pointer;
             background-color: white;
           } 
-        }
-      }
-      .expanded {
-        .content-container {
-          transition: 0.5s all ease-in-out !important;
-          margin-top: 0% !important;
-          margin-bottom: 20px !important;
-          height: 300px !important;
-        }
-        .card-image {
-          height: 0px !important;
-          overflow: hidden !important;
-          transition: 0.5s all ease-in-out !important;
-        }
-        .content {
-          transition: all 0.5s ease-in-out !important;
         }
       }
     }
@@ -101,7 +102,7 @@
       font-size: 0.8em;
       padding-top: 10px;
       line-height: 15px;
-      transition: all 0.5s ease-in-out;
+      transition: 2s all ease-in-out;
       .description{
         transition: all 0.5s ease-in-out;
         font-size: 1em;
@@ -119,18 +120,14 @@
       transition: 0.5s all ease-in-out !important;
 
       .fa-chevron-up {
-        transition: all 0.5s ease-in-out;
+        transition: all 1s ease-in-out;
         position: relative;
         top: 5px;
         left: 45%;
       }
       .chev-rotate {
-        transition: all 0.5s ease-in-out;
+        transition: 2s all ease-in-out;
         transform: rotate(180deg);
-      }
-      .chev-rotate-again {
-        transition: all 0.5s ease-in-out;
-        transform: rotate(360deg);
       }
     }
 
@@ -138,20 +135,18 @@
       margin-bottom: 5px;
     }
 
-    .card-image, figure, img {
-      z-index: 1;
-      transition: 0.5s all ease-in-out !important;
-
-    }
-    
     .card-image {
+      z-index: 1;
+      height: 100%;
       text-align: center;
       overflow: hidden;
       text-align: center;
-      transition: all 0.5s ease-in-out;
+      transition: 2s all ease-in-out !important;
 
       img {
         width: 280px; 
+        transition: 2s all ease-in-out !important;
+
       }
     }
   }

@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import Star from "./Star.jsx";
 import Rating from "./Rating.jsx";
+import Image from "./Image.jsx";
 
 //Contains
 class ContentContainer extends Component {
@@ -13,6 +14,17 @@ class ContentContainer extends Component {
       isVisible: false
     };
   }
+
+  findIconCategory(categoryName){
+    const iconCategories = {
+      'outdoors': 'fa-tree',
+      'culture': 'fa-binoculars',
+      'spas & wellness': 'fa-shopping-bag',  
+      'food': 'fa-cutlery',     
+    }
+
+    return iconCategories[categoryName] || '';
+  };
 
   toggleDescription(event){
     this.setState({
@@ -30,20 +42,21 @@ class ContentContainer extends Component {
     let card = this.props.cardContent;
     return (
       <div className={`content-container ${expandedToggle}`}>
+        <Image />
         <span className="card-toggle" onClick={this.toggleDescription.bind(this)}>
           <a><span className={`icon fa fa-chevron-up ${rotatedToggle}`}></span></a>
         </span>
-        <Star />
+        <Star image={card.image}/>
         <div className="card-content">
           <div className="media">
             <div className="media-content">
               <p className="title">{card.title}</p>
-              <p className="subtitle"><a>{card.location}</a></p>
+              <p className="subtitle"><a>{card.location || "Location, Location Ville"}</a></p>
               <p className="duration">Time: ~{card.duration} minutes</p>
             </div>
           </div>
           <div className={`card-details ${detailsVisible}`}>
-              <p><span className="icon is-small fa fa-tree"></span> Outdoors</p>
+              <p className="category"><span className={`icon is-small fa ${this.findIconCategory(card.category)}`}></span> {card.category}</p>
             <div className="content">
               <div className="description"><p>{card.description}</p>
                 <Rating />

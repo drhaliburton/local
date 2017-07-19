@@ -27,11 +27,15 @@
   }
   .filter-button {
     margin: 5px;
-    &.active .button {
-      background-color:$green;
-    }
-    &.active .fa {
-      color:black;
+    line-height: 2.5;
+    .button {
+      &.is-active {
+        background-color: $green;
+        color: white;
+      }
+      &.is-active .fa {
+        color: white;
+      }
     }
   }
   .filter-brand{
@@ -54,4 +58,5 @@
     margin-bottom: 1rem; 
     display: none;
   }
+  
 }
