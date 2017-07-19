@@ -30,8 +30,9 @@ class HomepageIndex extends Component {
   }
 
   categoryFilter(category) {
-    this.resetCards();
-    if (this.state.cards == this.state.allCards) {
+    if (this.state.cards !== this.state.allCards) {
+      this.resetCards();
+    } else {
       let cards = this.state.allCards;
       let filteredCards = [];
       cards.map((card) => {
