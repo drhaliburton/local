@@ -2,31 +2,7 @@ import React, {Component} from 'react';
 import ItineraryTime from "./ItineraryTime.jsx";
 import ItineraryCard from "./ItineraryCard.jsx";
 import FavoriteBar from "./FavoriteBar.jsx";
-
-//Contains
-  const testCards = [ {
-     title: "Food Place",
-     description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque interdum rutrum sodales. Nullam mattis fermentum libero, non volutpat.",
-     location: "here",
-     type: "food",
-     duration: 120,
-     start_time: "11:00am"
-   }, {
-     title: "Hike Time",
-     description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque interdum rutrum sodales. Nullam mattis fermentum libero, non volutpat.",
-     location: "There",
-     type: "outdoors",
-     duration: 180,
-     start_time: "1:00pm"
-   }, {
-     title: "Art Place",
-     description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque interdum rutrum sodales. Nullam mattis fermentum libero, non volutpat.",
-     location: "Somewhere",
-     type:"sight",
-     duration: 60,
-     start_time: "4:00pm"
-   }
-];
+import SortableComponent from "../dnd/SortableComponent.jsx";
 
 class ItineraryIndex extends Component {
   constructor(props) {
@@ -45,11 +21,17 @@ componentDidMount() {
   }
   render() {
     return (
-      <div className="columns">
-        < FavoriteBar />
-        < ItineraryTime />
-        <div className="column is-10">
-          < ItineraryCard />
+      <div className="itinerary">
+        <div className="header">
+          < FavoriteBar />
+        </div>
+        <div className="columns">
+          <div className="column is-4">
+            < ItineraryTime />
+          </div>
+          <div className="column <is-6></is-6>">
+            < SortableComponent />
+          </div>
         </div>
       </div>
     );

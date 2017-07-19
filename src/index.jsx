@@ -26,7 +26,7 @@ render(
         <Navbar />
       </div>
       <Route exact path="/" component={HomepageIndex} />
-      <Route path="/itinerary" component={ItineraryIndex} component={SortableComponent}/>
+      <Route path="/itinerary" component={ItineraryIndex}/>
       <Route path="/map" component={SortableComponent} />
       <Route path="/signin" component={SignInIndex} />
     </div>
