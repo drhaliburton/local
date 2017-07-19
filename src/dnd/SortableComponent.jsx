@@ -45,17 +45,37 @@ class SortableComponent extends Component {
       items: arrayMove(this.state.items, oldIndex, newIndex),
     });
   };
+
+  setCardHeight(items) {
+    if (items.duration > 100) {
+      return 'big-card';
+    } else {
+      return 'small-card';
+    }
+  }
+  renderSize(duration){
+    if (  duration > 100) {
+      return (
+        'large'
+      );
+    } else {
+      return (
+       'small'
+      );
+    }
+  }
+
   render() {
     
     const renderedItems = this.state.items.map(card => 
-          <div className="itinerary-card">
-            <article className="media large">
+          <div className='box'>
+            <article className='media large'> 
             <figure className="media-left">
               <p className="image is-64x64">
                 <img src="http://bulma.io/images/placeholders/128x128.png"></img>
               </p>
             </figure>
-            <div className="media-content large">
+            <div className={`media-content ${this.renderSize(card.duration)}`}>
               <div className="content">
                 <p>
                   <strong>{card.title}</strong>

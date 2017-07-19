@@ -2,6 +2,8 @@ import React, {Component} from 'react';
 import ContentContainer from "./ContentContainer.jsx";
 //Contains
 class IndexCard extends Component {
+
+
   
   render() {
     const cardsArray = this.props.cards;

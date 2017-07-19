@@ -15,6 +15,7 @@ $dark-grey: #363636;
 @import 'itineraryCard';
 @import 'index';
 @import 'favoriteBar';
+@import 'sortableComponent';
 
 .is-rotated {
   transform: rotate(180deg);
