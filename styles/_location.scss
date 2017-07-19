@@ -1,5 +1,7 @@
-.landing-content{
-  margin-top:2rem;
+.landing-content{ 
+  .columns {
+    margin-top:0px;
+  }
 .input {
   border-color:$dark-orange;
   &:focus{

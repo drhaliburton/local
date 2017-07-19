@@ -10,6 +10,19 @@ class Filter extends Component {
     };
   }
 
+  handleFilterClick(filterName) {
+    this.props.categoryFilter(filterName);
+    var allCategoryButtons = document.querySelectorAll('.is-active');
+    if (document.querySelector(`.${filterName}`).classList.contains('is-active')) {
+      document.querySelector(`.${filterName}`).classList.remove('is-active');
+    } else {
+      document.querySelector(`.${filterName}`).classList.add('is-active');
+    }
+    for (var button of allCategoryButtons) {
+      button.classList.remove('is-active');
+    }
+  }
+  // grab the button with c
   toggleFilters(event){
     console.log('filters clicked');
     this.setState({
@@ -17,7 +30,7 @@ class Filter extends Component {
       isRotated: !this.state.isRotated
     });  
   }  
-
+  
   render() {
     const styles = {
       fadeInDown: {
@@ -46,29 +59,29 @@ class Filter extends Component {
               </div>
               <div className="column is-one-third">
                 <h5 className="title is-5">Category</h5>
-                <span className="filter-button" onClick={() => this.props.categoryFilter('outdoors')}>
-                  <a className="button is-small">
+                <span className="filter-button" onClick={() => this.handleFilterClick('Nature')}>
+                  <a className="button is-small Nature">
                     <span className="header">Nature</span>
                     <span className="icon is-small"></span>
                     <i className="fa fa-tree"></i>
                   </a>
                 </span>
-                <span className="filter-button" onClick={() => this.props.categoryFilter('food')}>
-                  <a className="button is-small">
+                <span className="filter-button" onClick={() => this.handleFilterClick('Food')}>
+                  <a className="button is-small Food">
                     <span className="header">Food</span>
                     <span className="icon is-small"></span>
                     <i className="fa fa-cutlery"></i>
                   </a>
                 </span>
-                <span className="filter-button" onClick={() => this.props.categoryFilter('spas & wellness')}>
-                  <a className="button is-small">
+                <span className="filter-button" onClick={() => this.handleFilterClick('Shopping')}>
+                  <a className="button is-small Shopping">
                     <span className="header">Shopping</span>
                     <span className="icon is-small"></span>
                     <i className="fa fa-shopping-bag"></i>
                   </a>
                 </span>
-                <span className="filter-button" onClick={() => this.props.categoryFilter('culture')}>
-                  <a className="button is-small">
+                <span className="filter-button" onClick={() => this.handleFilterClick('Sights')}>
+                  <a className="button is-small Sights">
                     <span className="header">Sights</span>
                     <span className="icon is-small"></span>
                     <i className="fa fa-binoculars"></i>

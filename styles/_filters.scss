@@ -32,6 +32,7 @@
       &.is-active {
         background-color: $green;
         color: white;
+        border-color: white;
       }
       &.is-active .fa {
         color: white;
@@ -57,6 +58,5 @@
     margin-top: 1rem;
     margin-bottom: 1rem; 
     display: none;
-  }
-  
+  }  
 }
