@@ -1,42 +1,47 @@
 .cards {
   margin: 8% 10%;
   transition: 2s all ease-in-out !important;
-  overflow: hiddden;
   font-size: 12px;
   .card {
     margin: 20px 10px 0px;
-    width: 20%;
-    min-width: 200px;
+    width: 19%;
+    min-width: 220px;
     max-width: 300px;
-    max-height: 340px;
+    height: 340px;
     display: inline-block;
     border: 0.5px solid $light-grey;
     box-shadow: none;
     background-color: #fff;
     overflow: hidden;
-    transition: 2s all ease-in-out !important;
 
     .content-container {
       display: block;
-      z-index: 20;
-      margin-bottom: 10px;
+      height: 220px;
       background-color: white;
-      transition: 0.5s all ease-in-out;
+      transition: 1s all ease-in-out;
+      z-index: 100;
       
       &.expanded {
-        transition: 2s all ease-in-out !important;
+        transition: 1.2s all ease-in-out !important;
         margin: 0% !important;
-        height: 250px !important;
+        background-color: solid white;
+
         .card-image {
-          height: 20% !important;
+          height: 0% !important;
           overflow: hidden !important;
-          transition: 0.5s all ease-in-out !important;
+          transition: 1s all ease-in-out !important;
         }
         .content {
-          transition: all 0.5s ease-in-out !important;
+          transition: all 1s ease-in-out !important;
         }
         .media-content{
-          margin-top: 20px;
+          margin-top: 10px;
+          transition: all 1s ease-in-out !important;          
+        }
+        .title{
+          overflow: visible; 
+          white-space: inherit;
+          transition: all 1s ease-in-out !important;
         }
       }
 
@@ -47,10 +52,8 @@
         padding: 10px;
         
         a {
-          background-color: white;
           .card-toggle {
             cursor: pointer;
-            background-color: white;
           } 
         }
       }
@@ -58,8 +61,10 @@
 
     .card-content {
       padding: 0;
-      z-index: 10;
-      transition: 0.5s all ease-in-out !important;
+      z-index: 102;
+      height: 100%;
+      background-color: white;
+      transition: 2s all ease-in-out !important;
       .category{
         display: inline-flex;
         .fa {
@@ -89,6 +94,7 @@
     }
     .content {
       height: auto;
+      transition: all 1s ease-in-out !important;
     }
 
     .fa-star {
@@ -104,9 +110,12 @@
     }
     .media-content {
       width: 170px;
+      background-color: white;
+      transition: all 1s ease-in-out !important;          
     }
 
     .title {
+      transition: all 1s ease !important;
       font-size: 1.4em;
       margin-bottom: 5px; 
       text-overflow: ellipsis; 
@@ -124,15 +133,17 @@
     }
 
     .card-details {
-      display: none;
+      background-color: white;
+      overflow: hidden;
       font-size: 0.8em;
       padding-top: 10px;
       line-height: 15px;
-      transition: 2s all ease-in-out;
+      transition: all 1.5s ease-in-out !important;
       .description{
+        background-color: white;
         transition: all 0.5s ease-in-out;
         font-size: 1.3em;
-        line-height: 1.3;
+        line-height: 1.5;
         padding: 15px 0px 0px;
         .rating {
           margin: 45%;
@@ -146,10 +157,6 @@
             text-align: center;
           }
         }
-      }
-      .location{
-        margin: 3px;
-        font-size: 8px;
       }
     }
 
@@ -174,12 +181,10 @@
     }
 
     .card-image {
-      z-index: 1;
       height: 100%;
       text-align: center;
+      transition: 1s all ease-in-out !important;
       overflow: hidden;
-      text-align: center;
-      transition: 2s all ease-in-out !important;
 
       img {
         width: 280px; 
@@ -187,9 +192,27 @@
 
       }
     }
+    .location{
+      margin-top: 3px;
+      font-size: 1em;
+      color: $green;
+      cursor: pointer;
+      &:hover{
+        color: $dark-green;
+      }
+    }
   }
+  
 }
 
 .columns {
+  z-index: 101;
   justify-content: center;
+  background-color: white;
+  transition: all 1s ease-in-out !important;
+  .column{
+    background-color: white;
+    padding: 10px;
+    transition: all 1s ease-in-out !important;
+  }
 }

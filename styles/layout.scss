@@ -1,7 +1,7 @@
 $green: darken(#00CFBF, 1%);
 $light-green: #B5EDA0;
 $pale-green: #AADDD5;
-$dark-green: darken($green, 20%);
+$dark-green: darken($green, 5%);
 $orange: #FCB737;
 $dark-orange: darken($orange, 10%);
 $light-grey: #CCCCCC;
@@ -21,6 +21,5 @@ $dark-grey: #363636;
 }
 
 .visible {
-  display: inline !important;
-  transition: all 0.3s ease-in-out;
+  height: 100% !important;
 }

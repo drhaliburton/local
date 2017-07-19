@@ -13,7 +13,7 @@ class HomepageIndex extends Component {
     }
   }
 
-  componentDidMount() {
+  componentWillMount() {
     fetch('/index')
       .then((res) => res.json())
       .then((cards) => this.setState({ 
