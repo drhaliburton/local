@@ -1,14 +1,16 @@
 "use strict";
 
 require('dotenv').config();
-const webpack = require('webpack');
-const config = require('./webpack.config');
-const webpackDevMiddleware = require('webpack-dev-middleware')
-const webpackHotMiddleware = require('webpack-hot-middleware')
+
+// const PORT        = process.env.PORT || 8080;
 const ENV         = process.env.ENV || "development";
-const express = require('express');
-const knexConfig  = require('./knexfile');
-const knex        = require('knex')(knexConfig[ENV]);
+const express     = require("express");
+const bodyParser  = require("body-parser");
+const sass        = require("node-sass-middleware");
+const app         = express();
+
+const knexConfig  = require("./knexfile");
+const knex        = require("knex")(knexConfig[ENV]);
 const morgan      = require('morgan');
 const knexLogger  = require('knex-logger');
 const bodyParser = require("body-parser");
