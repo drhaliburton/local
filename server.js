@@ -12,10 +12,7 @@ const ENV         = process.env.ENV || "development";
 const express     = require("express");
 const bodyParser  = require("body-parser");
 const sass        = require("node-sass-middleware");
-<<<<<<< HEAD
 
-=======
->>>>>>> fdc3f31f119b52b66061360bb631fd28e14a4dfd
 const knexConfig  = require("./knexfile");
 const knex        = require("knex")(knexConfig[ENV]);
 const morgan      = require('morgan');
