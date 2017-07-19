@@ -34,13 +34,13 @@ class Filter extends Component {
   render() {
 
     const toggledFilter = this.state.filtersVisible ? 'toggled-filter' : '';
-    const rotatedToggle = this.state.isRotated ? 'is-rotated' : '';
+    const rotatedToggle = this.state.isRotated ? '' : 'is-rotated';
 
     return (
-      <div className="filter has-text-centered" onClick={this.toggleFilters.bind(this)}>
+      <div className="filter has-text-centered">
         <h5 className="filter-brand title is-6">Filters</h5>
-        <span className="filter-toggle">
-          <a className="icon is-medium"><i className={`fa fa-chevron-down ${rotatedToggle}`}></i></a>
+        <span className="filter-toggle" onClick={this.toggleFilters.bind(this)}>
+          <a className="icon is-medium"><i className={`fa fa-chevron-up ${rotatedToggle}`}></i></a>
         </span><div></div>
           
           <div className={`filter-content ${toggledFilter}`}>
