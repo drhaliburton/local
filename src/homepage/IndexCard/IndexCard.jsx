@@ -4,6 +4,8 @@ import Image from "./Image.jsx";
 
 //Contains
 class IndexCard extends Component {
+
+
   
   render() {
     const cardsArray = this.props.cards;

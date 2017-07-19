@@ -209,6 +209,12 @@
   padding-bottom: 20px;
   width: 100%; }
 
+.footer .container {
+  background-color: pink; }
+
+.columns .media-content .large {
+  background-color: pink; }
+
 .is-rotated {
   transition: all 0.3s ease-in-out;
   transform: rotate(180deg); }
