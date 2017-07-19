@@ -11,9 +11,9 @@ class Navbar extends Component {
           <div className="navbar-end"></div>
         <div className="navbar-brand">
           <div className="navbar-item">
-            <p>
-            <a className="itinierary" href="/#/itinerary"><i className="fa fa-map-o"></i>&nbsp;&nbsp;itinerary</a></p>
-          </div>   
+            <p className="itinerary">
+            <a href="/#/itinerary"><i className="fa fa-map-o"></i>&nbsp;&nbsp;itinerary</a></p>
+          </div>
         </div>
       </nav>
     );
