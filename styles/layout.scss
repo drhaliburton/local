@@ -8,12 +8,19 @@ $light-grey: #CCCCCC;
 $medium-grey: darken($light-grey, 40%);
 $dark-grey: #363636;
 
-.is-rotated {
-  transform: rotate(180deg);
-}
-
 @import 'indexCard';
 @import 'navbar';
 @import 'filters';
 @import 'location';
 @import 'itineraryCard';
+@import 'index';
+
+.is-rotated {
+  transition: all 0.3s ease-in-out;
+  transform: rotate(180deg);
+}
+
+.visible {
+  display: inline !important;
+  transition: all 0.3s ease-in-out;
+}

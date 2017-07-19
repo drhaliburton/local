@@ -2,30 +2,7 @@ import React, {Component} from 'react';
 import IndexCard from "./IndexCard/IndexCard.jsx";
 import Search from "./Search.jsx";
 import Filter from "./Filter.jsx";
-
-const testCards = [ {
-     title: "Food Place",
-     description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque interdum rutrum sodales. Nullam mattis fermentum libero, non volutpat.",
-     location: "here",
-     type: "food",
-     duration: 120,
-     start_time: "11:00am"
-   }, {
-     title: "Hike Time",
-     description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque interdum rutrum sodales. Nullam mattis fermentum libero, non volutpat.",
-     location: "There",
-     type: "outdoors",
-     duration: 180,
-     start_time: "1:00pm"
-   }, {
-     title: "Art Place",
-     description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque interdum rutrum sodales. Nullam mattis fermentum libero, non volutpat.",
-     location: "Somewhere",
-     type:"sight",
-     duration: 60,
-     start_time: "4:00pm"
-   }
-];
+import Styles from "../../styles/layout.scss";
 
 class HomepageIndex extends Component {
   constructor(props) {
@@ -42,13 +19,22 @@ componentDidMount() {
       })
     );
   }
+
+  locationSearch(event) {
+    fetch(`/index/locate?find=${event}`)
+      .then((res) => res.json())
+      .then((cards) => this.setState({
+        cards: cards
+      })
+    );
+  }
   
   render() {
-      console.log("Rendering <App />");
     return (
-      <div>    
-        <Search />
-        <Filter />
+      <div>
+  
+        <Filter cards={this.state.cards}/>  
+        <Search locate={this.locationSearch.bind(this)} />
         <IndexCard cards={this.state.cards}/> 
       </div>
     );

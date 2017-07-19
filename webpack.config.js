@@ -4,8 +4,10 @@ var webpack = require('webpack');
 
 module.exports = {
   devtool: 'eval',
-  entry:
-    './src/index.jsx',
+  entry:[
+    'webpack-hot-middleware/client',
+    './src/index.jsx'
+  ],
   output: {
     path: __dirname,
     filename: 'bundle.js',
@@ -19,7 +21,7 @@ module.exports = {
         include: path.join(__dirname, 'src'),
       },
       {
-        test: /\.scss$/,
+        test: /\.s?css$/,
         use: [
           'style-loader',
           'css-loader',
@@ -27,5 +29,9 @@ module.exports = {
         ]
       }
     ]
-  }
+  },
+  plugins: [
+    new webpack.HotModuleReplacementPlugin(),
+    new webpack.NoEmitOnErrorsPlugin()
+  ]
 };

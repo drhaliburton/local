@@ -10,9 +10,36 @@
     box-shadow: none;
     background-color: #fff;
     overflow: none; }
+    .cards .card .content-container {
+      z-index: 20;
+      margin-bottom: 10px;
+      background-color: white;
+      transition: 0.5s all ease-in-out; }
+      .cards .card .content-container .icon-container {
+        z-index: 100;
+        background-color: white;
+        text-align: center;
+        padding: 10px; }
+        .cards .card .content-container .icon-container a {
+          background-color: white; }
+          .cards .card .content-container .icon-container a .card-toggle {
+            cursor: pointer;
+            background-color: white; }
+      .cards .card .content-container .expanded .content-container {
+        transition: 0.5s all ease-in-out !important;
+        margin-top: 0% !important;
+        margin-bottom: 20px !important;
+        height: 300px !important; }
+      .cards .card .content-container .expanded .card-image {
+        height: 0px !important;
+        overflow: hidden !important;
+        transition: 0.5s all ease-in-out !important; }
+      .cards .card .content-container .expanded .content {
+        transition: all 0.5s ease-in-out !important; }
     .cards .card .card-content {
       padding: 0;
-      z-index: 10; }
+      z-index: 10;
+      transition: 0.5s all ease-in-out !important; }
       .cards .card .card-content .duration {
         font-size: .7em; }
       .cards .card .card-content .media {
@@ -45,10 +72,16 @@
       line-height: 15px;
       transition: all 0.5s ease-in-out; }
       .cards .card .card-details .description {
+        transition: all 0.5s ease-in-out;
         font-size: 1em;
         padding-top: 8px; }
+        .cards .card .card-details .description .rating {
+          display: inline;
+          margin: 40%;
+          transition: all 0.5s ease-in-out; }
     .cards .card .card-toggle {
-      margin-top: 10px; }
+      margin-top: 10px;
+      transition: 0.5s all ease-in-out !important; }
       .cards .card .card-toggle .fa-chevron-up {
         transition: all 0.5s ease-in-out;
         position: relative;
@@ -63,7 +96,8 @@
     .cards .card .subtitle {
       margin-bottom: 5px; }
     .cards .card .card-image, .cards .card figure, .cards .card img {
-      z-index: 1; }
+      z-index: 1;
+      transition: 0.5s all ease-in-out !important; }
     .cards .card .card-image {
       text-align: center;
       overflow: hidden;
@@ -71,31 +105,6 @@
       transition: all 0.5s ease-in-out; }
       .cards .card .card-image img {
         width: 280px; }
-    .cards .card .content-container {
-      z-index: 20;
-      margin-bottom: 10px;
-      background-color: white;
-      transition: 0.5s all ease-in-out; }
-      .cards .card .content-container .icon-container {
-        z-index: 100;
-        background-color: white;
-        text-align: center;
-        padding: 10px; }
-        .cards .card .content-container .icon-container a {
-          background-color: white; }
-          .cards .card .content-container .icon-container a .card-toggle {
-            cursor: pointer;
-            background-color: white; }
-    .cards .card.expanded .card-image {
-      height: 0px;
-      overflow: hidden;
-      transition: 0.5s all ease-in-out; }
-    .cards .card.expanded .content-container {
-      margin-top: 0%;
-      margin-bottom: 20px;
-      height: 300px; }
-    .cards .card.expanded .content {
-      transition: all 0.5s ease-in-out; }
 
 .columns {
   justify-content: center; }
@@ -123,31 +132,33 @@
         margin: auto;
         display: inline-block; } }
 
+.filter .columns {
+  margin: 0px;
+  padding-bottom: 0px;
+  transition: all 0.6s ease-in-out; }
+  .filter .columns .column {
+    padding-top: 0px;
+    transition: all 0.6s ease-in-out; }
 .filter .filter-toggle {
   margin: auto;
   top: 5px;
-  padding: 20px; }
+  padding-top: 20px;
+  transition: all 0.6s ease-in-out; }
   .filter .filter-toggle .fa-chevron-down {
     color: #00caba;
-    transition: all 0.3s ease-in-out;
+    transition: all 0.6s ease-in-out;
     left: 35%; }
     .filter .filter-toggle .fa-chevron-down:hover {
-      transition: all 0.3s ease-in-out;
+      transition: all 0.6s ease-in-out;
       color: #363636;
       cursor: pointer; }
-  .filter .filter-toggle .chev-rotate {
-    transition: all 0.3s ease-in-out;
-    transform: rotate(180deg); }
-  .filter .filter-toggle .chev-rotate-again {
-    transition: all 0.3s ease-in-out;
-    transform: rotate(360deg); }
 .filter .filter-button.active .button {
   background-color: #00caba; }
 .filter .filter-button.active .fa {
   color: black; }
 .filter .filter-brand {
-  display: none;
-  margin: 1rem; }
+  transition: all .6s ease-in-out;
+  margin: 0.3rem; }
 .filter .title {
   margin-top: 1.5rem; }
 .filter .button {
@@ -156,9 +167,9 @@
   .filter .button:hover {
     border-color: #00caba; }
 .filter .filter-content {
+  transition: all 0.6s ease-in-out;
   margin-top: 1rem;
   margin-bottom: 1rem;
-  padding: 1rem;
   display: none; }
 
 .landing-content {
@@ -189,5 +200,13 @@
     color: #00caba; }
   .columns .article.media.large {
     height: 10rem; }
+
+.is-rotated {
+  transition: all 0.3s ease-in-out;
+  transform: rotate(180deg); }
+
+.visible {
+  display: inline !important;
+  transition: all 0.3s ease-in-out; }
 
 /*# sourceMappingURL=layout.css.map */
