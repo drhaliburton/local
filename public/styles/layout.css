@@ -212,8 +212,8 @@
 .footer .container {
   background-color: pink; }
 
-.columns .media-content .large {
-  background-color: pink; }
+.box {
+  background-color: #AADDD5; }
 
 .is-rotated {
   transition: all 0.3s ease-in-out;
