@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import Star from "./Star.jsx";
 import Rating from "./Rating.jsx";
+import Image from "./Image.jsx";
 
 //Contains
 class ContentContainer extends Component {
@@ -41,10 +42,11 @@ class ContentContainer extends Component {
     let card = this.props.cardContent;
     return (
       <div className={`content-container ${expandedToggle}`}>
+        <Image />
         <span className="card-toggle" onClick={this.toggleDescription.bind(this)}>
           <a><span className={`icon fa fa-chevron-up ${rotatedToggle}`}></span></a>
         </span>
-        <Star />
+        <Star image={card.image}/>
         <div className="card-content">
           <div className="media">
             <div className="media-content">

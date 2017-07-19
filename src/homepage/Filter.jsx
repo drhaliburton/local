@@ -14,8 +14,7 @@ class Filter extends Component {
     console.log('filters clicked');
     this.setState({
       filtersVisible: !this.state.filtersVisible,
-      isRotated: !this.state.isRotated,
-      isActive: !this.state.isActive
+      isRotated: !this.state.isRotated
     });  
   }  
 
@@ -27,7 +26,6 @@ class Filter extends Component {
     }
     const toggledFilter = this.state.filtersVisible ? 'visible' : '';
     const rotatedToggle = this.state.isRotated ? 'is-rotated' : '';
-    const activeCategory = this.state.isActive ? 'is-active' : '';
 
     return (
       <div className="filter has-text-centered">
@@ -49,7 +47,7 @@ class Filter extends Component {
               <div className="column is-one-third">
                 <h5 className="title is-5">Category</h5>
                 <span className="filter-button" onClick={() => this.props.categoryFilter('outdoors')}>
-                  <a className={`button is-small ${activeCategory}`}>
+                  <a className="button is-small">
                     <span className="header">Nature</span>
                     <span className="icon is-small"></span>
                     <i className="fa fa-tree"></i>

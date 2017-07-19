@@ -32,19 +32,16 @@ class HomepageIndex extends Component {
   categoryFilter(category) {
     this.resetCards();
     if (this.state.cards == this.state.allCards) {
-    console.log(this.state.cards, this.state.allCards);
-    let cards = this.state.allCards;
-    let filteredCards = [];
-     cards.map((card) => {
-      if (card.category === category) {
-        filteredCards.push(card);
-      }
-    })
-    this.setState({
-      cards: filteredCards
-    });
-    } else {
-      resetCards();
+      let cards = this.state.allCards;
+      let filteredCards = [];
+      cards.map((card) => {
+        if (card.category === category) {
+          filteredCards.push(card);
+        }
+      })
+      this.setState({
+        cards: filteredCards
+      });
     }
   }
   
