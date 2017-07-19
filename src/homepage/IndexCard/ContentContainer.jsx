@@ -17,10 +17,10 @@ class ContentContainer extends Component {
 
   findIconCategory(categoryName){
     const iconCategories = {
-      'outdoors': 'fa-tree',
-      'culture': 'fa-binoculars',
-      'spas & wellness': 'fa-shopping-bag',  
-      'food': 'fa-cutlery',     
+      'Nature': 'fa-tree',
+      'Sights': 'fa-binoculars',
+      'Shopping': 'fa-shopping-bag',  
+      'Food': 'fa-cutlery',     
     }
 
     return iconCategories[categoryName] || '';
