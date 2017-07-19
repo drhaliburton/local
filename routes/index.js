@@ -1,5 +1,5 @@
 "use strict";
-
+require('dotenv').config();
 const express = require('express');
 const router = express.Router();
 const https = require('https');
@@ -39,10 +39,11 @@ module.exports = (knex) => {
   });
 
   router.get("/locate", (req, res) => {
+    const geoKey = process.env.GEO_API_KEY
     const request = encodeURIComponent(req.query.find)
     const options = {
       host: 'maps.googleapis.com',
-      path: `/maps/api/geocode/json?address=${request}&key=AIzaSyB22qjpq0UBNYjBGhPNBhbgEgHfzRWWtaY`
+      path: `/maps/api/geocode/json?address=${request}&key=${geoKey}`
     };
 
     const callback = function (response) {
