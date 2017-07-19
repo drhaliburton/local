@@ -13,7 +13,7 @@ class HomepageIndex extends Component {
     }
   }
 
-  componentWillMount() {
+  componentDidMount() {
     fetch('/index')
       .then((res) => res.json())
       .then((cards) => this.setState({ 
@@ -30,27 +30,23 @@ class HomepageIndex extends Component {
   }
 
   categoryFilter(category) {
-    if (this.state.cards !== this.state.allCards) {
-      this.resetCards();
-    } else {
-      let cards = this.state.allCards;
-      let filteredCards = [];
-      cards.map((card) => {
-        if (card.category === category) {
-          filteredCards.push(card);
-        }
-      })
-      this.setState({
-        cards: filteredCards
-      });
-    }
+    let cards = this.state.allCards;
+    let filteredCards = [];
+    cards.map((card) => {
+      if (card.category === category) {
+        filteredCards.push(card);
+      }
+    })
+    this.setState({
+      cards: filteredCards
+    });
   }
   
   render() {
     return (
       <div>    
         <Search />
-        <Filter cards={this.state.cards} categoryFilter={this.categoryFilter.bind(this)}/>
+        <Filter cards={this.state.cards} categoryFilter={this.categoryFilter.bind(this)} resetCards={ this.resetCards.bind(this) } />
         <IndexCard cards={this.state.cards}/> 
       </div>
     );
