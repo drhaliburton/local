@@ -8,6 +8,7 @@ import HomepageIndex from './homepage/HomepageIndex.jsx';
 import ItineraryIndex from './itinerary/ItineraryIndex.jsx';
 import MapIndex from './map/MapIndex.jsx';
 import SignInIndex from './signin/SignInIndex.jsx';
+import SortableComponent from './dnd/SortableComponent.jsx';
 // import Styles from '../public/styles/layout.css';
 
 
@@ -25,8 +26,8 @@ render(
         <Navbar />
       </div>
       <Route exact path="/" component={HomepageIndex} />
-      <Route path="/itinerary" component={ItineraryIndex} />
-      <Route path="/map" component={MapIndex} />
+      <Route path="/itinerary" component={ItineraryIndex}/>
+      <Route path="/map" component={SortableComponent} />
       <Route path="/signin" component={SignInIndex} />
     </div>
   </Router>
