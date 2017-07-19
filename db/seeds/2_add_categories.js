@@ -3,11 +3,10 @@ exports.seed = function(knex, Promise) {
     return knex('categories').del()
     .then(function () {
       return Promise.all([
-        knex('categories').insert({name: 'outdoors'}),
-        knex('categories').insert({name: 'food'}),
-        knex('categories').insert({name: 'shopping'}),
-        knex('categories').insert({name: 'culture'}),
-        knex('categories').insert({name: 'spas & wellness'})
+        knex('categories').insert({name: 'Nature'}),
+        knex('categories').insert({name: 'Food'}),
+        knex('categories').insert({name: 'Shopping'}),
+        knex('categories').insert({name: 'Sights'}),
       ]);
     });
 

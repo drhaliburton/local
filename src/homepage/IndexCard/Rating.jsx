@@ -6,8 +6,9 @@ class Rating extends Component {
     return (
         <div className="rating">
           <span className="icon is-small" aria-hidden="true">
-            <i className="fa fa-arrow-circle-up"></i>&nbsp;<i className="fa fa-arrow-circle-down"></i>
+            <i className="fa fa-arrow-circle-up is-medium"></i>&nbsp;<i className="fa fa-arrow-circle-down is-medium"></i>
           </span>
+          <p className="subtitle"><i>{`Recommended by ${this.props.rating || '0'} travellers.`}</i></p>
         </div>
     );
   }

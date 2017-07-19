@@ -8,33 +8,48 @@ class HomepageIndex extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      cards: []
+      cards: [],
+      allCards: []
     }
   }
-componentDidMount() {
+
+  componentDidMount() {
     fetch('/index')
       .then((res) => res.json())
       .then((cards) => this.setState({ 
-        cards: cards 
+        cards: cards,
+        allCards: cards
       })
     );
   }
 
-  locationSearch(event) {
-    fetch(`/index/locate?find=${event}`)
-      .then((res) => res.json())
-      .then((cards) => this.setState({
-        cards: cards
+  resetCards() {
+    this.setState({
+      cards: this.state.allCards
+    })
+  }
+
+  categoryFilter(category) {
+    this.resetCards();
+    if (this.state.cards == this.state.allCards) {
+      let cards = this.state.allCards;
+      let filteredCards = [];
+      cards.map((card) => {
+        if (card.category === category) {
+          filteredCards.push(card);
+        }
       })
-    );
+      this.setState({
+        cards: filteredCards
+      });
+    }
   }
   
   render() {
     return (
-      <div>
-  
-        <Filter cards={this.state.cards}/>  
-        <Search locate={this.locationSearch.bind(this)} />
+      <div>    
+        <Search />
+        <Filter cards={this.state.cards} categoryFilter={this.categoryFilter.bind(this)}/>
         <IndexCard cards={this.state.cards}/> 
       </div>
     );

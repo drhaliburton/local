@@ -1,5 +1,5 @@
 "use strict";
-
+require('dotenv').config();
 const express = require('express');
 const router = express.Router();
 const https = require('https');
@@ -12,9 +12,23 @@ module.exports = (knex) => {
     allCards
   } = queries(knex);
 
-  // Returns all cards on loading Homepage
+  // Route will be "/:filter" once we implement geolocation
   router.get("/", (req, res) => {
+    //The following response will be used once geolocation has been implemented
 
+    // const lat1 = req.body.results[0].geometry.viewport.northeast.lat;
+    // const lng1 =req.body.results[0].geometry.viewport.northeast.lng;
+    // const lat2 =req.body.results[0].geometry.viewport.southwest.lat;
+    // const lng2 =req.body.results[0].geometry.viewport.southwest.lng;
+    // getFiltered(lat1, lng1, lat2, lng2)
+    // .then(data => {
+    //   res.render("index", {cards: data})
+    // })
+    // .catch(err => {
+    //   res.status(400).send("ERROR");
+    // })
+
+    //This is a temporary response, for testing purposes
     allCards()
       .then(data => {
         let cards = data.map((card) => {
@@ -39,10 +53,11 @@ module.exports = (knex) => {
   });
 
   router.get("/locate", (req, res) => {
+    const geoKey = process.env.GEO_API_KEY
     const request = encodeURIComponent(req.query.find)
     const options = {
       host: 'maps.googleapis.com',
-      path: `/maps/api/geocode/json?address=${request}&key=AIzaSyB22qjpq0UBNYjBGhPNBhbgEgHfzRWWtaY`
+      path: `/maps/api/geocode/json?address=${request}&key=${geoKey}`
     };
 
     const callback = function (response) {
