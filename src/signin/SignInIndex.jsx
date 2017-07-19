@@ -5,13 +5,12 @@ class SignIn extends Component {
 
   responseGoogle (response) {
     document.getElementById('googleButton')
-    console.log(JSON.stringify(response.tokenId))
+    console.log(response)
     fetch('/auth', {
       method: 'POST',
       headers: JSON.stringify({
         Authorization: response.tokenId
       })
-
     })
   }
 
