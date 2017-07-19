@@ -9,9 +9,9 @@ class ItineraryTime extends Component {
           <p className="fa fa-sun-o" aria-hidden="true"></p>
           <p className="fa fa-moon-o" aria-hidden="true"></p>
           
-          <img className="morning" src="http://imgur.com/in0JlIC.png" alt="travel like you live there"></img>
+          {/* <img className="morning" src="http://imgur.com/in0JlIC.png" alt="travel like you live there"></img>
           <img className="afternoon" src="http://imgur.com/IPTE4Qf.png" alt="travel like you live there"></img>
-          <img className="night" src="http://imgur.com/uRiMWoB.png" alt="travel like you live there"></img> 
+          <img className="night" src="http://imgur.com/uRiMWoB.png" alt="travel like you live there"></img>  */}
         </div>
     );
   }

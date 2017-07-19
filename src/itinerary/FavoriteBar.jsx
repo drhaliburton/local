@@ -7,8 +7,6 @@ class FavoriteBar extends Component {
     return (
       <footer className="footer">
         <div className="container">
-          <div className="content has-text-centered">
-          </div>
         </div>
       </footer>
     );

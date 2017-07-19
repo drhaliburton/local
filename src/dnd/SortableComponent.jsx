@@ -46,6 +46,7 @@ class SortableComponent extends Component {
     });
   };
   render() {
+    
     const renderedItems = this.state.items.map(card => 
           <div className="itinerary-card">
             <article className="media large">
