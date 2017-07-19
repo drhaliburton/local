@@ -43,23 +43,23 @@ class ContentContainer extends Component {
     return (
       <div className={`content-container ${expandedToggle}`}>
         <Image />
-        <span className="card-toggle" onClick={this.toggleDescription.bind(this)}>
-          <a><span className={`icon fa fa-chevron-up ${rotatedToggle}`}></span></a>
+        <span className="card-toggle">
+          <a><span className={`icon fa fa-chevron-up ${rotatedToggle}`}onClick={this.toggleDescription.bind(this)}></span></a>
         </span>
-        <Star image={card.image}/>
         <div className="card-content">
           <div className="media">
             <div className="media-content">
               <p className="title">{card.title}</p>
-              <p className="subtitle"><a>{card.location || "Location, Location Ville"}</a></p>
-              <p className="duration">Time: ~{card.duration} minutes</p>
+              <p className="location">{card.location || "Location, Location Ville"}</p>
+               <p className="category duration"><span className={`icon is-small fa ${this.findIconCategory(card.category)}`}>&nbsp;</span>&nbsp;~{card.duration} minutes</p>
+                <Star image={card.image}/>
             </div>
           </div>
           <div className={`card-details ${detailsVisible}`}>
-              <p className="category"><span className={`icon is-small fa ${this.findIconCategory(card.category)}`}></span> {card.category}</p>
             <div className="content">
-              <div className="description"><p>{card.description}</p>
-                <Rating />
+              <div className="description">
+                <p>{card.description}</p>
+                  <Rating rating={card.rating}/>
               </div>
             </div>
           </div>

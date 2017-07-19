@@ -17,7 +17,6 @@ $dark-grey: #363636;
 @import 'favoriteBar';
 
 .is-rotated {
-  transition: all 0.3s ease-in-out;
   transform: rotate(180deg);
 }
 
