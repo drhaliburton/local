@@ -14,6 +14,17 @@ class ContentContainer extends Component {
     };
   }
 
+  findIconCategory(categoryName){
+    const iconCategories = {
+      'outdoors': 'fa-tree',
+      'culture': 'fa-binoculars',
+      'spas & wellness': 'fa-shopping-bag',  
+      'food': 'fa-cutlery',     
+    }
+
+    return iconCategories[categoryName] || '';
+  };
+
   toggleDescription(event){
     this.setState({
       isExpanded: !this.state.isExpanded,
@@ -38,12 +49,12 @@ class ContentContainer extends Component {
           <div className="media">
             <div className="media-content">
               <p className="title">{card.title}</p>
-              <p className="subtitle"><a>{card.location}</a></p>
+              <p className="subtitle"><a>{card.location || "Location, Location Ville"}</a></p>
               <p className="duration">Time: ~{card.duration} minutes</p>
             </div>
           </div>
           <div className={`card-details ${detailsVisible}`}>
-              <p><span className="icon is-small fa fa-tree"></span> Outdoors</p>
+              <p className="category"><span className={`icon is-small fa ${this.findIconCategory(card.category)}`}></span> {card.category}</p>
             <div className="content">
               <div className="description"><p>{card.description}</p>
                 <Rating />

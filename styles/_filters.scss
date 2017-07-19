@@ -27,6 +27,7 @@
   }
   .filter-button {
     margin: 5px;
+    line-height: 2.5;
     &.active .button {
       background-color:$green;
     }
