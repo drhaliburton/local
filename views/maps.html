@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+    <meta charset="utf-8">
+    <title>Itinerary Map</title>
+    <link rel="stylesheet" type="text/css" href="map.css">
+  </head>
+  <body>
+      <h1>This is your Map Page</h1>
+      <div id="map"></div>
+      <script>
+
+         function initMap() {
+          var places = [
+            {lat: -25.0264017, lng: 115.1772893},
+            {lat: -25.363, lng: 131.044},
+            {lat: -33.8470219, lng: 150.3715133},
+            {lat:-37.971237, lng: 144.4926879}
+          ]
+          var map = new google.maps.Map(document.getElementById('map'), {
+            zoom: 4,
+            center: places[0]
+          });
+          for (let i = 0; i <= places.length; i++){
+            var marker = new google.maps.Marker({
+              position: places[i],
+              map: map
+            });
+          }
+          return map;
+        }
+
+    </script>
+    <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyATZvEzRKoJY5X4M6lQCc_vpzIhTnT1DA0&callback=initMap">
+    </script>
+  </body>
+</html>

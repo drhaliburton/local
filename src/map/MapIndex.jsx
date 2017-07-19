@@ -1,22 +1,42 @@
 import React, {Component} from 'react';
+import { withGoogleMap, GoogleMap, Marker } from "react-google-maps";
+import Helmet from "react-helmet";
+import _ from "lodash";
+
+
+const GettingStartedGoogleMap = withGoogleMap(props => (
+  <GoogleMap
+    ref={props.onMapLoad}
+    defaultZoom={3}
+    defaultCenter={{ lat: -25.363882, lng: 131.044922 }}
+    onClick={props.onMapClick}
+  >
+    {props.markers.map((marker, index) => (
+      <Marker
+        {...marker}
+      />
+    ))}
+  </GoogleMap>
+));
 
 class MapIndex extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      cards: []
-    }
-  }
+
 
   render() {
-      console.log("Rendering Map");
     return (
-      <div>
-        <h1>Map Page</h1>
-        <iframe width={'600'} height={'450'} frameBorder={'0'} src={'https://www.google.com/maps/embed/v1/search?q=vancouver&key=AIzaSyCYGEUbiGFs5-eKgiH4jDuv9hD1HgOmlYs'} allowFullScreen></iframe>
-      </div>
+      <GettingStartedGoogleMap
+        containerElement={
+          <div style={{ height: `100%` }} />
+        }
+        mapElement={
+          <div style={{ height: `100%` }} />
+        }
+        onMapLoad={_.noop}
+        onMapClick={_.noop}
+        markers={markers}
+         />,
+      document.getElementById('root')
     );
   }
 }
-
 export default MapIndex;
