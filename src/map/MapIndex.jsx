@@ -11,7 +11,7 @@ class MapIndex extends Component {
   render() {
       console.log("Rendering <App />");
     return (
-      <div>    
+      <div>
         <h1>Map Page</h1>
       </div>
     );
