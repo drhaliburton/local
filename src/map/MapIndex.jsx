@@ -1,37 +1,69 @@
 import React, {Component} from 'react';
-import { withGoogleMap, GoogleMap, Marker } from "react-google-maps";
-import Helmet from "react-helmet";
-import _ from "lodash";
+import { withGoogleMap, GoogleMap, InfoWindow, Marker } from "react-google-maps";
+import Api from '../../library/api.js';
+import fancyMapStyles from "../constants/fancyMapStyle.json";
 
 
 const GettingStartedGoogleMap = withGoogleMap(props => (
-  <GoogleMap
+ <GoogleMap
     ref={props.onMapLoad}
-    defaultZoom={10}
-    defaultCenter={{ lat: 49.2576508, lng: -123.2639868 }}
-    onClick={props.onMapClick}
+    defaultZoom={6}
+    center={props.center}
   >
     {props.markers.map((marker, index) => (
       <Marker
         { ...marker }
-        onRightClick={() => props.onMarkerRightClick(marker)}
-      />
+        onClick={() => props.onMarkerClick(marker)}
+      >
+      {marker.showInfo && (
+          <InfoWindow onCloseClick={() => props.onMarkerClose(marker)}>
+            <div>{marker.infoContent}</div>
+          </InfoWindow>
+        )}
+      </Marker>
     ))}
   </GoogleMap>
 ));
 
+const goldStar = {
+  path: 'M 125,5 155,90 245,90 175,145 200,230 125,180 50,230 75,145 5,90 95,90 z',
+  fillColor: 'gold',
+  fillOpacity: 1,
+  scale: 0.1,
+  strokeColor: 'black gold',
+  strokeWeight: 1
+};
 class MapIndex extends Component {
-   state = {
-    markers: [{
-      position: {
-        lat: 49.2802079,
-        lng: -123.1352891,
-      },
-      key: `Downtown Vancouver`,
-      defaultAnimation: 2,
-    }],
-    radius: 6000
-  };
+
+  constructor(props) {
+    super(props);
+    this.state = {
+      cards: [],
+      markers:[]
+    }
+  }
+
+  componentDidMount() {
+    Api.get('/index')
+      .then((cards) => this.setState({
+        cards: cards[0],
+        markers: cards.map((card) => {
+          return {
+            position: new google.maps.LatLng(card.location[0], card.location[1]),
+            icon: goldStar,
+            showInfo: false,
+            infoContent: `${card.title}:
+            ${card.description}
+            ${card.photos}`
+                  }
+        }),
+        center: {
+      lat: cards[0].location[0],
+      lng: cards[0].location[1],
+    }
+      })
+    );
+  }
 
   handleMapLoad(map) {
     this._mapComponent = map;
@@ -40,28 +72,34 @@ class MapIndex extends Component {
     }
   }
 
-  handleMapClick(event) {
-    const nextMarkers = [
-      ...this.state.markers,
-      {
-        position: event.latLng,
-        defaultAnimation: 2,
-        key: Date.now(), // Add a key property for: http://fb.me/react-warning-keys
-      },
-    ];
+
+  handleMarkerClick(targetMarker) {
     this.setState({
-      markers: nextMarkers,
+      markers: this.state.markers.map(marker => {
+        if (marker === targetMarker) {
+          return {
+            ...marker,
+            showInfo: true,
+          };
+        }
+        return marker;
+      }),
     });
   }
 
-  handleMarkerRightClick(targetMarker) {
-    const nextMarkers = this.state.markers.filter(marker => marker !== targetMarker);
+  handleMarkerClose(targetMarker) {
     this.setState({
-      markers: nextMarkers,
+      markers: this.state.markers.map(marker => {
+        if (marker === targetMarker) {
+          return {
+            ...marker,
+            showInfo: false,
+          };
+        }
+        return marker;
+      }),
     });
   }
-
-
 
   render() {
     return (
@@ -79,11 +117,11 @@ class MapIndex extends Component {
           <div style={{ height: `100%` }} />
         }
         onMapLoad={this.handleMapLoad.bind(this)}
-        onMapClick={this.handleMapClick.bind(this)}
-        onMarkerRightClick={this.handleMarkerRightClick.bind(this)}
+        center={this.state.center}
         markers={this.state.markers}
+        onMarkerClick={this.handleMarkerClick.bind(this)}
+        onMarkerClose={this.handleMarkerClose.bind(this)}
          />
-      // document.getElementById('root')
     );
   }
 }
