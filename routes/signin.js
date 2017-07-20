@@ -3,29 +3,21 @@
 const express = require('express');
 const router  = express.Router();
 
-module.exports = () => {
-const obj = {};
+module.exports = (knex) => {
 
-obj.postAccessToken = function(object){
-    return knex('users')
-      .insert({name: object.category})
-      .returning('id')
-      .then(function (response){
-        return knex('card_categories')
-        .returning('id')
-        .insert({category_id: response[0]})
-      })
-  }
-
-  router.post("/auth", (req, res) => {
-    console.log(req.params)
-    knex.insert
-    //TO DO add sql injection for new user
-    res.status(200).send('All okay!');
+  router.post("/", (req, res) => {
+    console.log('HI THERE', req.body)
+     knex('users').insert({
+      given_name: req.body.given_name, 
+      family_name: req.body.family_name, 
+      token: req.body.token,
+    })
+      .then( function (result) {
+          res.status(200).send('All okay!');  
+       })
   });
 
-
-  router.get('/auth', (req, res) => {
+  router.get('/', (req, res) => {
     res.send(`https://www.googleapis.com/oauth2/v3/tokeninfo?id_token=${req.body.tokenId}`)
 })
 

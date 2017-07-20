@@ -4,12 +4,19 @@ import GoogleLogin from 'react-google-login';
 class SignIn extends Component {
 
   responseGoogle (response) {
+
     document.getElementById('googleButton')
-    console.log(response)
+    console.log(response.profileObj.givenName)
     fetch('/auth', {
       method: 'POST',
-      headers: JSON.stringify({
-        Authorization: response.tokenId
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        given_name: response.profileObj.givenName,
+        family_name: response.profileObj.familyName,
+        token: response.googleId
       })
     })
   }
