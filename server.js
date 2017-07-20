@@ -1,17 +1,22 @@
+
 "use strict";
 
 require('dotenv').config();
+
+// const PORT        = process.env.PORT || 8080;
 const webpack = require('webpack');
 const config = require('./webpack.config');
 const webpackDevMiddleware = require('webpack-dev-middleware')
 const webpackHotMiddleware = require('webpack-hot-middleware')
 const ENV         = process.env.ENV || "development";
-const express = require('express');
-const knexConfig  = require('./knexfile');
-const knex        = require('knex')(knexConfig[ENV]);
+const express     = require("express");
+const bodyParser  = require("body-parser");
+const sass        = require("node-sass-middleware");
+
+const knexConfig  = require("./knexfile");
+const knex        = require("knex")(knexConfig[ENV]);
 const morgan      = require('morgan');
 const knexLogger  = require('knex-logger');
-const bodyParser = require("body-parser");
 const PORT = 3000;
 // Seperated Routes for each Resource
 const itineraryRoutes = require("./routes/itinerary");

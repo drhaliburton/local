@@ -1,87 +1,96 @@
 import React, {Component} from 'react';
-import { fadeInDown } from 'react-animations';
-import Radium from 'radium';
 
-@Radium()
+import FilterButton from './FilterButton.jsx';
+
 class Filter extends Component {
 
   constructor(props) {
     super(props);
     this.state = {
-      filtersVisible: false
+      filtersVisible: false,
+      isRotated: false,
+      filters: [
+        {
+          name: 'Nature',
+          icon: 'tree'
+        },
+        {
+          name: 'Shopping',
+          icon: 'shopping-bag'
+        },
+        {
+          name: 'Food',
+          icon: 'cutlery'
+        },
+        {
+          name: 'Sights',
+          icon: 'binoculars'
+        }
+      ],
+      currentFilter: null
     };
   }
 
-  filterCards(event) {
-    console.log(this.props.cards);
-  }
+  handleFilterClick(index) {
+    const { filters, currentFilter } = this.state;
 
+    if(currentFilter === index) {
+      this.props.resetCards();
+      index = null;
+    } else {
+      this.props.categoryFilter(filters[index].name);
+    }
+
+    this.setState({
+      currentFilter: index
+    });
+  }
+  // grab the button with c
   toggleFilters(event){
     console.log('filters clicked');
     this.setState({
       filtersVisible: !this.state.filtersVisible,
       isRotated: !this.state.isRotated
-    });  
-  }  
+    });
+  }
 
   render() {
-  const styles = {
-    fadeInDown: {
-      animation: 'x 1s',
-    }
-  }
-  const toggledFilter = this.state.filtersVisible ? 'visible' : '';
-  const rotatedToggle = this.state.isRotated ? 'is-rotated' : '';
 
+    const toggledFilter = this.state.filtersVisible ? 'toggled-filter' : '';
+    const rotatedToggle = this.state.isRotated ? '' : 'is-rotated';
+
+    const filters = this.state.filters.map((filter, index) => {
+      const active = this.state.currentFilter === index;
+      return (
+        <FilterButton
+          key={ index }
+          id={ index }
+          active={ active }
+          handleFilterClick={ this.handleFilterClick.bind(this) }
+          { ...filter } />
+        )
+      });
 
     return (
       <div className="filter has-text-centered">
         <h5 className="filter-brand title is-6">Filters</h5>
-        <span className="filter-toggle">
-          <a className="icon is-medium" onClick={this.toggleFilters.bind(this)}><i className={`fa fa-chevron-down ${rotatedToggle}`}></i></a>
+        <span className="filter-toggle" onClick={this.toggleFilters.bind(this)}>
+          <a className="icon is-medium"><i className={`fa fa-chevron-up ${rotatedToggle}`}></i></a>
         </span><div></div>
-          
-          <div className={`filter-content ${toggledFilter}`} style={styles}>
+
+          <div className={`filter-content ${toggledFilter}`}>
 
             <div className="columns">
               <div className="column"></div>
+              {/*<div className="column is-one-third">
+                <h5 className="title is-6">Radius</h5>
+                <span className="filter-button"><a className="button">Street</a></span>
+                <span className="filter-button"><a className="button">Neighborhood</a></span>
+                <span className="filter-button"><a className="button">City</a></span>
+              </div>*/}
               <div className="column is-one-third">
-                <h5 className="title is-5">Radius</h5>
-                <span className="filter-button"><a className="button is-small">Street</a></span>
-                <span className="filter-button"><a className="button is-small">Neighborhood</a></span>
-                <span className="filter-button"><a className="button is-small">City</a></span>
-              </div>
-
-              <div className="column is-one-third">
-                <h5 className="title is-5">Category</h5>
-                <span className="filter-button" onClick={this.filterCards.bind(this)}>
-                  <a className="button is-small">
-                    <span className="header">Nature</span>
-                    <span className="icon is-small"></span>
-                    <i className="fa fa-tree"></i>
-                  </a>
-                </span>
-                <span className="filter-button">
-                  <a className="button is-small">
-                    <span className="header">Food</span>
-                    <span className="icon is-small"></span>
-                    <i className="fa fa-cutlery"></i>
-                  </a>
-                </span>
-                <span className="filter-button">
-                  <a className="button is-small">
-                    <span className="header">Shopping</span>
-                    <span className="icon is-small"></span>
-                    <i className="fa fa-shopping-bag"></i>
-                  </a>
-                </span>
-                <span className="filter-button">
-                  <a className="button is-small">
-                    <span className="header">Sights</span>
-                    <span className="icon is-small"></span>
-                    <i className="fa fa-binoculars"></i>
-                  </a>
-                </span>
+                {/*<h5 className="title is-6">Category</h5>*/}
+                { filters }
               </div>
               <div className="column"></div>
             </div>

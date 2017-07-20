@@ -1,113 +1,160 @@
 .cards {
-  margin: 7% 10%; }
+  margin: 8% 10%;
+  transition: 2s all ease-in-out !important;
+  font-size: 12px; }
   .cards .card {
-    margin: 30px 20px 10px;
-    width: 22%;
-    min-width: 200px;
+    margin: 20px 10px 0px;
+    width: 19%;
+    min-width: 220px;
     max-width: 300px;
+    height: 340px;
     display: inline-block;
     border: 0.5px solid #CCCCCC;
     box-shadow: none;
     background-color: #fff;
-    overflow: none; }
+    overflow: hidden; }
     .cards .card .content-container {
-      z-index: 20;
-      margin-bottom: 10px;
+      display: block;
+      height: 220px;
       background-color: white;
-      transition: 0.5s all ease-in-out; }
+      transition: 1s all ease-in-out;
+      z-index: 100; }
+      .cards .card .content-container.expanded {
+        transition: 1.2s all ease-in-out !important;
+        margin: 0% !important;
+        background-color: solid white; }
+        .cards .card .content-container.expanded .card-image {
+          height: 0% !important;
+          overflow: hidden !important;
+          transition: 1s all ease-in-out !important; }
+        .cards .card .content-container.expanded .content {
+          transition: all 1s ease-in-out !important; }
+        .cards .card .content-container.expanded .media-content {
+          margin-top: 10px;
+          transition: all 1s ease-in-out !important; }
+        .cards .card .content-container.expanded .title {
+          overflow: visible;
+          white-space: inherit;
+          transition: all 1s ease-in-out !important; }
       .cards .card .content-container .icon-container {
         z-index: 100;
         background-color: white;
         text-align: center;
         padding: 10px; }
-        .cards .card .content-container .icon-container a {
-          background-color: white; }
-          .cards .card .content-container .icon-container a .card-toggle {
-            cursor: pointer;
-            background-color: white; }
-      .cards .card .content-container .expanded .content-container {
-        transition: 0.5s all ease-in-out !important;
-        margin-top: 0% !important;
-        margin-bottom: 20px !important;
-        height: 300px !important; }
-      .cards .card .content-container .expanded .card-image {
-        height: 0px !important;
-        overflow: hidden !important;
-        transition: 0.5s all ease-in-out !important; }
-      .cards .card .content-container .expanded .content {
-        transition: all 0.5s ease-in-out !important; }
+        .cards .card .content-container .icon-container a .card-toggle {
+          cursor: pointer; }
     .cards .card .card-content {
       padding: 0;
-      z-index: 10;
-      transition: 0.5s all ease-in-out !important; }
+      z-index: 102;
+      height: 100%;
+      background-color: white;
+      transition: 2s all ease-in-out !important; }
+      .cards .card .card-content .category {
+        display: inline-flex; }
+        .cards .card .card-content .category .fa {
+          font-size: 1.2em;
+          margin: 3px 8px 3px 2; }
       .cards .card .card-content .duration {
-        font-size: .7em; }
+        font-size: .8em;
+        padding: 8px 0; }
+        .cards .card .card-content .duration .fa {
+          font-size: 1.2em;
+          padding: 2px 0; }
       .cards .card .card-content .media {
-        margin: 0px; }
+        margin: 2px 0 0;
+        font-size: 1em; }
     .cards .card a {
       color: #00caba; }
       .cards .card a:hover {
-        color: #00645c; }
+        color: #00b0a3; }
     .cards .card .content {
-      height: auto; }
+      height: auto;
+      transition: all 1s ease-in-out !important; }
     .cards .card .fa-star {
+      font-size: 1.4em;
       position: relative;
-      top: 12px;
+      padding-top: 7px;
       color: #FCB737;
       box-shadow: 1px grey; }
       .cards .card .fa-star:hover {
         color: #fba505;
         cursor: pointer; }
+    .cards .card .media-content {
+      width: 170px;
+      background-color: white;
+      transition: all 1s ease-in-out !important; }
     .cards .card .title {
-      font-size: 1.1em; }
+      transition: all 1s ease !important;
+      font-size: 1.4em;
+      margin-bottom: 5px;
+      text-overflow: ellipsis;
+      overflow: hidden;
+      white-space: nowrap; }
     .cards .card .subtitle {
       font-size: .9em; }
     .cards .card small {
       font-style: italic;
       font-size: .7em; }
     .cards .card .card-details {
-      display: none;
+      background-color: white;
+      overflow: hidden;
       font-size: 0.8em;
       padding-top: 10px;
       line-height: 15px;
-      transition: all 0.5s ease-in-out; }
+      transition: all 1.5s ease-in-out !important; }
       .cards .card .card-details .description {
+        background-color: white;
         transition: all 0.5s ease-in-out;
-        font-size: 1em;
-        padding-top: 8px; }
+        font-size: 1.3em;
+        line-height: 1.5;
+        padding: 15px 0px 0px; }
         .cards .card .card-details .description .rating {
+          margin: 45%;
           display: inline;
-          margin: 40%;
           transition: all 0.5s ease-in-out; }
+          .cards .card .card-details .description .rating .fa:hover {
+            color: #CCCCCC;
+            cursor: pointer; }
+          .cards .card .card-details .description .rating .subtitle {
+            text-align: center; }
     .cards .card .card-toggle {
       margin-top: 10px;
       transition: 0.5s all ease-in-out !important; }
       .cards .card .card-toggle .fa-chevron-up {
-        transition: all 0.5s ease-in-out;
+        transition: all .5s ease-in-out;
         position: relative;
         top: 5px;
         left: 45%; }
       .cards .card .card-toggle .chev-rotate {
-        transition: all 0.5s ease-in-out;
+        transition: 2s all ease-in-out;
         transform: rotate(180deg); }
-      .cards .card .card-toggle .chev-rotate-again {
-        transition: all 0.5s ease-in-out;
-        transform: rotate(360deg); }
     .cards .card .subtitle {
       margin-bottom: 5px; }
-    .cards .card .card-image, .cards .card figure, .cards .card img {
-      z-index: 1;
-      transition: 0.5s all ease-in-out !important; }
     .cards .card .card-image {
+      height: 100%;
       text-align: center;
-      overflow: hidden;
-      text-align: center;
-      transition: all 0.5s ease-in-out; }
+      transition: 1s all ease-in-out !important;
+      overflow: hidden; }
       .cards .card .card-image img {
-        width: 280px; }
+        width: 280px;
+        transition: 2s all ease-in-out !important; }
+    .cards .card .location {
+      margin-top: 3px;
+      font-size: 1em;
+      color: #00caba;
+      cursor: pointer; }
+      .cards .card .location:hover {
+        color: #00b0a3; }
 
 .columns {
-  justify-content: center; }
+  z-index: 101;
+  justify-content: center;
+  background-color: white;
+  transition: all 1s ease-in-out !important; }
+  .columns .column {
+    background-color: white;
+    padding: 10px;
+    transition: all 1s ease-in-out !important; }
 
 .navbar {
   height: 5rem;
@@ -132,56 +179,62 @@
         margin: auto;
         display: inline-block; } }
 
+.filter h5 {
+  font-size: .5em; }
 .filter .columns {
-  margin: 0px;
-  padding-bottom: 0px;
-  transition: all 0.6s ease-in-out; }
+  margin-top: 20px;
+  padding-bottom: 0px; }
   .filter .columns .column {
-    padding-top: 0px;
-    transition: all 0.6s ease-in-out; }
+    padding-top: 0px; }
 .filter .filter-toggle {
   margin: auto;
   top: 5px;
-  padding-top: 20px;
-  transition: all 0.6s ease-in-out; }
-  .filter .filter-toggle .fa-chevron-down {
+  padding-top: 20px; }
+  .filter .filter-toggle .fa-chevron-up {
+    transition: all .7s ease-in-out;
     color: #00caba;
-    transition: all 0.6s ease-in-out;
-    left: 35%; }
-    .filter .filter-toggle .fa-chevron-down:hover {
-      transition: all 0.6s ease-in-out;
-      color: #363636;
+    left: 35%;
+    font-size: 1em; }
+    .filter .filter-toggle .fa-chevron-up:hover {
+      color: #00b0a3;
       cursor: pointer; }
 .filter .filter-button {
-  margin: 5px; }
-  .filter .filter-button.active .button {
-    background-color: #00caba; }
-  .filter .filter-button.active .fa {
-    color: black; }
+  margin: 5px;
+  line-height: 2.5; }
+  .filter .filter-button .button {
+    font-size: .6em; }
+    .filter .filter-button .button.is-active {
+      background-color: #00caba;
+      color: white;
+      border-color: white; }
+    .filter .filter-button .button.is-active .fa {
+      color: white; }
 .filter .filter-brand {
-  transition: all .6s ease-in-out;
-  margin: 0.3rem; }
+  margin: 0.3rem;
+  font-size: .8em; }
 .filter .title {
-  margin-top: 1.5rem; }
+  margin-top: 15px; }
 .filter .button {
   margin: auto;
   border-radius: 10px; }
   .filter .button:hover {
     border-color: #00caba; }
 .filter .filter-content {
-  transition: all 0.6s ease-in-out;
-  margin-top: 1rem;
+  transition: all 2s ease-in-out;
   margin-bottom: 1rem;
-  display: none; }
+  max-height: 10px;
+  overflow: hidden; }
+.filter .toggled-filter {
+  max-height: 300px; }
 
-.landing-content {
-  margin-top: 2rem; }
-  .landing-content .input {
-    border-color: #fba505; }
-    .landing-content .input:focus {
-      border-color: #00caba; }
-  .landing-content .brand img {
-    width: 80%; }
+.landing-content .columns {
+  margin-top: 0px; }
+.landing-content .input {
+  border-color: #fba505; }
+  .landing-content .input:focus {
+    border-color: #00caba; }
+.landing-content .brand img {
+  width: 80%; }
 
 .columns {
   margin-top: 2rem;
@@ -205,16 +258,23 @@
 
 .accent-font {
   font-family: 'Caveat Brush', cursive;
-  font-size: 2.2em;
+  font-size: 1.7em;
   padding-bottom: 20px;
   width: 100%; }
 
+.input {
+  font-size: .8em; }
+
+.footer .container {
+  background-color: pink; }
+
+.box {
+  background-color: #AADDD5; }
+
 .is-rotated {
-  transition: all 0.3s ease-in-out;
   transform: rotate(180deg); }
 
 .visible {
-  display: inline !important;
-  transition: all 0.3s ease-in-out; }
+  height: 100% !important; }
 
 /*# sourceMappingURL=layout.css.map */
