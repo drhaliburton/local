@@ -19,8 +19,8 @@ class ContentContainer extends Component {
     const iconCategories = {
       'Nature': 'fa-tree',
       'Sights': 'fa-binoculars',
-      'Shopping': 'fa-shopping-bag',  
-      'Food': 'fa-cutlery',     
+      'Shopping': 'fa-shopping-bag',
+      'Food': 'fa-cutlery',
     }
 
     return iconCategories[categoryName] || '';
@@ -31,8 +31,8 @@ class ContentContainer extends Component {
       isExpanded: !this.state.isExpanded,
       isRotated: !this.state.isRotated,
       isVisible: !this.state.isVisible
-    });  
-  }  
+    });
+  }
 
   render() {
     const expandedToggle = this.state.isExpanded ? 'expanded'  : '';

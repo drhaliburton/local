@@ -1,26 +1,5 @@
 import React, {Component} from 'react';
 
-<<<<<<< HEAD
-// class MapIndex extends Component {
-//   constructor(props) {
-//     super(props);
-//     this.state = {
-//       cards: []
-
-//     }
-//   }
-
-//   componentDidMount() {
-//     fetch('/index')
-//       .then((res) => res.json())
-//       .then((cards) => this.setState({
-//         cards: cards
-//       })
-//     );
-//   this.map = this.initMap()
-//   this.marker = this.addMarkers()
-//   }
-=======
 class MapIndex extends Component {
   constructor(props) {
     super(props);
@@ -29,7 +8,6 @@ class MapIndex extends Component {
 
     }
   }
->>>>>>> de20bdee4a5133a6609a0665518d786ffbc13885
 
   componentDidMount() {
     fetch('/index')
