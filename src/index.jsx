@@ -29,7 +29,7 @@ render(
       <Route exact path="/" component={HomepageIndex} />
       <Route exact path="/add" component={AddCard} />
       <Route path="/itinerary" component={ItineraryIndex}/>
-      <Route path="/map" component={SortableComponent} />
+      <Route path="/map" component={MapIndex} />
       <Route path="/signin" component={SignInIndex} />
     </div>
   </Router>
