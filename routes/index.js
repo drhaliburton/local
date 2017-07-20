@@ -51,11 +51,12 @@ module.exports = (knex) => {
             ratings: card.rating
           }
         });
-        res.json(cards)
+        let cardsArr = [cards.slice(0, 12), cards];
+        res.json(cardsArr);
 
       })
       .catch(err => {
-        res.status(400).send("ERROR");
+      res.status(400).send("ERROR");
       })
   });
 

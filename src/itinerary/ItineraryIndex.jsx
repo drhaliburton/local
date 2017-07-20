@@ -11,11 +11,11 @@ class ItineraryIndex extends Component {
       cards: []
     }
   }
-componentDidMount() {
-    fetch('/index')
+componentWillMount() {
+    fetch('/itinerary/favorites')
       .then((res) => res.json())
-      .then((cards) => this.setState({ 
-        cards: cards 
+      .then((cards) => this.setState({
+        favCards: cards
       })
     );
   }
@@ -23,7 +23,7 @@ componentDidMount() {
     return (
       <div className="itinerary">
         <div className="header">
-          < FavoriteBar />
+          < FavoriteBar favCards={this.state.favCards}/>
         </div>
         <div className="columns">
           <div className="column is-4">
