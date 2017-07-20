@@ -38,7 +38,6 @@ module.exports = (knex) => {
     //This is a temporary response, for testing purposes
     allCards()
       .then(data => {
-        console.log(data)
         let cards = data.map((card) => {
           return {
             id: card.card_id,
@@ -124,7 +123,9 @@ module.exports = (knex) => {
 
   router.post("/favorite", (req, res) => {
     console.log(req.body.id)
-    res.json({status: 'ok'});
+    res.json({
+      status: 'ok'
+    });
   });
 
 
