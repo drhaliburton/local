@@ -1,13 +1,8 @@
-
 "use strict";
 
 require('dotenv').config();
 
 // const PORT        = process.env.PORT || 8080;
-const webpack = require('webpack');
-const config = require('./webpack.config');
-const webpackDevMiddleware = require('webpack-dev-middleware')
-const webpackHotMiddleware = require('webpack-hot-middleware')
 const ENV         = process.env.ENV || "development";
 const express     = require("express");
 const bodyParser  = require("body-parser");

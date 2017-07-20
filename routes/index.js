@@ -102,6 +102,10 @@ module.exports = (knex) => {
     https.request(options, callback).end();
   })
 
+  router.post("/", (req, res) => {
+    console.log(req, res);
+    res.JSON({status: "wooeoeoooo"});
+  });
 
 
   router.post("/favorites/:id", (req, res) => {
