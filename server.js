@@ -48,5 +48,5 @@ const app = express()
   app.get('/', function (req, res) { res.sendFile(indexPath) });
   app.use("/itinerary", itineraryRoutes(knex))
   app.use("/index",indexRoutes(knex))
-  app.use("/auth", signInRoutes(knex))
+  app.use("/signin", signInRoutes(knex))
   app.listen(PORT, '0.0.0.0', 'localhost', () => console.log(`Listening on ${ PORT }`));

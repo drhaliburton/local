@@ -7,14 +7,21 @@ module.exports = (knex) => {
 
   router.post("/", (req, res) => {
     console.log('HI THERE', req.body)
-     knex('users').insert({
+    //Check to see if user exists
+    knex('users').where({
+      token: req.body.token
+    })
+    //If user does not exist insert them into table (WHAT INFO DO I NEED?)
+    knex('users').insert({
       given_name: req.body.given_name, 
       family_name: req.body.family_name, 
       token: req.body.token,
     })
-      .then( function (result) {
-          res.status(200).send('All okay!');  
-       })
+    .then( function (result) {
+      //EITHER WAY - set a cookie
+      res.status(200).send('All okay!');  
+    })
+    // TODO: cookies?
   });
 
   router.get('/', (req, res) => {
