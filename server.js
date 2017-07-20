@@ -28,6 +28,8 @@ const indexPath = path.join(__dirname, 'index.html');
 const publicPath = express.static(path.join(__dirname, 'build'));
 //
 const app = express()
+  app.set("view engine", "ejs");
+
   app.use(bodyParser.urlencoded({extended: true}));
 
   app.use(webpackDevMiddleware(compiler, {
