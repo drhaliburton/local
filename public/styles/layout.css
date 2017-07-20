@@ -79,6 +79,8 @@
       .cards .card .fa-star:hover {
         color: #fba505;
         cursor: pointer; }
+      .cards .card .fa-star .is-active {
+        color: maroon; }
     .cards .card .media-content {
       width: 170px;
       background-color: white;
@@ -161,13 +163,13 @@
   padding-left: 10px; }
   .navbar .navbar-brand {
     margin: 13px 30px; }
-    .navbar .navbar-brand .itinierary {
+    .navbar .navbar-brand .itinerary {
       overflow: hidden;
       transition: all 0.2s ease-in-out;
       color: #363636; }
-      .navbar .navbar-brand .itinierary .fa {
+      .navbar .navbar-brand .itinerary .fa {
         display: inline; }
-      .navbar .navbar-brand .itinierary:hover {
+      .navbar .navbar-brand .itinerary:hover {
         transition: all 0.2s ease-in-out;
         border-color: #00caba;
         color: #00caba;
@@ -220,7 +222,7 @@
   .filter .button:hover {
     border-color: #00caba; }
 .filter .filter-content {
-  transition: all 2s ease-in-out;
+  transition: all 1s ease-in-out;
   margin-bottom: 1rem;
   max-height: 10px;
   overflow: hidden; }
@@ -269,7 +271,10 @@
   background-color: pink; }
 
 .box {
-  background-color: #AADDD5; }
+  border: 0.1px;
+  border-color: #ccffef;
+  border-style: solid;
+  border-radius: 10px; }
 
 .is-rotated {
   transform: rotate(180deg); }
