@@ -31,7 +31,6 @@ module.exports = (knex) => {
     //This is a temporary response, for testing purposes
     allCards()
       .then(data => {
-        console.log(data)
         let cards = data.map((card) => {
           return {
             id: card.card_id,

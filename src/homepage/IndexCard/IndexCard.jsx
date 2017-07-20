@@ -8,7 +8,6 @@ class IndexCard extends Component {
       <div className="columns is-multiline cards">
         {cardsArray.map((card, index) => {
           return <div key={index} className="column is-one-quarter card">
-              <Image key={`${card.id}_img`} image={card.image}/>
               <ContentContainer key={card.id} cardID={card.id} cardContent={card} favorite={this.props.favorite} />
             </div>;
           })
