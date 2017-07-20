@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import Star from "./Star.jsx";
 import Rating from "./Rating.jsx";
-import Image from "./Image.jsx";
+import NewImage from "./NewImage.jsx";
 
 //Contains
 class ContentContainer extends Component {
@@ -19,8 +19,8 @@ class ContentContainer extends Component {
     const iconCategories = {
       'Nature': 'fa-tree',
       'Sights': 'fa-binoculars',
-      'Shopping': 'fa-shopping-bag',  
-      'Food': 'fa-cutlery',     
+      'Shopping': 'fa-shopping-bag',
+      'Food': 'fa-cutlery',
     }
 
     return iconCategories[categoryName] || '';
@@ -31,8 +31,8 @@ class ContentContainer extends Component {
       isExpanded: !this.state.isExpanded,
       isRotated: !this.state.isRotated,
       isVisible: !this.state.isVisible
-    });  
-  }  
+    });
+  }
 
   render() {
     const expandedToggle = this.state.isExpanded ? 'expanded'  : '';
@@ -42,7 +42,7 @@ class ContentContainer extends Component {
     let card = this.props.cardContent;
     return (
       <div className={`content-container ${expandedToggle}`}>
-        <Image />
+        <NewImage />
         <span className="card-toggle">
           <a><span className={`icon fa fa-chevron-up ${rotatedToggle}`}onClick={this.toggleDescription.bind(this)}></span></a>
         </span>

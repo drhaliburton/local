@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 
-class Image extends Component {
+class NewImage extends Component {
 
   render() {
     return (
@@ -13,5 +13,5 @@ class Image extends Component {
   }
 }
 
-export default Image;
+export default NewImage;
 

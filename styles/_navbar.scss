@@ -5,17 +5,18 @@
     margin: 13px 30px;
     .itinerary {
       overflow: hidden;
-      transition: all 0.2s ease-in-out;
-      color: $dark-grey;
+      a {
+        transition: all 0.1s ease-in-out;
+        color: $dark-grey;
+        &:hover {
+          border-color: $green;
+          color: $green;
+          cursor: pointer;
+        }
+      }
       .fa {
         display: inline;
       }
-      &:hover {
-        transition: all 0.2s ease-in-out;
-        border-color: $green;
-        color: $green;
-        cursor: pointer;
-      } 
     }
   }
   @media screen and (max-width: 999px) {

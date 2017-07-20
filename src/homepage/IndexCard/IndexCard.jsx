@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import ContentContainer from "./ContentContainer.jsx";
+import NewImage from "./NewImage.jsx";
 //Contains
 class IndexCard extends Component {
   render() {

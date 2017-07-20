@@ -13,10 +13,10 @@ class HomepageIndex extends Component {
       allCards: []
     }
   }
-  
+
   componentDidMount() {
     Api.get('/index')
-      .then((cards) => this.setState({ 
+      .then((cards) => this.setState({
         cards: cards,
         allCards: cards
       })
@@ -30,11 +30,12 @@ class HomepageIndex extends Component {
       })
     );
   }
+  
   resetCards() {
     this.setState({
       cards: this.state.allCards
     })
-  }
+  };
 
   categoryFilter(category) {
     let cards = this.state.allCards;
@@ -47,18 +48,18 @@ class HomepageIndex extends Component {
     this.setState({
       cards: filteredCards
     });
-  }
+  };
 
   newFavorite(id) {
     Api.post('/index/favorite', id)
   }
-  
+
   render() {
     return (
-      <div>    
+      <div>
         <Search locate={this.locationSearch.bind(this)} />
         <Filter cards={this.state.cards} categoryFilter={this.categoryFilter.bind(this)} resetCards={ this.resetCards.bind(this) } />
-        <IndexCard cards={this.state.cards} favorite={this.newFavorite.bind(this)}/> 
+        <IndexCard cards={this.state.cards} favorite={this.newFavorite.bind(this)}/>
       </div>
     );
   }
