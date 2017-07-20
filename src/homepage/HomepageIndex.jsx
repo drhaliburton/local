@@ -29,14 +29,15 @@ class HomepageIndex extends Component {
         cards: cards
       })
     );
+  }
 
-  function resetCards(){
+  resetCards(){
     this.setState({
       cards: this.state.allCards
     })
-  }
+  };
 
-  function categoryFilter(category) {
+  categoryFilter(category) {
     let cards = this.state.allCards;
     let filteredCards = [];
     cards.map((card) => {
@@ -47,9 +48,9 @@ class HomepageIndex extends Component {
     this.setState({
       cards: filteredCards
     });
-  }
+  };
 
-  function newFavorite(id) {
+  newFavorite(id) {
     Api.post('/index/favorite', id)
   }
 
