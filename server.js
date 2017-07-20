@@ -8,6 +8,11 @@ const express     = require("express");
 const bodyParser  = require("body-parser");
 const sass        = require("node-sass-middleware");
 
+const webpack = require('webpack');
+const config = require('./webpack.config');
+const webpackDevMiddleware = require('webpack-dev-middleware')
+const webpackHotMiddleware = require('webpack-hot-middleware')
+
 const knexConfig  = require("./knexfile");
 const knex        = require("knex")(knexConfig[ENV]);
 const morgan      = require('morgan');
@@ -17,13 +22,14 @@ const PORT = 3000;
 const itineraryRoutes = require("./routes/itinerary");
 const indexRoutes = require("./routes/index");
 //
-const compiler = webpack(config)
-const path = require('path')
+const compiler = webpack(config);
+const path = require('path');
 const indexPath = path.join(__dirname, 'index.html');
 const publicPath = express.static(path.join(__dirname, 'build'));
 //
 const app = express()
   app.use(bodyParser.urlencoded({extended: true}));
+  app.use(bodyParser.json());
 
   app.use(webpackDevMiddleware(compiler, {
       watchOptions: {

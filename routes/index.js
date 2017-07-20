@@ -3,7 +3,20 @@ require('dotenv').config();
 const express = require('express');
 const router = express.Router();
 const https = require('https');
-const queries = require("../library/index_queries.js")
+const queries = require("../library/index_queries.js");
+const cardQueries = require("../library/card_queries.js");
+const request = require('request');
+
+function createFlickrUrl(photoArray) {
+  let photoUrlsArray = [];
+  for (var obj in photoArray) {
+    let item = photoArray[obj];
+    let photoUrl = `https://farm${item.farm}.staticflickr.com/${item.server}/${item.id}_${item.secret}.jpg`;
+    photoUrlsArray.push(photoUrl);
+  }
+  return photoUrlsArray;
+}
+
 
 module.exports = (knex) => {
   const {
@@ -11,6 +24,11 @@ module.exports = (knex) => {
     makeFavorite,
     allCards
   } = queries(knex);
+
+  const {
+    postPhotos,
+    postCard
+  } = cardQueries(knex);
 
   // Route will be "/:filter" once we implement geolocation
   router.get("/", (req, res) => {
@@ -103,8 +121,28 @@ module.exports = (knex) => {
   })
 
   router.post("/", (req, res) => {
-    console.log(req, res);
-    res.JSON({status: "wooeoeoooo"});
+    postCard(req.body);
+    res.status(200).send("Okay");
+
+      // grabs images from flickr based of user inputted location and posts to the database
+      request({
+        url: 'https://api.flickr.com/services/rest/',
+        qs: {
+          method: 'flickr.photos.search',
+          api_key: '6c2b0623a0f25f7d7f7eb362f7c44fb0',
+          tags: 'travel',
+          radius: 32,
+          lat: 49.120175,
+          lon: -122.969971,
+          format: 'json',
+          nojsoncallback: 1
+        }
+      }, (err, res, body) => {
+        let flickrResponse = JSON.parse(body);
+        let imageArray = flickrResponse.photos.photo.slice(0, 5);
+        let images = createFlickrUrl(imageArray);
+        postPhotos(images);
+      });
   });
 
 

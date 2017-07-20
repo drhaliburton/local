@@ -12,7 +12,7 @@ class AddCard extends Component {
     }
   }
 
-  postNewCard(){
+  postNewCard(event){
     event.preventDefault();
     console.log('Posted new card');
 
