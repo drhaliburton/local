@@ -11,7 +11,7 @@ function createFlickrUrl(photoArray) {
   let photoUrlsArray = [];
   for (var obj in photoArray) {
     let item = photoArray[obj];
-    let photoUrl = `https://farm${item.farm}.staticflickr.com/${item.server}/${item.id}_${item.secret}.jpg`;
+    let photoUrl = `https://farm${item.farm}.staticflickr.com/${item.server}/${item.id}_${item.secret}_z.jpg`;
     photoUrlsArray.push(photoUrl);
   }
   return photoUrlsArray;
@@ -38,7 +38,6 @@ module.exports = (knex) => {
     //This is a temporary response, for testing purposes
     allCards()
       .then(data => {
-        console.log(data)
         let cards = data.map((card) => {
           return {
             id: card.card_id,
@@ -112,34 +111,21 @@ module.exports = (knex) => {
   })
 
   router.post("/", (req, res) => {
-    postCard(req.body);
-    res.status(200).send("Okay");
 
-      // grabs images from flickr based of user inputted location and posts to the database
-      request({
-        url: 'https://api.flickr.com/services/rest/',
-        qs: {
-          method: 'flickr.photos.search',
-          api_key: '6c2b0623a0f25f7d7f7eb362f7c44fb0',
-          tags: 'travel',
-          radius: 32,
-          lat: 49.120175,
-          lon: -122.969971,
-          format: 'json',
-          nojsoncallback: 1
-        }
-      }, (err, res, body) => {
-        let flickrResponse = JSON.parse(body);
-        let imageArray = flickrResponse.photos.photo.slice(0, 5);
-        let images = createFlickrUrl(imageArray);
-        postPhotos(images);
-      });
+    // postCard(req.body);
+    res.status(200).send("Okay");
+    // postPhotos(images);
+
   });
+
+
 
 
   router.post("/favorite", (req, res) => {
     console.log(req.body.id)
-    res.json({status: 'ok'});
+    res.json({
+      status: 'ok'
+    });
   });
 
 

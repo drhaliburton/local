@@ -1,14 +1,14 @@
 import React, {Component} from 'react';
 import GoogleLogin from 'react-google-login';
 
-class SignIn extends Component {
+class SignInIndex extends Component {
 
   responseGoogle (response) {
-
-    document.getElementById('googleButton')
-    console.log(response.profileObj.givenName)
-    fetch('/auth', {
+    // document.getElementById('googleButton')
+    console.log(response)
+    fetch('/signin', {
       method: 'POST',
+      credentials: "same-origin",
       headers: {
         'Accept': 'application/json',
         'Content-Type': 'application/json',
@@ -16,8 +16,10 @@ class SignIn extends Component {
       body: JSON.stringify({
         given_name: response.profileObj.givenName,
         family_name: response.profileObj.familyName,
-        token: response.googleId
+        googleId: response.googleId,
       })
+    }).then((result) => {
+      console.log("get fetched", result);
     })
   }
 
@@ -30,6 +32,7 @@ class SignIn extends Component {
   }
 
   render() {
+    document.getElementById('googleButton')
     return (
         <GoogleLogin
         clientId="658977310896-knrl3gka66fldh83dao2rhgbblmd4un9.apps.googleusercontent.com"
@@ -40,6 +43,6 @@ class SignIn extends Component {
   }
 }
 
-export default SignIn;
+export default SignInIndex;
 
 

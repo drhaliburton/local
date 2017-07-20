@@ -9,6 +9,7 @@ const GettingStartedGoogleMap = withGoogleMap(props => (
     ref={props.onMapLoad}
     defaultZoom={6}
     center={props.center}
+
   >
     {props.markers.map((marker, index) => (
       <Marker

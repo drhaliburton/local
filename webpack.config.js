@@ -3,7 +3,7 @@ var path = require('path');
 var webpack = require('webpack');
 
 module.exports = {
-  devtool: '  source-map',
+  devtool: 'eval-source-map',
   entry:[
     'webpack-hot-middleware/client',
     './src/index.jsx'
@@ -27,6 +27,16 @@ module.exports = {
           'css-loader',
           'sass-loader'
         ]
+      }, 
+      { 
+        test: /\.o?t?tf$/,
+        use: {
+          loader: 'file-loader',  
+          options: {
+            name: '[name].[ext]',
+            outputPath: 'fonts/'
+          }
+        }
       }
     ]
   },
