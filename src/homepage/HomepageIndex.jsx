@@ -3,6 +3,7 @@ import IndexCard from "./IndexCard/IndexCard.jsx";
 import Search from "./Search.jsx";
 import Filter from "./Filter.jsx";
 import Styles from "../../styles/layout.scss";
+import Api from '../../library/api.js';
 
 class HomepageIndex extends Component {
   constructor(props) {
@@ -12,10 +13,9 @@ class HomepageIndex extends Component {
       allCards: []
     }
   }
-
+  
   componentDidMount() {
-    fetch('/index')
-      .then((res) => res.json())
+    Api.get('/index')
       .then((cards) => this.setState({ 
         cards: cards,
         allCards: cards
@@ -23,6 +23,13 @@ class HomepageIndex extends Component {
     );
   }
 
+  locationSearch(event) {
+    Api.get(`/index/locate?find=${event}`)
+      .then((cards) => this.setState({
+        cards: cards
+      })
+    );
+    
   resetCards() {
     this.setState({
       cards: this.state.allCards
@@ -41,13 +48,17 @@ class HomepageIndex extends Component {
       cards: filteredCards
     });
   }
+
+  newFavorite(id) {
+    Api.post('/index/favorite', id)
+  }
   
   render() {
     return (
       <div>    
-        <Search />
+        <Search locate={this.locationSearch.bind(this)} />
         <Filter cards={this.state.cards} categoryFilter={this.categoryFilter.bind(this)} resetCards={ this.resetCards.bind(this) } />
-        <IndexCard cards={this.state.cards}/> 
+        <IndexCard cards={this.state.cards} favorite={this.newFavorite.bind(this)}/> 
       </div>
     );
   }
