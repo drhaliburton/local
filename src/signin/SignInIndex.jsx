@@ -4,11 +4,11 @@ import GoogleLogin from 'react-google-login';
 class SignInIndex extends Component {
 
   responseGoogle (response) {
-
     // document.getElementById('googleButton')
     console.log(response)
-    fetch('/auth', {
+    fetch('/signin', {
       method: 'POST',
+      credentials: "same-origin",
       headers: {
         'Accept': 'application/json',
         'Content-Type': 'application/json',
@@ -16,9 +16,10 @@ class SignInIndex extends Component {
       body: JSON.stringify({
         given_name: response.profileObj.givenName,
         family_name: response.profileObj.familyName,
-        token: response.googleId,
-        allTheCrap: response
+        googleId: response.googleId,
       })
+    }).then((result) => {
+      console.log("get fetched", result);
     })
   }
 
