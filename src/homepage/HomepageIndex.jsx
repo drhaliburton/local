@@ -31,7 +31,7 @@ class HomepageIndex extends Component {
     );
   }
 
-  resetCards(){
+  resetCards() {
     this.setState({
       cards: this.state.allCards
     })
