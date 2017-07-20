@@ -29,6 +29,7 @@ const publicPath = express.static(path.join(__dirname, 'build'));
 //
 const app = express()
   app.use(bodyParser.urlencoded({extended: true}));
+  app.use(bodyParser.json());
 
   app.use(webpackDevMiddleware(compiler, {
       watchOptions: {
@@ -42,7 +43,7 @@ const app = express()
   app.use('/build', publicPath);
   app.use(morgan('dev'))
   app.use(knexLogger(knex))
-  app.get('/', function (_, res) { res.sendFile(indexPath) });
+  app.get('/', function (req, res) { res.sendFile(indexPath) });
   app.use("/itinerary", itineraryRoutes(knex))
   app.use("/index",indexRoutes(knex))
   app.listen(PORT, '0.0.0.0', 'localhost', () => console.log(`Listening on ${ PORT }`));
