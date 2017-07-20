@@ -1,18 +1,18 @@
-
 "use strict";
 
 require('dotenv').config();
 
 // const PORT        = process.env.PORT || 8080;
-const webpack = require('webpack');
-const config = require('./webpack.config');
-const webpackDevMiddleware = require('webpack-dev-middleware')
-const webpackHotMiddleware = require('webpack-hot-middleware')
 const ENV         = process.env.ENV || "development";
 const express     = require("express");
 const bodyParser  = require("body-parser");
 const sass        = require("node-sass-middleware");
 const cookieSession = require('cookie-session')
+
+const webpack = require('webpack');
+const config = require('./webpack.config');
+const webpackDevMiddleware = require('webpack-dev-middleware')
+const webpackHotMiddleware = require('webpack-hot-middleware')
 
 const knexConfig  = require("./knexfile");
 const knex        = require("knex")(knexConfig[ENV]);
@@ -24,8 +24,8 @@ const itineraryRoutes = require("./routes/itinerary");
 const indexRoutes = require("./routes/index");
 const signInRoutes = require("./routes/signin");
 //
-const compiler = webpack(config)
-const path = require('path')
+const compiler = webpack(config);
+const path = require('path');
 const indexPath = path.join(__dirname, 'index.html');
 const publicPath = express.static(path.join(__dirname, 'build'));
 //
