@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import FavCard from "./FavCard.jsx";
+import FavCard from "./FavCard/FavCard.jsx";
 
 //Contains
 class FavoriteBar extends Component {

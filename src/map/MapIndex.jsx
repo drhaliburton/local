@@ -36,9 +36,34 @@
 //   handleMapLoad(map) {
 //     this._mapComponent = map;
 //     if (map) {
-//       console.log(map.getZoom());
+//       constructor(props) {
+//         super(props);
+//         this.state = {
+//           cards: []
+//         }
+//       }
 //     }
 //   }
+
+//   componentDidMount() {
+//     fetch('/index')
+//       .then((res) => res.json())
+//       .then((cards) => this.setState({
+//         cards: cards
+//       })
+//     );
+//     this.map = this.initMap()
+//     this.marker = this.addMarkers()
+//   }
+
+//   initMap() {
+//     const mapOptions = {
+//       zoom: 5,
+//       center: {lat: this.state.cards[0].location[0], lng: this.state.cards[0].location[1]}
+//     }
+//     return new google.maps.Map(document.getElementById('map'), mapOptions)
+//   }
+
 
 //   handleMapClick(event) {
 //     const nextMarkers = [
@@ -60,8 +85,14 @@
 //       markers: nextMarkers,
 //     });
 //   }
-
-
+//   addMarkers() {
+//     this.state.cards.forEach((card) => {
+//       return new google.maps.Marker({
+//         position: {lat: card.location[0], lng: card.location[1]},
+//         map: this.map
+//       })
+//     })
+// 	}
 
 //   render() {
 //     return (

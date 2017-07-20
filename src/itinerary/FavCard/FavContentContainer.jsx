@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import FavStar from "./FavStar.jsx";
-import FavRating from "./FavRating.jsx";
+// import FavRating from "./FavRating.jsx";
 import FavImage from "./FavImage.jsx";
 
 //Contains
@@ -68,5 +68,5 @@ class FavContentContainer extends Component {
     );
   }
 }
-export default ContentContainer;
+export default FavContentContainer;
 

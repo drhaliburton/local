@@ -10,4 +10,4 @@ class FavStar extends Component {
   }
 }
 
-export default Star;
+export default FavStar;

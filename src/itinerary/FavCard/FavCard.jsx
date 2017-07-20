@@ -1,8 +1,8 @@
 import React, {Component} from 'react';
-import ContentContainer from "./ContentContainer.jsx";
+import FavContentContainer from "./FavContentContainer.jsx";
 import FavImage from "./FavImage.jsx";
 //Contains
-class IndexCard extends Component {
+class FavCard extends Component {
   render() {
     const cardsArray = this.props.cards;
     return (
@@ -17,6 +17,6 @@ class IndexCard extends Component {
     );
   }
 }
-export default IndexCard;
+export default FavCard;
 
 
