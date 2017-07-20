@@ -93,9 +93,12 @@ module.exports = (knex) => {
 
   router.post("/favorite", (req, res) => {
     console.log(req.body.id)
-    res.json({status: 'ok'});
+    res.json({
+      status: 'ok'
+    });
   });
 
 
   return router;
 }
+
