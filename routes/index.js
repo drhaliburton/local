@@ -17,15 +17,17 @@ module.exports = (knex) => {
 
     allCards()
       .then(data => {
+        console.log(data)
         let cards = data.map((card) => {
           return {
+            id: card.card_id,
             title: card.title,
             location: [card.location.x, card.location.y],
             description: card.description,
             duration: card.duration,
             category: card.name,
             user: card.given_name,
-            photos: card.url,
+            photos: card.photo_url,
             ratings: card.rating
           }
         });
@@ -67,6 +69,7 @@ module.exports = (knex) => {
           .then(data => {
             let cards = data.map((card) => {
               return {
+                id: card.id,
                 title: card.title,
                 location: [card.location.x, card.location.y],
                 description: card.description,
@@ -90,8 +93,9 @@ module.exports = (knex) => {
 
 
 
-  router.post("/favorites/:id", (req, res) => {
-
+  router.post("/favorite", (req, res) => {
+    console.log(req.body.id)
+    res.json({status: 'ok'});
   });
 
 

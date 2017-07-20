@@ -33,7 +33,7 @@ class ContentContainer extends Component {
         <span className="card-toggle" onClick={this.toggleDescription.bind(this)}>
           <a><span className={`icon fa fa-chevron-up ${rotatedToggle}`}></span></a>
         </span>
-        <Star />
+        <Star cardID={this.props.cardID} favorite={this.props.favorite} />
         <div className="card-content">
           <div className="media">
             <div className="media-content">
