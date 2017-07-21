@@ -2,14 +2,12 @@
 module.exports = (knex) => {
 const obj = {};
 
-  obj.makeFavorite = function(card_id, user_id){
-    knex('favorite')
+  obj.addFavorite = function(cardId, userId) {
+    return knex('favorites')
     .insert({
-      card_id,
-      user_id
+      card_id: cardId,
+      user_id: userId
     })
-    .where('user_id', user_id)
-    .and('card_id', card_id);
   }
 
   obj.getFiltered = function(lat1, lng1, lat2, lng2){
@@ -29,5 +27,5 @@ const obj = {};
     .orderBy('rating', 'desc')
   }
 
-return obj;
+  return obj;
 }

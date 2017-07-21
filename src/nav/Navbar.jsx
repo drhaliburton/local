@@ -24,7 +24,11 @@ class Navbar extends Component {
           </div>
           <div className="navbar-item">
             <p className="itinerary">
-            <a href="/#/auth"><i className="fa fa-paper-plane-o"></i>&nbsp;&nbsp;login</a></p>
+            <a href="/#/signin"><i className="fa fa-paper-plane"></i>&nbsp;&nbsp;login</a></p>
+          </div>
+          <div className="navbar-item">
+            <p className="itinerary">
+            <a href="/#/signout"><i className="fa fa-paper-plane-o"></i>&nbsp;&nbsp;logout</a></p>
           </div>
           <div className="navbar-item">
             <p className="itinerary">

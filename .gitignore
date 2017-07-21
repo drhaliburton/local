@@ -6,3 +6,4 @@ package-lock.json
 *.sqlite3
 .sass-cache
 npm-debug.log
+locals_backup.sql

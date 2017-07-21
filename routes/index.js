@@ -21,13 +21,14 @@ function createFlickrUrl(photoArray) {
 module.exports = (knex) => {
   const {
     getFiltered,
-    makeFavorite,
+    addFavorite,
     allCards
   } = queries(knex);
 
   const {
     postPhotos,
-    postCard
+    postCard,
+    findPlacePhotos
   } = cardQueries(knex);
 
 
@@ -108,12 +109,13 @@ module.exports = (knex) => {
   })
 
   router.post("/", (req, res) => {
+
     const newCard = {
       title: req.body.title,
       description: req.body.description,
       duration: req.body.duration,
       category: req.body.category,
-      user_id: 1
+      user_id: req.session.userId
     }
     const geoKey = process.env.GEO_API_KEY
     const request = encodeURIComponent(req.body.location)
@@ -133,29 +135,43 @@ module.exports = (knex) => {
       //the whole response has been recieved, so we just print it out here
       response.on('end', function () {
         const result = JSON.parse(str).results[0];
-        console.log(result);
         newCard.location = `(${result.geometry.location.lat}, ${result.geometry.location.lng})`
-        console.log(newCard);
+        const photosArray = findPlacePhotos(result);
 
-        postCard(newCard)
-          .catch(err => {
-            res.status(400).send("ERROR");
+      postCard(newCard)
+        .then(([cardID]) => {
+          return photosArray.then((images) => {
+            postPhotos(images, cardID);
+          }).then(() => {
+            res.json({
+              status: 'ok'
+            });
           })
-        res.json({
-          status: 'ok'
-        });
+        })
+        .catch(err => {
+          res.status(400).send("ERROR");
+        })
       })
     }
     https.request(options, callback).end();
   });
 
   router.post("/favorite", (req, res) => {
-
-    res.json({
-      status: 'ok'
-    });
-  });
+    const userId = req.session.userId;
+    const cardId = req.body.id;
+    addFavorite(cardId, userId)
+      .then(() => {
+        res.json({
+          status: 'ok'
+        })
+      })
+      .catch(err => {
+        res.status(400).send("ERROR");
+      });
+  })
 
 
   return router;
 }
+
+
