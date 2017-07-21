@@ -21,7 +21,7 @@ function createFlickrUrl(photoArray) {
 module.exports = (knex) => {
   const {
     getFiltered,
-    makeFavorite,
+    addFavorite,
     allCards
   } = queries(knex);
 
@@ -30,9 +30,9 @@ module.exports = (knex) => {
     postCard
   } = cardQueries(knex);
 
-  
+
   router.get("/", (req, res) => {
-    
+
     allCards()
       .then(data => {
         let cards = data.map((card) => {
@@ -113,7 +113,7 @@ module.exports = (knex) => {
       description: req.body.description,
       duration: req.body.duration,
       category: req.body.category,
-      user_id: 1
+      user_id: req.session.userId
     }
     const geoKey = process.env.GEO_API_KEY
     const request = encodeURIComponent(req.body.location)
@@ -138,6 +138,9 @@ module.exports = (knex) => {
         console.log(newCard);
 
         postCard(newCard)
+        .then(cardId => {
+        console.log(id)
+        })
           .catch(err => {
             res.status(400).send("ERROR");
           })
@@ -150,11 +153,18 @@ module.exports = (knex) => {
   });
 
   router.post("/favorite", (req, res) => {
-
-    res.json({
-      status: 'ok'
-    });
-  });
+    const userId = req.session.userId;
+    const cardId = req.body.id;
+    addFavorite(cardId, userId)
+      .then(() => {
+        res.json({
+          status: 'ok'
+        })
+      })
+      .catch(err => {
+        res.status(400).send("ERROR");
+      });
+  })
 
 
   return router;
