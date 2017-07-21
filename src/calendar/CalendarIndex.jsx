@@ -8,9 +8,15 @@ class CalendarIndex extends Component {
     }
   }
 componentDidMount() {
-    fetch('/index')
-      .then((res) => res.json());
-  }
+    fetch('/export', {
+      method: 'GET',
+      credentials: "include",
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+      }
+    })
+}
   render() {
     return (
       <div className="itinerary">

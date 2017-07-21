@@ -32,7 +32,7 @@ render(
       <Route path="/itinerary" component={ItineraryIndex}/>
       <Route path="/map" component={MapIndex} />
       <Route path="/signin" component={SignInIndex} />
-      <Route path="/export" comonent={CalendarIndex} />
+      <Route path="/export" component={CalendarIndex} />
     </div>
   </Router>
   , reactRoot);

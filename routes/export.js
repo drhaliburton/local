@@ -8,12 +8,13 @@ const router  = express.Router();
 module.exports = (knex) => {
 
   router.get("/", (req, res) => {
+    console.log("SESSSSHHHH", req.session.userId)
     //Check to see if user exists
     knex('users').where({
       id: req.session.userId
     }).select('email')
     .then(emailResult => {
-      console.log('oh hai email ', emailResult)
+      console.log('oh hai email ', emailResult.email)
     })
       // if (emailResult.length > 0) {
       //   return [emailResult[0].email];  
@@ -38,6 +39,7 @@ module.exports = (knex) => {
     })
     .catch(function (err){
       console.log("somebody had an error retrieving email", err);
+      res.status(500).send('Bad'); 
     })
   });
 

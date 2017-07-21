@@ -8,7 +8,7 @@ class SignInIndex extends Component {
     console.log("RESPONSE", response.profileObj)
     fetch('/signin', {
       method: 'POST',
-      credentials: "same-origin",
+      credentials: "include",
       headers: {
         'Accept': 'application/json',
         'Content-Type': 'application/json',
