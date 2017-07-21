@@ -27,7 +27,8 @@ module.exports = (knex) => {
 
   const {
     postPhotos,
-    postCard
+    postCard,
+    findPlacePhotos
   } = cardQueries(knex);
 
 
@@ -108,6 +109,7 @@ module.exports = (knex) => {
   })
 
   router.post("/", (req, res) => {
+
     const newCard = {
       title: req.body.title,
       description: req.body.description,
@@ -133,17 +135,22 @@ module.exports = (knex) => {
       //the whole response has been recieved, so we just print it out here
       response.on('end', function () {
         const result = JSON.parse(str).results[0];
-        console.log(result);
         newCard.location = `(${result.geometry.location.lat}, ${result.geometry.location.lng})`
-        console.log(newCard);
+        const photosArray = findPlacePhotos(newCard);
 
-        postCard(newCard)
-          .catch(err => {
-            res.status(400).send("ERROR");
+      postCard(newCard)
+        .then((cardID) => {
+          return photosArray.then((images) => {
+            postPhotos(images, cardID);
+          }).then(() => {
+            res.json({
+              status: 'ok'
+            });
           })
-        res.json({
-          status: 'ok'
-        });
+        })
+        .catch(err => {
+          res.status(400).send("ERROR");
+        })
       })
     }
     https.request(options, callback).end();
@@ -159,3 +166,5 @@ module.exports = (knex) => {
 
   return router;
 }
+
+
