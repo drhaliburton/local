@@ -1,22 +1,24 @@
 const request = require('request');
 
+
 module.exports = (knex) => {
 
   const obj = {};
 
   obj.postCard = function (card) {
     return knex('categories')
-      .where('categories.name', card.category)
-      .then(results => {
+      .where('name', card.category)
+      .then(rows => {
         return knex('cards')
           .insert({
             title: card.title,
             description: card.description,
             duration: card.duration,
             location: card.location,
-            category_id: results.id,
+            category_id: rows[0].id,
             user_id: card.user_id
           })
+          .returning('id')
       })
   }
 
@@ -26,7 +28,7 @@ module.exports = (knex) => {
       return knex('photos')
         .insert({
           url: image,
-          card_id: 1
+          card_id: cardId
         })
     }))
   }
@@ -70,7 +72,5 @@ module.exports = (knex) => {
     });
   }
 
-  return obj;
+return obj;
 }
-
-
