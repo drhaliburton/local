@@ -40,6 +40,7 @@ class ContentContainer extends Component {
     const detailsVisible = this.state.isVisible ? 'visible'  : '';
 
     let card = this.props.cardContent;
+    console.log(card);
     return (
       <div className={`content-container ${expandedToggle}`}>
         <NewImage />
@@ -52,7 +53,7 @@ class ContentContainer extends Component {
               <p className="title">{card.title}</p>
               <p className="location">{card.location || "Location, Location Ville"}</p>
                <p className="category duration"><span className={`icon is-small fa ${this.findIconCategory(card.category)}`}>&nbsp;</span>&nbsp;~{card.duration} minutes</p>
-                <Star image={card.image} cardID={this.props.cardID} favorite={this.props.favorite} />
+                <Star image={card.photos} cardID={this.props.cardID} favorite={this.props.favorite} />
             </div>
           </div>
           <div className={`card-details ${detailsVisible}`}>
