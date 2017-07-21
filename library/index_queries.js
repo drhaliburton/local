@@ -24,6 +24,7 @@ const obj = {};
     .leftJoin('categories', 'cards.category_id', '=', 'categories.id')
     .leftJoin('photos', 'cards.id', '=', 'photos.card_id')
     .leftJoin('ratings', 'cards.id', '=', 'ratings.card_id')
+    .orderBy('rating', 'desc')
   }
 
 return obj;

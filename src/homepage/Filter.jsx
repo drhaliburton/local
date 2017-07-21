@@ -60,7 +60,7 @@ class Filter extends Component {
     const rotatedToggle = this.state.isRotated ? '' : 'is-rotated';
 
     const filters = this.state.filters.map((filter, index) => {
-      const active = this.state.currentFilter === index;
+    const active = this.state.currentFilter === index;
       return (
         <FilterButton
           key={ index }

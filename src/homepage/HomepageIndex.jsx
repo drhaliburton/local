@@ -14,11 +14,18 @@ class HomepageIndex extends Component {
     }
   }
 
+  componentWillMount() {
+    Api.get('/index')
+      .then((cardsArr) => this.setState({
+        cards: cardsArr,
+      })
+    );
+  }
+
   componentDidMount() {
     Api.get('/index')
-      .then((cards) => this.setState({
-        cards: cards,
-        allCards: cards
+      .then((cardsArr) => this.setState({
+        allCards: cardsArr
       })
     );
   }
@@ -30,7 +37,7 @@ class HomepageIndex extends Component {
       })
     );
   }
-  
+
   resetCards() {
     this.setState({
       cards: this.state.allCards

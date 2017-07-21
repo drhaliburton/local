@@ -6,7 +6,9 @@ const queries = require("../library/itinerary_queries.js")
 
 module.exports = (knex) => {
 
-  const {} = queries(knex);
+  const {
+    favCards
+    } = queries(knex);
 
   router.get("/:id/new", (req, res) => {
    //New itinerary form
@@ -14,10 +16,30 @@ module.exports = (knex) => {
   });
 
   //Will be "/:id/:date" after testing
-  router.get("/", (req, res) => {
-  //View specific Itinerary
-  //Link from Navbar
-    res.render("itinerary", testItn)
+  router.get("/favorites", (req, res) => {
+    let user_id = 1;
+
+      favCards(user_id)
+        .then(data => {
+          let cards = data.map((card) => {
+            console.log(data, card);
+            return {
+              id: card.id,
+              card_id: card.card_id,
+              user_id: card.user_id,
+              title: card.title,
+              location: card.location,
+              description: card.description,
+              duration: card.duration,
+              category_id: card.category_id,
+            }
+          });
+          res.json(cards);
+
+        })
+        .catch(err => {
+        res.status(400).send("ERROR");
+        })
   });
 
   router.get("/map", (req, res) => {
