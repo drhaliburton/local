@@ -13,6 +13,10 @@ class Navbar extends Component {
           <div className="navbar-item">
             <p className="itinerary">
             <a href="/#/itinerary"><i className="fa fa-map-o"></i>&nbsp;&nbsp;itinerary</a></p>
+          </div>  
+          <div className="navbar-item">
+            <p className="calendar">
+            <a href="/#/save"><i className="fa fa-calendar-plus-o"></i>&nbsp;save to calendar</a></p>
           </div>
         </div>
       </nav>

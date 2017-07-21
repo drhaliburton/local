@@ -18,6 +18,21 @@
         display: inline;
       }
     }
+    .calendar {
+      overflow: hidden;
+      a {
+        transition: all 0.1s ease-in-out;
+        color: $dark-grey;
+        &:hover {
+          border-color: $green;
+          color: $green;
+          cursor: pointer;
+        }
+      }
+      .fa {
+        display: inline;
+      }
+    }
   }
   @media screen and (max-width: 999px) {
     overflow: visible;
