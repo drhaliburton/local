@@ -5,7 +5,7 @@ class SignInIndex extends Component {
 
   responseGoogle (response) {
     // document.getElementById('googleButton')
-    console.log("RESPONSE", response)
+    console.log("RESPONSE", response.profileObj)
     fetch('/signin', {
       method: 'POST',
       credentials: "same-origin",
@@ -17,6 +17,7 @@ class SignInIndex extends Component {
         given_name: response.profileObj.givenName,
         family_name: response.profileObj.familyName,
         googleId: response.googleId,
+        email: response.profileObj.email,
       })
     }).then((result) => {
       console.log("get fetched", result);

@@ -7,40 +7,37 @@ const router  = express.Router();
 
 module.exports = (knex) => {
 
-  router.post("/", (req, res) => {
-    
+  router.get("/", (req, res) => {
     //Check to see if user exists
-    
     knex('users').where({
-      googleId: req.body.googleId
-    }).select('id')
-    .then(userResult => {
-      if (userResult.length > 0) {
-        return [userResult[0].id];  
+      id: req.session.userId
+    }).select('email')
+    .then(emailResult => {
+      console.log('oh hai email ', emailResult)
+    })
+      // if (emailResult.length > 0) {
+      //   return [emailResult[0].email];  
       
       //If user does not exist insert them into table 
       
-    } else {
-        return knex('users').insert({
-          given_name: req.body.given_name, 
-          family_name: req.body.family_name, 
-          googleId: req.body.googleId,
-        }).returning('id')
-      }
-    })
+    // } else {
+    //     return knex('users').insert({
+    //       given_name: req.body.given_name, 
+    //       family_name: req.body.family_name, 
+    //       googleId: req.body.googleId,
+    //       email: req.body.email,
+    //     }).returning('id')
+    //   }
+    // })
     .then(function (result) {
       if(result.length > 0) {
-        req.session.userId = result[0];
-        if (req.body.given_name) {
-          req.session.givenName = req.body.given_name;
-        }
         res.status(200).send('All okay!');  
       } else {
         res.status(500).send('Bad');  
       }
     })
     .catch(function (err){
-      console.log("somebody had an error in signin POST stuff", err);
+      console.log("somebody had an error retrieving email", err);
     })
   });
 

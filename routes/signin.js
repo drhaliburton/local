@@ -6,6 +6,7 @@ const router  = express.Router();
 module.exports = (knex) => {
 
   router.post("/", (req, res) => {
+    console.log("YO", req.body)
     //Check to see if user exists
     knex('users').where({
       googleId: req.body.googleId
@@ -20,6 +21,7 @@ module.exports = (knex) => {
           given_name: req.body.given_name, 
           family_name: req.body.family_name, 
           googleId: req.body.googleId,
+          email: req.body.email,
         }).returning('id')
       }
     })

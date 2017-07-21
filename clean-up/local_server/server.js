@@ -14,6 +14,7 @@ const PORT = 3001;
 // Seperated Routes for each Resource
 const itineraryRoutes = require("./routes/itinerary");
 const indexRoutes = require("./routes/index");
+const calendarRoutes = require("./routes/export")
 
 
 // Create a new express server
@@ -24,6 +25,7 @@ const server = express()
   .use(knexLogger(knex))
   .use("/itinerary", itineraryRoutes(knex))
   .use("/index",indexRoutes(knex))
+  .use("/export", calendarRoutes(knex))
   .listen(PORT, '0.0.0.0', 'localhost', () => console.log(`Listening on ${ PORT }`));
 
 // Create the WebSockets server
