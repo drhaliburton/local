@@ -23,7 +23,6 @@ module.exports = (knex) => {
   }
 
   obj.postPhotos = function (imageArr, cardId) {
-    console.log('POST PHOTOS: ', imageArr);
     return Promise.all(imageArr.map((image) => {
       return knex('photos')
         .insert({
@@ -47,18 +46,19 @@ module.exports = (knex) => {
       }
     }
     let uniquePhotosArray = photoUrlsArray.filter(onlyUnique);
-    return photoUrlsArray;
+    return uniquePhotosArray;
   }
 
   obj.findPlacePhotos = function (result) {
+    console.log(result);
     return new Promise(function (resolve, reject) {
       request({
         url: 'https://maps.googleapis.com/maps/api/place/nearbysearch/json',
         qs: {
           key: process.env.GOOGLE_PLACES_API_KEY,
-          radius: 400,
+          radius: 1000,
           location: `${result.geometry.location.lat}, ${result.geometry.location.lng}`,
-          keyword: result.address_components.long_name
+          keyword: result.address_components[0].long_name
         }
       }, (err, res, body) => {
         let placesResponse = JSON.parse(body);
