@@ -164,16 +164,27 @@
   .navbar .navbar-brand {
     margin: 13px 30px; }
     .navbar .navbar-brand .itinerary {
-      overflow: hidden;
-      transition: all 0.2s ease-in-out;
-      color: #363636; }
+      overflow: hidden; }
+      .navbar .navbar-brand .itinerary a {
+        transition: all 0.1s ease-in-out;
+        color: #363636; }
+        .navbar .navbar-brand .itinerary a:hover {
+          border-color: #00caba;
+          color: #00caba;
+          cursor: pointer; }
       .navbar .navbar-brand .itinerary .fa {
         display: inline; }
-      .navbar .navbar-brand .itinerary:hover {
-        transition: all 0.2s ease-in-out;
-        border-color: #00caba;
-        color: #00caba;
-        cursor: pointer; }
+    .navbar .navbar-brand .calendar {
+      overflow: hidden; }
+      .navbar .navbar-brand .calendar a {
+        transition: all 0.1s ease-in-out;
+        color: #363636; }
+        .navbar .navbar-brand .calendar a:hover {
+          border-color: #00caba;
+          color: #00caba;
+          cursor: pointer; }
+      .navbar .navbar-brand .calendar .fa {
+        display: inline; }
   @media screen and (max-width: 999px) {
     .navbar {
       overflow: visible; }
@@ -275,6 +286,19 @@
   border-color: #ccffef;
   border-style: solid;
   border-radius: 10px; }
+  .box :hover {
+    border-color: #00caba; }
+
+.itinerary-time {
+  width: 2%;
+  position: absolute;
+  left: 100px;
+  top: 300px; }
+  .itinerary-time .fa {
+    padding-bottom: 300px;
+    font-size: 60px;
+    color: #CCCCCC;
+    font-weight: 1px; }
 
 .is-rotated {
   transform: rotate(180deg); }
