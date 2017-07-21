@@ -40,9 +40,10 @@ class FavContentContainer extends Component {
     const detailsVisible = this.state.isVisible ? 'visible'  : '';
 
     let card = this.props.cardContent;
+    console.log(card.category);
     return (
       <div className={`content-container ${expandedToggle}`}>
-        <NewImage />
+        <FavImage />
         <span className="card-toggle">
           <a><span className={`icon fa fa-chevron-up ${rotatedToggle}`}onClick={this.toggleDescription.bind(this)}></span></a>
         </span>
@@ -50,16 +51,16 @@ class FavContentContainer extends Component {
           <div className="media">
             <div className="media-content">
               <p className="title">{card.title}</p>
-              <p className="location">{card.location || "Location, Location Ville"}</p>
+              <p className="location">{card.location.x + ' ' + card.location.y || "Location, Location Ville"}</p>
                <p className="category duration"><span className={`icon is-small fa ${this.findIconCategory(card.category)}`}>&nbsp;</span>&nbsp;~{card.duration} minutes</p>
-                <Star image={card.image} cardID={this.props.cardID} favorite={this.props.favorite} />
+                <FavStar image={card.image} cardID={card.id} />
             </div>
           </div>
           <div className={`card-details ${detailsVisible}`}>
             <div className="content">
               <div className="description">
                 <p>{card.description}</p>
-                  <Rating rating={card.rating}/>
+                  {/*<Rating rating={card.rating}/>*/}
               </div>
             </div>
           </div>

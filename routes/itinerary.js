@@ -24,9 +24,16 @@ module.exports = (knex) => {
           let cards = data.map((card) => {
             console.log(data, card);
             return {
+              id: card.id,
+              card_id: card.card_id,
+              user_id: card.user_id,
+              title: card.title,
+              location: card.location,
+              description: card.description,
+              duration: card.duration,
+              category_id: card.category_id,
             }
           });
-          console.log(cards);
           res.json(cards);
 
         })

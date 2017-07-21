@@ -1,5 +1,7 @@
-.footer{
-  .container{
-    background-color: pink;
-  }
+.favorites-container{
+  background-color: $light-grey;
+  width: 100%;
+  position: relative;
+  top: 0;
+  overflow: hidden;
 }

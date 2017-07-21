@@ -5,11 +5,13 @@ import FavCard from "./FavCard/FavCard.jsx";
 class FavoriteBar extends Component {
   render() {
     return (
-      <footer className="footer">
-        <div className="container">
-        </div>
-      </footer>
+    <div className="favorites-container">
+      <FavCard cards={this.props.favCards}/>
+    </div>
     );
   }
 }
 export default FavoriteBar;
+
+
+
