@@ -27,5 +27,5 @@ const obj = {};
     .orderBy('rating', 'desc')
   }
 
-return obj;
+  return obj;
 }
