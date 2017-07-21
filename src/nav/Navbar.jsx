@@ -16,7 +16,7 @@ class Navbar extends Component {
           </div>  
           <div className="navbar-item">
             <p className="calendar">
-            <a href="/#/save"><i className="fa fa-calendar-plus-o"></i>&nbsp;save to calendar</a></p>
+            <a href="/#/save"><i className="fa fa-calendar-plus-o"></i>&nbsp;export to calendar</a></p>
           </div>
         </div>
       </nav>
