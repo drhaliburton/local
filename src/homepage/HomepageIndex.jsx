@@ -17,7 +17,7 @@ class HomepageIndex extends Component {
   componentWillMount() {
     Api.get('/index')
       .then((cardsArr) => this.setState({
-        cards: cardsArr[0],
+        cards: cardsArr,
       })
     );
   }
@@ -25,7 +25,7 @@ class HomepageIndex extends Component {
   componentDidMount() {
     Api.get('/index')
       .then((cardsArr) => this.setState({
-        allCards: cardsArr[1]
+        allCards: cardsArr
       })
     );
   }

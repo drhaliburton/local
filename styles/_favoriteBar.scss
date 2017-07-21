@@ -1,7 +1,51 @@
 .favorites-container{
-  background-color: $light-grey;
+  transition: .7s all ease-in-out;
   width: 100%;
-  position: relative;
-  top: 0;
+  height: 0px;
   overflow: hidden;
+    .cards {
+    margin: 5% 10%;
+    transition: 2s all ease-in-out;
+    font-size: 10px;
+    .card {
+      margin: 15px 5px;
+      width: 10%;
+      padding: 5px;
+      min-width: 160px;
+      height: 238px;
+      display: inline-block;
+      border: 0.5px solid $light-grey;
+      box-shadow: none;
+      background-color: #fff;
+      overflow: hidden;
+      .content-container {
+        height: 148px;
+      }
+      .card-toggle{
+        .fa-chevron-up {
+          transition: all .5s ease-in-out;
+          position: relative;
+          top: 5px;
+          left: 0px;
+        }
+      }
+    }
+    .title {
+      transition: all 1s ease;
+      font-size: 1.2em;
+      margin-bottom: 5px;
+      margin-top: 0px;
+      text-overflow: ellipsis;
+      overflow: hidden;
+      white-space: nowrap;
+      line-height: .9;
+    }
+  }
+  .columns{
+    margin-top: 0px;
+  }
+}
+.set-height {
+  height: 270px;
+  transition: .7s all ease-in-out;
 }
