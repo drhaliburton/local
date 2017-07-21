@@ -6,7 +6,7 @@ class SignInIndex extends Component {
   responseGoogle (response) {
     // document.getElementById('googleButton')
     console.log(response)
-    fetch('/signin', {
+    fetch('/auth', {
       method: 'POST',
       credentials: "same-origin",
       headers: {
