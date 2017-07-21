@@ -43,7 +43,7 @@ class ContentContainer extends Component {
     console.log(card);
     return (
       <div className={`content-container ${expandedToggle}`}>
-        <NewImage />
+        <NewImage image={card.photos} />
         <span className="card-toggle">
           <a><span className={`icon fa fa-chevron-up ${rotatedToggle}`}onClick={this.toggleDescription.bind(this)}></span></a>
         </span>
