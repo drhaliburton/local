@@ -36,6 +36,7 @@ module.exports = (knex) => {
 
     allCards()
       .then(data => {
+        console.log(data)
         let cards = data.map((card) => {
           return {
             id: card.card_id,
@@ -84,6 +85,7 @@ module.exports = (knex) => {
         const lng2 = result.geometry.viewport.southwest.lng;
         getFiltered(lat1, lng1, lat2, lng2)
           .then(data => {
+            console.log(data)
             let cards = data.map((card) => {
               return {
                 id: card.id,
@@ -93,7 +95,7 @@ module.exports = (knex) => {
                 duration: card.duration,
                 category: card.name,
                 user: card.given_name,
-                photos: card.url,
+                photos: card.photo_url,
                 ratings: card.rating
               }
             })
@@ -140,9 +142,12 @@ module.exports = (knex) => {
 
       postCard(newCard)
         .then(([cardID]) => {
-          return photosArray.then((images) => {
+          return photosArray
+          .then((images) => {
+            console.log(images)
             postPhotos(images, cardID);
-          }).then(() => {
+          })
+          .then(() => {
             res.json({
               status: 'ok'
             });
