@@ -7,8 +7,6 @@ import App from './App.jsx';
 
 // import Styles from '../public/styles/layout.css';
 
-
-
 const reactRoot = document.querySelector('#react-root');
 
 if (module.hot) {

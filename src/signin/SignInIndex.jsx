@@ -5,7 +5,7 @@ class SignInIndex extends Component {
 
   responseGoogle (response) {
     // document.getElementById('googleButton')
-    console.log(response)
+    console.log("RESPONSE", response.accessToken)
     fetch('/auth', {
       method: 'POST',
       credentials: "same-origin",
@@ -17,6 +17,8 @@ class SignInIndex extends Component {
         given_name: response.profileObj.givenName,
         family_name: response.profileObj.familyName,
         googleId: response.googleId,
+        email: response.profileObj.email,
+        token: response.accessToken,
       })
     }).then((result) => {
       console.log("get fetched", result);
@@ -37,6 +39,7 @@ class SignInIndex extends Component {
         <GoogleLogin
         clientId="658977310896-knrl3gka66fldh83dao2rhgbblmd4un9.apps.googleusercontent.com"
         buttonText="Login"
+        scope={'https://www.googleapis.com/auth/calendar'}
         onSuccess={this.responseGoogle}
         onFailure={this.failureGoogle}/>
     );

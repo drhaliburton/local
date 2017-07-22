@@ -42,6 +42,8 @@ module.exports = (knex) => {
         })
   });
 
+  router.post('/'),
+
   router.get("/map", (req, res) => {
     // function initMap() {
     // var places = [
@@ -75,5 +77,55 @@ module.exports = (knex) => {
   // Delete each card used from favorite
   });
 
+
   return router;
 }
+
+// {
+//  "kind": "calendar#calendarList",
+//  "etag": "\"p33c9bvcotv7d60g\"",
+//  "nextSyncToken": "CNiV_ZjvztMCEiFzaGF1bmEuaGVubmVzc3kuZ3JpZmZpbkBnbWFpbC5jb20=",
+//  "items": [
+//   {
+//    "kind": "calendar#calendarListEntry",
+//    "etag": "\"1489359467472000\"",
+//    "id": "shauna.hennessy.griffin@gmail.com",
+//    "summary": "shauna.hennessy.griffin@gmail.com",
+//    "timeZone": "UTC",
+//    "colorId": "14",
+//    "backgroundColor": "#9fe1e7",
+//    "foregroundColor": "#000000",
+//    "selected": true,
+//    "accessRole": "owner",
+//    "defaultReminders": [
+//     {
+//      "method": "popup",
+//      "minutes": 30
+//     }
+//    ],
+//    "notificationSettings": {
+//     "notifications": [
+//      {
+//       "type": "eventCreation",
+//       "method": "email"
+//      },
+//      {
+//       "type": "eventChange",
+//       "method": "email"
+//      },
+//      {
+//       "type": "eventCancellation",
+//       "method": "email"
+//      },
+//      {
+//       "type": "eventResponse",
+//       "method": "email"
+//      }
+//     ]
+//    },
+//    "primary": true
+//   }
+//  ]
+// }
+// RFC3339
+// 2008-09-08T22:47:31-07:00

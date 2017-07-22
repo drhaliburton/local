@@ -42,8 +42,9 @@ class SortableComponent extends Component {
   }
   onSortEnd = ({oldIndex, newIndex}) => {
     this.setState({
-      items: arrayMove(this.state.items, oldIndex, newIndex),
+      items: arrayMove(this.state.items, oldIndex, ),
     });
+    console.log('ITEM:', this.state.items[0].title, 'ITEM DURATION:', this.state.items[0].duration)
   };
 
   setCardHeight(items) {

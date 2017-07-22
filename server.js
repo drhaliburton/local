@@ -58,5 +58,4 @@ app.use("/itinerary", itineraryRoutes(knex))
 app.use("/index", indexRoutes(knex))
 app.use("/auth", authRoutes(knex))
 
-
 app.listen(PORT, '0.0.0.0', 'localhost', () => console.log(`Listening on ${ PORT }`));
