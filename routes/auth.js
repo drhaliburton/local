@@ -11,6 +11,7 @@ module.exports = (knex) => {
     knex('users').where({
       googleId: req.body.googleId
     }).select('id')
+    .then(x => { console.log('-- 1 - selected [{id}] maybe', x); return x; })
     .then(userResult => {
       if (userResult.length > 0) {
         return [userResult[0].id];
@@ -18,19 +19,20 @@ module.exports = (knex) => {
       } else {
         //If user does not exist insert them into table (WHAT INFO DO I NEED?)
         return knex('users').insert({
-          given_name: req.body.given_name,
-          family_name: req.body.family_name,
+          given_name: req.body.givenName,
+          family_name: req.body.familyName,
           googleId: req.body.googleId,
           email: req.body.email,
           token: req.body.token,
         }).returning('id')
       }
     })
+    .then(x => { console.log('-- 2 - selected [id] maybe', x); return x; })
     .then(function (result) {
       if(result) {
         req.session.userId = result[0];
-        if (req.body.given_name) {
-          req.session.givenName = req.body.given_name;
+        if (req.body.givenName) {
+          req.session.givenName = req.body.givenName;
         }
         if (req.body.token){
           req.session.token = req.body.token;
@@ -56,7 +58,7 @@ module.exports = (knex) => {
       return res.json(null);
     }
     res.json({
-      name: req.session.givenName,
+      givenName: req.session.givenName,
       token: req.session.token
     })
   });

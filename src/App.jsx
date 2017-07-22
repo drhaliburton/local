@@ -30,21 +30,18 @@ class App extends Component {
       })
     });
   }
-
-  setCurrentUser() {
-    Api.post(`/auth/current_user`)
-    .then((user) => {
+  setCurrentUser(user) {
       this.setState({
         currentUser: user
       })
-    });
   }
 
-  componentDidMount() {
+  componentWillMount() {
     this.getCurrentUser();
   }
 
   render() {
+    console.log('over here?', this.state.currentUser)
     return (
       <Router>
         <div>
