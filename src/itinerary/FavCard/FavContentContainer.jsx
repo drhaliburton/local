@@ -1,9 +1,8 @@
 import React, {Component} from 'react';
 import FavStar from "./FavStar.jsx";
-import FavAdd from "./FavAdd.jsx";
-
-// import FavRating from "./FavRating.jsx";
+import FavRating from "./FavRating.jsx";
 import FavImage from "./FavImage.jsx";
+import FavAdd from "./FavAdd.jsx";
 
 //Contains
 class FavContentContainer extends Component {
@@ -42,6 +41,7 @@ class FavContentContainer extends Component {
     const detailsVisible = this.state.isVisible ? 'visible'  : '';
 
     let card = this.props.cardContent;
+    console.log(card);
     return (
       <div className={`content-container ${expandedToggle}`}>
         <FavImage />
@@ -62,7 +62,7 @@ class FavContentContainer extends Component {
             <div className="content">
               <div className="description">
                 <p>{card.description}</p>
-                  {/*<Rating rating={card.rating}/>*/}
+                  <FavRating rating={card.rating}/>
               </div>
             </div>
           </div>

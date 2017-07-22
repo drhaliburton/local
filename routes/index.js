@@ -6,6 +6,7 @@ const https = require('https');
 const queries = require("../library/index_queries.js");
 const cardQueries = require("../library/card_queries.js");
 const request = require('request');
+const cookieSession = require('cookie-session');
 
 function createFlickrUrl(photoArray) {
   let photoUrlsArray = [];
@@ -108,6 +109,8 @@ module.exports = (knex) => {
   })
 
   router.post("/", (req, res) => {
+    const userID = req.session.userId;
+    console.log('post userID: ', userID);
 
     const newCard = {
       title: req.body.title,
@@ -136,8 +139,8 @@ module.exports = (knex) => {
         const result = JSON.parse(str).results[0];
         newCard.location = `(${result.geometry.location.lat}, ${result.geometry.location.lng})`
         const photosArray = findPlacePhotos(result);
-
-      postCard(newCard)
+        console.log('server id: ', userID);
+      postCard(newCard, userID)
         .then(([cardID]) => {
           return photosArray
           .then((images) => {

@@ -5,7 +5,8 @@ module.exports = (knex) => {
 
   const obj = {};
 
-  obj.postCard = function (card) {
+  obj.postCard = function (card, userId) {
+    console.log('postcard: ', userId);
     return knex('categories')
       .where('name', card.category)
       .then(rows => {
@@ -16,7 +17,7 @@ module.exports = (knex) => {
             duration: card.duration,
             location: card.location,
             category_id: rows[0].id,
-            user_id: card.user_id
+            user_id: userId
           })
           .returning('id')
       })
