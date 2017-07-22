@@ -27,21 +27,18 @@ module.exports = (knex) => {
       }
     })
     .then(function (result) {
-      if(result) {
-        req.session.userId = result[0];
         if (req.body.givenName) {
           req.session.givenName = req.body.givenName;
+          console.log('hm', req.session.givenName)
         }
         if (req.body.token){
           req.session.token = req.body.token;
           console.log('that session token yo - ', req.session.token)
-        }
-        res.status(200).send('All okay!');
+          res.status(200).send('All okay!');
       } else {
         res.status(500).send('Bad');
       }
-    })
-    .catch(function (err){
+    }).catch(function (err){
       console.log("somebody had an error in signin POST stuff", err);
     })
   });

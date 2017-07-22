@@ -25,6 +25,7 @@ class App extends Component {
   getCurrentUser() {
     Api.get(`/auth/current_user`)
     .then((user) => {
+      console.log('user?', user)
       this.setState({
         currentUser: user
       })

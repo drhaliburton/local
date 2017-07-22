@@ -22,8 +22,10 @@ class SignInIndex extends Component {
       },
       body: JSON.stringify(user)
     }).then((result) => {
+      console.log("get fetched", result);  
         this.props.route.setCurrentUser(user);
-        console.log("get fetched", result);
+    }).catch(function (err){
+      console.log("error in the setting of user", err);
     })
   }
 
