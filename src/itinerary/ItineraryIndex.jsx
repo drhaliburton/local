@@ -12,23 +12,16 @@ class ItineraryIndex extends Component {
       favCards: []
     }
   }
-componentDidMount() {
-    fetch('/itinerary', {
-    method: 'GET',
-    credentials: "include",
-    headers: {
-      'Accept': 'application/json',
-      'Content-Type': 'application/json',
-    },
-      body: JSON.stringify({
-        token: response.accessToken,
-      })
-    })
+
+  componentWillMount() {
+    Api.get('/itinerary/favorites')
       .then((cards) => this.setState({
-        cards: cards
+        favCards: cards
       })
     );
+  }
 
+componentDidMount() {
     fetch('https://www.googleapis.com/calendar/v3/calendars/primary/events', {
       method: 'POST',
       credentials: 'include',
