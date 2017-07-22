@@ -17,8 +17,8 @@ module.exports = (knex) => {
       } else {
         //If user does not exist insert them into table (WHAT INFO DO I NEED?)
         return knex('users').insert({
-          given_name: req.body.given_name, 
-          family_name: req.body.family_name, 
+          given_name: req.body.given_name,
+          family_name: req.body.family_name,
           googleId: req.body.googleId,
         }).returning('id')
       }
@@ -29,14 +29,20 @@ module.exports = (knex) => {
         if (req.body.given_name) {
           req.session.givenName = req.body.given_name;
         }
-        res.status(200).send('All okay!');  
+        res.status(200).send('All okay!');
       } else {
-        res.status(500).send('Bad');  
+        res.status(500).send('Bad');
       }
     })
     .catch(function (err){
       console.log("somebody had an error in signin POST stuff", err);
     })
+  });
+
+
+  router.post("/logout", (req, res) => {
+    req.params.userId = null;
+    res.redirect('/');
   });
 
 //   router.get('/', (req, res) => {
