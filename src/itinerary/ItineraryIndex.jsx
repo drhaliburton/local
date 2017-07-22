@@ -10,6 +10,7 @@ class ItineraryIndex extends Component {
     super(props);
     this.state = {
       favCards: []
+      // itCards: []
     }
   }
 

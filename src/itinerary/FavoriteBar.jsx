@@ -8,7 +8,6 @@ class FavoriteBar extends Component {
     this.state = {
       filtersVisible: false,
       isRotated: false,
-      fav: true, 
     }
    }
 
@@ -18,11 +17,6 @@ class FavoriteBar extends Component {
       filtersVisible: !this.state.filtersVisible,
       isRotated: !this.state.isRotated
     });
-  }
-
-   handle(){
-    alert('move to second component')
-    this.setState({fav: false})
   }
 
   render() {
