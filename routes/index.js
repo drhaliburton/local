@@ -21,11 +21,11 @@ function createFlickrUrl(photoArray) {
 module.exports = (knex) => {
   const {
     getFiltered,
-    makeFavorite,
+    addFavorite,
     allCards,
     postUpvote,
     postDownvote,
-    getVotes
+    getRating
   } = queries(knex);
 
   const {
