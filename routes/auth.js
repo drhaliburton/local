@@ -48,6 +48,7 @@ module.exports = (knex) => {
   });
 
   router.get('/current_user', (req, res) => {
+    console.log('session id: ', req.session.userId);
     if (!req.session.userId) {
       return res.json(null);
     }
