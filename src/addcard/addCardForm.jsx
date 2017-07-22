@@ -14,7 +14,6 @@ class AddCard extends Component {
 
   postNewCard(event){
     event.preventDefault();
-    console.log('Posted new card');
 
     fetch('/index', {
       method: 'POST',

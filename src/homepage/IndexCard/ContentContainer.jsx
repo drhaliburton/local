@@ -40,7 +40,6 @@ class ContentContainer extends Component {
     const detailsVisible = this.state.isVisible ? 'visible'  : '';
 
     let card = this.props.cardContent;
-    console.log(card);
     return (
       <div className={`content-container ${expandedToggle}`}>
         <NewImage image={card.photos} />

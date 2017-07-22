@@ -50,7 +50,6 @@ module.exports = (knex) => {
   }
 
   obj.findPlacePhotos = function (result) {
-    console.log(result);
     return new Promise(function (resolve, reject) {
       request({
         url: 'https://maps.googleapis.com/maps/api/place/nearbysearch/json',

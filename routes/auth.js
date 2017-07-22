@@ -1,16 +1,17 @@
-"use strict";
+'use strict';
 
 const express = require('express');
 const router  = express.Router();
 
 module.exports = (knex) => {
 
-  router.post("/", (req, res) => {
-    console.log("YO", req.body)
+  router.post('/', (req, res) => {
+    console.log('YO', req.body)
     //Check to see if user exists
     knex('users').where({
       googleId: req.body.googleId
     }).select('id')
+    .then(x => { console.log('-- 1 - selected [{id}] maybe', x); return x; })
     .then(userResult => {
       if (userResult.length > 0) {
         return [userResult[0].id];
@@ -27,36 +28,34 @@ module.exports = (knex) => {
       }
     })
     .then(function (result) {
-        if (req.body.givenName) {
-          req.session.givenName = req.body.givenName;
-          console.log('hm', req.session.givenName)
-        }
-        if (req.body.token){
-          req.session.token = req.body.token;
-          console.log('that session token yo - ', req.session.token)
-          res.status(200).send('All okay!');
+      if(result) {
+        req.session.userId = result[0];
+        req.session.givenName = req.body.givenName;
+        req.session.token = req.body.token;
       } else {
         res.status(500).send('Bad');
       }
-    }).catch(function (err){
-      console.log("somebody had an error in signin POST stuff", err);
+      res.status(200).send('All okay!');
+    })
+    .catch(function (err){
+      console.log('somebody had an error in signin POST stuff', err);
     })
   });
 
-  router.post("/logout", (req, res) => {
+  router.post('/logout', (req, res) => {
     req.session = null;
     res.redirect('/');
   });
 
-  router.get("/current_user", (req, res) => {
+  router.get('/current_user', (req, res) => {
     if (!req.session.userId) {
       return res.json(null);
-    } 
+    }
     res.json({
       givenName: req.session.givenName,
       token: req.session.token
-    })
-  }); 
+    }).status(200);
+  });
 
 //   router.get('/', (req, res) => {
 //     res.send(`https://www.googleapis.com/oauth2/v3/tokeninfo?id_token=${req.body.tokenId}`)

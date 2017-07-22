@@ -6,7 +6,9 @@ class Navbar extends Component {
 
   logout() {
     Api.post(`/auth/logout`)
-      .then(() => { });
+      .then(() => {
+        this.props.setCurrentUser(null);
+      });
   }
 
   render() {

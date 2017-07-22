@@ -23,14 +23,12 @@ class App extends Component {
   }
 
   getCurrentUser() {
-    Api.get(`/auth/current_user`)
+    Api.get('/auth/current_user')
     .then((user) => {
-      console.log('user?', user)
-      this.setState({
-        currentUser: user
-      })
+      this.setCurrentUser(user);
     });
   }
+
   setCurrentUser(user) {
       this.setState({
         currentUser: user
@@ -40,20 +38,22 @@ class App extends Component {
   componentWillMount() {
     this.getCurrentUser();
   }
+  
+  componentDidMount() {
+  }
 
   render() {
-    console.log('over here?', this.state.currentUser)
     return (
       <Router>
         <div>
           <div>
-            <Navbar getCurrentUser={this.getCurrentUser.bind(this)} currentUser={this.state.currentUser}/>
+            <Navbar setCurrentUser={this.getCurrentUser.bind(this)} currentUser={this.state.currentUser}/>
           </div>
           <Route currentUser={this.state.currentUser} exact path="/" component={HomepageIndex} />
           <Route currentUser={this.state.currentUser} exact path="/add" component={AddCard} />
           <Route currentUser={this.state.currentUser} path="/itinerary" component={ItineraryIndex} />
           <Route currentUser={this.state.currentUser} path="/map" component={MapIndex} />
-          <Route getCurrentUser={this.getCurrentUser.bind(this)} setCurrentUser={this.setCurrentUser.bind(this)} currentUser={this.state.currentUser} path="/auth" component={SignInIndex} />
+           <Route getCurrentUser={this.getCurrentUser.bind(this)} currentUser={this.state.currentUser} path="/auth" component={SignInIndex} /> 
         </div>
       </Router>
     );
