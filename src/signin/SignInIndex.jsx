@@ -23,10 +23,8 @@ class SignInIndex extends Component {
       },
       body: JSON.stringify(user)
     }).then((result) => {
-      console.log("success rohit");
       console.log("user :",user)
       window.location.href = '/';
-        // console.log("get fetched", result);
     })
   }
 
