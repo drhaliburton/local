@@ -23,7 +23,6 @@ const PORT = 3000;
 const itineraryRoutes = require("./routes/itinerary");
 const indexRoutes = require("./routes/index");
 const signInRoutes = require("./routes/signin");
-const calendarRoutes = require("./routes/export");
 
 //
 const compiler = webpack(config);
@@ -59,6 +58,5 @@ app.get('/', function (req, res) { res.sendFile(indexPath) });
 app.use("/itinerary", itineraryRoutes(knex))
 app.use("/index", indexRoutes(knex))
 app.use("/signin", signInRoutes(knex))
-app.use("/export", calendarRoutes(knex))
 
 app.listen(PORT, '0.0.0.0', 'localhost', () => console.log(`Listening on ${ PORT }`));
