@@ -1,5 +1,18 @@
 .modal {
+  .modal-background {
+    background-color: white;
+    opacity: 0.1;
+  }
   .title{
-    color: white;
+    color: $dark-grey;
+  }
+  .fa {
+    color: black;
+  }
+  .button {
+    border-color: $green;
+    &:hover{
+      border-color: black;
+    }
   }
 }
