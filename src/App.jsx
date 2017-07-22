@@ -23,13 +23,12 @@ class App extends Component {
   }
 
   getCurrentUser() {
-    Api.get(`/auth/current_user`)
+    Api.get('/auth/current_user')
     .then((user) => {
-      this.setState({
-        currentUser: user
-      })
+      this.setCurrentUser(user);
     });
   }
+
   setCurrentUser(user) {
       this.setState({
         currentUser: user
@@ -46,7 +45,7 @@ class App extends Component {
       <Router>
         <div>
           <div>
-            <Navbar getCurrentUser={this.getCurrentUser.bind(this)} currentUser={this.state.currentUser}/>
+            <Navbar setCurrentUser={this.getCurrentUser.bind(this)} currentUser={this.state.currentUser}/>
           </div>
           <Route currentUser={this.state.currentUser} exact path="/" component={HomepageIndex} />
           <Route currentUser={this.state.currentUser} exact path="/add" component={AddCard} />

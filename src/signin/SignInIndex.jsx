@@ -3,6 +3,7 @@ import GoogleLogin from 'react-google-login';
 
 class SignInIndex extends Component {
 
+
   responseGoogle (response) {
     const user = {
         givenName: response.profileObj.givenName,
@@ -22,28 +23,31 @@ class SignInIndex extends Component {
       },
       body: JSON.stringify(user)
     }).then((result) => {
-        this.props.route.setCurrentUser(user);
+        this.props.route.setCurrentUser(result);
         console.log("get fetched", result);
     })
   }
 
   failureGoogle (response){
-    alert('Go home. Google doesnt like you')
+    alert('Login failed. Please register with Google and try again.')
   }
 
-  componentDidMount() {
-
+  componentDidUpdate(){
+    this.props.route.getCurrentUser();
   }
+
 
   render() {
     document.getElementById('googleButton')
     return (
+      <div className="login" onClick={this.props.getCurrentUser}>
         <GoogleLogin
         clientId="658977310896-knrl3gka66fldh83dao2rhgbblmd4un9.apps.googleusercontent.com"
         buttonText="Login"
         scope={'https://www.googleapis.com/auth/calendar'}
         onSuccess={this.responseGoogle.bind(this)}
         onFailure={this.failureGoogle.bind(this)}/>
+      </div>
     );
   }
 }
