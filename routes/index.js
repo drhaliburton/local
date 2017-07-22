@@ -6,6 +6,7 @@ const https = require('https');
 const queries = require("../library/index_queries.js");
 const cardQueries = require("../library/card_queries.js");
 const request = require('request');
+const cookieSession = require('cookie-session');
 
 function createFlickrUrl(photoArray) {
   let photoUrlsArray = [];

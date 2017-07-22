@@ -9,7 +9,6 @@ import ItineraryIndex from './itinerary/ItineraryIndex.jsx';
 import MapIndex from './map/MapIndex.jsx';
 import SignInIndex from './signin/SignInIndex.jsx';
 import SortableComponent from './dnd/SortableComponent.jsx';
-import AddCard from './addcard/addCardForm.jsx';
 import Api from '../library/api.js';
 // import Styles from '../public/styles/layout.css';
 
@@ -39,7 +38,7 @@ class App extends Component {
   componentWillMount() {
     this.getCurrentUser();
   }
-  
+
   componentDidMount() {
   }
 
@@ -51,10 +50,9 @@ class App extends Component {
             <Navbar setCurrentUser={this.getCurrentUser.bind(this)} currentUser={this.state.currentUser}/>
           </div>
           <Route currentUser={this.state.currentUser} exact path="/" component={HomepageIndex} />
-          <Route currentUser={this.state.currentUser} exact path="/add" component={AddCard} />
           <Route currentUser={this.state.currentUser} path="/itinerary" component={ItineraryIndex} />
           <Route currentUser={this.state.currentUser} path="/map" component={MapIndex} />
-           <Route getCurrentUser={this.getCurrentUser.bind(this)} currentUser={this.state.currentUser} path="/auth" component={SignInIndex} /> 
+           <Route getCurrentUser={this.getCurrentUser.bind(this)} currentUser={this.state.currentUser} path="/auth" component={SignInIndex} />
         </div>
       </Router>
     );
