@@ -48,10 +48,10 @@ componentDidMount() {
           <FavoriteBar favCards={this.state.favCards}/>
         </div>
         <div className="columns">
-          <div className="column is-4">
+          <div className="column is-2">
             <ItineraryTime />
           </div>
-          <div className="column <is-6></is-6>">
+          <div className="column is-9">
             <SortableComponent />
           </div>
         </div>

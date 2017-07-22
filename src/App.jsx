@@ -1,6 +1,6 @@
 require('../styles/layout.scss');
 
-import React, {Component} from 'react';
+import React, {Component, forceUpdate} from 'react';
 import { render } from 'react-dom';
 import { HashRouter as Router, Link, Route } from 'react-router-dom';
 import Navbar from './nav/Navbar.jsx';
@@ -27,6 +27,7 @@ class App extends Component {
     .then((user) => {
       this.setCurrentUser(user);
     });
+    this.forceUpdate();
   }
 
   setCurrentUser(user) {

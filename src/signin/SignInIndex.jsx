@@ -1,8 +1,11 @@
 import React, {Component} from 'react';
+import { HashRouter as Router, Link, Route } from 'react-router-dom';
 import GoogleLogin from 'react-google-login';
 
 class SignInIndex extends Component {
-
+  constructor(props) {
+    super(props);
+  }
 
   responseGoogle (response) {
     const user = {
@@ -23,8 +26,10 @@ class SignInIndex extends Component {
       },
       body: JSON.stringify(user)
     }).then((result) => {
-        this.props.route.setCurrentUser(result);
+      if (result) {
+        return this.props.route.setCurrentUser(user);
         console.log("get fetched", result);
+      }
     })
   }
 
@@ -33,7 +38,7 @@ class SignInIndex extends Component {
   }
 
   componentDidUpdate(){
-    this.props.route.getCurrentUser();
+    this.props.route.getCurrentUser()
   }
 
 
