@@ -25,7 +25,7 @@ module.exports = (knex) => {
     allCards,
     postUpvote,
     postDownvote,
-    getRating
+    getRatings
   } = queries(knex);
 
   const {
@@ -99,7 +99,7 @@ module.exports = (knex) => {
                 category: card.name,
                 user: card.given_name,
                 photos: card.url,
-                ratings: card.rating
+                ratings: card.total_rating
               }
             })
             res.json(cards)
@@ -120,7 +120,7 @@ module.exports = (knex) => {
     if(req.session.userId){
       postUpvote(card_id, req.session.userId)
       .then(() => {
-        res.json({status: 'okay'})
+        // getRatings(card_id)
       })
       .catch(err => {
             res.status(400).send("ERROR in upvoting");
@@ -136,7 +136,7 @@ module.exports = (knex) => {
     if(req.session.userId){
       postDownvote(card_id, req.session.userId)
       .then(() => {
-        res.json({status: 'okay'})
+        // getRatings(card_id)
       })
       .catch(err => {
             res.status(400).send("ERROR in downvoting");

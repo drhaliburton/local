@@ -54,16 +54,24 @@ class HomepageIndex extends Component {
 
   newFavorite(id) {
     Api.post('/index/favorite', id)
-
   }
 
   addOne(id){
-  Api.post('/index/upvote', id)
-
+    Api.post('/index/upvote', id)
+    .then(() => {
+      this.setState({
+        cards: this.state.allCards
+      })
+    })
   }
 
   removeOne(id){
     Api.post('/index/downvote', id)
+    .then(() => {
+      this.setState({
+        cards: this.state.allCards
+      })
+    })
   }
 
   render() {
