@@ -47,11 +47,13 @@ componentDidMount() {
         <div className="header">
           <FavoriteBar favCards={this.state.favCards}/>
         </div>
+        <p className="calendar"><i className="fa fa-calendar-check-o"></i>&nbsp;save to calendar</p>
         <div className="columns">
-          <div className="column is-4">
+
+          <div className="column is-2">
             <ItineraryTime />
           </div>
-          <div className="column <is-6></is-6>">
+          <div className="column is-9">
             <SortableComponent />
           </div>
         </div>
