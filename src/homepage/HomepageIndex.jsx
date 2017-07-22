@@ -64,15 +64,6 @@ class HomepageIndex extends Component {
 
   }
 
-  addOne(id){
-  Api.post('/index/upvote', id)
-
-  }
-
-  removeOne(id){
-    Api.post('/index/downvote', id)
-  }
-
   render() {
     return (
       <div>

@@ -22,8 +22,7 @@ module.exports = (knex) => {
   const {
     getFiltered,
     allCards,
-    addFavorite,
-    allCards
+    addFavorite
   } = queries(knex);
 
   const {
