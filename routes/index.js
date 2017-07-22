@@ -49,6 +49,8 @@ module.exports = (knex) => {
             ratings: card.rating
           }
         });
+        // let allCards = getCardPhotos(cards);
+
         res.json(cards)
 
       })

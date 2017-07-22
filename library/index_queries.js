@@ -27,5 +27,25 @@ const obj = {};
     .orderBy('rating', 'desc')
   }
 
+  obj.getCardPhotos = function(cardId) {
+    return knex('photos')
+      .where('card_id', cardId)
+  }
+
+  obj.addCardPhotos = function(cards) {
+    let cardsObj = {};
+    for (let card in cards) {
+      console.log(cards);
+      obj.getCardPhotos(card.id)
+      .then(data => {
+        let cardPhotos = data;
+      });
+      cardsObj[card.id] = card;
+      cardsObj[card.id].photos = cardPhotos;
+    }
+    console.log(cardsObj);
+    return cardsObj;
+  }
+
   return obj;
 }
