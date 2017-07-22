@@ -30,12 +30,18 @@ class App extends Component {
       })
     });
   }
+  setCurrentUser(user) {
+      this.setState({
+        currentUser: user
+      })
+  }
 
-  componentDidMount() {
+  componentWillMount() {
     this.getCurrentUser();
   }
 
   render() {
+    console.log('over here?', this.state.currentUser)
     return (
       <Router>
         <div>
@@ -46,7 +52,7 @@ class App extends Component {
           <Route currentUser={this.state.currentUser} exact path="/add" component={AddCard} />
           <Route currentUser={this.state.currentUser} path="/itinerary" component={ItineraryIndex} />
           <Route currentUser={this.state.currentUser} path="/map" component={MapIndex} />
-          <Route getCurrentUser={this.getCurrentUser.bind(this)} currentUser={this.state.currentUser} path="/auth" component={SignInIndex} />
+          <Route getCurrentUser={this.getCurrentUser.bind(this)} setCurrentUser={this.setCurrentUser.bind(this)} currentUser={this.state.currentUser} path="/auth" component={SignInIndex} />
         </div>
       </Router>
     );
