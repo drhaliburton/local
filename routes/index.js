@@ -78,7 +78,7 @@ module.exports = (knex) => {
       //the whole response has been recieved, so we just print it out here
       response.on('end', function () {
         const result = JSON.parse(str).results[0];
-        console.log(result);
+        console.log(result);  
 
         const lat1 = result.geometry.viewport.northeast.lat;
         const lng1 = result.geometry.viewport.northeast.lng;

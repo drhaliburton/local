@@ -13,8 +13,6 @@ import SortableComponent from './dnd/SortableComponent.jsx';
 import AddCard from './addcard/addCardForm.jsx';
 // import Styles from '../public/styles/layout.css';
 
-
-
 const reactRoot = document.querySelector('#react-root');
 
 if (module.hot) {

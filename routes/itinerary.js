@@ -6,7 +6,7 @@ const queries = require("../library/itinerary_queries.js")
 
 module.exports = (knex) => {
 
-  const {} = queries(knex);
+  // const {} = queries(knex);
 
   router.get("/:id/new", (req, res) => {
    //New itinerary form
@@ -15,10 +15,20 @@ module.exports = (knex) => {
 
   //Will be "/:id/:date" after testing
   router.get("/", (req, res) => {
-  //View specific Itinerary
+  //knex query retrieves email from user 
+    knex('users').where({
+        id: req.session.userId
+      }).select('token')
+      .then(result => {
+        console.log('oh hai token itinerary ', result[0].token)
+      })
+  
+    //View specific Itinerary
   //Link from Navbar
-    res.render("itinerary", testItn)
+    res.render("itinerary")
   });
+
+  router.post('/'), 
 
   router.get("/map", (req, res) => {
     // function initMap() {
@@ -53,5 +63,55 @@ module.exports = (knex) => {
   // Delete each card used from favorite
   });
 
+
   return router;
 }
+
+// {
+//  "kind": "calendar#calendarList",
+//  "etag": "\"p33c9bvcotv7d60g\"",
+//  "nextSyncToken": "CNiV_ZjvztMCEiFzaGF1bmEuaGVubmVzc3kuZ3JpZmZpbkBnbWFpbC5jb20=",
+//  "items": [
+//   {
+//    "kind": "calendar#calendarListEntry",
+//    "etag": "\"1489359467472000\"",
+//    "id": "shauna.hennessy.griffin@gmail.com",
+//    "summary": "shauna.hennessy.griffin@gmail.com",
+//    "timeZone": "UTC",
+//    "colorId": "14",
+//    "backgroundColor": "#9fe1e7",
+//    "foregroundColor": "#000000",
+//    "selected": true,
+//    "accessRole": "owner",
+//    "defaultReminders": [
+//     {
+//      "method": "popup",
+//      "minutes": 30
+//     }
+//    ],
+//    "notificationSettings": {
+//     "notifications": [
+//      {
+//       "type": "eventCreation",
+//       "method": "email"
+//      },
+//      {
+//       "type": "eventChange",
+//       "method": "email"
+//      },
+//      {
+//       "type": "eventCancellation",
+//       "method": "email"
+//      },
+//      {
+//       "type": "eventResponse",
+//       "method": "email"
+//      }
+//     ]
+//    },
+//    "primary": true
+//   }
+//  ]
+// }
+// RFC3339
+// 2008-09-08T22:47:31-07:00

@@ -13,8 +13,8 @@ module.exports = (knex) => {
     }).select('id')
     .then(userResult => {
       if (userResult.length > 0) {
-        return [userResult[0].id];  // Surely there's a better way
-                                    // There's no better way, and stop calling me Shirley
+        return [userResult[0].id];  
+
       } else {
         //If user does not exist insert them into table (WHAT INFO DO I NEED?)
         return knex('users').insert({
@@ -22,14 +22,19 @@ module.exports = (knex) => {
           family_name: req.body.family_name, 
           googleId: req.body.googleId,
           email: req.body.email,
+          token: req.body.token,
         }).returning('id')
       }
     })
     .then(function (result) {
-      if(result.length > 0) {
+      if(result) {
         req.session.userId = result[0];
         if (req.body.given_name) {
           req.session.givenName = req.body.given_name;
+        }
+        if (req.body.token){
+          req.session.token = req.body.token;
+          console.log('that session token yo - ', req.session.token)
         }
         res.status(200).send('All okay!');  
       } else {
