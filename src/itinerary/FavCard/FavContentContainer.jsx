@@ -54,8 +54,7 @@ class FavContentContainer extends Component {
               <p className="title">{card.title}</p>
               <p className="location">{card.location.x + ' ' + card.location.y || "Location, Location Ville"}</p>
                <p className="category duration"><span className={`icon is-small fa ${this.findIconCategory(card.category)}`}>&nbsp;</span>&nbsp;~{card.duration} minutes</p>
-                <FavStar image={card.image} cardID={card.id} />
-                <FavAdd image={card.image} cardID={card.id}/>
+                <span className="icon is-pulled-right" aria-hidden="true"><i className="fa fa-plus"></i></span>
             </div>
           </div>
           <div className={`card-details ${detailsVisible}`}>
