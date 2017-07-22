@@ -6,7 +6,7 @@ class FavCard extends Component {
   render() {
     const cardsArray = this.props.cards;
     return (
-      <div className="columns is-multiline cards">
+      <span>
         {
           cardsArray.map((card, index) => {
             return <div key={index} className="column is-one-quarter card">
@@ -14,7 +14,7 @@ class FavCard extends Component {
             </div>;
           })
         }
-      </div>
+      </span>
     );
   }
 }
