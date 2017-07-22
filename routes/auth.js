@@ -41,8 +41,18 @@ module.exports = (knex) => {
 
 
   router.post("/logout", (req, res) => {
-    req.params.userId = null;
+    req.session = null;
     res.redirect('/');
+  });
+
+  router.get("/current_user", (req, res) => {
+    if (!req.session.userId) {
+      return res.json(null);
+    }
+    res.json({
+      name: req.session.givenName,
+      token: req.session.token
+    })
   });
 
 //   router.get('/', (req, res) => {

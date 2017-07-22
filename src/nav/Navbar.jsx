@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
+import Api from '../../library/api.js';
 //Importing filters and searchbar components
 
 class Navbar extends Component {
 
   logout() {
     Api.post(`/auth/logout`)
-      .then(() => {});
+      .then(() => { });
   }
 
   render() {
@@ -61,15 +62,16 @@ class Navbar extends Component {
                   </div>
                 </div>
           }
-          {false ?
+          <p className="navbar-item">|</p>
+          {this.props.currentUser ?
             <div className="navbar-item">
               <p className="itinerary">
-                <a href="/#/auth"><i className="fa fa-paper-plane"></i>&nbsp;&nbsp;login</a></p>
+                <a onClick={this.logout.bind(this)}><i className="fa fa-paper-plane-o"></i>&nbsp;&nbsp;logout</a></p>
             </div>
             :
             <div className="navbar-item">
               <p className="itinerary">
-                <a onClick={this.logout.bind(this)}><i className="fa fa-paper-plane-o"></i>&nbsp;&nbsp;logout</a></p>
+                <a href="/#/auth"><i className="fa fa-paper-plane"></i>&nbsp;&nbsp;login</a></p>
             </div>
           }
         </div>
