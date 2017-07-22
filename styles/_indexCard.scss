@@ -20,7 +20,7 @@
       background-color: white;
       transition: 1s all ease-in-out;
       z-index: 100;
-      
+
       &.expanded {
         transition: 1.2s all ease-in-out !important;
         margin: 0% !important;
@@ -36,10 +36,10 @@
         }
         .media-content{
           margin-top: 10px;
-          transition: all 1s ease-in-out !important;          
+          transition: all 1s ease-in-out !important;
         }
         .title{
-          overflow: visible; 
+          overflow: visible;
           white-space: inherit;
           transition: all 1s ease-in-out !important;
         }
@@ -50,11 +50,11 @@
         background-color: white;
         text-align: center;
         padding: 10px;
-        
+
         a {
           .card-toggle {
             cursor: pointer;
-          } 
+          }
         }
       }
     }
@@ -90,7 +90,7 @@
       color: $green;
       &:hover {
         color: $dark-green;
-      } 
+      }
     }
     .content {
       height: auto;
@@ -114,15 +114,15 @@
     .media-content {
       width: 170px;
       background-color: white;
-      transition: all 1s ease-in-out !important;          
+      transition: all 1s ease-in-out !important;
     }
 
     .title {
       transition: all 1s ease !important;
       font-size: 1.4em;
-      margin-bottom: 5px; 
-      text-overflow: ellipsis; 
-      overflow: hidden; 
+      margin-bottom: 5px;
+      text-overflow: ellipsis;
+      overflow: hidden;
       white-space: nowrap;
     }
 
@@ -190,7 +190,7 @@
       overflow: hidden;
 
       img {
-        width: 280px; 
+        width: 280px;
         transition: 2s all ease-in-out !important;
 
       }
@@ -205,7 +205,7 @@
       }
     }
   }
-  
+
 }
 
 .columns {

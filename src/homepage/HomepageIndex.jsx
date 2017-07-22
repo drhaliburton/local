@@ -14,11 +14,18 @@ class HomepageIndex extends Component {
     }
   }
 
+  componentWillMount() {
+    Api.get('/index')
+      .then((cardsArr) => this.setState({
+        cards: cardsArr,
+      })
+    );
+  }
+
   componentDidMount() {
     Api.get('/index')
-      .then((cards) => this.setState({
-        cards: cards,
-        allCards: cards
+      .then((cardsArr) => this.setState({
+        allCards: cardsArr
       })
     );
   }
@@ -71,7 +78,7 @@ class HomepageIndex extends Component {
       <div>
         <Search locate={this.locationSearch.bind(this)} />
         <Filter cards={this.state.cards} categoryFilter={this.categoryFilter.bind(this)} resetCards={ this.resetCards.bind(this) } />
-        <IndexCard addOne={this.addOne.bind(this)} removeOne={this.removeOne.bind(this)} cards={this.state.cards} favorite={this.newFavorite.bind(this)}/>
+        <IndexCard cards={this.state.cards} favorite={this.newFavorite.bind(this)}/>
       </div>
     );
   }

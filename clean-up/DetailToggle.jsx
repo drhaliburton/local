@@ -12,13 +12,12 @@ class DetailToggle extends Component {
     }
 
   toggleDescription(event){
-    console.log('clicked');
     this.setState({
       isExpanded: !this.state.isExpanded,
       isRotated: !this.state.isRotated,
       visibleDetails: !this.state.visibleDetails
-    });  
-  }  
+    });
+  }
 
 
   render() {

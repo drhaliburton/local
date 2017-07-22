@@ -1,10 +1,10 @@
 import React, {Component} from 'react';
-import Star from "./Star.jsx";
-import Rating from "./Rating.jsx";
-import NewImage from "./NewImage.jsx";
+import FavStar from "./FavStar.jsx";
+// import FavRating from "./FavRating.jsx";
+import FavImage from "./FavImage.jsx";
 
 //Contains
-class ContentContainer extends Component {
+class FavContentContainer extends Component {
 
   constructor(props) {
     super(props);
@@ -42,7 +42,7 @@ class ContentContainer extends Component {
     let card = this.props.cardContent;
     return (
       <div className={`content-container ${expandedToggle}`}>
-        <NewImage image={card.photos} />
+        <FavImage />
         <span className="card-toggle">
           <a><span className={`icon fa fa-chevron-up ${rotatedToggle}`}onClick={this.toggleDescription.bind(this)}></span></a>
         </span>
@@ -50,16 +50,16 @@ class ContentContainer extends Component {
           <div className="media">
             <div className="media-content">
               <p className="title">{card.title}</p>
-              <p className="location">{card.location || "Location, Location Ville"}</p>
+              <p className="location">{card.location.x + ' ' + card.location.y || "Location, Location Ville"}</p>
                <p className="category duration"><span className={`icon is-small fa ${this.findIconCategory(card.category)}`}>&nbsp;</span>&nbsp;~{card.duration} minutes</p>
-                <Star image={card.photos} cardID={this.props.cardID} favorite={this.props.favorite} />
+                <FavStar image={card.image} cardID={card.id} />
             </div>
           </div>
           <div className={`card-details ${detailsVisible}`}>
             <div className="content">
               <div className="description">
                 <p>{card.description}</p>
-                  <Rating cardID={this.props.cardID} rating={card.card_rating}/>
+                  {/*<Rating rating={card.rating}/>*/}
               </div>
             </div>
           </div>
@@ -68,5 +68,5 @@ class ContentContainer extends Component {
     );
   }
 }
-export default ContentContainer;
+export default FavContentContainer;
 

@@ -1,57 +1,72 @@
+const request = require('request');
+
+
 module.exports = (knex) => {
 
- function returnCategoryId(category){
-    let categoryIdMap = {
-      Nature: 1,
-      Shopping: 2,
-      Food: 3,
-      Sights: 4
-    }
-    return categoryIdMap[category];
-  }
+  const obj = {};
 
-const obj = {};
-
-  obj.postCardCategory = function(object){
-    console.log('Catergory!!!');
-      return knex('categories')
-        .insert({name: object.category})
-        .returning('id')
-        .then(function (response){
-          return knex('card_categories')
+  obj.postCard = function (card) {
+    return knex('categories')
+      .where('name', card.category)
+      .then(rows => {
+        return knex('cards')
+          .insert({
+            title: card.title,
+            description: card.description,
+            duration: card.duration,
+            location: card.location,
+            category_id: rows[0].id,
+            user_id: card.user_id
+          })
           .returning('id')
-          .insert({category_id: response[0]})
-        })
-  }
-
-
-  obj.postCard = function(object){
-    let category = returnCategoryId(object.category);
-    return knex('cards')
-      .insert({
-        title: object.title,
-        // location: object.location,
-        description: object.description,
-        duration: object.duration,
-        category_id: category
       })
-      .returning('id')
-      .then(function (response){
-        return knex('card_categories')
-          .returning('id')
-          .insert({card_id: response[0]})
-        })
   }
 
-  obj.postPhotos = function(imageArr){
+  obj.postPhotos = function (imageArr, cardId) {
     return Promise.all(imageArr.map((image) => {
       return knex('photos')
-      .insert({
-        url: image,
-        card_id: 1
-      })
+        .insert({
+          url: image,
+          card_id: cardId
+        })
     }))
   }
 
-  return obj;
+  function onlyUnique(value, index, self) {
+    return self.indexOf(value) === index;
+  }
+
+  obj.createImageUrl = function (placesArray) {
+    let photoUrlsArray = [];
+    for (var obj in placesArray) {
+      let photos = placesArray[obj].photos;
+      for (var photo in photos) {
+        let photoUrl = `https://maps.googleapis.com/maps/api/place/photo?maxwidth=1600&photoreference=${photos[photo].photo_reference}&key=${process.env.GOOGLE_PLACES_API_KEY}`;
+        photoUrlsArray.push(photoUrl);
+      }
+    }
+    let uniquePhotosArray = photoUrlsArray.filter(onlyUnique);
+    return uniquePhotosArray;
+  }
+
+  obj.findPlacePhotos = function (result) {
+    return new Promise(function (resolve, reject) {
+      request({
+        url: 'https://maps.googleapis.com/maps/api/place/nearbysearch/json',
+        qs: {
+          key: process.env.GOOGLE_PLACES_API_KEY,
+          radius: 1000,
+          location: `${result.geometry.location.lat}, ${result.geometry.location.lng}`,
+          keyword: result.address_components[0].long_name
+        }
+      }, (err, res, body) => {
+        let placesResponse = JSON.parse(body);
+        let placesArray = placesResponse.results.slice(0, 5);
+        let images = obj.createImageUrl(placesArray);
+        resolve(images);
+      });
+    });
+  }
+
+return obj;
 }

@@ -21,24 +21,20 @@ function createFlickrUrl(photoArray) {
 module.exports = (knex) => {
   const {
     getFiltered,
-    makeFavorite,
     allCards,
-    postUpvote,
-    postDownvote,
-    getVotes
+    addFavorite,
+    allCards
   } = queries(knex);
 
   const {
     postPhotos,
-    postCard
+    postCard,
+    findPlacePhotos
   } = cardQueries(knex);
 
-  // Route will be "/:filter" once we implement geolocation
+
   router.get("/", (req, res) => {
-    //The following response will be used once geolocation has been implemented
 
-
-    //This is a temporary response, for testing purposes
     allCards()
       .then(data => {
         let cards = data.map((card) => {
@@ -84,7 +80,6 @@ module.exports = (knex) => {
       //the whole response has been recieved, so we just print it out here
       response.on('end', function () {
         const result = JSON.parse(str).results[0];
-        console.log(result);
 
         const lat1 = result.geometry.viewport.northeast.lat;
         const lng1 = result.geometry.viewport.northeast.lng;
@@ -101,7 +96,7 @@ module.exports = (knex) => {
                 duration: card.duration,
                 category: card.name,
                 user: card.given_name,
-                photos: card.url,
+                photos: card.photo_url,
                 ratings: card.rating
               }
             })
@@ -116,56 +111,72 @@ module.exports = (knex) => {
     https.request(options, callback).end();
   })
 
-  router.post("/upvote", (req, res) => {
-    let card_id = req.body.id
-    console.log("The card id is " + card_id)
-    console.log(req.session.userId)
-    if(req.session.userId){
-      postUpvote(card_id, req.session.userId)
-      .then(() => {
-        res.json({status: 'okay'})
-      })
-      .catch(err => {
-            res.status(400).send("ERROR in upvoting");
-
-      });
-    }
-  })
-
-  router.post("/downvote", (req, res) => {
-    let card_id = req.body.id
-    console.log("The card id is " + card_id)
-    console.log(req.session.userId)
-    if(req.session.userId){
-      postDownvote(card_id, req.session.userId)
-      .then(() => {
-        res.json({status: 'okay'})
-      })
-      .catch(err => {
-            res.status(400).send("ERROR in downvoting");
-
-      });
-    }
-  })
-
   router.post("/", (req, res) => {
 
-    // postCard(req.body);
-    res.status(200).send("Okay");
-    // postPhotos(images);
+    const newCard = {
+      title: req.body.title,
+      description: req.body.description,
+      duration: req.body.duration,
+      category: req.body.category,
+      user_id: req.session.userId
+    }
+    const geoKey = process.env.GEO_API_KEY
+    const request = encodeURIComponent(req.body.location)
+    const options = {
+      host: 'maps.googleapis.com',
+      path: `/maps/api/geocode/json?address=${request}&key=${geoKey}`
+    };
 
+    const callback = function (response) {
+      let str = '';
+
+      //another chunk of data has been recieved, so append it to `str`
+      response.on('data', function (chunk) {
+        str += chunk;
+      });
+
+      //the whole response has been recieved, so we just print it out here
+      response.on('end', function () {
+        const result = JSON.parse(str).results[0];
+        newCard.location = `(${result.geometry.location.lat}, ${result.geometry.location.lng})`
+        const photosArray = findPlacePhotos(result);
+
+      postCard(newCard)
+        .then(([cardID]) => {
+          return photosArray
+          .then((images) => {
+            postPhotos(images, cardID);
+          })
+          .then(() => {
+            res.json({
+              status: 'ok'
+            });
+          })
+        })
+        .catch(err => {
+          res.status(400).send("ERROR");
+        })
+      })
+    }
+    https.request(options, callback).end();
   });
-
-
-
 
   router.post("/favorite", (req, res) => {
-    console.log(req.body.id)
-    res.json({
-      status: 'ok'
-    });
-  });
+    const userId = req.session.userId;
+    const cardId = req.body.id;
+    addFavorite(cardId, userId)
+      .then(() => {
+        res.json({
+          status: 'ok'
+        })
+      })
+      .catch(err => {
+        res.status(400).send("ERROR");
+      });
+  })
 
 
   return router;
 }
+
+

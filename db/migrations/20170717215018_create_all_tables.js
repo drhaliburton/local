@@ -47,7 +47,7 @@ exports.up = function(knex, Promise) {
     knex.schema.createTable('photos', function(table){
       table.increments('id').primary()
       table.timestamp('timestamp')
-      table.string('url')
+      table.string('url', 1000)
       table.integer('card_id').references('cards.id').onDelete('CASCADE').onUpdate('CASCADE')
     }),
 

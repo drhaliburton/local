@@ -1,6 +1,10 @@
 .box {
-  border: 0.1px;
-  border-color: #ccffef ; 
+  border: 0.05px;
+  border-color: #ccffef ;
   border-style: solid;
   border-radius: 10px;
+  &:hover{
+    border-color: $green;
+    cursor: pointer;
+  }
 }

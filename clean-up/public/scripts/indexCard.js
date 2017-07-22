@@ -4,7 +4,6 @@ function createCategoryIcon(categoryID) {
 };
 
 function createIndexCard(resource) {
-  console.log(resource);
   var title = resource.title;
   var description = resource.description;
   var location = resource.location;
@@ -16,11 +15,11 @@ function createIndexCard(resource) {
     <div class="card-image">
       <figure class="image is-1by1">
         <img src="${imageURL}" alt="${title}">
-      </figure> 
+      </figure>
     </div>
     <div class="content-container">
       <span class="icon is-pulled-right">
-        <span class="fa fa-star" aria-hidden="true"></span> 
+        <span class="fa fa-star" aria-hidden="true"></span>
       </span>
       <span class="card-toggle">
         <a><span class="icon fa fa-chevron-up chev-rotate-again"></span></a>
@@ -40,7 +39,7 @@ function createIndexCard(resource) {
           <div class="content">
             <p class="subtitle is-small">${description}</p>
           </div>
-        </span> 
+        </span>
       </div>
     </div>
   </div>`;
@@ -56,7 +55,6 @@ function addDescriptionToggle($card) {
 };
 
 function renderIndexCards(resources) {
-  console.log(resources);
   var $resources = $('.all-cards');
   $resources.empty();
   for(var item of resources) {
