@@ -22,6 +22,7 @@ module.exports = (knex) => {
       favCards(user_id)
         .then(data => {
           let cards = data.map((card) => {
+            console.log(card);
             return {
               id: card.id,
               card_id: card.card_id,
