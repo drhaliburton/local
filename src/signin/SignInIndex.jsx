@@ -26,10 +26,10 @@ class SignInIndex extends Component {
       },
       body: JSON.stringify(user)
     }).then((result) => {
-      if (result) {
-        return this.props.route.setCurrentUser(user);
-        console.log("get fetched", result);
-      }
+      console.log("success rohit");
+      console.log("user :",user)
+      window.location.href = '/';
+        // console.log("get fetched", result);
     })
   }
 
@@ -37,9 +37,9 @@ class SignInIndex extends Component {
     alert('Login failed. Please register with Google and try again.')
   }
 
-  componentDidUpdate(){
-    this.props.route.getCurrentUser()
-  }
+  // componentDidUpdate(){
+  //   this.props.route.getCurrentUser()
+  // }
 
 
   render() {
