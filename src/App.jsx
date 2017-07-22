@@ -31,6 +31,15 @@ class App extends Component {
     });
   }
 
+  setCurrentUser() {
+    Api.post(`/auth/current_user`)
+    .then((user) => {
+      this.setState({
+        currentUser: user
+      })
+    });
+  }
+
   componentDidMount() {
     this.getCurrentUser();
   }
@@ -46,7 +55,7 @@ class App extends Component {
           <Route currentUser={this.state.currentUser} exact path="/add" component={AddCard} />
           <Route currentUser={this.state.currentUser} path="/itinerary" component={ItineraryIndex} />
           <Route currentUser={this.state.currentUser} path="/map" component={MapIndex} />
-          <Route getCurrentUser={this.getCurrentUser.bind(this)} currentUser={this.state.currentUser} path="/auth" component={SignInIndex} />
+          <Route getCurrentUser={this.getCurrentUser.bind(this)} setCurrentUser={this.setCurrentUser.bind(this)} currentUser={this.state.currentUser} path="/auth" component={SignInIndex} />
         </div>
       </Router>
     );

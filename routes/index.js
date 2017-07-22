@@ -36,7 +36,6 @@ module.exports = (knex) => {
 
     allCards()
       .then(data => {
-        console.log(data)
         let cards = data.map((card) => {
           return {
             id: card.card_id,
@@ -77,7 +76,6 @@ module.exports = (knex) => {
       //the whole response has been recieved, so we just print it out here
       response.on('end', function () {
         const result = JSON.parse(str).results[0];
-        console.log(result);  
 
         const lat1 = result.geometry.viewport.northeast.lat;
         const lng1 = result.geometry.viewport.northeast.lng;
@@ -85,7 +83,6 @@ module.exports = (knex) => {
         const lng2 = result.geometry.viewport.southwest.lng;
         getFiltered(lat1, lng1, lat2, lng2)
           .then(data => {
-            console.log(data)
             let cards = data.map((card) => {
               return {
                 id: card.id,
@@ -144,7 +141,6 @@ module.exports = (knex) => {
         .then(([cardID]) => {
           return photosArray
           .then((images) => {
-            console.log(images)
             postPhotos(images, cardID);
           })
           .then(() => {

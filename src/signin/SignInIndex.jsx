@@ -21,6 +21,11 @@ class SignInIndex extends Component {
         token: response.accessToken,
       })
     }).then((result) => {
+      let currentUser = {
+        name: result.given_name,
+        token: result.token
+      }
+      this.props.setCurrentUser(currentUser);
       console.log("get fetched", result);
     })
   }

@@ -4,11 +4,10 @@ class NewImage extends Component {
 
 
   renderImage(images) {
-    console.log(images);
-    if (images == null) { 
+    if (images == null) {
       return 'http://placekitten.com.s3.amazonaws.com/homepage-samples/408/287.jpg';
     } else {
-      return this.props.image[0];
+      console.log('images: ' + this.props.image);
     }
   }
 

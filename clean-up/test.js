@@ -9,7 +9,6 @@ function createImageUrl(placesArray) {
       photoUrlsArray.push(photoUrl);
     }
   }
-  console.log(photoUrlsArray);
   return photoUrlsArray;
 }
 
