@@ -23,6 +23,8 @@ class HomepageIndex extends Component {
     );
   }
 
+
+
   locationSearch(event) {
     Api.get(`/index/locate?find=${event}`)
       .then((cards) => this.setState({
@@ -30,7 +32,7 @@ class HomepageIndex extends Component {
       })
     );
   }
-  
+
   resetCards() {
     this.setState({
       cards: this.state.allCards
@@ -52,6 +54,16 @@ class HomepageIndex extends Component {
 
   newFavorite(id) {
     Api.post('/index/favorite', id)
+
+  }
+
+  addOne(id){
+  Api.post('/index/upvote', id)
+
+  }
+
+  removeOne(id){
+    Api.post('/index/downvote', id)
   }
 
   render() {
@@ -59,7 +71,7 @@ class HomepageIndex extends Component {
       <div>
         <Search locate={this.locationSearch.bind(this)} />
         <Filter cards={this.state.cards} categoryFilter={this.categoryFilter.bind(this)} resetCards={ this.resetCards.bind(this) } />
-        <IndexCard cards={this.state.cards} favorite={this.newFavorite.bind(this)}/>
+        <IndexCard addOne={this.addOne.bind(this)} removeOne={this.removeOne.bind(this)} cards={this.state.cards} favorite={this.newFavorite.bind(this)}/>
       </div>
     );
   }

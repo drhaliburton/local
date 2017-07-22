@@ -22,7 +22,10 @@ module.exports = (knex) => {
   const {
     getFiltered,
     makeFavorite,
-    allCards
+    allCards,
+    postUpvote,
+    postDownvote,
+    getVotes
   } = queries(knex);
 
   const {
@@ -48,7 +51,7 @@ module.exports = (knex) => {
             category: card.category_name,
             user: card.given_name,
             photos: card.photo_url,
-            ratings: card.rating
+            ratings: card.total_rating
           }
         });
         res.json(cards)
@@ -58,6 +61,9 @@ module.exports = (knex) => {
         res.status(400).send("ERROR");
       })
   });
+
+
+
 
   router.get("/locate", (req, res) => {
     const geoKey = process.env.GEO_API_KEY
@@ -108,6 +114,38 @@ module.exports = (knex) => {
       })
     }
     https.request(options, callback).end();
+  })
+
+  router.post("/upvote", (req, res) => {
+    let card_id = req.body.id
+    console.log("The card id is " + card_id)
+    console.log(req.session.userId)
+    if(req.session.userId){
+      postUpvote(card_id, req.session.userId)
+      .then(() => {
+        res.json({status: 'okay'})
+      })
+      .catch(err => {
+            res.status(400).send("ERROR in upvoting");
+
+      });
+    }
+  })
+
+  router.post("/downvote", (req, res) => {
+    let card_id = req.body.id
+    console.log("The card id is " + card_id)
+    console.log(req.session.userId)
+    if(req.session.userId){
+      postDownvote(card_id, req.session.userId)
+      .then(() => {
+        res.json({status: 'okay'})
+      })
+      .catch(err => {
+            res.status(400).send("ERROR in downvoting");
+
+      });
+    }
   })
 
   router.post("/", (req, res) => {
