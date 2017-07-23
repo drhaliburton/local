@@ -8,7 +8,6 @@ import HomepageIndex from './homepage/HomepageIndex.jsx';
 import ItineraryIndex from './itinerary/ItineraryIndex.jsx';
 import MapIndex from './map/MapIndex.jsx';
 import SignInIndex from './signin/SignInIndex.jsx';
-import SortableComponent from './dnd/SortableComponent.jsx';
 import Api from '../library/api.js';
 // import Styles from '../public/styles/layout.css';
 
