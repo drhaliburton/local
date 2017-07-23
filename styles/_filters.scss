@@ -3,8 +3,8 @@
     font-size: .5em;
   }
   .columns {
-    margin-top: 20px;
-    padding-bottom: 0px;
+    margin-top: 10px;
+    margin-bototm: 100px;
     .column {
       padding-top: 0px;
     }
@@ -13,24 +13,24 @@
     margin:auto;
     top: 5px;
     padding-top: 10px;
-    color: white;
+    color: $green;
 
     .fa-chevron-up {
       transition: all .7s ease-in-out;
-      color: white;
+      color: $green;
       left: 35%;
       opacity: .7;
       font-size: 1em;
       &:hover {
         transition: all .3s ease-in-out;
-        color: white !important;
+        color: $dark-green !important;
         opacity: .9;
         cursor: pointer;
       }
     }
   }
   .filter-button {
-    margin: 5px;
+    margin: 0px 5px;
     line-height: 2.5;
     .button {
       font-size: .6em;
@@ -59,8 +59,39 @@
   }
   .title {
     margin-top: 10px;
-    color: white;
+    color: $dark-grey;
     font-weight:400;
+  }
+  .title-itinerary {
+    margin-top: 10px;
+    color: $dark-grey;
+    font-weight:400;
+  }
+  .card-title {
+    margin-top: 0px;
+    color: $dark-grey;
+    font-weight:400;
+    font-size: 1.3em;
+  }
+  .filter-toggle-itinerary {
+    margin:auto;
+    top: 5px;
+    padding-top: 10px;
+    color: $green;
+
+    .fa-chevron-up {
+      transition: all .7s ease-in-out;
+      color: $green;
+      left: 35%;
+      opacity: .7;
+      font-size: 1em;
+      &:hover {
+        transition: all .3s ease-in-out;
+        color: $green !important;
+        opacity: .9;
+        cursor: pointer;
+      }
+    }
   }
   .button {
     margin: auto;
@@ -71,8 +102,6 @@
   }
   .filter-content {
     transition: all 1s ease-in-out;
-    margin: .5rem;
-
     max-height: 0px;
     overflow: hidden;
   }

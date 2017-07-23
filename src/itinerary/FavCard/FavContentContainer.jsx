@@ -47,7 +47,7 @@ class FavContentContainer extends Component {
       <div className={`content-container ${expandedToggle}`}>
         <FavImage />
         <div className="card-content">
-              <p className="title">{card.title}</p>
+              <p className="card-title">{card.title}</p>
                <p className="category duration"><span className={`icon is-small fa ${this.findIconCategory(card.category_id)}`}>&nbsp;</span>&nbsp;~{card.duration} minutes
                 <span className="icon is-pulled-right" aria-hidden="true"><i className="fa fa-plus"></i></span></p>
             </div>
