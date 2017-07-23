@@ -96,20 +96,6 @@
       height: auto;
       transition: all 1s ease-in-out !important;
     }
-
-    .fa-star {
-      font-size: 1.4em;
-      position: relative;
-      padding-top: 7px;
-      color: $orange;
-      box-shadow: 1px grey;
-      &:hover{
-        color: $dark-orange;
-        cursor: pointer;
-      }
-      .is-active{
-        color: maroon;
-      }
     }
        .fa-plus {
       font-size: 1.4em;
@@ -223,16 +209,42 @@
     }
   }
 
-}
 
 .columns {
   z-index: 101;
   justify-content: center;
   background-color: white;
   transition: all 1s ease-in-out !important;
+  .fa{
+
+  }
   .column{
     background-color: white;
     padding: 8px;
     transition: all 1s ease-in-out !important;
+  }
+}
+.icon{
+.is-full{
+      font-size: 1.4em;
+      position: relative;
+      padding-top: 7px;
+      color: $dark-orange !important;
+      box-shadow: 1px grey;
+      :hover{
+        color: $light-grey !important;
+        cursor: pointer;
+      }
+}
+.is-open {
+  font-size: 1.4em;
+  position: relative;
+  padding-top: 7px;
+  color: $light-grey !important;
+  box-shadow: 1px grey;
+}
+ :hover{
+    color: $dark-orange !important;
+    cursor: pointer;
   }
 }

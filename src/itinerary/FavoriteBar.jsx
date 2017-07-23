@@ -1,7 +1,6 @@
 import React, {Component} from 'react';
 import FavCard from "./FavCard/FavCard.jsx";
 import FavSlider from "./FavSlider.jsx";
-import CustomArrows from "./CustomArrows.jsx";
 
 //Contains
 class FavoriteBar extends Component {
