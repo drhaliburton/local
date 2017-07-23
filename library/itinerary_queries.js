@@ -1,4 +1,3 @@
-
 module.exports = (knex) => {
 const obj = {};
 
