@@ -41,16 +41,17 @@ obj.makeItinerary = function(day, title ,user_id, cards){
       .where('favorites.user_id', user)
   }
 
-  obj.itineraryCards = function(id) {
-    return knex('itinerary_cards')
-    .insert({
-        start_time: 9,
-        intinerary_id: 1,
-        favorite_id: favorite.id, 
-        card_id: card.id
-      })
-  }
+  // obj.itineraryCards = function(id) {
+  //   return knex('itinerary_cards')
+  //   .insert({
+  //       start_time: 9,
+  //       intinerary_id: 1,
+  //       favorite_id: favorite.id, 
+  //       card_id: card.id
+  //     })
+  // }
 
 return obj;
+}
 }
 
