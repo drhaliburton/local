@@ -78,49 +78,51 @@ class HomepageIndex extends Component {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({
-        cardId: cardID
+        cardID: cardID
       })
     })
-    .then (() => res.json())
+    .then(() => {this.resetCards()})
   }
 
   addOne(cardID){
-    event.preventDefault();
-    console.log(cardID);
+    // event.preventDefault();
+    // console.log(cardID);
 
-    fetch('/index/upvote', {
-      method: 'POST',
-      credentials: 'include',
-      headers: {
-        'Accept': 'application/json',
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        cardId: cardID
-      })
-    })
-    .then(() => {
-        this.resetCards()
-      })
+    // fetch('/index/upvote', {
+    //   method: 'POST',
+    //   credentials: 'include',
+    //   headers: {
+    //     'Accept': 'application/json',
+    //     'Content-Type': 'application/json',
+    //   },
+    //   body: JSON.stringify({
+    //     cardID: cardID
+    //   })
+    // })
+    // // .then(() => {
+    //     this.resetCards()
+    //   // })
+    Api.post('index/upvote', cardID)
   };
 
 
   removeOne(cardID){
-    event.preventDefault();
-      console.log(cardID);
-      fetch('/index/downvote', {
-        method: 'POST',
-        credentials: 'include',
-        headers: {
-          'Accept': 'application/json',
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          cardId: cardID
-        })
-      }).then(() => {
-        this.resetCards()
-      })
+    // event.preventDefault();
+    //   console.log(cardID);
+    //   fetch('/index/downvote', {
+    //     method: 'POST',
+    //     credentials: 'include',
+    //     headers: {
+    //       'Accept': 'application/json',
+    //       'Content-Type': 'application/json',
+    //     },
+    //     body: JSON.stringify({
+    //       cardID: cardID
+    //     })
+    //   }).then(() => {
+    //     this.resetCards()
+    //   })
+    Api.post('/index/downvote', cardID)
     }
 
   render() {
@@ -128,7 +130,7 @@ class HomepageIndex extends Component {
       <div>
         <Search locate={this.locationSearch.bind(this)} />
         <Filter cards={this.state.cards} categoryFilter={this.categoryFilter.bind(this)} resetCards={ this.resetCards.bind(this) } />
-        <IndexCard addOne={this.addOne.bind(this)} removeOne={this.removeOne.bind(this)} cards={this.state.cards} favorite={this.newFavorite.bind(this)}/>
+        <IndexCard getRatings={this.getRatings.bind(this)} addOne={this.addOne.bind(this)} removeOne={this.removeOne.bind(this)} cards={this.state.cards} favorite={this.newFavorite.bind(this)}/>
       </div>
     );
   }

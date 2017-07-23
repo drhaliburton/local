@@ -3,7 +3,7 @@ module.exports = (knex) => {
 
   obj.postUpvote= function(card_id, user_id){
     return knex('ratings')
-    .update({
+    .insert({
       rating: 1,
       user_id: user_id,
       card_id: card_id
@@ -18,7 +18,7 @@ module.exports = (knex) => {
 
   obj.postDownvote= function(card_id, user_id){
     return knex('ratings')
-    .update({
+    .insert({
       rating: -1,
       user_id: user_id,
       card_id: card_id
@@ -37,9 +37,6 @@ module.exports = (knex) => {
     return knex('cards')
     .where('id', card_id)
     .select('total_rating')
-    .then((result) => {
-      console.log(result)
-    })
   }
 
 

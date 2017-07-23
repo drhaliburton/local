@@ -12,7 +12,7 @@ class Rating extends Component {
               this.props.removeOne(this.props.cardID)
             }} ></i>
           </span>
-          <p className="subtitle"> Recommended by {this.props.rating || '0'} travellers.</p>
+          <p className="subtitle"> Recommended by {this.props.ratings || '0'} travellers.</p>
         </div>
     );
   }

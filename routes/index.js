@@ -86,13 +86,8 @@ module.exports = (knex) => {
                 duration: card.duration,
                 category: card.category_name,
                 user: card.given_name,
-<<<<<<< HEAD
-                photos: card.photo_url,
-                ratings: card.total_rating
-=======
                 photos: card.photos,
-                ratings: card.rating
->>>>>>> 5b666b9cfa77ded3171f37aac0ac2d37e9317961
+                ratings: card.total_rating
               }
             })
             res.json(cards)
@@ -119,10 +114,10 @@ module.exports = (knex) => {
   })
 
   router.post("/upvote", (req, res) => {
-    let card_id = req.body['cardId'];
+    let card_id = req.body['cardID'];
     let user_id = req.session.userId;
     console.log("******The card id is " + card_id)
-    if(req.session.userId){
+
     postUpvote(card_id, user_id)
       .then((result)=>{
           console.log(result)
@@ -131,15 +126,14 @@ module.exports = (knex) => {
           res.status(400).send("ERROR in upvoting");
 
         });
-    }
   })
 
 
   router.post("/downvote", (req, res) => {
-    let card_id = req.body['cardId'];
+    console.log(req.body.cardID)
+    let card_id = req.body['cardID'];
     let user_id = req.session.userId;
     console.log("******The card id is " + card_id)
-    if(req.session.userId){
     postDownvote(card_id, user_id)
     .then((result)=>{
         console.log(result)
@@ -148,7 +142,6 @@ module.exports = (knex) => {
         res.status(400).send("ERROR in upvoting");
 
       });
-  }
     // getRatings(card_id)
     //   .then((result) => {
     //     console.log(result);
