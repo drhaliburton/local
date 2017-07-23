@@ -1,0 +1,27 @@
+
+.page-toggle{
+  text-align: center;
+  margin-top: 20px;
+  margin-bottom: 30px;
+
+  h1 {
+    font-size: 1.5em;
+  }
+  h2 {
+    font-size: 1em;
+    padding-bottom: 20px;
+  }
+  .toggle-title{
+    font-size: 1em;
+    transition: all 0.6s ease-in-out;
+    font-weight: 400;
+    }
+  }
+.toggle-arrow{
+  .fa{
+    transition: all 0.7s ease-in-out;
+    margin-top: 6px;
+    color: $green;
+    font-size: 1.6em;
+  }
+}

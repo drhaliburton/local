@@ -2,7 +2,7 @@ require('../styles/layout.scss');
 
 import React, {Component, forceUpdate} from 'react';
 import { render } from 'react-dom';
-import { HashRouter as Router, Link, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Link, Route } from 'react-router-dom';
 import Navbar from './nav/Navbar.jsx';
 import HomepageIndex from './homepage/HomepageIndex.jsx';
 import ItineraryIndex from './itinerary/ItineraryIndex.jsx';
@@ -45,13 +45,11 @@ class App extends Component {
     return (
       <Router>
         <div>
-          <div>
-            <Navbar setCurrentUser={this.getCurrentUser.bind(this)} currentUser={this.state.currentUser}/>
-          </div>
+          <Navbar setCurrentUser={this.getCurrentUser.bind(this)} currentUser={this.state.currentUser}/>
           <Route currentUser={this.state.currentUser} exact path="/" component={HomepageIndex} />
           <Route currentUser={this.state.currentUser} path="/itinerary" component={ItineraryIndex} />
           <Route currentUser={this.state.currentUser} path="/map" component={MapIndex} />
-           <Route getCurrentUser={this.getCurrentUser.bind(this)} currentUser={this.state.currentUser} path="/auth" component={SignInIndex} />
+          <Route getCurrentUser={this.getCurrentUser.bind(this)} currentUser={this.state.currentUser} path="/auth" component={SignInIndex} />
         </div>
       </Router>
     );

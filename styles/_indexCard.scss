@@ -1,5 +1,4 @@
 .cards {
-  margin: 8% 10%;
   transition: 2s all ease-in-out !important;
   font-size: 12px;
   .card {
@@ -207,19 +206,18 @@
         color: $dark-green;
       }
     }
+    .columns{
+      margin-top: 8em;
+    }
   }
 
 
 .columns {
+  margin-top: 1rem;
   z-index: 101;
   justify-content: center;
-  background-color: white;
   transition: all 1s ease-in-out !important;
-  .fa{
-
-  }
   .column{
-    background-color: white;
     padding: 8px;
     transition: all 1s ease-in-out !important;
   }
