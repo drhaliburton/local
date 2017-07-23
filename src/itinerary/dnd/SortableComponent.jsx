@@ -51,7 +51,7 @@ class SortableComponent extends Component {
   render() {
 
     const cards = this.props.cards;
-    console.log(cards);
+    console.log('hai hai', cards);
     const renderedItems = cards.map(card =>
           <div className='box'>
             <article className='media large'>

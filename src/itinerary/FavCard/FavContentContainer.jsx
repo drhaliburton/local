@@ -34,9 +34,7 @@ class FavContentContainer extends Component {
       isVisible: !this.state.isVisible
     });
   }
-  add(event){
-    console.log('event', event)
-  }
+  
 
   render() {
     const expandedToggle = this.state.isExpanded ? 'expanded'  : '';
@@ -57,7 +55,7 @@ class FavContentContainer extends Component {
               <p className="title">{card.title}</p>
               <p className="location">{card.location.x + ' ' + card.location.y || "Location, Location Ville"}</p>
                <p className="category duration"><span className={`icon is-small fa ${this.findIconCategory(card.category)}`}>&nbsp;</span>&nbsp;~{card.duration} minutes</p>
-                <FavAdd add={this.add.bind(this)} card={card}/>
+                <FavAdd add={this.props.add.bind(this)} card={card}/>
             </div>
           </div>
           <div className={`card-details ${detailsVisible}`}>
