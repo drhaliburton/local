@@ -7,7 +7,7 @@ class NewImage extends Component {
     if (images == null) {
       return 'http://placekitten.com.s3.amazonaws.com/homepage-samples/408/287.jpg';
     } else {
-      // console.log('images: ' + this.props.image);
+      return this.props.image[0];
     }
   }
 
