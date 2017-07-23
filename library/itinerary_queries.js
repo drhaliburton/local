@@ -1,14 +1,12 @@
-
 module.exports = (knex) => {
 const obj = {};
 
 obj.getItinerary = function(user_id){
-//   let user_id = req.session.userId
-//   console.log("ITINERARY USER ID: ", user_id);
-//   knex('itineraries')
-//   .where('user_id', user_id)
-//   // .and('date', date)
-// }
+  console.log("ITINERARY USER ID: ", user_id);
+  knex('itineraries')
+  .where('user_id', user_id)
+  // .and('date', date)
+}
 
 obj.getFavorite = function(user_id){
   knex('favorite')
@@ -41,17 +39,6 @@ obj.makeItinerary = function(day, title ,user_id, cards){
       .where('favorites.user_id', user)
   }
 
-  // obj.itineraryCards = function(id) {
-  //   return knex('itinerary_cards')
-  //   .insert({
-  //       start_time: 9,
-  //       intinerary_id: 1,
-  //       favorite_id: favorite.id, 
-  //       card_id: card.id
-  //     })
-  // }
-
 return obj;
-}
 }
 

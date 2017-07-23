@@ -35,9 +35,7 @@ class FavContentContainer extends Component {
       isVisible: !this.state.isVisible
     });
   }
-  add(event){
-    console.log('event', event)
-  }
+  
 
   render() {
     const expandedToggle = this.state.isExpanded ? 'expanded'  : '';
@@ -51,8 +49,8 @@ class FavContentContainer extends Component {
         <FavImage />
         <div className="card-content">
               <p className="title">{card.title}</p>
-               <p className="category duration"><span className={`icon is-small fa ${this.findIconCategory(card.category_id)}`}>&nbsp;</span>&nbsp;~{card.duration} minutes
-                <span className="icon is-pulled-right" aria-hidden="true"><i className="fa fa-plus"></i></span></p>
+               <p className="category duration"><span className={`icon is-small fa ${this.findIconCategory(card.category_id)}`}>&nbsp;</span>&nbsp;~{card.duration} minutes</p>
+                <FavAdd add={this.props.add.bind(this)} card={card}/>
             </div>
           </div>
     );
