@@ -1,0 +1,19 @@
+.modal {
+  
+  .modal-background {
+    background-color: $pale-green;
+    opacity: 0.1;
+  }
+  .title{
+    color: $dark-grey;
+  }
+  .fa {
+    color: black;
+  }
+  .button {
+    border-color: $green;
+    &:hover{
+      border-color: black;
+    }
+  }
+}

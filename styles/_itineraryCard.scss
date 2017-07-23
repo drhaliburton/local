@@ -1,5 +1,5 @@
 .columns{
-  margin-top: 2rem;
+  margin-top: 7rem;
   margin-left: 1rem;
   margin-right: 1rem;
   .morning {
@@ -23,5 +23,19 @@
   .article.media.large{
       height: 10rem;
   }
-  
+
+}
+
+.itinerary-time{
+  width: 2%;
+  .fa {
+    padding-bottom: 400px;
+    font-size: 60px;
+    color: #333;
+    font-weight: 1px;
+  }
+}
+
+.box {
+  margin: 10px;
 }

@@ -2,7 +2,6 @@
 module.exports = (knex) => {
 const obj = {};
 
-
   obj.postUpvote= function(card_id,user_id){
     return knex('ratings')
     .insert({
@@ -66,5 +65,5 @@ const obj = {};
     .orderBy('rating', 'desc')
   }
 
-return obj;
+  return obj;
 }

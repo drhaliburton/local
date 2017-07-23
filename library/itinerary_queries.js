@@ -34,5 +34,12 @@ obj.makeItinerary = function(day, title ,user_id, cards){
   })
 }
 
+  obj.favCards = function(user) {
+    return knex('favorites')
+      .leftJoin('cards', 'favorites.card_id', '=', 'cards.id')
+      .where('favorites.user_id', user)
+  }
+
 return obj;
 }
+

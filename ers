@@ -1,0 +1,26 @@
+                  List of relations
+ Schema |          Name          |   Type   | Owner  
+--------+------------------------+----------+--------
+ public | card_categories        | table    | labber
+ public | card_categories_id_seq | sequence | labber
+ public | cards                  | table    | labber
+ public | cards_id_seq           | sequence | labber
+ public | categories             | table    | labber
+ public | categories_id_seq      | sequence | labber
+ public | favorites              | table    | labber
+ public | favorites_id_seq       | sequence | labber
+ public | itineraries            | table    | labber
+ public | itineraries_id_seq     | sequence | labber
+ public | itinerary_cards        | table    | labber
+ public | itinerary_cards_id_seq | sequence | labber
+ public | migrations             | table    | labber
+ public | migrations_id_seq      | sequence | labber
+ public | migrations_lock        | table    | labber
+ public | photos                 | table    | labber
+ public | photos_id_seq          | sequence | labber
+ public | ratings                | table    | labber
+ public | ratings_id_seq         | sequence | labber
+ public | users                  | table    | labber
+ public | users_id_seq           | sequence | labber
+(21 rows)
+

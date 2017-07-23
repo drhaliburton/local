@@ -22,7 +22,7 @@ const PORT = 3000;
 // Seperated Routes for each Resource
 const itineraryRoutes = require("./routes/itinerary");
 const indexRoutes = require("./routes/index");
-const signInRoutes = require("./routes/signin");
+const authRoutes = require("./routes/auth");
 //
 const compiler = webpack(config);
 const path = require('path');
@@ -56,7 +56,6 @@ app.use(knexLogger(knex))
 app.get('/', function (req, res) { res.sendFile(indexPath) });
 app.use("/itinerary", itineraryRoutes(knex))
 app.use("/index", indexRoutes(knex))
-app.use("/signin", signInRoutes(knex))
-
+app.use("/auth", authRoutes(knex))
 
 app.listen(PORT, '0.0.0.0', 'localhost', () => console.log(`Listening on ${ PORT }`));
