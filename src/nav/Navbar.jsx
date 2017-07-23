@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import Api from '../../library/api.js';
+import AddCard from "./AddCard.jsx";
+
 //Importing filters and searchbar components
 
 class Navbar extends Component {
@@ -24,56 +26,48 @@ class Navbar extends Component {
           {currentRoute.includes('map') ?
             <div className="navbar-item">
               <div className="navbar-item">
-                <p className="itinerary">
-                  <a href="#"><i className="fa fa-globe"></i>&nbsp;&nbsp;export map</a></p>
+                <div className="itinerary">
+                  <a href="#"><i className="fa fa-globe"></i>&nbsp;&nbsp;export map</a></div>
               </div>
               <div className="navbar-item">
-                <p className="itinerary">
-                  <a href="/#/itinerary"><i className="fa fa-map-o"></i>&nbsp;&nbsp;itinerary</a></p>
+                <div className="itinerary">
+                  <a href="/#/itinerary"><i className="fa fa-map-o"></i>&nbsp;&nbsp;itinerary</a></div>
               </div>
             </div>
             :
             currentRoute.includes('itinerary') ?
               <div className="navbar-item">
                 <div className="navbar-item">
-                  <p className="itinerary">
-                    <a href="/#/add"><i className="fa fa-plus-square-o"></i>&nbsp;&nbsp;add card</a></p>
-                </div>
-                <div className="navbar-item">
-                  <p className="itinerary">
-                    <a href="#"><i className="fa fa-calendar-check-o"></i>&nbsp;&nbsp;save to calendar</a></p>
-                </div>
-                <div className="navbar-item">
-                  <p className="itinerary">
-                    <a href="/#/map"><i className="fa fa-map"></i>&nbsp;&nbsp;map</a></p>
-                </div>
-              </div>
-              :
-              currentRoute.includes('add') ?
-                <div className="navbar-item">
-                  <div className="navbar-item">
-                    <p className="itinerary">
-                      <a href="/#/itinerary"><i className="fa fa-map-o"></i>&nbsp;&nbsp;itinerary</a></p>
+                  <div className="itinerary">
+                    <a href="/#/"><i className="fa fa-clone"></i>&nbsp;&nbsp;all cards</a></div>
                   </div>
+                  <div className="navbar-item">
+                    <div className="itinerary">
+                      <a href="/#/map"><i className="fa fa-map"></i>&nbsp;&nbsp;map</a></div>
+                    </div>
                 </div>
-                :
+              :
                 <div className="navbar-item">
                   <div className="navbar-item">
-                    <p className="itinerary">
-                      <a href="/#/itinerary"><i className="fa fa-map-o"></i>&nbsp;&nbsp;itinerary</a></p>
+                  <div className="itinerary">
+                    <AddCard /></div>
+                </div>
+                  <div className="navbar-item">
+                    <div className="itinerary">
+                      <a href="/#/itinerary"><i className="fa fa-map-o"></i>&nbsp;&nbsp;itinerary</a></div>
                   </div>
                 </div>
           }
           <p className="navbar-item">|</p>
           {this.props.currentUser ?
             <div className="navbar-item">
-              <p className="itinerary">
-                <a onClick={this.logout.bind(this)}><i className="fa fa-paper-plane-o"></i>&nbsp;&nbsp;logout</a></p>
+              <div className="itinerary">
+                <a onClick={this.logout.bind(this)}><i className="fa fa-paper-plane-o"></i>&nbsp;&nbsp;logout</a></div>
             </div>
             :
             <div className="navbar-item">
-              <p className="itinerary">
-                <a href="/#/auth"><i className="fa fa-paper-plane"></i>&nbsp;&nbsp;login</a></p>
+              <div className="itinerary">
+                <a href="/#/auth"><i className="fa fa-paper-plane"></i>&nbsp;&nbsp;login</a></div>
             </div>
           }
         </div>

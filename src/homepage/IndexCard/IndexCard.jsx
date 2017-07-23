@@ -5,6 +5,7 @@ import NewImage from "./NewImage.jsx";
 class IndexCard extends Component {
   render() {
     const cardsArray = this.props.cards;
+    console.log(cardsArray);
     return (
       <div className="columns is-multiline cards">
         {cardsArray.map((card, index) => {

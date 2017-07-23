@@ -1,6 +1,6 @@
 require('../styles/layout.scss');
 
-import React, {Component} from 'react';
+import React, {Component, forceUpdate} from 'react';
 import { render } from 'react-dom';
 import { HashRouter as Router, Link, Route } from 'react-router-dom';
 import Navbar from './nav/Navbar.jsx';
@@ -8,8 +8,6 @@ import HomepageIndex from './homepage/HomepageIndex.jsx';
 import ItineraryIndex from './itinerary/ItineraryIndex.jsx';
 import MapIndex from './map/MapIndex.jsx';
 import SignInIndex from './signin/SignInIndex.jsx';
-import SortableComponent from './dnd/SortableComponent.jsx';
-import AddCard from './addcard/addCardForm.jsx';
 import Api from '../library/api.js';
 // import Styles from '../public/styles/layout.css';
 
@@ -27,6 +25,7 @@ class App extends Component {
     .then((user) => {
       this.setCurrentUser(user);
     });
+    this.forceUpdate();
   }
 
   setCurrentUser(user) {
@@ -39,8 +38,10 @@ class App extends Component {
     this.getCurrentUser();
   }
 
+  componentDidMount() {
+  }
+
   render() {
-    console.log('over here?', this.state.currentUser)
     return (
       <Router>
         <div>
@@ -48,10 +49,9 @@ class App extends Component {
             <Navbar setCurrentUser={this.getCurrentUser.bind(this)} currentUser={this.state.currentUser}/>
           </div>
           <Route currentUser={this.state.currentUser} exact path="/" component={HomepageIndex} />
-          <Route currentUser={this.state.currentUser} exact path="/add" component={AddCard} />
           <Route currentUser={this.state.currentUser} path="/itinerary" component={ItineraryIndex} />
           <Route currentUser={this.state.currentUser} path="/map" component={MapIndex} />
-          <Route getCurrentUser={this.getCurrentUser.bind(this)} setCurrentUser={this.setCurrentUser.bind(this)} currentUser={this.state.currentUser} path="/auth" component={SignInIndex} />
+           <Route getCurrentUser={this.getCurrentUser.bind(this)} currentUser={this.state.currentUser} path="/auth" component={SignInIndex} />
         </div>
       </Router>
     );

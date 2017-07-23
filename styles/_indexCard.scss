@@ -111,6 +111,20 @@
         color: maroon;
       }
     }
+       .fa-plus {
+      font-size: 1.4em;
+      position: relative;
+      padding-top: 7px;
+      color: lightgrey;
+      box-shadow: 1px grey;
+      &:hover{
+        color: pink;
+        cursor: pointer;
+      }
+      .is-active{
+        color: $dark-green;
+      }
+    }
     .media-content {
       width: 170px;
       background-color: white;

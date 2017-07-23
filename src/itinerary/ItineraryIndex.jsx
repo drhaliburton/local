@@ -2,14 +2,15 @@ import React, {Component} from 'react';
 import ItineraryTime from "./ItineraryTime.jsx";
 import ItineraryCard from "./ItineraryCard.jsx";
 import FavoriteBar from "./FavoriteBar.jsx";
-import SortableComponent from "../dnd/SortableComponent.jsx";
+import SortableComponent from "./dnd/SortableComponent.jsx";
 import Api from '../../library/api.js';
 
 class ItineraryIndex extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      favCards: []
+      favCards: [],
+      itineraryCards: []
     }
   }
 
@@ -19,8 +20,13 @@ class ItineraryIndex extends Component {
         favCards: cards
       })
     );
-  }
 
+    Api.get('/itinerary/')
+      .then((cards) => this.setState({
+        itineraryCards: cards
+      })
+    );
+  }
 componentDidMount() {
     fetch('https://www.googleapis.com/calendar/v3/calendars/primary/events', {
       method: 'POST',
@@ -47,12 +53,14 @@ componentDidMount() {
         <div className="header">
           <FavoriteBar favCards={this.state.favCards}/>
         </div>
+        <p className="calendar"><i className="fa fa-calendar-check-o"></i>&nbsp;save to calendar</p>
         <div className="columns">
-          <div className="column is-4">
+
+          <div className="column is-2">
             <ItineraryTime />
           </div>
-          <div className="column <is-6></is-6>">
-            <SortableComponent />
+          <div className="column is-9">
+            <SortableComponent cards={this.state.favCards} />
           </div>
         </div>
       </div>

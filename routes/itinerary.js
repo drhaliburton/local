@@ -7,21 +7,47 @@ const queries = require("../library/itinerary_queries.js")
 module.exports = (knex) => {
 
   const {
-    favCards
+    favCards,
+    getItinerary
     } = queries(knex);
 
-  router.get("/:id/new", (req, res) => {
-   //New itinerary form
-   //Need user favorites
+  router.get("/", (req, res) => {
+    let user_id = req.params.userId;
+
+    getItinerary(user_id)
+        .then(data => {
+          let cards = data.map((card) => {
+            console.log("itinerary: ", card);
+            return {
+              id: card.id,
+              card_id: card.card_id,
+              user_id: card.user_id,
+              title: card.title,
+              location: card.location,
+              description: card.description,
+              duration: card.duration,
+              category_id: card.category_id,
+            }
+          });
+          res.json(cards);
+
+        })
+        .catch(err => {
+        res.status(400).send("ERROR");
+        })
   });
 
   //Will be "/:id/:date" after testing
   router.get("/favorites", (req, res) => {
+    // let user_id = req.params.userId;
+
+    //for testing
     let user_id = 1;
 
       favCards(user_id)
         .then(data => {
           let cards = data.map((card) => {
+            console.log(card);
             return {
               id: card.id,
               card_id: card.card_id,

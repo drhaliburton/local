@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import ItineraryCard from "./ItineraryCard.jsx";
-import {render} from '../../node_modules/react-dom';
-import {SortableContainer, SortableElement, arrayMove} from '../../node_modules/react-sortable-hoc';
+import {render} from '../../../node_modules/react-dom';
+import {SortableContainer, SortableElement, arrayMove} from '../../../node_modules/react-sortable-hoc';
 
 const SortableItem = SortableElement(({value}) =>
   <li>{value}</li>
@@ -20,26 +20,8 @@ const SortableList = SortableContainer(({items}) => {
 class SortableComponent extends Component {
   constructor(props) {
     super(props);
-    this.state = {
-      items: []
-    }
   }
-  componentDidMount() {
-    fetch('/index')
-      .then((res) => res.json())
-      .then((items) => this.setState({ 
-        items: items 
-      })
-    );
-  }
-  locationSearch(event) {
-    fetch(`/index/locate?find=${event}`)
-      .then((res) => res.json())
-      .then((items) => this.setState({
-        items: items
-      })
-    );
-  }
+
   onSortEnd = ({oldIndex, newIndex}) => {
     this.setState({
       items: arrayMove(this.state.items, oldIndex, ),
@@ -67,10 +49,12 @@ class SortableComponent extends Component {
   }
 
   render() {
-    
-    const renderedItems = this.state.items.map(card => 
+
+    const cards = this.props.cards;
+    console.log(cards);
+    const renderedItems = cards.map(card =>
           <div className='box'>
-            <article className='media large'> 
+            <article className='media large'>
             <figure className="media-left">
               <p className="image is-64x64">
                 <img src="http://bulma.io/images/placeholders/128x128.png"></img>
@@ -81,7 +65,7 @@ class SortableComponent extends Component {
                 <p>
                   <strong>{card.title}</strong>
                   <br className="subtitle"></br>
-                  {card.location}
+                  {card.location.x + card.location.y}
                   <br></br><small>{card.duration}</small>
                 </p>
               </div>
