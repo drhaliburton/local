@@ -31,7 +31,9 @@ class FavoriteBar extends Component {
             <a className="icon is-medium"><i className={`fa fa-chevron-up ${rotatedToggle}`}></i></a>
           </span><div></div>
       <div className={`favorites-container ${toggledFilter}`}>
-        <FavSlider cards={this.props.favCards}/>
+        <div className="slider-container">
+          <FavSlider cards={this.props.favCards}/>
+        </div>
       </div>
     </div>
     );

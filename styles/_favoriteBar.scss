@@ -1,28 +1,35 @@
 .favorites-container{
   transition: .7s all ease-in-out;
-  width: 100%;
   height: 0px;
-  overflow: hidden;
+  .slick-slider{
+    width:100%;
+    overflow: hidden;
+  }
   .duration{
     padding-bottom: 0px;
   }
     .cards {
-    margin: 5% 10%;
+    margin: 1% 10%;
     transition: 2s all ease-in-out;
     font-size: 10px;
     .card {
       margin: 15px 5px;
-      width: 10%;
+      width: 180px;
       padding: 5px;
       min-width: 160px;
-      height: 238px;
+      height: 260px;
       display: inline-block;
       border: 0.5px solid $light-grey;
       box-shadow: none;
       background-color: #fff;
       overflow: hidden;
       .content-container {
-        height: 148px;
+        height: 170px;
+      }
+      .card-image{
+        img{
+        height: 170px;
+        }
       }
       .description{
         font-size: 9px;
@@ -54,6 +61,10 @@
   }
 }
 .set-height {
-  height: 270px;
+  height: 400px;
   transition: .7s all ease-in-out;
+}
+
+.slider-container {
+ margin: 0px 100px;
 }

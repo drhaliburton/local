@@ -9,7 +9,7 @@ class FavCard extends Component {
       <span>
         {
           cardsArray.map((card, index) => {
-            return <div key={index} className="column is-one-quarter card">
+            return <div key={index} className="card">
               <FavContentContainer key={card.id} cardContent={card}/>
             </div>;
           })
