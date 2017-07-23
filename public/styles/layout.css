@@ -294,51 +294,68 @@
 
 .favorites-container {
   transition: .7s all ease-in-out;
-  width: 100%;
   height: 0px;
+  font-size: 10px;
   overflow: hidden; }
-  .favorites-container .duration {
-    padding-bottom: 0px; }
-  .favorites-container .cards {
-    margin: 5% 10%;
-    transition: 2s all ease-in-out;
-    font-size: 10px; }
-    .favorites-container .cards .card {
+  .favorites-container .slider-container {
+    margin: 0px 10%;
+    padding: 20px; }
+    .favorites-container .slider-container .slider {
+      padding: 0px 70px 20px; }
+    .favorites-container .slider-container .card {
+      transition: 2s all ease-in-out;
+      font-size: 10px;
+      text-align: left;
       margin: 15px 5px;
-      width: 10%;
-      padding: 5px;
+      width: 180px;
+      padding: 6px;
       min-width: 160px;
-      height: 238px;
+      height: 235px;
       display: inline-block;
       border: 0.5px solid #CCCCCC;
       box-shadow: none;
       background-color: #fff;
       overflow: hidden; }
-      .favorites-container .cards .card .content-container {
-        height: 148px; }
-      .favorites-container .cards .card .description {
+      .favorites-container .slider-container .card .content-container {
+        height: 170px; }
+      .favorites-container .slider-container .card .card-content {
+        padding-top: 20px;
+        padding-left: 6px; }
+        .favorites-container .slider-container .card .card-content .fa {
+          color: #00caba;
+          font-size: 11px;
+          padding-top: 2px; }
+        .favorites-container .slider-container .card .card-content .fa-plus {
+          transition: .2s all ease-in-out;
+          font-size: 20px;
+          padding-left: 45px;
+          padding-bottom: 10px;
+          color: #CCCCCC; }
+          .favorites-container .slider-container .card .card-content .fa-plus:hover {
+            color: #00caba;
+            cursor: pointer; }
+      .favorites-container .slider-container .card .card-image img {
+        height: 170px; }
+      .favorites-container .slider-container .card .description {
         font-size: 9px;
         padding: 0px 5px;
         text-align: left; }
-      .favorites-container .cards .card .card-toggle .fa-chevron-up {
-        transition: all .5s ease-in-out;
-        position: relative;
-        top: 5px;
-        left: 0px; }
-    .favorites-container .cards .title {
-      transition: all 1s ease;
-      font-size: 1.1em;
-      margin-bottom: 5px;
-      margin-top: -3px;
-      text-overflow: ellipsis;
-      overflow: hidden;
-      white-space: nowrap;
-      line-height: 1; }
-  .favorites-container .columns {
-    margin-top: 0px; }
+    .favorites-container .slider-container .columns {
+      margin-top: 0px; }
+  .favorites-container .title {
+    transition: all 1s ease;
+    font-size: 15px;
+    margin-bottom: 5px;
+    margin-top: -8px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+    line-height: 1; }
+  .favorites-container .duration {
+    padding-bottom: 0px; }
 
 .set-height {
-  height: 270px;
+  height: 350px;
   transition: .7s all ease-in-out; }
 
 .box {
@@ -350,8 +367,17 @@
     border-color: #00caba;
     cursor: pointer; }
 
-.modal .h1 {
-  color: white; }
+.modal .modal-background {
+  background-color: #AADDD5;
+  opacity: 0.1; }
+.modal .title {
+  color: #363636; }
+.modal .fa {
+  color: black; }
+.modal .button {
+  border-color: #00caba; }
+  .modal .button:hover {
+    border-color: black; }
 
 .is-rotated {
   transform: rotate(180deg); }

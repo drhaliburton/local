@@ -1,23 +1,23 @@
 .favorites-container{
   transition: .7s all ease-in-out;
   height: 0px;
+  font-size: 10px;
   overflow: hidden;
-  .duration{
-    padding-bottom: 0px;
-  }
   .slider-container {
     margin: 0px 10%;
     padding: 20px;
-    .cards {
-    margin: 1% 10%;
-    transition: 2s all ease-in-out;
-    font-size: 10px;
+    .slider {
+      padding: 0px 70px 20px;
+    }
     .card {
+      transition: 2s all ease-in-out;
+      font-size: 10px;
+      text-align: left;
       margin: 15px 5px;
       width: 180px;
-      padding: 5px;
+      padding: 6px;
       min-width: 160px;
-      height: 260px;
+      height: 235px;
       display: inline-block;
       border: 0.5px solid $light-grey;
       box-shadow: none;
@@ -25,6 +25,26 @@
       overflow: hidden;
       .content-container {
         height: 170px;
+      }
+      .card-content{
+        padding-top: 20px;
+        padding-left: 6px;
+        .fa{
+          color: $green;
+          font-size: 11px;
+          padding-top: 2px;
+        }
+        .fa-plus {
+          transition: .2s all ease-in-out;
+          font-size: 20px;
+          padding-left: 45px;
+          padding-bottom: 10px;
+          color: $light-grey;
+          &:hover{
+            color: $green;
+            cursor: pointer;
+          }
+        }
       }
       .card-image{
         img{
@@ -36,33 +56,27 @@
         padding: 0px 5px;
         text-align: left;
       }
-      .card-toggle{
-        .fa-chevron-up {
-          transition: all .5s ease-in-out;
-          position: relative;
-          top: 5px;
-          left: 0px;
-        }
-      }
     }
+  .columns{
+    margin-top: 0px;
+  }
+  }
     .title {
       transition: all 1s ease;
-      font-size: 1.1em;
+      font-size: 15px;
       margin-bottom: 5px;
-      margin-top: -3px;
+      margin-top: -8px;
       text-overflow: ellipsis;
       overflow: hidden;
       white-space: nowrap;
       line-height: 1;
     }
-  }
-  .columns{
-    margin-top: 0px;
-  }
+  .duration{
+    padding-bottom: 0px;
   }
 }
 .set-height {
-  height: 400px;
+  height: 350px;
   transition: .7s all ease-in-out;
 }
 

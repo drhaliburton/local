@@ -10,7 +10,7 @@ const FavSlider = React.createClass({
   render() {
     let cardsArray = this.props.cards;
     return (
-      <Carousel slidesToShow={3} slidesToScroll={2} cellSpacing={20} dragging={true} easing="easeInOut" slideWidth="200px" width="90%">
+      <Carousel decorators={Carousel.getDefaultProps().decorators.slice(0, 2)} slidesToShow={1} slidesToScroll={2} cellSpacing={10} dragging={true} wrapAround={true} easing="easeInOut" slideWidth="200px" height="300px" cellAlign="left">
          {
           cardsArray.map((card, index) => {
             return <div key={index} className="card">
