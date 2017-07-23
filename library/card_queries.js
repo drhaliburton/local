@@ -70,5 +70,17 @@ module.exports = (knex) => {
     });
   }
 
+    obj.getFinalImageURL = function (imageArray) {
+      return Promise.all(imageArr.map((image) => {
+      return request({
+        url: image
+      }, (err, res, body) => {
+        let imageURLs = JSON.parse(body);
+        console.log(imageURLs)
+        resolve(imageURLs);
+      });
+    }));
+  }
+
 return obj;
 }
