@@ -14,7 +14,7 @@ class NewImage extends Component {
   render() {
     return (
       <div className="card-image">
-        <figure className="image is-1by1">
+        <figure className="cover">
           <img src={this.renderImage(this.props.image)} alt="Image"></img>
         </figure>
       </div>

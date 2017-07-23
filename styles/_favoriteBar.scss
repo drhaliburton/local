@@ -6,6 +6,10 @@
   .slider-container {
     margin: 0px 10%;
     padding: 20px;
+      button {
+        background: white !important;
+        color: $light-grey !important;
+      }
     .slider {
       padding: 0px 70px 20px;
     }
@@ -79,4 +83,3 @@
   height: 350px;
   transition: .7s all ease-in-out;
 }
-
