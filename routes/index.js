@@ -81,7 +81,7 @@ module.exports = (knex) => {
                 location: [card.location.x, card.location.y],
                 description: card.description,
                 duration: card.duration,
-                category: card.name,
+                category: card.category_name,
                 user: card.given_name,
                 photos: card.photos,
                 ratings: card.rating
