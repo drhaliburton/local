@@ -304,6 +304,9 @@
   .favorites-container .slider-container {
     margin: 0px 10%;
     padding: 20px; }
+    .favorites-container .slider-container button {
+      background: white !important;
+      color: #CCCCCC !important; }
     .favorites-container .slider-container .slider {
       padding: 0px 70px 20px; }
     .favorites-container .slider-container .card {
