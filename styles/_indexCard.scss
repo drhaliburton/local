@@ -7,7 +7,7 @@
     width: 19%;
     min-width: 220px;
     max-width: 300px;
-    height: 340px;
+    height: 330px;
     display: inline-block;
     border: 0.5px solid $light-grey;
     box-shadow: none;
@@ -202,11 +202,14 @@
       text-align: center;
       transition: 1s all ease-in-out !important;
       overflow: hidden;
-
       img {
-        width: 280px;
-        transition: 2s all ease-in-out !important;
-
+        max-width: 400px;
+        max-height: 220px;
+      }
+      .cover {
+        object-fit: cover;
+        width: 100%;
+        height: 100%;
       }
     }
     .location{
@@ -229,7 +232,7 @@
   transition: all 1s ease-in-out !important;
   .column{
     background-color: white;
-    padding: 10px;
+    padding: 8px;
     transition: all 1s ease-in-out !important;
   }
 }
