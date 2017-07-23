@@ -68,6 +68,17 @@ module.exports = (knex) => {
   });
 
   router.post('/', (req, res) => {
+    const userId = req.session.userId;
+    const cardId = req.body.id;
+    addItinerary(cardId, userId)
+      .then(() => {
+        res.json({
+          status: 'ok'
+        })
+      })
+      .catch(err => {
+        res.status(400).send("ERROR");
+      });
   });
 
   router.get("/map", (req, res) => {

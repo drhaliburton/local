@@ -7,7 +7,7 @@ class FavImage extends Component {
       <div className="card-image">
         <figure className="image is-1by1">
           <img src={this.props.image} alt="Image"></img>
-          <i class="fa fa-tree"></i>
+          <i className="fa fa-tree"></i>
         </figure>
       </div>
     );
