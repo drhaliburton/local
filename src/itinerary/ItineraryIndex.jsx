@@ -19,37 +19,45 @@ class ItineraryIndex extends Component {
       .then((cards) => this.setState({
         favCards: cards
       })
-      );
+    );
 
     // Api.get('/itinerary/favorites')
     //   .then((cards) => this.setState({
     //     itineraryCards: cards
     //   })
     // );
-  } 
-  add(card) {
-    const newCard = this.state.itineraryCards.concat(card.card);
-    this.setState({ itineraryCards: newCard });
   }
+  add(card) {
+    let newCard = this.state.itineraryCards.concat(card.card);
+    let removeCard = this.state.favCards.splice(0)
+    this.setState({ itineraryCards: newCard, favCards: removeCard });
+  }
+  // delete(card) {
+  //   let removeCard = this.state.itineraryCards.splice(card.card);
+  //   let newCard = this.state.favCards.concat(card.card);
+  //   this.setState({ itineraryCards: removeCard });
+  //   this.setState({ favCards: newCard })
+  // }
 
   componentDidMount() {
-    fetch('https://www.googleapis.com/calendar/v3/calendars/primary/events', {
-      method: 'POST',
-      credentials: 'include',
-      headers: {
-        'Accept': 'application/json',
-        'Content-Type': 'application/json',
-        'Authorization': 'Bearer '//this.props.routes.currentUser.token,
-      },
-      body: JSON.stringify({
-        "start": {
-          "dateTime": "2017-09-08T22:47:31-07:00"
-        },
-        "end": {
-          "dateTime": "2017-09-08T23:47:31-07:00"
-        }
-      })
-    })
+
+    //   fetch('https://www.googleapis.com/calendar/v3/calendars/primary/events', {
+    //     method: 'POST',
+    //     credentials: 'include',
+    //     headers: {
+    //       'Accept': 'application/json',
+    //       'Content-Type': 'application/json',
+    //       'Authorization': 'Bearer '//this.props.routes.currentUser.token,
+    //     },
+    //     body: JSON.stringify({
+    //       "start": {
+    //         "dateTime": "2017-09-08T22:47:31-07:00"
+    //       },
+    //       "end": {
+    //         "dateTime": "2017-09-08T23:47:31-07:00"
+    //       }
+    //     })
+    //   })
   }
 
   render() {
