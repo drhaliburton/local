@@ -7,14 +7,14 @@ class NewImage extends Component {
     if (images == null) {
       return 'http://placekitten.com.s3.amazonaws.com/homepage-samples/408/287.jpg';
     } else {
-      // console.log('images: ' + this.props.image);
+      return this.props.image[0];
     }
   }
 
   render() {
     return (
       <div className="card-image">
-        <figure className="image is-1by1">
+        <figure className="cover">
           <img src={this.renderImage(this.props.image)} alt="Image"></img>
         </figure>
       </div>

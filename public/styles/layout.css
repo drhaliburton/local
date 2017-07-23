@@ -7,7 +7,7 @@
     width: 19%;
     min-width: 220px;
     max-width: 300px;
-    height: 340px;
+    height: 330px;
     display: inline-block;
     border: 0.5px solid #CCCCCC;
     box-shadow: none;
@@ -70,94 +70,87 @@
     .cards .card .content {
       height: auto;
       transition: all 1s ease-in-out !important; }
-    .cards .card .fa-star {
-      font-size: 1.4em;
-      position: relative;
-      padding-top: 7px;
-      color: #FCB737;
-      box-shadow: 1px grey; }
-      .cards .card .fa-star:hover {
-        color: #fba505;
-        cursor: pointer; }
-      .cards .card .fa-star .is-active {
-        color: maroon; }
-    .cards .card .fa-plus {
-      font-size: 1.4em;
-      position: relative;
-      padding-top: 7px;
-      color: lightgrey;
-      box-shadow: 1px grey; }
-      .cards .card .fa-plus:hover {
-        color: pink;
-        cursor: pointer; }
-      .cards .card .fa-plus .is-active {
-        color: #00b0a3; }
-    .cards .card .media-content {
-      width: 170px;
-      background-color: white;
-      transition: all 1s ease-in-out !important; }
-    .cards .card .title {
-      transition: all 1s ease !important;
-      font-size: 1.4em;
-      margin-bottom: 5px;
-      text-overflow: ellipsis;
-      overflow: hidden;
-      white-space: nowrap; }
-    .cards .card .subtitle {
-      font-size: .9em; }
-    .cards .card small {
-      font-style: italic;
-      font-size: .7em; }
-    .cards .card .card-details {
-      background-color: white;
-      overflow: hidden;
-      font-size: 0.8em;
-      padding-top: 10px;
-      line-height: 15px;
-      transition: all 1.5s ease-in-out !important; }
-      .cards .card .card-details .description {
-        background-color: white;
-        transition: all 0.5s ease-in-out;
-        font-size: 1.3em;
-        line-height: 1.5;
-        padding: 15px 0px 0px; }
-        .cards .card .card-details .description .rating {
-          margin: 45%;
-          display: inline;
-          transition: all 0.5s ease-in-out; }
-          .cards .card .card-details .description .rating .fa:hover {
-            color: #CCCCCC;
-            cursor: pointer; }
-          .cards .card .card-details .description .rating .subtitle {
-            text-align: center; }
-    .cards .card .card-toggle {
-      margin-top: 10px;
-      transition: 0.5s all ease-in-out !important; }
-      .cards .card .card-toggle .fa-chevron-up {
-        transition: all .5s ease-in-out;
-        position: relative;
-        top: 5px;
-        left: 45%; }
-      .cards .card .card-toggle .chev-rotate {
-        transition: 2s all ease-in-out;
-        transform: rotate(180deg); }
-    .cards .card .subtitle {
-      margin-bottom: 5px; }
-    .cards .card .card-image {
-      height: 100%;
-      text-align: center;
-      transition: 1s all ease-in-out !important;
-      overflow: hidden; }
-      .cards .card .card-image img {
-        width: 280px;
-        transition: 2s all ease-in-out !important; }
-    .cards .card .location {
-      margin-top: 3px;
-      font-size: 1em;
-      color: #00caba;
+  .cards .fa-plus {
+    font-size: 1.4em;
+    position: relative;
+    padding-top: 7px;
+    color: lightgrey;
+    box-shadow: 1px grey; }
+    .cards .fa-plus:hover {
+      color: pink;
       cursor: pointer; }
-      .cards .card .location:hover {
-        color: #00b0a3; }
+    .cards .fa-plus .is-active {
+      color: #00b0a3; }
+  .cards .media-content {
+    width: 170px;
+    background-color: white;
+    transition: all 1s ease-in-out !important; }
+  .cards .title {
+    transition: all 1s ease !important;
+    font-size: 1.4em;
+    margin-bottom: 5px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap; }
+  .cards .subtitle {
+    font-size: .9em; }
+  .cards small {
+    font-style: italic;
+    font-size: .7em; }
+  .cards .card-details {
+    background-color: white;
+    overflow: hidden;
+    font-size: 0.8em;
+    padding-top: 10px;
+    line-height: 15px;
+    transition: all 1.5s ease-in-out !important; }
+    .cards .card-details .description {
+      background-color: white;
+      transition: all 0.5s ease-in-out;
+      font-size: 1.3em;
+      line-height: 1.5;
+      padding: 15px 0px 0px; }
+      .cards .card-details .description .rating {
+        margin: 45%;
+        display: inline;
+        transition: all 0.5s ease-in-out; }
+        .cards .card-details .description .rating .fa:hover {
+          color: #CCCCCC;
+          cursor: pointer; }
+        .cards .card-details .description .rating .subtitle {
+          text-align: center; }
+  .cards .card-toggle {
+    margin-top: 10px;
+    transition: 0.5s all ease-in-out !important; }
+    .cards .card-toggle .fa-chevron-up {
+      transition: all .5s ease-in-out;
+      position: relative;
+      top: 5px;
+      left: 45%; }
+    .cards .card-toggle .chev-rotate {
+      transition: 2s all ease-in-out;
+      transform: rotate(180deg); }
+  .cards .subtitle {
+    margin-bottom: 5px; }
+  .cards .card-image {
+    height: 100%;
+    text-align: center;
+    transition: 1s all ease-in-out !important;
+    overflow: hidden; }
+    .cards .card-image img {
+      max-width: 400px;
+      max-height: 220px; }
+    .cards .card-image .cover {
+      object-fit: cover;
+      width: 100%;
+      height: 100%; }
+  .cards .location {
+    margin-top: 3px;
+    font-size: 1em;
+    color: #00caba;
+    cursor: pointer; }
+    .cards .location:hover {
+      color: #00b0a3; }
 
 .columns {
   z-index: 101;
@@ -166,8 +159,27 @@
   transition: all 1s ease-in-out !important; }
   .columns .column {
     background-color: white;
-    padding: 10px;
+    padding: 8px;
     transition: all 1s ease-in-out !important; }
+
+.icon .is-full {
+  font-size: 1.4em;
+  position: relative;
+  padding-top: 7px;
+  color: #fba505 !important;
+  box-shadow: 1px grey; }
+  .icon .is-full :hover {
+    color: #CCCCCC !important;
+    cursor: pointer; }
+.icon .is-open {
+  font-size: 1.4em;
+  position: relative;
+  padding-top: 7px;
+  color: #CCCCCC !important;
+  box-shadow: 1px grey; }
+.icon :hover {
+  color: #fba505 !important;
+  cursor: pointer; }
 
 .navbar {
   height: 5rem;
@@ -252,6 +264,105 @@
 .landing-content .brand img {
   width: 80%; }
 
+.accent-font {
+  font-family: 'Caveat Brush', cursive;
+  font-size: 1.7em;
+  padding-bottom: 20px;
+  width: 100%; }
+
+.input {
+  font-size: .8em; }
+
+.favorites-container {
+  transition: .7s all ease-in-out;
+  height: 0px;
+  font-size: 10px;
+  overflow: hidden; }
+  .favorites-container .slider-container {
+    margin: 0px 10%;
+    padding: 20px; }
+    .favorites-container .slider-container button {
+      background: white !important;
+      color: #CCCCCC !important; }
+    .favorites-container .slider-container .slider {
+      padding: 0px 70px 20px; }
+    .favorites-container .slider-container .card {
+      transition: 2s all ease-in-out;
+      font-size: 10px;
+      text-align: left;
+      margin: 15px 5px;
+      width: 180px;
+      padding: 6px;
+      min-width: 160px;
+      height: 235px;
+      display: inline-block;
+      border: 0.5px solid #CCCCCC;
+      box-shadow: none;
+      background-color: #fff;
+      overflow: hidden; }
+      .favorites-container .slider-container .card .content-container {
+        height: 170px; }
+      .favorites-container .slider-container .card .card-content {
+        padding-top: 20px;
+        padding-left: 6px; }
+        .favorites-container .slider-container .card .card-content .fa {
+          color: #00caba;
+          font-size: 11px;
+          padding-top: 2px; }
+        .favorites-container .slider-container .card .card-content .fa-plus {
+          transition: .2s all ease-in-out;
+          font-size: 20px;
+          padding-left: 45px;
+          padding-bottom: 10px;
+          color: #CCCCCC; }
+          .favorites-container .slider-container .card .card-content .fa-plus:hover {
+            color: #00caba;
+            cursor: pointer; }
+      .favorites-container .slider-container .card .card-image img {
+        height: 170px; }
+      .favorites-container .slider-container .card .description {
+        font-size: 9px;
+        padding: 0px 5px;
+        text-align: left; }
+    .favorites-container .slider-container .columns {
+      margin-top: 0px; }
+  .favorites-container .title {
+    transition: all 1s ease;
+    font-size: 15px;
+    margin-bottom: 5px;
+    margin-top: -8px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+    line-height: 1; }
+  .favorites-container .duration {
+    padding-bottom: 0px; }
+
+.set-height {
+  height: 350px;
+  transition: .7s all ease-in-out; }
+
+.box {
+  border: 0.05px;
+  border-color: #ccffef;
+  border-style: solid;
+  border-radius: 10px; }
+  .box:hover {
+    border-color: #00caba;
+    cursor: pointer; }
+
+.modal .modal-background {
+  background-color: #AADDD5;
+  opacity: 0.1; }
+.modal .title {
+  color: #363636; }
+.modal .fa {
+  color: black; }
+.modal .button {
+  border-color: #00caba; }
+  .modal .button:hover {
+    border-color: black; }
+
 .columns {
   margin-top: 7rem;
   margin-left: 1rem;
@@ -282,76 +393,6 @@
 
 .box {
   margin: 10px; }
-
-.accent-font {
-  font-family: 'Caveat Brush', cursive;
-  font-size: 1.7em;
-  padding-bottom: 20px;
-  width: 100%; }
-
-.input {
-  font-size: .8em; }
-
-.favorites-container {
-  transition: .7s all ease-in-out;
-  width: 100%;
-  height: 0px;
-  overflow: hidden; }
-  .favorites-container .duration {
-    padding-bottom: 0px; }
-  .favorites-container .cards {
-    margin: 5% 10%;
-    transition: 2s all ease-in-out;
-    font-size: 10px; }
-    .favorites-container .cards .card {
-      margin: 15px 5px;
-      width: 10%;
-      padding: 5px;
-      min-width: 160px;
-      height: 238px;
-      display: inline-block;
-      border: 0.5px solid #CCCCCC;
-      box-shadow: none;
-      background-color: #fff;
-      overflow: hidden; }
-      .favorites-container .cards .card .content-container {
-        height: 148px; }
-      .favorites-container .cards .card .description {
-        font-size: 9px;
-        padding: 0px 5px;
-        text-align: left; }
-      .favorites-container .cards .card .card-toggle .fa-chevron-up {
-        transition: all .5s ease-in-out;
-        position: relative;
-        top: 5px;
-        left: 0px; }
-    .favorites-container .cards .title {
-      transition: all 1s ease;
-      font-size: 1.1em;
-      margin-bottom: 5px;
-      margin-top: -3px;
-      text-overflow: ellipsis;
-      overflow: hidden;
-      white-space: nowrap;
-      line-height: 1; }
-  .favorites-container .columns {
-    margin-top: 0px; }
-
-.set-height {
-  height: 270px;
-  transition: .7s all ease-in-out; }
-
-.box {
-  border: 0.05px;
-  border-color: #ccffef;
-  border-style: solid;
-  border-radius: 10px; }
-  .box:hover {
-    border-color: #00caba;
-    cursor: pointer; }
-
-.modal .h1 {
-  color: white; }
 
 .is-rotated {
   transform: rotate(180deg); }

@@ -1,16 +1,15 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import ItineraryTime from "./ItineraryTime.jsx";
-import ItineraryCard from "./ItineraryCard.jsx";
 import FavoriteBar from "./FavoriteBar.jsx";
-import SortableComponent from "../dnd/SortableComponent.jsx";
+import SortableComponent from "./dnd/SortableComponent.jsx";
 import Api from '../../library/api.js';
 
 class ItineraryIndex extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      favCards: []
-      // itCards: []
+      favCards: [],
+      itineraryCards: []
     }
   }
 
@@ -20,33 +19,51 @@ class ItineraryIndex extends Component {
         favCards: cards
       })
     );
-  }
 
-componentDidMount() {
-    fetch('https://www.googleapis.com/calendar/v3/calendars/primary/events', {
-      method: 'POST',
-      credentials: 'include',
-      headers: {
-      'Accept': 'application/json',
-      'Content-Type': 'application/json',
-      'Authorization': 'Bearer '//this.props.routes.currentUser.token,
-      },
-      body: JSON.stringify({
-        "start": {
-          "dateTime": "2017-09-08T22:47:31-07:00"
-        },
-        "end": {
-          "dateTime": "2017-09-08T23:47:31-07:00"
-        }
-      })
-    })
+    // Api.get('/itinerary/favorites')
+    //   .then((cards) => this.setState({
+    //     itineraryCards: cards
+    //   })
+    // );
+  }
+  add(card) {
+    let newCard = this.state.itineraryCards.concat(card.card);
+    let removeCard = this.state.favCards.splice(0)
+    this.setState({ itineraryCards: newCard, favCards: removeCard });
+  }
+  // delete(card) {
+  //   let removeCard = this.state.itineraryCards.splice(card.card);
+  //   let newCard = this.state.favCards.concat(card.card);
+  //   this.setState({ itineraryCards: removeCard });
+  //   this.setState({ favCards: newCard })
+  // }
+
+  componentDidMount() {
+
+    //   fetch('https://www.googleapis.com/calendar/v3/calendars/primary/events', {
+    //     method: 'POST',
+    //     credentials: 'include',
+    //     headers: {
+    //       'Accept': 'application/json',
+    //       'Content-Type': 'application/json',
+    //       'Authorization': 'Bearer '//this.props.routes.currentUser.token,
+    //     },
+    //     body: JSON.stringify({
+    //       "start": {
+    //         "dateTime": "2017-09-08T22:47:31-07:00"
+    //       },
+    //       "end": {
+    //         "dateTime": "2017-09-08T23:47:31-07:00"
+    //       }
+    //     })
+    //   })
   }
 
   render() {
     return (
       <div className="itinerary">
         <div className="header">
-          <FavoriteBar favCards={this.state.favCards}/>
+          <FavoriteBar favCards={this.state.favCards} add={this.add.bind(this)} />
         </div>
         <p className="calendar"><i className="fa fa-calendar-check-o"></i>&nbsp;save to calendar</p>
         <div className="columns">
@@ -55,7 +72,7 @@ componentDidMount() {
             <ItineraryTime />
           </div>
           <div className="column is-9">
-            <SortableComponent />
+            <SortableComponent cards={this.state.itineraryCards} />
           </div>
         </div>
       </div>

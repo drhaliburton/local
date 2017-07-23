@@ -7,4 +7,10 @@
     border-color: $green;
     cursor: pointer;
   }
+  .fa {
+    color: $light-grey;
+      &:hover{
+        color:pink;
+      }
+  }
 }

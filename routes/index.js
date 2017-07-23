@@ -8,16 +8,6 @@ const cardQueries = require("../library/card_queries.js");
 const request = require('request');
 const cookieSession = require('cookie-session');
 
-function createFlickrUrl(photoArray) {
-  let photoUrlsArray = [];
-  for (var obj in photoArray) {
-    let item = photoArray[obj];
-    let photoUrl = `https://farm${item.farm}.staticflickr.com/${item.server}/${item.id}_${item.secret}_z.jpg`;
-    photoUrlsArray.push(photoUrl);
-  }
-  return photoUrlsArray;
-}
-
 
 module.exports = (knex) => {
   const {
@@ -49,7 +39,7 @@ module.exports = (knex) => {
             duration: card.duration,
             category: card.category_name,
             user: card.given_name,
-            photos: card.photo_url,
+            photos: card.photos,
             ratings: card.total_rating
           }
         });
@@ -94,10 +84,15 @@ module.exports = (knex) => {
                 location: [card.location.x, card.location.y],
                 description: card.description,
                 duration: card.duration,
-                category: card.name,
+                category: card.category_name,
                 user: card.given_name,
+<<<<<<< HEAD
                 photos: card.photo_url,
                 ratings: card.total_rating
+=======
+                photos: card.photos,
+                ratings: card.rating
+>>>>>>> 5b666b9cfa77ded3171f37aac0ac2d37e9317961
               }
             })
             res.json(cards)
@@ -203,7 +198,7 @@ module.exports = (knex) => {
           .then((images) => {
             postPhotos(images, cardID);
           })
-          .then(() => {
+            .then(() => {
             res.json({
               status: 'ok'
             });

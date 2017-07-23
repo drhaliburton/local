@@ -3,18 +3,21 @@ import FavContentContainer from "./FavContentContainer.jsx";
 import FavImage from "./FavImage.jsx";
 //Contains
 class FavCard extends Component {
+  add(event){
+    console.log('event', event)
+  }
   render() {
     const cardsArray = this.props.cards;
     return (
-      <div className="columns is-multiline cards">
+      <span>
         {
           cardsArray.map((card, index) => {
-            return <div key={index} className="column is-one-quarter card">
-              <FavContentContainer key={card.id} cardContent={card}/>
+            return <div key={index} className="card">
+              <FavContentContainer key={card.id}  add={this.props.add.bind(this)} cardContent={card}/>
             </div>;
           })
         }
-      </div>
+      </span>
     );
   }
 }
