@@ -1,5 +1,4 @@
 import React, {Component} from 'react';
-
 import FilterButton from './FilterButton.jsx';
 
 class Filter extends Component {

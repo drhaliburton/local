@@ -112,43 +112,57 @@ module.exports = (knex) => {
   })
 
 
-  router.post("/upvote", (req, res) => {
-    let card_id = req.body.id
-    console.log("The card id is " + card_id)
+  router.get("/ratings", (req, res) => {
     getRatings(card_id)
-    .then((result)=>{
-      console.log(result[0].total_rating)
-        return (result[0].total_rating);
+      .then((result) => {
+        console.log(result);
+      })
+      .catch(err => {
+        res.status(400).send("Error in retreiving rating")
+      })
 
-    })
   })
-    // if(req.session.userId){
-    //   postUpvote(card_id, req.session.userId)
-    //   .then((result) => {
-    //     // getRatings(card_id)
-    //     console.log("after update ",result);
-    //   })
-    //   .catch(err => {
-    //         res.status(400).send("ERROR in upvoting");
 
-    //   });
-    // }
+  router.post("/upvote", (req, res) => {
+    let card_id = req.body['cardId'];
+    let user_id = req.session.userId;
+    console.log("******The card id is " + card_id)
+    if(req.session.userId){
+    postUpvote(card_id, user_id)
+      .then((result)=>{
+          console.log(result)
+      })
+      .catch(err => {
+          res.status(400).send("ERROR in upvoting");
+
+        });
+    }
+  })
 
 
   router.post("/downvote", (req, res) => {
-    let card_id = req.body.id
-    console.log("The card id is " + card_id)
-    console.log(req.session.userId)
+    let card_id = req.body['cardId'];
+    let user_id = req.session.userId;
+    console.log("******The card id is " + card_id)
     if(req.session.userId){
-      postDownvote(card_id, req.session.userId)
-      .then(() => {
-        // getRatings(card_id)
-      })
-      .catch(err => {
-            res.status(400).send("ERROR in downvoting");
+    postDownvote(card_id, user_id)
+    .then((result)=>{
+        console.log(result)
+    })
+    .catch(err => {
+        res.status(400).send("ERROR in upvoting");
 
       });
-    }
+  }
+    // getRatings(card_id)
+    //   .then((result) => {
+    //     console.log(result);
+    //   })
+    //   .catch(err => {
+    //     res.status(400).send("Error in retreiving rating")
+    //   })
+
+
   })
 
   router.post("/", (req, res) => {

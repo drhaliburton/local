@@ -2,9 +2,9 @@
 module.exports = (knex) => {
 const obj = {};
 
-  obj.postUpvote= function(card_id,user_id){
+  obj.postUpvote= function(card_id, user_id){
     return knex('ratings')
-    .insert({
+    .update({
       rating: 1,
       user_id: user_id,
       card_id: card_id
@@ -19,7 +19,7 @@ const obj = {};
 
   obj.postDownvote= function(card_id, user_id){
     return knex('ratings')
-    .insert({
+    .update({
       rating: -1,
       user_id: user_id,
       card_id: card_id
@@ -38,6 +38,9 @@ const obj = {};
     return knex('cards')
     .where('id', card_id)
     .select('total_rating')
+    .then((result) => {
+      console.log(result)
+    })
   }
 
   obj.addFavorite = function(cardId, userId) {

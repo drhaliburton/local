@@ -31,7 +31,6 @@ class HomepageIndex extends Component {
   }
 
 
-
   locationSearch(event) {
     Api.get(`/index/locate?find=${event}`)
       .then((cards) => this.setState({
@@ -60,22 +59,69 @@ class HomepageIndex extends Component {
   };
 
   newFavorite(id) {
-    Api.post('/index/favorite', id)
-  }
-
-  addOne(id){
-    var t = Api.post('/index/upvote', id);
-    console.log("printing t", t);
-  }
-
-  removeOne(id){
-    Api.post('/index/downvote', id)
-    .then(() => {
-      this.setState({
-        cards: this.state.allCards
-      })
+    Api.post('/index/favorite')
+      .then(() => {
+        this.resetCards();
     })
   }
+
+  getRatings(cardID){
+    event.preventDefault();
+    console.log(cardID);
+
+    fetch('index/ratings' , {
+      method: 'GET',
+      credential: 'include',
+      credentials: 'include',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        cardId: cardID
+      })
+    })
+    .then (() => res.json())
+  }
+
+  addOne(cardID){
+    event.preventDefault();
+    console.log(cardID);
+
+    fetch('/index/upvote', {
+      method: 'POST',
+      credentials: 'include',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        cardId: cardID
+      })
+    })
+    .then(() => {
+        this.resetCards()
+      })
+  };
+
+
+  removeOne(cardID){
+    event.preventDefault();
+      console.log(cardID);
+      fetch('/index/downvote', {
+        method: 'POST',
+        credentials: 'include',
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          cardId: cardID
+        })
+      }).then(() => {
+        this.resetCards()
+      })
+    }
 
   render() {
     return (
