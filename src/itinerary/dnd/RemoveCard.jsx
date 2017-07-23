@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 
-class DeleteCard extends Component {
+class RemoveCard extends Component {
       render() {
     return (
       <span className="icon is-pulled-right" aria-hidden="true"><i className="fa fa-minus-circle " onClick={(event) => {
-         this.props.delete({card:this.props.card})}}></i></span>
+         this.props.remove({card:this.props.card})}}></i></span>
     );
   }
 }
-export default DeleteCard;
+export default RemoveCard;

@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import ItineraryCard from "./ItineraryCard.jsx";
 import {render} from '../../../node_modules/react-dom';
 import {SortableContainer, SortableElement, arrayMove} from '../../../node_modules/react-sortable-hoc';
-import DeleteCard from "./DeleteCard.jsx";
+import RemoveCard from "./RemoveCard.jsx";
 
 const SortableItem = SortableElement(({value}) =>
   <li>{value}</li>
@@ -72,7 +72,7 @@ class SortableComponent extends Component {
               </div>
             </div>
               <div className="media-right">
-                <DeleteCard  />
+                <RemoveCard  />
               </div>
           </article>
         </div>
