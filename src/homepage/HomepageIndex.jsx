@@ -57,12 +57,8 @@ class HomepageIndex extends Component {
   }
 
   addOne(id){
-    Api.post('/index/upvote', id)
-    .then(() => {
-      this.setState({
-        cards: this.state.allCards
-      })
-    })
+    var t = Api.post('/index/upvote', id);
+    console.log("printing t", t);
   }
 
   removeOne(id){

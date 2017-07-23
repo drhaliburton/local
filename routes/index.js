@@ -81,7 +81,6 @@ module.exports = (knex) => {
       //the whole response has been recieved, so we just print it out here
       response.on('end', function () {
         const result = JSON.parse(str).results[0];
-        console.log(result);
 
         const lat1 = result.geometry.viewport.northeast.lat;
         const lng1 = result.geometry.viewport.northeast.lng;
@@ -98,7 +97,7 @@ module.exports = (knex) => {
                 duration: card.duration,
                 category: card.name,
                 user: card.given_name,
-                photos: card.url,
+                photos: card.photo_url,
                 ratings: card.total_rating
               }
             })
@@ -113,21 +112,29 @@ module.exports = (knex) => {
     https.request(options, callback).end();
   })
 
+
   router.post("/upvote", (req, res) => {
     let card_id = req.body.id
     console.log("The card id is " + card_id)
-    console.log(req.session.userId)
-    if(req.session.userId){
-      postUpvote(card_id, req.session.userId)
-      .then(() => {
-        // getRatings(card_id)
-      })
-      .catch(err => {
-            res.status(400).send("ERROR in upvoting");
+    getRatings(card_id)
+    .then((result)=>{
+      console.log(result[0].total_rating)
+        return (result[0].total_rating);
 
-      });
-    }
+    })
   })
+    // if(req.session.userId){
+    //   postUpvote(card_id, req.session.userId)
+    //   .then((result) => {
+    //     // getRatings(card_id)
+    //     console.log("after update ",result);
+    //   })
+    //   .catch(err => {
+    //         res.status(400).send("ERROR in upvoting");
+
+    //   });
+    // }
+
 
   router.post("/downvote", (req, res) => {
     let card_id = req.body.id

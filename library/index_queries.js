@@ -35,10 +35,11 @@ const obj = {};
 
 
   obj.getRatings= function(card_id){
+    const data = {}
     return knex('cards')
     .where('id', card_id)
-    .select(['total_rating'])
-}
+    .select('total_rating')
+  }
 
   obj.addFavorite = function(cardId, userId) {
     return knex('favorites')
