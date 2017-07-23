@@ -16,15 +16,34 @@ const obj = {};
 
   }
 
-  obj.allCards = function() {
+ obj.allCards = function() {
     return knex('cards')
     .select(['cards.id AS card_id', 'cards.title', 'cards.description', 'cards.location', 'cards.duration',
-    'users.given_name', 'users.family_name', 'categories.name AS category_name', 'photos.url AS photo_url', 'ratings.rating'])
+    'users.given_name', 'users.family_name', 'categories.name AS category_name',])
     .leftJoin('users', 'cards.user_id', '=', 'users.id')
     .leftJoin('categories', 'cards.category_id', '=', 'categories.id')
-    .leftJoin('photos', 'cards.id', '=', 'photos.card_id')
     .leftJoin('ratings', 'cards.id', '=', 'ratings.card_id')
-    .orderBy('rating', 'desc')
+    .then((result) => {
+      const allCards = result;
+      return Promise.all(result.map((card, index) => {
+        return knex('photos')
+        .select(knex.raw('ARRAY_AGG(photos.url) as photo_urls'))
+        .where('card_id', card.card_id)
+        .then((photos) => {
+          allCards[index].photos = photos[0].photo_urls;
+          })
+        }))
+      .then(() => {
+        return allCards
+      })
+    })
+  }
+
+  
+  obj.getPhotos = function(cardId) {
+    return knex('photos')
+    .select(knex.raw('ARRAY_AGG(photos.url) as photos_url'))
+    .where('card_id', cardId)
   }
 
   return obj;
