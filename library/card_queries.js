@@ -63,6 +63,7 @@ module.exports = (knex) => {
         let placesResponse = JSON.parse(body);
         let placesArray = placesResponse.results.slice(0, 5);
         let images = obj.createImageUrl(placesArray);
+        console.log(images)
         resolve(images);
       });
     });
