@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import ItineraryTime from "./ItineraryTime.jsx";
 import FavoriteBar from "./FavoriteBar.jsx";
 import SortableComponent from "./dnd/SortableComponent.jsx";
+import SettingTime from "./SettingTime.jsx";
 import Api from '../../library/api.js';
 
 class ItineraryIndex extends Component {
@@ -67,7 +68,7 @@ class ItineraryIndex extends Component {
         </div>
         <p className="calendar"><i className="fa fa-calendar-check-o"></i>&nbsp;save to calendar</p>
         <div className="columns">
-
+          < SettingTime /> 
           <div className="column is-2">
             <ItineraryTime />
           </div>
