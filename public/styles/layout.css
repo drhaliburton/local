@@ -350,6 +350,9 @@
     border-color: #00caba;
     cursor: pointer; }
 
+.modal .h1 {
+  color: white; }
+
 .is-rotated {
   transform: rotate(180deg); }
 
