@@ -1,13 +1,13 @@
 .favorites-container{
   transition: .7s all ease-in-out;
   height: 0px;
-  .slick-slider{
-    width:100%;
-    overflow: hidden;
-  }
+  overflow: hidden;
   .duration{
     padding-bottom: 0px;
   }
+  .slider-container {
+    margin: 0px 10%;
+    padding: 20px;
     .cards {
     margin: 1% 10%;
     transition: 2s all ease-in-out;
@@ -59,12 +59,10 @@
   .columns{
     margin-top: 0px;
   }
+  }
 }
 .set-height {
   height: 400px;
   transition: .7s all ease-in-out;
 }
 
-.slider-container {
- margin: 0px 100px;
-}
