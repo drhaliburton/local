@@ -3,7 +3,6 @@ import React, {Component} from 'react';
 class Search extends Component {
   render() {
     return (
-      <div className="landing-content">
         <div className="columns has-text-centered">
           <div className="column is-6">
             <div className="accent-font">Travel Like You Live Here.</div>
@@ -14,7 +13,6 @@ class Search extends Component {
               />
           </div>
         </div>
-      </div>
     );
   }
 }

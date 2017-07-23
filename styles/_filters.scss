@@ -12,17 +12,21 @@
   .filter-toggle {
     margin:auto;
     top: 5px;
-    padding-top: 20px;
+    padding-top: 10px;
+    color: white;
 
     .fa-chevron-up {
       transition: all .7s ease-in-out;
-      color: $green;
+      color: white;
       left: 35%;
+      opacity: .7;
       font-size: 1em;
       &:hover {
-        color: $dark-green;
+        transition: all .3s ease-in-out;
+        color: white !important;
+        opacity: .9;
         cursor: pointer;
-      } 
+      }
     }
   }
   .filter-button {
@@ -30,37 +34,49 @@
     line-height: 2.5;
     .button {
       font-size: .6em;
+      opacity: .9;
+      color: $dark-grey;
+      border-color: $dark-grey;
+      .fa {
+        color: $dark-grey;
+      }
+      &hover{
+        opacity: .1;
+      }
       &.is-active {
-        background-color: $green;
-        color: white;
-        border-color: white;
+        background-color: white;
+        color: $green;
+        border-color: $green;
       }
       &.is-active .fa {
-        color: white;
+        color: $green;
       }
     }
   }
   .filter-brand{
-    margin: 0.3rem;
-    font-size: .8em;
+    margin: 0.1rem;
+    font-size: .9em;
   }
   .title {
-    margin-top: 15px;
+    margin-top: 10px;
+    color: white;
+    font-weight:400;
   }
   .button {
     margin: auto;
     border-radius: 10px;
     &:hover{
-      border-color: $green;
+      border-color: white;
     }
   }
   .filter-content {
     transition: all 1s ease-in-out;
-    margin-bottom: 1rem; 
-    max-height: 10px;
+    margin: .5rem;
+
+    max-height: 0px;
     overflow: hidden;
-  }  
+  }
   .toggled-filter {
-    max-height: 300px;
+    max-height: 100px;
   }
 }

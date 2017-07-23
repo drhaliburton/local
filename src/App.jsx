@@ -45,9 +45,7 @@ class App extends Component {
     return (
       <Router>
         <div>
-          <div>
             <Navbar setCurrentUser={this.getCurrentUser.bind(this)} currentUser={this.state.currentUser}/>
-          </div>
           <Route currentUser={this.state.currentUser} exact path="/" component={HomepageIndex} />
           <Route currentUser={this.state.currentUser} path="/itinerary" component={ItineraryIndex} />
           <Route currentUser={this.state.currentUser} path="/map" component={MapIndex} />
