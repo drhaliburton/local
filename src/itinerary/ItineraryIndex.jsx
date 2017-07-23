@@ -1,6 +1,5 @@
 import React, {Component} from 'react';
 import ItineraryTime from "./ItineraryTime.jsx";
-import ItineraryCard from "./ItineraryCard.jsx";
 import FavoriteBar from "./FavoriteBar.jsx";
 import SortableComponent from "./dnd/SortableComponent.jsx";
 import Api from '../../library/api.js';

@@ -6,15 +6,15 @@ class FavCard extends Component {
   render() {
     const cardsArray = this.props.cards;
     return (
-      <div className="columns is-multiline cards">
+      <span>
         {
           cardsArray.map((card, index) => {
-            return <div key={index} className="column is-one-quarter card">
+            return <div key={index} className="card">
               <FavContentContainer key={card.id} cardContent={card}/>
             </div>;
           })
         }
-      </div>
+      </span>
     );
   }
 }
