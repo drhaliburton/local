@@ -20,11 +20,11 @@ class ItineraryIndex extends Component {
       })
     );
 
-    // Api.get('/itinerary/favorites')
-    //   .then((cards) => this.setState({
-    //     itineraryCards: cards
-    //   })
-    // );
+    Api.get('/itinerary/favorites')
+      .then((cards) => this.setState({
+        itineraryCards: cards
+      })
+    );
   }
   add(card) {
     let newCard = this.state.itineraryCards.concat(card.card);

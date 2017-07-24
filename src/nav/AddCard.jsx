@@ -59,18 +59,18 @@ class AddCard extends Component {
     return (
       <span>
         <p onClick={this.toggleActive.bind(this)}><a><i className="fa fa-plus-square-o"></i>&nbsp;&nbsp;add card</a></p>
-        <div className={`modal + ${activeToggle}`}>
+        <div className={`modal ${activeToggle}`}>
         <div className="modal-background"></div>
         <div className="modal-card">
           <header className="modal-card-head">
-            <p className="modal-card-title">Modal title</p>
+            <p className="modal-card-title"><i className="fa fa-suitcase"></i>&nbsp;&nbsp;New Recommendation</p>
             <button className="delete" onClick={this.toggleActive.bind(this)}></button>
           </header>
           <div className="modal-card-body">
             <form className="add-card-form" onSubmit={this.postNewCard.bind(this)}>
               <div className="field">
                 <label className="label">Destination Location</label>
-                <p className="control has-icons-left has-icons-right">
+                <p className="control has-icons-left">
                   <input className="input" type="text" placeholder="Enter an Address, Neighbourhood or City" data="location" value={this.state.location} name="location" onChange={this.handleChange.bind(this)}></input>
                   <span className="icon is-small is-left">
                     <i className="fa fa-globe"></i>
@@ -80,7 +80,7 @@ class AddCard extends Component {
 
               <div className="field">
                 <label className="label">Destination Title</label>
-                <p className="control has-icons-left has-icons-right">
+                <p className="control has-icons-left">
                   <input className="input" type="text" placeholder="What is the name of your recommendation?" value={this.state.title} name="title" onChange={this.handleChange.bind(this)}></input>
                   <span className="icon is-small is-left">
                     <i className="fa fa-tag"></i>
@@ -90,7 +90,7 @@ class AddCard extends Component {
 
               <div className="field">
                 <label className="label">Why do you love this place?</label>
-                <p className="control has-icons-left has-icons-right">
+                <p className="control has-icons-left">
                   <input className="input" type="text" placeholder={`${this.state.title || "This place"}` + " is my favourite because..." } name="description" value={this.state.description} onChange={this.handleChange.bind(this)}></input>
                   <span className="icon is-small is-left">
                     <i className="fa fa-pencil"></i>
@@ -100,7 +100,7 @@ class AddCard extends Component {
 
               <div className="field">
                 <label className="label">How much time should I spend there?</label>
-                <p className="control has-icons-left has-icons-right">
+                <p className="control has-icons-left">
                   <input className="input" type="number" placeholder="Enter a value in minutes, eg: 30 or 120" value={this.state.duration} name="duration" onChange={this.handleChange.bind(this)}></input>
                   <span className="icon is-small is-left">
                     <i className="fa fa-hourglass-half"></i>

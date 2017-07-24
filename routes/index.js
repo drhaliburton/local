@@ -1,4 +1,3 @@
-"use strict";
 require('dotenv').config();
 const express = require('express');
 const router = express.Router();
@@ -22,7 +21,8 @@ module.exports = (knex) => {
   const {
     postPhotos,
     postCard,
-    findPlacePhotos
+    findPlacePhotos,
+    getFinalImageURL
   } = cardQueries(knex);
 
 
@@ -163,10 +163,11 @@ module.exports = (knex) => {
       response.on('end', function () {
         const result = JSON.parse(str).results[0];
         newCard.location = `(${result.geometry.location.lat}, ${result.geometry.location.lng})`
-        const photosArray = findPlacePhotos(result);
-        console.log('server id: ', userID);
+        const apiPhotosArray = findPlacePhotos(result);
+        console.log('API photos: ', apiPhotosArray);
       postCard(newCard, userID)
         .then(([cardID]) => {
+          const photosArray = getFinalImageURL(apiPhotosArray);
           return photosArray
           .then((images) => {
             postPhotos(images, cardID);

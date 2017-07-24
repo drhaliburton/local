@@ -1,5 +1,5 @@
 .cards {
-  margin: 8% 10%;
+  position: absolute;
   transition: 2s all ease-in-out !important;
   font-size: 12px;
   .card {
@@ -19,7 +19,6 @@
       height: 220px;
       background-color: white;
       transition: 1s all ease-in-out;
-      z-index: 100;
 
       &.expanded {
         transition: 1.2s all ease-in-out !important;
@@ -46,7 +45,6 @@
       }
 
       .icon-container {
-        z-index: 100;
         background-color: white;
         text-align: center;
         padding: 10px;
@@ -61,7 +59,6 @@
 
     .card-content {
       padding: 0;
-      z-index: 102;
       height: 100%;
       background-color: white;
       transition: 2s all ease-in-out !important;
@@ -207,19 +204,17 @@
         color: $dark-green;
       }
     }
+    .columns{
+      margin-top: 8em;
+    }
   }
 
 
 .columns {
-  z-index: 101;
+  margin-top: 1rem;
   justify-content: center;
-  background-color: white;
   transition: all 1s ease-in-out !important;
-  .fa{
-
-  }
   .column{
-    background-color: white;
     padding: 8px;
     transition: all 1s ease-in-out !important;
   }

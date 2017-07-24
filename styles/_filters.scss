@@ -3,8 +3,8 @@
     font-size: .5em;
   }
   .columns {
-    margin-top: 20px;
-    padding-bottom: 0px;
+    margin-top: 10px;
+    margin-bototm: 100px;
     .column {
       padding-top: 0px;
     }
@@ -12,55 +12,98 @@
   .filter-toggle {
     margin:auto;
     top: 5px;
-    padding-top: 20px;
+    padding-top: 10px;
+    color: $green;
+
+    .fa-chevron-up {
+      transition: all 1s ease-in-out;
+      color: $orange;
+      left: 35%;
+      font-size: 1em;
+      &:hover {
+        transition: all .3s ease-in-out;
+        color: $dark-orange !important;
+        cursor: pointer;
+      }
+    }
+  }
+  .filter-button {
+    margin: 0px 5px;
+    line-height: 2.5;
+    .button {
+      font-size: .6em;
+      opacity: .9;
+      color: $dark-grey;
+      border-color: $dark-grey;
+      .fa {
+        color: $dark-grey;
+      }
+      &hover{
+        opacity: .1;
+      }
+      &.is-active {
+        background-color: white;
+        color: $green;
+        border-color: $green;
+      }
+      &.is-active .fa {
+        color: $green;
+      }
+    }
+  }
+  .filter-brand{
+    margin: 0.1rem;
+    font-size: .9em;
+  }
+  .title {
+    margin-top: 10px;
+    color: $dark-grey;
+    font-weight:400;
+  }
+  .title-itinerary {
+    margin-top: 100px;
+    color: $dark-grey;
+    font-weight:400;
+  }
+  .card-title {
+    margin-top: 0px;
+    color: $dark-grey;
+    font-weight:400;
+    font-size: 1.3em;
+  }
+  .filter-toggle-itinerary {
+    margin:auto;
+    top: 5px;
+    padding-top: 10px;
+    color: $green;
 
     .fa-chevron-up {
       transition: all .7s ease-in-out;
       color: $green;
       left: 35%;
+      opacity: .7;
       font-size: 1em;
       &:hover {
-        color: $dark-green;
+        transition: all .3s ease-in-out;
+        color: $green !important;
+        opacity: .9;
         cursor: pointer;
-      } 
-    }
-  }
-  .filter-button {
-    margin: 5px;
-    line-height: 2.5;
-    .button {
-      font-size: .6em;
-      &.is-active {
-        background-color: $green;
-        color: white;
-        border-color: white;
-      }
-      &.is-active .fa {
-        color: white;
       }
     }
-  }
-  .filter-brand{
-    margin: 0.3rem;
-    font-size: .8em;
-  }
-  .title {
-    margin-top: 15px;
   }
   .button {
     margin: auto;
     border-radius: 10px;
     &:hover{
-      border-color: $green;
+      border-color: white;
     }
   }
   .filter-content {
     transition: all 1s ease-in-out;
-    margin-bottom: 1rem; 
-    max-height: 10px;
+    max-height: 0px;
     overflow: hidden;
-  }  
+  }
   .toggled-filter {
-    max-height: 300px;
+    max-height: 100px;
   }
 }
