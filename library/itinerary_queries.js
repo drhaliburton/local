@@ -2,7 +2,6 @@ module.exports = (knex) => {
   const obj = {};
 
   obj.getItinerary = function (user_id) {
-    console.log("ITINERARY USER ID: ", user_id);
     knex('itineraries')
       .where('user_id', user_id)
     // .and('date', date)
@@ -56,7 +55,6 @@ module.exports = (knex) => {
                   })
               }))
               .then(() => {
-                console.log(favCards)
                 return favCards
               })
           })

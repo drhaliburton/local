@@ -42,7 +42,6 @@ class FavContentContainer extends Component {
     const detailsVisible = this.state.isVisible ? 'visible'  : '';
 
     let card = this.props.cardContent;
-    console.log('PROPS to the card', card);
     return (
       <div className={`content-container ${expandedToggle}`}>
         <FavImage />

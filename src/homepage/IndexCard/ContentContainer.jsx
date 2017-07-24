@@ -42,7 +42,7 @@ class ContentContainer extends Component {
     let card = this.props.cardContent;
     return (
       <div className={`content-container ${expandedToggle}`}>
-        <NewImage image={console.log(card.photos)}/>
+        <NewImage image={card.photos}/>
         <span className="card-toggle">
           <a><span className={`icon fa fa-chevron-up ${rotatedToggle}`}onClick={this.toggleDescription.bind(this)}></span></a>
         </span>
