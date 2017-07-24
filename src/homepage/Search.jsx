@@ -5,9 +5,9 @@ class Search extends Component {
     return (
         <div className="columns has-text-centered">
           <div className="column is-6">
-            <div className="accent-font">Travel Like You Live Here.</div>
+            <div className="accent-font">Travel Like You Live There.</div>
             <p className="control landing"></p>
-              <input className="input" type="text" placeholder="Where are you going?" onKeyDown={(event) => {
+              <input className="input" type="text" placeholder="Where are you off to? ✈︎ " onKeyDown={(event) => {
                 if (event.key === 'Enter') {
                   this.props.locate(event.target.value)}}}
               />
