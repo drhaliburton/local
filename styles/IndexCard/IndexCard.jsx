@@ -9,7 +9,7 @@ class IndexCard extends Component {
       <div className="columns is-multiline cards">
         {cardsArray.map((card, index) => {
           return <div key={index} className="column is-one-quarter card">
-              <ContentContainer key={card.id} cardID={card.id} cardContent={card} favorite={this.props.favorite} />
+              <ContentContainer addOne={this.props.addOne} removeOne={this.props.removeOne} key={card.id} cardID={card.id} cardContent={card} favorite={this.props.favorite} />
             </div>;
           })
         }
