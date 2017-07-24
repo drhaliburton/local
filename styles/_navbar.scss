@@ -1,5 +1,11 @@
 .navbar {
-  height: 5rem;
+  position: fixed;
+  top:0;
+  right:0;
+  left: 0;
+  height: 100px;
+  z-index: 200;
+  height: 4rem;
   padding-left: 10px;
   .navbar-brand {
     margin: 13px 30px;
@@ -19,8 +25,8 @@
       }
     }
   }
-  @media screen and (max-width: 999px) {
-    overflow: visible;
+  @media screen and (max-width: 400px) {
+    overflow: hidden;
     .navbar-brand{
       margin: auto;
       display: inline-block;

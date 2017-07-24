@@ -15,8 +15,6 @@ class SignInIndex extends Component {
       email: response.profileObj.email,
       token: response.accessToken,
     }
-    console.log('user is', user);
-    console.log("RESPONSE", response.accessToken)
     fetch('/auth', {
       method: 'POST',
       credentials: "same-origin",
@@ -26,7 +24,6 @@ class SignInIndex extends Component {
       },
       body: JSON.stringify(user)
     }).then((result) => {
-      console.log("user :", user)
       window.location.href = '/';
     })
   }

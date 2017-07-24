@@ -7,6 +7,7 @@ class IndexCard extends Component {
     const cardsArray = this.props.cards;
     return (
       <div className="columns is-multiline cards">
+        <h1>Favourites</h1>
         {cardsArray.map((card, index) => {
           console.log(card);
           return <div key={index} className="column is-one-quarter card">

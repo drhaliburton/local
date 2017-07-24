@@ -6,7 +6,6 @@ const router  = express.Router();
 module.exports = (knex) => {
 
   router.post('/', (req, res) => {
-    console.log('YO', req.body)
     //Check to see if user exists
     knex('users').where({
       googleId: req.body.googleId
@@ -48,7 +47,6 @@ module.exports = (knex) => {
   });
 
   router.get('/current_user', (req, res) => {
-    console.log('session id: ', req.session.userId);
     if (!req.session.userId) {
       return res.json(null);
     }

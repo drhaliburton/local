@@ -1,12 +1,14 @@
+
 import React, {Component} from 'react';
 
 class NewImage extends Component {
 
 
   renderImage(images) {
-    if (images == null) {
+    if (images === null) {
       return 'http://placekitten.com.s3.amazonaws.com/homepage-samples/408/287.jpg';
     } else {
+      // let randomInt = Math.ceil(Math.random() * images.length);
       return this.props.image[0];
     }
   }
@@ -23,4 +25,3 @@ class NewImage extends Component {
 }
 
 export default NewImage;
-

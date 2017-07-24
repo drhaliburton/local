@@ -21,7 +21,7 @@
       width: 180px;
       padding: 6px;
       min-width: 160px;
-      height: 235px;
+      height: 150px;
       display: inline-block;
       border: 0.5px solid $light-grey;
       box-shadow: none;
@@ -31,7 +31,7 @@
         height: 170px;
       }
       .card-content{
-        padding-top: 20px;
+        padding-top: 10px;
         padding-left: 6px;
         .fa{
           color: $green;
@@ -80,6 +80,6 @@
   }
 }
 .set-height {
-  height: 350px;
+  height: 250px;
   transition: .7s all ease-in-out;
 }
