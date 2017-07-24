@@ -16,15 +16,13 @@
     color: $green;
 
     .fa-chevron-up {
-      transition: all .7s ease-in-out;
-      color: $green;
+      transition: all 1s ease-in-out;
+      color: $orange;
       left: 35%;
-      opacity: .7;
       font-size: 1em;
       &:hover {
         transition: all .3s ease-in-out;
-        color: $dark-green !important;
-        opacity: .9;
+        color: $dark-orange !important;
         cursor: pointer;
       }
     }

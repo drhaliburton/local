@@ -19,12 +19,12 @@ class PageToggle extends Component {
 
   render() {
     const rotatedToggle = this.state.isRotated ? '' : 'is-rotated';
-    const pageLink = this.state.linkURL ? 'view-all' : '#';
+    const pageLink = this.state.linkURL ? 'view-all' : '';
     return (
       <div className="page-toggle">
         <h5 className="toggle-title">View All</h5>
         <span className="toggle-arrow" onClick={this.toggleFilters.bind(this)}>
-          <Scrollchor to="#view-all" className="nav-link" className="icon is-medium"><i className={`fa fa-chevron-up ${rotatedToggle}`}></i></Scrollchor>
+          <Scrollchor to="#view-all"><i className={`fa fa-chevron-up ${rotatedToggle}`}></i></Scrollchor>
         </span><div></div>
         </div>
     );

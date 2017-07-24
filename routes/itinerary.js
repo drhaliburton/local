@@ -67,8 +67,6 @@ module.exports = (knex) => {
         })
   });
 
-  router.post('/', (req, res) => {
-  });
 
   router.get("/map", (req, res) => {
     // function initMap() {

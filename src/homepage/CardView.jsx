@@ -35,6 +35,7 @@ class CardView extends Component {
   }
 
   handleFilterClick(index) {
+    event.preventDefault();
     const { filters, currentFilter } = this.state;
 
     if (currentFilter === index) {
@@ -58,6 +59,7 @@ class CardView extends Component {
   }
 
   togglePageView(event) {
+    event.preventDefault
     console.log(this.state.linkURL);
     this.setState({
       viewToggleRotated: !this.state.viewToggleRotated,
