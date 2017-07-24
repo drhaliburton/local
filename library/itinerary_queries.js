@@ -3,9 +3,8 @@ const obj = {};
 
 obj.getItinerary = function(user_id){
   console.log("ITINERARY USER ID: ", user_id);
-  knex('itineraries')
+  return knex('itineraries')
   .where('user_id', user_id)
-  // .and('date', date)
 }
 
 obj.getFavorite = function(user_id){
