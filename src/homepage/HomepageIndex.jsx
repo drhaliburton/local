@@ -65,28 +65,6 @@ class HomepageIndex extends Component {
     })
   }
 
-  // getRatings(cardID){
-  //   event.preventDefault();
-  //   console.log('**card id is**', cardID);
-
-  //   fetch('/index' , {
-  //     method: 'GET',
-  //     credential: 'include',
-  //     credentials: 'include',
-  //     headers: {
-  //       'Accept': 'application/json',
-  //       'Content-Type': 'application/json',
-  //     },
-  //     body: JSON.stringify({
-  //       cardID: cardID
-  //     })
-  //   })
-  //   .then((result) => {
-  //     console.log('result', result)
-  //     this.resetCards()
-  //   })
-  // }
-
   addOne(cardID){
     event.preventDefault();
     console.log("**card id is**", cardID);
