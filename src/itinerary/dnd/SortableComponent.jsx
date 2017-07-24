@@ -24,10 +24,14 @@ class SortableComponent extends Component {
   }
 
   onSortEnd = ({oldIndex, newIndex}) => {
+    console.log('before', this.state.items)
+    const move = arrayMove(this.state.items, oldIndex, newIndex)
     this.setState({
-      items: arrayMove(this.state.items, oldIndex, ),
+      items: move,
     });
-    console.log('ITEM:', this.state.items[0].title, 'ITEM DURATION:', this.state.items[0].duration)
+    // console.log('ITEM:', this.state.items[0].title, 'ITEM DURATION:', this.state.items[0].duration)
+    console.log('after', move)
+    
   };
 
   setCardHeight(items) {

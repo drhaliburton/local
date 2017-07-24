@@ -3,13 +3,14 @@
 .modal{
   .modal-card {
   height: 500px;
+  width: 500px;
   border-color: $light-grey;
   .head {
     height: 100px;
   }
 }
   .modal-card-body{
-    padding:35px;
+    padding:30px;
   }
 }
 .react-datepicker-wrapper {

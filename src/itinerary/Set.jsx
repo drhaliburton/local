@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import DatePicker from '../../node_modules/react-datepicker';
 import moment from 'moment';
+import Today from './Today.jsx'
 
 class Set extends Component {
   constructor(props) {
@@ -15,28 +16,48 @@ class Set extends Component {
     this.setState({
       startDate: date
     });
-    console.log(this.state.startDate)
+    console.log(date)
   }
+  toggleActive(event) {
+    this.setState({
+      isActive: !this.state.isActive
+    });
+  }
+  // toggleHidden(event){
+  //   this.setState({
+  //     isHidden: !this.state.isHidden
+  //   });
+  // }
 
   render() {
+    const activeToggle = this.state.isActive ? 'is-active' : ''
     return (
-      <div className="modal is-active has-text-centered">
-        <div className="modal-background"></div>
-        <div className="modal-card">
-          <header className="modal-card-head">
-            <p className="modal-card-title">What day do you want to plan?</p>
-          </header>
-          <section className="modal-card-body">
-            <DatePicker
-              inline
-              selected={this.state.startDate}
-              onChange={this.handleChange}
-            />    </section>
-          <footer className="modal-card-foot">
-            <div className="column">
-            <a className="button">Save</a>
+      <div className="column has-text-centered">
+        <div className='button' onClick={this.toggleActive.bind(this)} ><h6 className="title is-6">start</h6></div>
+        <div className={`modal + ${activeToggle} + has-text-centered`}>
+          <div className="modal-background"></div>
+          <div className="modal-card">
+            <header className="modal-card-head">
+              <p className="modal-card-title">What day do you want to plan?</p>
+            </header>
+            <section className="modal-card-body">
+              <DatePicker
+                inline
+                selected={this.state.startDate}
+                onChange={this.handleChange}
+              />
+            </section>
+            <section className="modal-card-foot">
+              <div className="column">
+                <div className="control has-text-centered">
+                  <button type="submit" value="submit" className="button" onClick={this.toggleActive.bind(this)}>Submit</button>
+                </div>
+              </div>
+              <Today day={this.state.startDate} />
+            </section>
+            <div>
             </div>
-          </footer>
+          </div>
         </div>
       </div>
     );

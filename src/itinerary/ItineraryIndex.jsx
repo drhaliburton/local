@@ -4,6 +4,9 @@ import FavoriteBar from "./FavoriteBar.jsx";
 import SortableComponent from "./dnd/SortableComponent.jsx";
 import SettingTime from "./SettingTime.jsx";
 import Set from "./Set.jsx";
+import TimeSetter from "./TimeSetter.jsx";
+import Today from "./Today.jsx";
+import EventLine from "./EventLine.jsx";
 import Api from '../../library/api.js';
 
 class ItineraryIndex extends Component {
@@ -42,6 +45,7 @@ class ItineraryIndex extends Component {
 
   componentDidMount() {
   var date = new Date();
+  
 
     //   fetch('https://www.googleapis.com/calendar/v3/calendars/primary/events', {
     //     method: 'POST',
@@ -61,6 +65,11 @@ class ItineraryIndex extends Component {
     //     })
     //   })
   }
+  toggleActive(event){
+    this.setState({
+      isActive: !this.state.isActive
+    });
+  }
 
   render() {
     return (
@@ -75,6 +84,7 @@ class ItineraryIndex extends Component {
           </div>
           <div className="column is-9">
             <Set />
+            <TimeSetter />
             <SortableComponent cards={this.state.itineraryCards} />
           </div>
         </div>
