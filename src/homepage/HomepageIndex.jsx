@@ -30,6 +30,8 @@ class HomepageIndex extends Component {
     );
   }
 
+
+
   locationSearch(event) {
     Api.get(`/index/locate?find=${event}`)
       .then((cards) => this.setState({
@@ -59,6 +61,7 @@ class HomepageIndex extends Component {
 
   newFavorite(id) {
     Api.post('/index/favorite', id)
+
   }
 
   render() {
