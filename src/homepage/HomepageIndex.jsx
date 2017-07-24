@@ -37,7 +37,8 @@ class HomepageIndex extends Component {
   locationSearch(event) {
     Api.get(`/index/locate?find=${event}`)
       .then((cards) => this.setState({
-        cards: cards
+        cards: cards,
+        allCards: cards
       })
     );
     const node = document.getElementById('view-all');
