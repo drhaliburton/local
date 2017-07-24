@@ -3,12 +3,14 @@
   top:0;
   right:0;
   left: 0;
-  height: 100px;
   z-index: 200;
-  height: 4rem;
+  padding: 10px;
   padding-left: 10px;
+  overflow: hidden;
   .navbar-brand {
-    margin: 13px 30px;
+    margin: 0px 30px;
+    position: fixed;
+    right: 0;
     .itinerary {
       overflow: hidden;
       a {
@@ -25,15 +27,7 @@
       }
     }
   }
-  @media screen and (max-width: 400px) {
-    overflow: hidden;
-    .navbar-brand{
-      margin: auto;
-      display: inline-block;
-    }
-  }
 }
-
 .fa-share-square-o{
   transform: rotate(180deg) !important;
 }
