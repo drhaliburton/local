@@ -59,7 +59,7 @@ class ContentContainer extends Component {
             <div className="content">
               <div className="description">
                 <p>{card.description}</p>
-                  <Rating rating={card.rating}/>
+                  <Rating cardID={this.props.cardID} addOne={this.props.addOne} removeOne={this.props.removeOne} rating={card.rating}/>
               </div>
             </div>
           </div>

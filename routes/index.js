@@ -14,6 +14,9 @@ module.exports = (knex) => {
     getFiltered,
     addFavorite,
     allCards,
+    postUpvote,
+    postDownvote,
+    getRatings
   } = queries(knex);
 
   const {
@@ -37,10 +40,11 @@ module.exports = (knex) => {
             category: card.category_name,
             user: card.given_name,
             photos: card.photos,
-            ratings: card.rating
+            rating: card.total_rating
           }
         });
         res.json(cards)
+        console.log(cards) //contains total rating here
 
       })
       .catch(err => {
@@ -75,6 +79,7 @@ module.exports = (knex) => {
         getFiltered(lat1, lng1, lat2, lng2)
           .then(data => {
             let cards = data.map((card) => {
+              console.log(card)
               return {
                 id: card.id,
                 title: card.title,
@@ -84,7 +89,7 @@ module.exports = (knex) => {
                 category: card.category_name,
                 user: card.given_name,
                 photos: card.photos,
-                ratings: card.rating
+                rating: card.total_rating
               }
             })
             res.json(cards)
@@ -96,6 +101,37 @@ module.exports = (knex) => {
       })
     }
     https.request(options, callback).end();
+  })
+
+  router.post("/upvote", (req, res) => {
+    let card_id = req.body['cardID'];
+    let user_id = req.session.userId;
+    console.log("******The card id is " + card_id)
+
+    postUpvote(card_id, user_id)
+      .then((result)=>{
+          console.log(result)
+      })
+      .catch(err => {
+          res.status(400).send("ERROR in upvoting");
+
+        });
+  })
+
+
+  router.post("/downvote", (req, res) => {
+    console.log(req.body.cardID)
+    let card_id = req.body['cardID'];
+    let user_id = req.session.userId;
+    console.log("******The card id is " + card_id)
+    postDownvote(card_id, user_id)
+    .then((result)=>{
+      console.log(result);
+    })
+    .catch(err => {
+        res.status(400).send("ERROR in upvoting");
+
+      });
   })
 
   router.post("/", (req, res) => {
@@ -167,5 +203,3 @@ module.exports = (knex) => {
 
   return router;
 }
-
-
