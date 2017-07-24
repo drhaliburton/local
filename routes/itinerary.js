@@ -40,11 +40,8 @@ module.exports = (knex) => {
 
 
   router.get("/favorites", (req, res) => {
-    // let user_id = req.params.userId;
-
-    //for testing
-    let user_id = 1;
-
+    const user_id = req.session.userId;
+  
     favCards(user_id)
       .then(data => {
         let cards = data.map((card) => {
