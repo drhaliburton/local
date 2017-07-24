@@ -16,7 +16,8 @@ module.exports = (knex) => {
             duration: card.duration,
             location: card.location,
             category_id: rows[0].id,
-            user_id: userId
+            user_id: userId,
+            total_rating: 1
           })
           .returning('id')
       })
