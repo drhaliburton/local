@@ -151,7 +151,8 @@ module.exports = (knex) => {
   });
 
   router.post("/favorite", (req, res) => {
-    const userId = req.session.userId;
+    // const userId = req.session.userId;
+     const userId = 1;
     const cardId = req.body.id;
     addFavorite(cardId, userId)
       .then(() => {
