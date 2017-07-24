@@ -20,7 +20,7 @@ class Star extends Component {
     const favToggle = this.state.isFavorited ? 'fa-star is-full' : 'fa-star-o is-open';
     return (
       <span className="icon is-pulled-right" aria-hidden="true" onClick={this.toggleFavorite.bind(this)}><i className={`fa ${favToggle}`} onClick={(event) => {
-            this.props.favorite({id: this.props.cardID})}}></i></span>
+                  this.props.favorite({id: this.props.cardID})}}></i></span>
     );
   }
 }
