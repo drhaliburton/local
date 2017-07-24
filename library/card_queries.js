@@ -50,6 +50,8 @@ module.exports = (knex) => {
     return uniquePhotosArray;
   }
 
+
+
   obj.findPlacePhotos = function (result) {
     return new Promise(function (resolve, reject) {
       request({
@@ -64,8 +66,19 @@ module.exports = (knex) => {
         let placesResponse = JSON.parse(body);
         let placesArray = placesResponse.results.slice(0, 5);
         let images = obj.createImageUrl(placesArray);
-        console.log(images)
-        resolve(images);
+        const imageUrlPromises = images.map((url) => {
+          return new Promise((resolve, reject) => {
+            request({
+              url: url,
+              followRedirect: false
+            }, (err, res, body) => {
+              if (err) reject(err);
+              resolve(res.headers.location);
+            });
+          });
+        });
+        const allImages = Promise.all(imageUrlPromises);
+        resolve(allImages);
       });
     });
   }
