@@ -5,9 +5,9 @@ import SortableComponent from "./dnd/SortableComponent.jsx";
 import SettingTime from "./SettingTime.jsx";
 import Set from "./Set.jsx";
 import TimeSetter from "./TimeSetter.jsx";
-import Today from "./Today.jsx";
 import EventLine from "./EventLine.jsx";
 import Api from '../../library/api.js';
+import moment from 'moment';
 
 class ItineraryIndex extends Component {
   constructor(props) {
@@ -15,6 +15,8 @@ class ItineraryIndex extends Component {
     this.state = {
       favCards: [],
       itineraryCards: [], 
+      time: moment(), 
+      date: moment(), 
     }
   }
 
@@ -70,21 +72,34 @@ class ItineraryIndex extends Component {
       isActive: !this.state.isActive
     });
   }
+  setTime(time){
+    this.setState({
+      time: time
+    })
+  }
+  setDate(date){
+    this.setState({
+      date: date
+    })
+    console.log('parent set date', date)
+  }
 
   render() {
     return (
       <div className="itinerary">
         <div className="header">
           <FavoriteBar favCards={this.state.favCards} add={this.add.bind(this)} />
+          {/* <p className="calendar"><i className="fa fa-calendar-check-o"></i>&nbsp;save to calendar</p> */}
         </div>
-        <p className="calendar"><i className="fa fa-calendar-check-o"></i>&nbsp;save to calendar</p>
+        <div className="welcome">
+        <h2 className="title is-2">{this.state.date.format('LL')}</h2>
+        </div>
         <div className="columns">
           <div className="column is-2">
             <ItineraryTime />
           </div>
           <div className="column is-9">
-            <Set />
-            <TimeSetter />
+            <Set setDate={this.setDate.bind(this)}/>
             <SortableComponent cards={this.state.itineraryCards} />
           </div>
         </div>

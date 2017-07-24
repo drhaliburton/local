@@ -4,28 +4,23 @@ import React, { Component } from 'react';
 import moment from 'moment';
 
 import TimePicker from 'rc-time-picker';
-
 class TimeSetter extends Component {
-constructor(props) {
+  constructor(props) {
     super(props)
     this.state = {
     };
   }
 
-  toggleActive(event) {
+  toggleActive() {
     this.setState({
       isActive: !this.state.isActive
     });
   }
+
   render() {
-    const format = 'h:mm a';
-
-    const now = moment().hour(0).minute(0);
-
     function onChange(value) {
       console.log(value && value.format(format));
     }
-
     const activeToggle = this.state.isActive ? 'is-active' : ''
     document.getElementById('__react-content')
     return (

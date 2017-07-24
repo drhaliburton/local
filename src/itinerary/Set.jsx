@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import DatePicker from '../../node_modules/react-datepicker';
 import moment from 'moment';
-import Today from './Today.jsx'
 
 class Set extends Component {
   constructor(props) {
@@ -16,12 +15,15 @@ class Set extends Component {
     this.setState({
       startDate: date
     });
-    console.log(date)
   }
-  toggleActive(event) {
+  toggleActive() {
     this.setState({
       isActive: !this.state.isActive
     });
+  }
+  submitDate(event) {
+    this.props.setDate(this.state.startDate)
+    this.toggleActive()
   }
   // toggleHidden(event){
   //   this.setState({
@@ -31,6 +33,7 @@ class Set extends Component {
 
   render() {
     const activeToggle = this.state.isActive ? 'is-active' : ''
+    const day = this.state.startDate
     return (
       <div className="column has-text-centered">
         <div className='button' onClick={this.toggleActive.bind(this)} ><h6 className="title is-6">date</h6></div>
@@ -50,10 +53,9 @@ class Set extends Component {
             <section className="modal-card-foot">
               <div className="column">
                 <div className="control has-text-centered">
-                  <button type="submit" value="submit" className="button" onClick={this.toggleActive.bind(this)}>Submit</button>
+                  <button type="submit" value="submit" className="button" onClick={this.submitDate.bind(this)}>Submit</button>
                 </div>
               </div>
-              <Today day={this.state.startDate} />
             </section>
             <div>
             </div>

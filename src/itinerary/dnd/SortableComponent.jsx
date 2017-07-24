@@ -21,6 +21,9 @@ const SortableList = SortableContainer(({items}) => {
 class SortableComponent extends Component {
   constructor(props) {
     super(props);
+    this.state = {
+      items : this.props.cards
+    }
   }
 
   onSortEnd = ({oldIndex, newIndex}) => {
@@ -54,10 +57,10 @@ class SortableComponent extends Component {
   }
 
   render() {
-
-    const cards = this.props.cards;
-    console.log('hai hai', cards);
-    const renderedItems = cards.map(card =>
+    
+    const items = this.props.cards;
+    console.log('hai hai', items);
+    const renderedItems = items.map(card =>
           <div className='box'>
             <article className='media large'>
             <figure className="media-left">
