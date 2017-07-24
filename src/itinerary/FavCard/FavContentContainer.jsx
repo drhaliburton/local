@@ -17,7 +17,6 @@ class FavContentContainer extends Component {
   }
 
   findIconCategory(categoryName){
-    console.log(categoryName);
     const iconCategories = {
       1: 'fa-tree',
       4: 'fa-binoculars',

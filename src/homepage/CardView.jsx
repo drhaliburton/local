@@ -51,7 +51,6 @@ class CardView extends Component {
   }
   // grab the button with c
   toggleFilters(event) {
-    console.log('filters clicked');
     this.setState({
       filtersVisible: !this.state.filtersVisible,
       isRotated: !this.state.isRotated

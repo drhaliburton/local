@@ -17,7 +17,6 @@ module.exports = (knex) => {
     getItinerary(user_id)
         .then(data => {
           let cards = data.map((card) => {
-            console.log("itinerary: ", card);
             return {
               id: card.id,
               card_id: card.card_id,
@@ -47,7 +46,6 @@ module.exports = (knex) => {
       favCards(user_id)
         .then(data => {
           let cards = data.map((card) => {
-            console.log(card);
             return {
               id: card.id,
               card_id: card.card_id,
@@ -95,11 +93,11 @@ module.exports = (knex) => {
     res.render("maps")
   });
 
-  router.post("/:id", (req, res) => {
+  // router.post("/:id", (req, res) => {
   // Save itinerary to DB
   // Form will include favorite.card_id, itinerary-card.start_time, itinerary.date
   // Delete each card used from favorite
-  });
+//   });
 
 
   return router;

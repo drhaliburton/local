@@ -27,11 +27,11 @@ module.exports = {
           'css-loader',
           'sass-loader'
         ]
-      }, 
-      { 
+      },
+      {
         test: /\.o?t?tf$/,
         use: {
-          loader: 'file-loader',  
+          loader: 'file-loader',
           options: {
             name: '[name].[ext]',
             outputPath: 'fonts/'
