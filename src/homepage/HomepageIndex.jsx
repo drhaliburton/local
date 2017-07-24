@@ -5,7 +5,7 @@ import CardView from "./CardView.jsx";
 import Styles from "../../styles/layout.scss";
 import Api from '../../library/api.js';
 import Img from 'react-image'
-
+import ReactDOM from 'react-dom';
 
 class HomepageIndex extends Component {
   constructor(props) {
@@ -13,7 +13,7 @@ class HomepageIndex extends Component {
     this.state = {
       cards: [],
       allCards: [],
-      homepageImage: 'http://i.imgur.com/AYwlpde.jpg'
+      homepageImage: false
     }
   }
 
@@ -40,6 +40,8 @@ class HomepageIndex extends Component {
         cards: cards
       })
     );
+    const node = document.getElementById('view-all');
+    node.scrollIntoView({ behavior: "smooth" });
   }
 
   resetCards() {
@@ -87,7 +89,7 @@ class HomepageIndex extends Component {
     return (
       <div>
         <div className="landing-content">
-        <Img src={this.state.homepageImage} className="homepage-image"/>
+        <Img src={this.state.homepageImage || 'http://i.imgur.com/AYwlpde.jpg'} className="homepage-image"/>
         <Search locate={this.locationSearch.bind(this)} />
         </div>
          <CardView cards={this.state.cards} categoryFilter={this.categoryFilter.bind(this)} resetCards={ this.resetCards.bind(this) } />
