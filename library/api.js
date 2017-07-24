@@ -7,7 +7,7 @@ class Api {
   }
 
   static post(url, data) {
-      fetch(url, {
+    return fetch(url, {
       credentials: 'include',
       headers: {
         'Content-Type': 'application/json'
@@ -15,9 +15,6 @@ class Api {
       method: 'POST',
       body: JSON.stringify(data)
 
-    })
-    .then(res=>{
-       return res.json();
     })
   }
 }

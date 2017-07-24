@@ -107,10 +107,9 @@ module.exports = (knex) => {
     let card_id = req.body['cardID'];
     let user_id = req.session.userId;
     console.log("******The card id is " + card_id)
-
     postUpvote(card_id, user_id)
-      .then((result)=>{
-          console.log(result)
+      .then(()=>{
+          res.json({status: 'okay'})
       })
       .catch(err => {
           res.status(400).send("ERROR in upvoting");
@@ -125,8 +124,8 @@ module.exports = (knex) => {
     let user_id = req.session.userId;
     console.log("******The card id is " + card_id)
     postDownvote(card_id, user_id)
-    .then((result)=>{
-      console.log(result);
+    .then(()=>{
+      res.json({status: 'okay'})
     })
     .catch(err => {
         res.status(400).send("ERROR in upvoting");

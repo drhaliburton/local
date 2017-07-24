@@ -78,8 +78,8 @@ class HomepageIndex extends Component {
         cardID: cardID
       })
     })
-    .then(() => {
-        this.resetCards()
+    this.setState({
+      cards: this.state.cards
       })
   };
 
@@ -97,8 +97,9 @@ class HomepageIndex extends Component {
         body: JSON.stringify({
           cardID: cardID
         })
-      }).then(() => {
-        this.resetCards()
+      })
+      this.setState({
+      cards: this.state.cards
       })
 
     }
