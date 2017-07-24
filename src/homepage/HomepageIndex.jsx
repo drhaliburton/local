@@ -65,7 +65,10 @@ class HomepageIndex extends Component {
   };
 
   newFavorite(id) {
-    Api.post('/index/favorite', id)
+    Api.post('/index/favorite')
+      .then(() => {
+        this.resetCards();
+    })
   }
 
  renderHomePageImage(){
@@ -85,6 +88,44 @@ class HomepageIndex extends Component {
     })
 
   }
+  addOne(cardID){
+    event.preventDefault();
+    console.log("**card id is**", cardID);
+    fetch('/index/upvote', {
+      method: 'POST',
+      credentials: 'include',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        cardID: cardID
+      })
+    })
+    .then(() => {
+        this.resetCards()
+      })
+  };
+
+
+  removeOne(cardID){
+    event.preventDefault();
+      console.log("**card id is** ", cardID);
+      fetch('/index/downvote', {
+        method: 'POST',
+        credentials: 'include',
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          cardID: cardID
+        })
+      }).then(() => {
+        this.resetCards()
+      })
+
+    }
 
   render() {
     return (
@@ -93,8 +134,8 @@ class HomepageIndex extends Component {
         <Img src={this.state.homepageImage || 'http://i.imgur.com/AYwlpde.jpg'} className="homepage-image"/>
         <Search locate={this.locationSearch.bind(this)} />
         </div>
-         <CardView cards={this.state.cards} categoryFilter={this.categoryFilter.bind(this)} resetCards={ this.resetCards.bind(this) } />
-        <IndexCard cards={this.state.cards} favorite={this.newFavorite.bind(this)}/>
+        <CardView cards={this.state.cards} favorite={this.newFavorite.bind(this)} categoryFilter={this.categoryFilter.bind(this)} resetCards={ this.resetCards.bind(this) } />
+        <IndexCard addOne={this.addOne.bind(this)} removeOne={this.removeOne.bind(this)} cards={this.state.cards} favorite={this.newFavorite.bind(this)}/>
       </div>
     );
   }

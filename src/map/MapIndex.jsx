@@ -54,8 +54,7 @@ class MapIndex extends Component {
             icon: goldStar,
             showInfo: false,
             infoContent: `${card.title}:
-            ${card.description}
-            ${card.photos}`
+            ${card.description}`
                   }
         }),
         center: {

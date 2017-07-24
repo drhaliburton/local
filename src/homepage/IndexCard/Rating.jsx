@@ -6,9 +6,14 @@ class Rating extends Component {
     return (
         <div className="rating">
           <span className="icon is-small" aria-hidden="true">
-            <i className="fa fa-arrow-circle-up is-medium"></i>&nbsp;<i className="fa fa-arrow-circle-down is-medium"></i>
+
+            <i className="fa fa-arrow-circle-up is-medium" onClick={(event) => {
+              this.props.addOne(this.props.cardID)
+            }}></i>&nbsp;<i className="fa fa-arrow-circle-down is-medium" onClick={(event) => {
+              this.props.removeOne(this.props.cardID)
+            }} ></i>
           </span>
-          <p className="subtitle"><i>{`Recommended by ${this.props.rating || '0'} travellers.`}</i></p>
+          <p className="subtitle"> Recommended by {this.props.rating < 0 ? 0 : this.props.rating} travellers.</p>
         </div>
     );
   }

@@ -1,3 +1,4 @@
+
 class Api {
   static get(url) {
     return fetch(url, {
@@ -6,14 +7,18 @@ class Api {
   }
 
   static post(url, data) {
-    return fetch(url, {
-      body: JSON.stringify(data),
+      fetch(url, {
       credentials: 'include',
       headers: {
         'Content-Type': 'application/json'
       },
-      method: 'POST'
-    });
+      method: 'POST',
+      body: JSON.stringify(data)
+
+    })
+    .then(res=>{
+       return res.json();
+    })
   }
 }
 
