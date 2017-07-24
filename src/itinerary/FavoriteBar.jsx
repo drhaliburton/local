@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import FavCard from "./FavCard/FavCard.jsx";
 import FavSlider from "./FavSlider.jsx";
+
 //Contains
 class FavoriteBar extends Component {
    constructor(props) {
@@ -32,10 +33,10 @@ class FavoriteBar extends Component {
           </span><div></div>
       <div className={`favorites-container ${toggledFilter}`}>
         <div className="slider-container">
-          <FavSlider cards={this.props.favCards}/>
-        </div>
+          <FavSlider cards={this.props.favCards} add={this.props.add.bind(this)}/>
       </div>
     </div>
+  </div>
     );
   }
 }

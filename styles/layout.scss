@@ -12,12 +12,12 @@ $dark-grey: #363636;
 @import 'navbar';
 @import 'filters';
 @import 'location';
-@import 'itineraryCard';
 @import 'index';
 @import 'favoriteBar';
 @import 'sortableComponent';
 @import 'googleLogin';
 @import 'signInindex';
+@import 'itineraryCard';
 
 .is-rotated {
   transform: rotate(180deg);
