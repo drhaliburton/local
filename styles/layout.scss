@@ -7,6 +7,22 @@ $dark-orange: darken($orange, 10%);
 $light-grey: #CCCCCC;
 $medium-grey: darken($light-grey, 40%);
 $dark-grey: #363636;
+$dark-pink: darken(pink, 10%);
+
+$datepicker__background-color: #f0f0f0 !default;
+$datepicker__border-color: $light-grey !default;
+$datepicker__highlighted-color: #3dcc4a !default;
+$datepicker__muted-color: #363636 !default;
+$datepicker__selected-color: pink !default;
+$datepicker__text-color: #000 !default;
+
+$datepicker__border-radius: .3rem !default;
+$datepicker__day-margin: .166rem !default;
+$datepicker__font-size: .8rem !default;
+$datepicker__item-size: 1.7rem !default;
+$datepicker__margin: .4rem !default;
+$datepicker__navigation-size: .45rem !default;
+$datepicker__triangle-size: 10px !default;
 
 @import 'indexCard';
 @import 'navbar';
@@ -18,6 +34,9 @@ $dark-grey: #363636;
 @import 'googleLogin';
 @import 'signInindex';
 @import 'itineraryCard';
+@import 'settingTime';
+@import 'set';
+
 
 .is-rotated {
   transform: rotate(180deg);

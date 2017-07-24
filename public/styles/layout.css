@@ -350,6 +350,10 @@
   .box:hover {
     border-color: #00caba;
     cursor: pointer; }
+  .box .fa {
+    color: #CCCCCC; }
+    .box .fa:hover {
+      color: pink; }
 
 .modal .modal-background {
   background-color: #AADDD5;
@@ -393,6 +397,36 @@
 
 .box {
   margin: 10px; }
+
+.modal .modal-card {
+  width: 500px;
+  border-radius: 10px;
+  height: 300px;
+  border: 1px solid #00caba; }
+.modal .modal-card-head {
+  background-color: white; }
+.modal .modal-card-body {
+  padding: 50px; }
+  .modal .modal-card-body .select {
+    margin: 5px; }
+.modal .modal-card-foot {
+  background-color: white; }
+
+body {
+  margin: 0;
+  font: 87.5%/1.5em 'Lato', sans-serif; }
+
+.app {
+  max-width: 400px;
+  margin: 0 auto;
+  margin-top: 90px;
+  padding: 0 20px; }
+  .app .input {
+    margin-bottom: 20px; }
+  .app input {
+    padding: 7px 8px;
+    font-size: 14px;
+    width: 100%; }
 
 .is-rotated {
   transform: rotate(180deg); }

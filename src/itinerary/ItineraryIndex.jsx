@@ -3,6 +3,7 @@ import ItineraryTime from "./ItineraryTime.jsx";
 import FavoriteBar from "./FavoriteBar.jsx";
 import SortableComponent from "./dnd/SortableComponent.jsx";
 import SettingTime from "./SettingTime.jsx";
+import Set from "./Set.jsx";
 import Api from '../../library/api.js';
 
 class ItineraryIndex extends Component {
@@ -10,7 +11,7 @@ class ItineraryIndex extends Component {
     super(props);
     this.state = {
       favCards: [],
-      itineraryCards: []
+      itineraryCards: [], 
     }
   }
 
@@ -40,6 +41,7 @@ class ItineraryIndex extends Component {
   // }
 
   componentDidMount() {
+  var date = new Date();
 
     //   fetch('https://www.googleapis.com/calendar/v3/calendars/primary/events', {
     //     method: 'POST',
@@ -68,11 +70,11 @@ class ItineraryIndex extends Component {
         </div>
         <p className="calendar"><i className="fa fa-calendar-check-o"></i>&nbsp;save to calendar</p>
         <div className="columns">
-          < SettingTime /> 
           <div className="column is-2">
             <ItineraryTime />
           </div>
           <div className="column is-9">
+            <Set />
             <SortableComponent cards={this.state.itineraryCards} />
           </div>
         </div>
