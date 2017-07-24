@@ -14,7 +14,6 @@ module.exports = (knex) => {
       .whereRaw(`box '((${lat1}, ${lng1}),(${lat2}, ${lng2}))' @> ("location")`)
       .leftJoin('users', 'filterCards.user_id', 'users.id')
       .leftJoin('categories', 'filterCards.category_id', 'categories.id')
-      .leftJoin('ratings', 'filterCards.id', 'ratings.card_id')
       .select(['filterCards.id AS card_id', 'filterCards.title', 'filterCards.description',
         'filterCards.location', 'filterCards.duration', 'users.given_name',
         'users.family_name', 'categories.name AS category_name',
@@ -42,7 +41,6 @@ module.exports = (knex) => {
       ])
       .leftJoin('users', 'cards.user_id', 'users.id')
       .leftJoin('categories', 'cards.category_id', 'categories.id')
-      .leftJoin('ratings', 'cards.id', 'ratings.card_id')
       .then((result) => {
         const allCards = result;
         return Promise.all(result.map((card, index) => {
