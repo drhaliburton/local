@@ -7,18 +7,14 @@ class Api {
   }
 
   static post(url, data) {
-      fetch(url, {
+    return fetch(url, {
+      body: JSON.stringify(data),
       credentials: 'include',
       headers: {
         'Content-Type': 'application/json'
       },
-      method: 'POST',
-      body: JSON.stringify(data)
-
-    })
-    .then(res=>{
-       return res.json();
-    })
+      method: 'POST'
+    });
   }
 }
 

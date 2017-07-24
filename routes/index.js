@@ -120,7 +120,7 @@ module.exports = (knex) => {
 
 
   router.post("/downvote", (req, res) => {
-    console.log(req.body.cardID)
+    
     let card_id = req.body['cardID'];
     let user_id = req.session.userId;
     console.log("******The card id is " + card_id)
@@ -187,6 +187,8 @@ module.exports = (knex) => {
   });
 
   router.post("/favorite", (req, res) => {
+    console.log(req.session)
+    console.log(req.body.cardID)
     const userId = req.session.userId;
     const cardId = req.body.id;
     addFavorite(cardId, userId)

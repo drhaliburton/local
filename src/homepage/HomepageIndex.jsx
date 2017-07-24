@@ -58,7 +58,8 @@ class HomepageIndex extends Component {
   };
 
   newFavorite(id) {
-    Api.post('/index/favorite')
+    console.log(id)
+    Api.post('/index/favorite', id)
       .then(() => {
         this.resetCards();
     })
