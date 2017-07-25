@@ -28,7 +28,7 @@ class Navbar extends Component {
             <div className="navbar-item">
               <div className="navbar-item">
                 <div className="itinerary">
-                  <Link to="#"><i className="fa fa-globe"></i>&nbsp;&nbsp;export map</Link></div>
+                  <Link to="/map"><i className="fa fa-globe"></i>&nbsp;&nbsp;export map</Link></div>
               </div>
               <div className="navbar-item">
                 <div className="itinerary" onClick={this.onClick.bind(this)}>

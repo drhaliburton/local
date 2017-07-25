@@ -35,8 +35,8 @@ class Set extends Component {
     const activeToggle = this.state.isActive ? 'is-active' : ''
     const day = this.state.startDate
     return (
-      <div className="column has-text-centered">
-        <div className='button' onClick={this.toggleActive.bind(this)} ><h6 className="title is-6">date</h6></div>
+      <div className="set-date">
+        <div className='button' onClick={this.toggleActive.bind(this)} ><h6 className="title is-6">set date</h6></div>
         <div className={`modal + ${activeToggle} + has-text-centered`}>
           <div className="modal-background"></div>
           <div className="modal-card">

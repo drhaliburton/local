@@ -16,7 +16,7 @@ class ItineraryIndex extends Component {
     this.state = {
       favCards: [],
       itineraryCards: [],
-      time: moment(),
+      time: [],
       date: moment(),
     }
   }
@@ -33,11 +33,22 @@ class ItineraryIndex extends Component {
         itineraryCards: cards
       })
       );
+    this.setState({time : [9] })
   }
+    
+
   add(card) {
     let newCard = this.state.itineraryCards.concat(card.card);
     let removeCard = this.state.favCards.splice(0)
-    this.setState({ itineraryCards: newCard, favCards: removeCard });
+    let index = (this.state.time.length - 1)
+    let oldTime = (this.state.time[index])
+    console.log('old times', oldTime)
+    let timePassed = (card.card.duration / 60)
+    let newTime = Math.floor((oldTime + timePassed))
+    let latest =  this.state.time.concat(newTime);
+    this.setState({ itineraryCards: newCard, favCards: removeCard, time: latest });
+    console.log('what time is it?', this.state.time[0])
+    console.log('new state', this.state.time)
   }
   // delete(card) {
   //   let removeCard = this.state.itineraryCards.splice(card.card);
@@ -89,25 +100,23 @@ class ItineraryIndex extends Component {
     const node = document.getElementById('top');
     node.scrollIntoView({ behavior: "smooth" });
     return (
-      <div className="itinerary">
+      <div className="itinerary-container">
         <div className="header">
           <FavoriteBar favCards={this.state.favCards} add={this.add.bind(this)} />
         </div>
-        <div className="container">
-          <div className="welcome">
-            <h2 className="title is-2">{this.state.date.format('LL')}</h2>
+        <div className="welcome">
+          <Set setDate={this.setDate.bind(this)} />
+          <h3 className="title is-3">{this.state.date.format('LL')}</h3>
+        </div>
+        <div className="columns">
+          <div className="column is-1">
+            <ItineraryTime />
           </div>
-          <div className="columns">
-            <div className="column is-2">
-              <ItineraryTime />
-            </div>
-            <div className="column is-2">
-              <TimeSet />
-            </div>
-            <div className="column is-8">
-              <Set setDate={this.setDate.bind(this)} />
-              <SortableComponent cards={this.state.itineraryCards} />
-            </div>
+          <div className="column is-1">
+            <TimeSet time={this.state.time} />
+          </div>
+          <div className="column is-10">
+            <SortableComponent cards={this.state.itineraryCards} />
           </div>
         </div>
       </div>

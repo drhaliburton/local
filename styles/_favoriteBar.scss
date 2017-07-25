@@ -1,10 +1,10 @@
 .favorites-container{
-  transition: .1s all ease-in-out;
+  transition: 1s all ease-in-out;
   height: 0px;
   font-size: 10px;
   overflow: hidden;
   .slider-container {
-    transition: .1s all ease-in-out;
+    transition: 1s all ease-in-out;
     margin: 0px 10%;
     padding: 20px;
       button {
@@ -86,6 +86,6 @@
   }
 }
 .set-height {
-  height: 350px;
-  transition: .1s all ease-in-out;
+  height: 300px;
+  transition: 1s all ease-in-out;
 }
