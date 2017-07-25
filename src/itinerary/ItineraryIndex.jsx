@@ -16,7 +16,7 @@ class ItineraryIndex extends Component {
     this.state = {
       favCards: [],
       itineraryCards: [],
-      time: moment(),
+      time: [],
       date: moment(),
     }
   }
@@ -32,12 +32,23 @@ class ItineraryIndex extends Component {
       .then((cards) => this.setState({
         itineraryCards: cards
       })
-    );
+      );
+    this.setState({time : [9] })
   }
+    
+
   add(card) {
     let newCard = this.state.itineraryCards.concat(card.card);
     let removeCard = this.state.favCards.splice(0)
-    this.setState({ itineraryCards: newCard, favCards: removeCard });
+    let index = (this.state.time.length - 1)
+    let oldTime = (this.state.time[index])
+    console.log('old times', oldTime)
+    let timePassed = (card.card.duration / 60)
+    let newTime = Math.floor((oldTime + timePassed))
+    let latest =  this.state.time.concat(newTime);
+    this.setState({ itineraryCards: newCard, favCards: removeCard, time: latest });
+    console.log('what time is it?', this.state.time[0])
+    console.log('new state', this.state.time)
   }
   // delete(card) {
   //   let removeCard = this.state.itineraryCards.splice(card.card);
@@ -95,14 +106,14 @@ class ItineraryIndex extends Component {
         </div>
         <div className="welcome">
           <Set setDate={this.setDate.bind(this)} />
-          <h2 className="title is-4">{this.state.date.format('LL')}</h2>
+          <h3 className="title is-3">{this.state.date.format('LL')}</h3>
         </div>
         <div className="columns">
           <div className="column is-1">
             <ItineraryTime />
           </div>
           <div className="column is-1">
-            <TimeSet />
+            <TimeSet time={this.state.time} cards={this.state.itineraryCards}/>
           </div>
           <div className="column is-10">
             <SortableComponent cards={this.state.itineraryCards} />
