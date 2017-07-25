@@ -113,7 +113,7 @@ class ItineraryIndex extends Component {
             <ItineraryTime />
           </div>
           <div className="column is-1">
-            <TimeSet time={this.state.time} />
+            <TimeSet time={this.state.time} cards={this.state.itineraryCards}/>
           </div>
           <div className="column is-10">
             <SortableComponent cards={this.state.itineraryCards} />
