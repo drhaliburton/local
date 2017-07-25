@@ -15,7 +15,7 @@ module.exports = (knex) => {
     allCards,
     postUpvote,
     postDownvote,
-    getRatings
+    hasVoted
   } = queries(knex);
 
   const {
@@ -114,23 +114,64 @@ module.exports = (knex) => {
       })
       .catch(err => {
         res.status(400).send("ERROR in upvoting");
-
       });
-  })
+
+    // if(hasVoted(card_id, user_id)){
+    //   console.log('has voted already')
+    // }
+    // else{
+    //   postUpvote(card_id, user_id)
+    //     .then((result)=>{
+    //         res.json({status: 'okay', data: result})
+    //     })
+    //     .catch(err => {
+    //         res.status(400).send("ERROR in upvoting");
+    //       });
+    // // }
+    // else{
+    //   res.redirect('/#/auth');
+    // }
+    // postUpvote(card_id, user_id)
+    //   .then((result) => {
+    //   })
+    //   .catch(err => {
+    //     res.status(400).send("ERROR in upvoting");
+
+      // });
+  });
 
 
   router.post("/downvote", (req, res) => {
     let card_id = req.body['cardID'];
     let user_id = req.session.userId;
+    console.log("******The card id is " + card_id)
+
+    // if(hasVoted(card_id, user_id)){
+    //   console.log('has voted already')
+
     postDownvote(card_id, user_id)
     .then(()=>{
       res.json({status: 'okay'})
     })
     .catch(err => {
         res.status(400).send("ERROR in downvoting");
-
       });
-  })
+// =======
+//       .then((result)=>{
+//           res.json({status: 'okay', data: result})
+//       })
+//       .catch(err => {
+//           res.status(400).send("ERROR in downvoting");
+// >>>>>>> 94befa7ab7077db67cd17ba38f014077c370141f
+
+
+    //  } else {
+    //    console.log('User has already downvoted');
+    // }
+    // else{
+    //   res.redirect('/');
+    // }
+  });
 
   router.post("/", (req, res) => {
     const userID = req.session.userId;

@@ -1,6 +1,24 @@
 module.exports = (knex) => {
   const obj = {};
 
+  obj.hasVoted = function(card_id, user_id){
+    return knex('ratings')
+    .where({ card_id, user_id })
+    .first()
+    .then((rating) => {
+      if(!rating){
+        throw new Error(`No ratings for (card_id=${card_id}, user_id=${user_id}`);
+      }
+      return knex('ratings')
+      .where({ card_id, user_id })
+      .first()
+    })
+    .catch(() => {
+      return knex ('ratings')
+      })
+  }
+
+
   obj.postUpvote= function(card_id, user_id){
     return knex('ratings')
     .insert({
@@ -18,12 +36,9 @@ module.exports = (knex) => {
 
   obj.postDownvote= function(card_id, user_id){
     return knex('ratings')
-    .insert({
-      rating: -1,
-      user_id: user_id,
-      card_id: card_id
-    })
-    .where('card_id', card_id)
+    .where('user_id', user_id)
+    .andWhere('card_id', card_id)
+    .del()
     .then(() => {
       return knex('cards')
       .where('id', card_id)
@@ -80,6 +95,7 @@ module.exports = (knex) => {
       ])
       .leftJoin('users', 'cards.user_id', 'users.id')
       .leftJoin('categories', 'cards.category_id', 'categories.id')
+      .orderBy('cards.id')
       .then((result) => {
         const allCards = result;
         return Promise.all(result.map((card, index) => {

@@ -51,6 +51,14 @@ class HomepageIndex extends Component {
     })
   };
 
+  reRenderHomepageCards() {
+    Api.get('/index')
+      .then((cardsArr) => this.setState({
+        cards: cardsArr,
+      })
+    );
+  }
+
   categoryFilter(category) {
     let cards = this.state.allCards;
     let filteredCards = [];
@@ -102,9 +110,10 @@ class HomepageIndex extends Component {
         cardID: cardID
       })
     })
-    this.setState({
-      cards: this.state.cards
-      })
+    .then(() => {
+      console.log('Added vote');
+      this.reRenderHomepageCards();
+    })
   };
 
 
@@ -120,14 +129,14 @@ class HomepageIndex extends Component {
         body: JSON.stringify({
           cardID: cardID
         })
+      }).then(() => {
+        console.log('Removed vote!');
+      this.reRenderHomepageCards();
       })
-      this.setState({
-      cards: this.state.cards
-      })
-
     }
 
   render() {
+    console.log(this.state.cards);
     return (
       <div>
         <div className="landing-content">
