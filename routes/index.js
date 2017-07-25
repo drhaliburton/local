@@ -108,6 +108,9 @@ module.exports = (knex) => {
     let user_id = req.session.userId;
     console.log("******The card id is " + card_id)
 
+    if(req.session.userId){
+      // if the vote exists send flash message
+      // enable downvote
     postUpvote(card_id, user_id)
       .then((result)=>{
           console.log(result)
@@ -116,6 +119,10 @@ module.exports = (knex) => {
           res.status(400).send("ERROR in upvoting");
 
         });
+    }
+    else{
+      res.redirect('/#/signin');
+    }
   })
 
 
@@ -124,14 +131,21 @@ module.exports = (knex) => {
     let card_id = req.body['cardID'];
     let user_id = req.session.userId;
     console.log("******The card id is " + card_id)
+    if(req.session.userId){
+      // if the vote exists send flash message
+      // enable upvote
     postDownvote(card_id, user_id)
-    .then((result)=>{
-      console.log(result);
-    })
-    .catch(err => {
-        res.status(400).send("ERROR in upvoting");
+      .then((result)=>{
+          console.log(result)
+      })
+      .catch(err => {
+          res.status(400).send("ERROR in upvoting");
 
-      });
+        });
+    }
+    else{
+      res.redirect('/#/signin');
+    }
   })
 
   router.post("/", (req, res) => {
