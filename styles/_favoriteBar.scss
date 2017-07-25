@@ -1,9 +1,10 @@
 .favorites-container{
-  transition: .7s all ease-in-out;
+  transition: .1s all ease-in-out;
   height: 0px;
   font-size: 10px;
   overflow: hidden;
   .slider-container {
+    transition: .1s all ease-in-out;
     margin: 0px 10%;
     padding: 20px;
       button {
@@ -12,6 +13,7 @@
       }
     .slider {
       padding: 0px 70px 20px;
+      height: 400px;
     }
     .card {
       transition: 2s all ease-in-out;
@@ -21,7 +23,7 @@
       width: 180px;
       padding: 6px;
       min-width: 160px;
-      height: 150px;
+      height: 225px;
       display: inline-block;
       border: 0.5px solid $light-grey;
       box-shadow: none;
@@ -32,7 +34,7 @@
       }
       .card-content{
         padding-top: 10px;
-        padding-left: 6px;
+        padding-left: 0px;
         .fa{
           color: $green;
           font-size: 11px;
@@ -42,7 +44,7 @@
           transition: .2s all ease-in-out;
           font-size: 20px;
           padding-left: 45px;
-          padding-bottom: 10px;
+          padding-bottom: 43px;
           color: $light-grey;
           &:hover{
             color: $green;
@@ -65,21 +67,25 @@
     margin-top: 0px;
   }
   }
-    .title {
+    .itinerary-card-title {
       transition: all 1s ease;
-      font-size: 15px;
+      font-size: 1.3em;
       margin-bottom: 5px;
-      margin-top: -8px;
+      margin-top: -2px;
+
       text-overflow: ellipsis;
       overflow: hidden;
       white-space: nowrap;
       line-height: 1;
+      text-overflow: ellipsis;
+      overflow: hidden;
+      white-space: nowrap;
     }
   .duration{
     padding-bottom: 0px;
   }
 }
 .set-height {
-  height: 250px;
-  transition: .7s all ease-in-out;
+  height: 350px;
+  transition: .1s all ease-in-out;
 }
