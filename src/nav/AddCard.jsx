@@ -1,5 +1,9 @@
+<<<<<<< HEAD
 import React, {Component} from 'react';
 import Geosuggest from 'react-geosuggest';
+=======
+import React, { Component } from 'react';
+>>>>>>> cb7279eed47853131d14fc392b24717af9a7686e
 
 class AddCard extends Component {
   constructor(props) {
@@ -14,18 +18,18 @@ class AddCard extends Component {
     }
   }
 
-  reloadPage(){
+  reloadPage() {
     window.location.href = '/';
   }
 
 
-  toggleActive(event){
+  toggleActive(event) {
     this.setState({
       isActive: !this.state.isActive
     });
   }
 
-  postNewCard(event){
+  postNewCard(event) {
     event.preventDefault();
 
     fetch('/index', {
@@ -49,7 +53,7 @@ class AddCard extends Component {
 
   handleChange(event) {
     let name = event.target.name;
-    this.setState({[name]: event.target.value}, () => {console.log(this.state)});
+    this.setState({ [name]: event.target.value }, () => { console.log(this.state) });
   }
 
 
@@ -58,7 +62,7 @@ class AddCard extends Component {
     const activeToggle = this.state.isActive ? 'is-active' : '';
 
     return (
-      <span>
+      <div>
         <p onClick={this.toggleActive.bind(this)}><a><i className="fa fa-plus-square-o"></i>&nbsp;&nbsp;add card</a></p>
         <div className={`modal ${activeToggle}`}>
         <div className="modal-background"></div>
@@ -134,7 +138,6 @@ class AddCard extends Component {
           </div>
         </div>
       </div>
-</span>
     );
   }
 }

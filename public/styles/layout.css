@@ -1,403 +1,73 @@
-.cards {
-  margin: 8% 10%;
-  transition: 2s all ease-in-out !important;
-  font-size: 12px; }
-  .cards .card {
-    margin: 20px 10px 0px;
-    width: 19%;
-    min-width: 220px;
-    max-width: 300px;
-    height: 330px;
-    display: inline-block;
-    border: 0.5px solid #CCCCCC;
-    box-shadow: none;
-    background-color: #fff;
-    overflow: hidden; }
-    .cards .card .content-container {
-      display: block;
-      height: 220px;
-      background-color: white;
-      transition: 1s all ease-in-out;
-      z-index: 100; }
-      .cards .card .content-container.expanded {
-        transition: 1.2s all ease-in-out !important;
-        margin: 0% !important;
-        background-color: solid white; }
-        .cards .card .content-container.expanded .card-image {
-          height: 0% !important;
-          overflow: hidden !important;
-          transition: 1s all ease-in-out !important; }
-        .cards .card .content-container.expanded .content {
-          transition: all 1s ease-in-out !important; }
-        .cards .card .content-container.expanded .media-content {
-          margin-top: 10px;
-          transition: all 1s ease-in-out !important; }
-        .cards .card .content-container.expanded .title {
-          overflow: visible;
-          white-space: inherit;
-          transition: all 1s ease-in-out !important; }
-      .cards .card .content-container .icon-container {
-        z-index: 100;
-        background-color: white;
-        text-align: center;
-        padding: 10px; }
-        .cards .card .content-container .icon-container a .card-toggle {
-          cursor: pointer; }
-    .cards .card .card-content {
-      padding: 0;
-      z-index: 102;
-      height: 100%;
-      background-color: white;
-      transition: 2s all ease-in-out !important; }
-      .cards .card .card-content .category {
-        display: inline-flex; }
-        .cards .card .card-content .category .fa {
-          font-size: 1.2em;
-          margin: 3px 8px 3px 2; }
-      .cards .card .card-content .duration {
-        font-size: .8em;
-        padding: 8px 0; }
-        .cards .card .card-content .duration .fa {
-          font-size: 1.2em;
-          padding: 2px 0; }
-      .cards .card .card-content .media {
-        margin: 2px 0 0;
-        font-size: 1em; }
-    .cards .card a {
-      color: #00caba; }
-      .cards .card a:hover {
-        color: #00b0a3; }
-    .cards .card .content {
-      height: auto;
-      transition: all 1s ease-in-out !important; }
-  .cards .fa-plus {
-    font-size: 1.4em;
-    position: relative;
-    padding-top: 7px;
-    color: lightgrey;
-    box-shadow: 1px grey; }
-    .cards .fa-plus:hover {
-      color: pink;
-      cursor: pointer; }
-    .cards .fa-plus .is-active {
-      color: #00b0a3; }
-  .cards .media-content {
-    width: 170px;
-    background-color: white;
-    transition: all 1s ease-in-out !important; }
-  .cards .title {
-    transition: all 1s ease !important;
-    font-size: 1.4em;
-    margin-bottom: 5px;
-    text-overflow: ellipsis;
-    overflow: hidden;
-    white-space: nowrap; }
-  .cards .subtitle {
-    font-size: .9em; }
-  .cards small {
-    font-style: italic;
-    font-size: .7em; }
-  .cards .card-details {
-    background-color: white;
-    overflow: hidden;
-    font-size: 0.8em;
-    padding-top: 10px;
-    line-height: 15px;
-    transition: all 1.5s ease-in-out !important; }
-    .cards .card-details .description {
-      background-color: white;
-      transition: all 0.5s ease-in-out;
-      font-size: 1.3em;
-      line-height: 1.5;
-      padding: 15px 0px 0px; }
-      .cards .card-details .description .rating {
-        margin: 45%;
-        display: inline;
-        transition: all 0.5s ease-in-out; }
-        .cards .card-details .description .rating .fa:hover {
-          color: #CCCCCC;
-          cursor: pointer; }
-        .cards .card-details .description .rating .subtitle {
-          text-align: center; }
-  .cards .card-toggle {
-    margin-top: 10px;
-    transition: 0.5s all ease-in-out !important; }
-    .cards .card-toggle .fa-chevron-up {
-      transition: all .5s ease-in-out;
-      position: relative;
-      top: 5px;
-      left: 45%; }
-    .cards .card-toggle .chev-rotate {
-      transition: 2s all ease-in-out;
-      transform: rotate(180deg); }
-  .cards .subtitle {
-    margin-bottom: 5px; }
-  .cards .card-image {
-    height: 100%;
-    text-align: center;
-    transition: 1s all ease-in-out !important;
-    overflow: hidden; }
-    .cards .card-image img {
-      max-width: 400px;
-      max-height: 220px; }
-    .cards .card-image .cover {
-      object-fit: cover;
-      width: 100%;
-      height: 100%; }
-  .cards .location {
-    margin-top: 3px;
-    font-size: 1em;
-    color: #00caba;
-    cursor: pointer; }
-    .cards .location:hover {
-      color: #00b0a3; }
+/*
+Error: Invalid CSS after "  margin: none": expected "{", was ";"
+        on line 3 of styles/_signInindex.scss
+        from line 34 of styles/layout.scss
 
-.columns {
-  z-index: 101;
-  justify-content: center;
-  background-color: white;
-  transition: all 1s ease-in-out !important; }
-  .columns .column {
-    background-color: white;
-    padding: 8px;
-    transition: all 1s ease-in-out !important; }
+1: .modal {
+3:   margin: none;
+4: =======
+5: >>>>>>> f788622f0ad073cc16677a5efdfd510e597321e2
+6: 
+7:   .modal-background {
+8:     background-color: white;
 
-.icon .is-full {
-  font-size: 1.4em;
-  position: relative;
-  padding-top: 7px;
-  color: #fba505 !important;
-  box-shadow: 1px grey; }
-  .icon .is-full :hover {
-    color: #CCCCCC !important;
-    cursor: pointer; }
-.icon .is-open {
-  font-size: 1.4em;
-  position: relative;
-  padding-top: 7px;
-  color: #CCCCCC !important;
-  box-shadow: 1px grey; }
-.icon :hover {
-  color: #fba505 !important;
-  cursor: pointer; }
-
-.navbar {
-  height: 5rem;
-  padding-left: 10px; }
-  .navbar .navbar-brand {
-    margin: 13px 30px; }
-    .navbar .navbar-brand .itinerary {
-      overflow: hidden; }
-      .navbar .navbar-brand .itinerary a {
-        transition: all 0.1s ease-in-out;
-        color: #363636; }
-        .navbar .navbar-brand .itinerary a:hover {
-          border-color: #00caba;
-          color: #00caba;
-          cursor: pointer; }
-      .navbar .navbar-brand .itinerary .fa {
-        display: inline; }
-  @media screen and (max-width: 999px) {
-    .navbar {
-      overflow: visible; }
-      .navbar .navbar-brand {
-        margin: auto;
-        display: inline-block; } }
-
-.fa-share-square-o {
-  transform: rotate(180deg) !important; }
-
-.filter h5 {
-  font-size: .5em; }
-.filter .columns {
-  margin-top: 20px;
-  padding-bottom: 0px; }
-  .filter .columns .column {
-    padding-top: 0px; }
-.filter .filter-toggle {
-  margin: auto;
-  top: 5px;
-  padding-top: 20px; }
-  .filter .filter-toggle .fa-chevron-up {
-    transition: all .7s ease-in-out;
-    color: #00caba;
-    left: 35%;
-    font-size: 1em; }
-    .filter .filter-toggle .fa-chevron-up:hover {
-      color: #00b0a3;
-      cursor: pointer; }
-.filter .filter-button {
-  margin: 5px;
-  line-height: 2.5; }
-  .filter .filter-button .button {
-    font-size: .6em; }
-    .filter .filter-button .button.is-active {
-      background-color: #00caba;
-      color: white;
-      border-color: white; }
-    .filter .filter-button .button.is-active .fa {
-      color: white; }
-.filter .filter-brand {
-  margin: 0.3rem;
-  font-size: .8em; }
-.filter .title {
-  margin-top: 15px; }
-.filter .button {
-  margin: auto;
-  border-radius: 10px; }
-  .filter .button:hover {
-    border-color: #00caba; }
-.filter .filter-content {
-  transition: all 1s ease-in-out;
-  margin-bottom: 1rem;
-  max-height: 10px;
-  overflow: hidden; }
-.filter .toggled-filter {
-  max-height: 300px; }
-
-.landing-content .columns {
-  margin-top: 0px; }
-.landing-content .input {
-  border-color: #fba505; }
-  .landing-content .input:focus {
-    border-color: #00caba; }
-.landing-content .brand img {
-  width: 80%; }
-
-.accent-font {
-  font-family: 'Caveat Brush', cursive;
-  font-size: 1.7em;
-  padding-bottom: 20px;
-  width: 100%; }
-
-.input {
-  font-size: .8em; }
-
-.favorites-container {
-  transition: .7s all ease-in-out;
-  height: 0px;
-  font-size: 10px;
-  overflow: hidden; }
-  .favorites-container .slider-container {
-    margin: 0px 10%;
-    padding: 20px; }
-    .favorites-container .slider-container button {
-      background: white !important;
-      color: #CCCCCC !important; }
-    .favorites-container .slider-container .slider {
-      padding: 0px 70px 20px; }
-    .favorites-container .slider-container .card {
-      transition: 2s all ease-in-out;
-      font-size: 10px;
-      text-align: left;
-      margin: 15px 5px;
-      width: 180px;
-      padding: 6px;
-      min-width: 160px;
-      height: 235px;
-      display: inline-block;
-      border: 0.5px solid #CCCCCC;
-      box-shadow: none;
-      background-color: #fff;
-      overflow: hidden; }
-      .favorites-container .slider-container .card .content-container {
-        height: 170px; }
-      .favorites-container .slider-container .card .card-content {
-        padding-top: 20px;
-        padding-left: 6px; }
-        .favorites-container .slider-container .card .card-content .fa {
-          color: #00caba;
-          font-size: 11px;
-          padding-top: 2px; }
-        .favorites-container .slider-container .card .card-content .fa-plus {
-          transition: .2s all ease-in-out;
-          font-size: 20px;
-          padding-left: 45px;
-          padding-bottom: 10px;
-          color: #CCCCCC; }
-          .favorites-container .slider-container .card .card-content .fa-plus:hover {
-            color: #00caba;
-            cursor: pointer; }
-      .favorites-container .slider-container .card .card-image img {
-        height: 170px; }
-      .favorites-container .slider-container .card .description {
-        font-size: 9px;
-        padding: 0px 5px;
-        text-align: left; }
-    .favorites-container .slider-container .columns {
-      margin-top: 0px; }
-  .favorites-container .title {
-    transition: all 1s ease;
-    font-size: 15px;
-    margin-bottom: 5px;
-    margin-top: -8px;
-    text-overflow: ellipsis;
-    overflow: hidden;
-    white-space: nowrap;
-    line-height: 1; }
-  .favorites-container .duration {
-    padding-bottom: 0px; }
-
-.set-height {
-  height: 350px;
-  transition: .7s all ease-in-out; }
-
-.box {
-  border: 0.05px;
-  border-color: #ccffef;
-  border-style: solid;
-  border-radius: 10px; }
-  .box:hover {
-    border-color: #00caba;
-    cursor: pointer; }
-
-.modal .modal-background {
-  background-color: #AADDD5;
-  opacity: 0.1; }
-.modal .title {
-  color: #363636; }
-.modal .fa {
-  color: black; }
-.modal .button {
-  border-color: #00caba; }
-  .modal .button:hover {
-    border-color: black; }
-
-.columns {
-  margin-top: 7rem;
-  margin-left: 1rem;
-  margin-right: 1rem; }
-  .columns .morning {
-    margin-top: 1rem;
-    height: 80px; }
-  .columns .afternoon {
-    margin-top: 12rem;
-    height: 80px; }
-  .columns .night {
-    margin-top: 12rem;
-    height: 80px; }
-  .columns .media-content.large {
-    height: 10rem; }
-  .columns .fa {
-    color: #00caba; }
-  .columns .article.media.large {
-    height: 10rem; }
-
-.itinerary-time {
-  width: 2%; }
-  .itinerary-time .fa {
-    padding-bottom: 400px;
-    font-size: 60px;
-    color: #333;
-    font-weight: 1px; }
-
-.box {
-  margin: 10px; }
-
-.is-rotated {
-  transform: rotate(180deg); }
-
-.visible {
-  height: 100% !important; }
-
-/*# sourceMappingURL=layout.css.map */
+Backtrace:
+styles/_signInindex.scss:3
+styles/layout.scss:34
+/home/vagrant/.rvm/gems/ruby-2.3.3/gems/sass-3.4.25/lib/sass/scss/parser.rb:1207:in `expected'
+/home/vagrant/.rvm/gems/ruby-2.3.3/gems/sass-3.4.25/lib/sass/scss/parser.rb:1137:in `expected'
+/home/vagrant/.rvm/gems/ruby-2.3.3/gems/sass-3.4.25/lib/sass/scss/parser.rb:1132:in `tok!'
+/home/vagrant/.rvm/gems/ruby-2.3.3/gems/sass-3.4.25/lib/sass/scss/parser.rb:665:in `block'
+/home/vagrant/.rvm/gems/ruby-2.3.3/gems/sass-3.4.25/lib/sass/scss/parser.rb:735:in `declaration_or_ruleset'
+/home/vagrant/.rvm/gems/ruby-2.3.3/gems/sass-3.4.25/lib/sass/scss/parser.rb:685:in `block_child'
+/home/vagrant/.rvm/gems/ruby-2.3.3/gems/sass-3.4.25/lib/sass/scss/parser.rb:674:in `block_contents'
+/home/vagrant/.rvm/gems/ruby-2.3.3/gems/sass-3.4.25/lib/sass/scss/parser.rb:666:in `block'
+/home/vagrant/.rvm/gems/ruby-2.3.3/gems/sass-3.4.25/lib/sass/scss/parser.rb:658:in `ruleset'
+/home/vagrant/.rvm/gems/ruby-2.3.3/gems/sass-3.4.25/lib/sass/scss/parser.rb:684:in `block_child'
+/home/vagrant/.rvm/gems/ruby-2.3.3/gems/sass-3.4.25/lib/sass/scss/parser.rb:674:in `block_contents'
+/home/vagrant/.rvm/gems/ruby-2.3.3/gems/sass-3.4.25/lib/sass/scss/parser.rb:125:in `stylesheet'
+/home/vagrant/.rvm/gems/ruby-2.3.3/gems/sass-3.4.25/lib/sass/scss/parser.rb:41:in `parse'
+/home/vagrant/.rvm/gems/ruby-2.3.3/gems/sass-3.4.25/lib/sass/engine.rb:409:in `_to_tree'
+/home/vagrant/.rvm/gems/ruby-2.3.3/gems/sass-3.4.25/lib/sass/engine.rb:315:in `to_tree'
+/home/vagrant/.rvm/gems/ruby-2.3.3/gems/sass-3.4.25/lib/sass/tree/visitors/perform.rb:327:in `block in visit_import'
+/home/vagrant/.rvm/gems/ruby-2.3.3/gems/sass-3.4.25/lib/sass/stack.rb:88:in `block in with_import'
+/home/vagrant/.rvm/gems/ruby-2.3.3/gems/sass-3.4.25/lib/sass/stack.rb:115:in `with_frame'
+/home/vagrant/.rvm/gems/ruby-2.3.3/gems/sass-3.4.25/lib/sass/stack.rb:88:in `with_import'
+/home/vagrant/.rvm/gems/ruby-2.3.3/gems/sass-3.4.25/lib/sass/tree/visitors/perform.rb:326:in `visit_import'
+/home/vagrant/.rvm/gems/ruby-2.3.3/gems/sass-3.4.25/lib/sass/tree/visitors/base.rb:36:in `visit'
+/home/vagrant/.rvm/gems/ruby-2.3.3/gems/sass-3.4.25/lib/sass/tree/visitors/perform.rb:162:in `block in visit'
+/home/vagrant/.rvm/gems/ruby-2.3.3/gems/sass-3.4.25/lib/sass/stack.rb:79:in `block in with_base'
+/home/vagrant/.rvm/gems/ruby-2.3.3/gems/sass-3.4.25/lib/sass/stack.rb:115:in `with_frame'
+/home/vagrant/.rvm/gems/ruby-2.3.3/gems/sass-3.4.25/lib/sass/stack.rb:79:in `with_base'
+/home/vagrant/.rvm/gems/ruby-2.3.3/gems/sass-3.4.25/lib/sass/tree/visitors/perform.rb:162:in `visit'
+/home/vagrant/.rvm/gems/ruby-2.3.3/gems/sass-3.4.25/lib/sass/tree/visitors/base.rb:52:in `block in visit_children'
+/home/vagrant/.rvm/gems/ruby-2.3.3/gems/sass-3.4.25/lib/sass/tree/visitors/base.rb:52:in `map'
+/home/vagrant/.rvm/gems/ruby-2.3.3/gems/sass-3.4.25/lib/sass/tree/visitors/base.rb:52:in `visit_children'
+/home/vagrant/.rvm/gems/ruby-2.3.3/gems/sass-3.4.25/lib/sass/tree/visitors/perform.rb:171:in `block in visit_children'
+/home/vagrant/.rvm/gems/ruby-2.3.3/gems/sass-3.4.25/lib/sass/tree/visitors/perform.rb:183:in `with_environment'
+/home/vagrant/.rvm/gems/ruby-2.3.3/gems/sass-3.4.25/lib/sass/tree/visitors/perform.rb:170:in `visit_children'
+/home/vagrant/.rvm/gems/ruby-2.3.3/gems/sass-3.4.25/lib/sass/tree/visitors/base.rb:36:in `block in visit'
+/home/vagrant/.rvm/gems/ruby-2.3.3/gems/sass-3.4.25/lib/sass/tree/visitors/perform.rb:190:in `visit_root'
+/home/vagrant/.rvm/gems/ruby-2.3.3/gems/sass-3.4.25/lib/sass/tree/visitors/base.rb:36:in `visit'
+/home/vagrant/.rvm/gems/ruby-2.3.3/gems/sass-3.4.25/lib/sass/tree/visitors/perform.rb:161:in `visit'
+/home/vagrant/.rvm/gems/ruby-2.3.3/gems/sass-3.4.25/lib/sass/tree/visitors/perform.rb:10:in `visit'
+/home/vagrant/.rvm/gems/ruby-2.3.3/gems/sass-3.4.25/lib/sass/tree/root_node.rb:36:in `css_tree'
+/home/vagrant/.rvm/gems/ruby-2.3.3/gems/sass-3.4.25/lib/sass/tree/root_node.rb:29:in `render_with_sourcemap'
+/home/vagrant/.rvm/gems/ruby-2.3.3/gems/sass-3.4.25/lib/sass/engine.rb:384:in `_render_with_sourcemap'
+/home/vagrant/.rvm/gems/ruby-2.3.3/gems/sass-3.4.25/lib/sass/engine.rb:301:in `render_with_sourcemap'
+/home/vagrant/.rvm/gems/ruby-2.3.3/gems/sass-3.4.25/lib/sass/plugin/compiler.rb:492:in `update_stylesheet'
+/home/vagrant/.rvm/gems/ruby-2.3.3/gems/sass-3.4.25/lib/sass/plugin/compiler.rb:215:in `block in update_stylesheets'
+/home/vagrant/.rvm/gems/ruby-2.3.3/gems/sass-3.4.25/lib/sass/plugin/compiler.rb:209:in `each'
+/home/vagrant/.rvm/gems/ruby-2.3.3/gems/sass-3.4.25/lib/sass/plugin/compiler.rb:209:in `update_stylesheets'
+/home/vagrant/.rvm/gems/ruby-2.3.3/gems/sass-3.4.25/lib/sass/plugin/compiler.rb:473:in `on_file_changed'
+/home/vagrant/.rvm/gems/ruby-2.3.3/gems/sass-3.4.25/lib/sass/plugin/compiler.rb:331:in `block in watch'
+/home/vagrant/.rvm/gems/ruby-2.3.3/gems/sass-3.4.25/vendor/listen/lib/listen/listener.rb:252:in `on_change'
+/home/vagrant/.rvm/gems/ruby-2.3.3/gems/sass-3.4.25/vendor/listen/lib/listen/listener.rb:290:in `block in initialize_adapter'
+/home/vagrant/.rvm/gems/ruby-2.3.3/gems/sass-3.4.25/vendor/listen/lib/listen/adapter.rb:254:in `report_changes'
+/home/vagrant/.rvm/gems/ruby-2.3.3/gems/sass-3.4.25/vendor/listen/lib/listen/adapter.rb:323:in `poll_changed_directories'
+/home/vagrant/.rvm/gems/ruby-2.3.3/gems/sass-3.4.25/vendor/listen/lib/listen/adapter.rb:299:in `block in start_poller'
+*/
+body:before {
+  white-space: pre;
+  font-family: monospace;
+  content: "Error: Invalid CSS after \"  margin: none\": expected \"{\", was \";\"\A         on line 3 of styles/_signInindex.scss\A         from line 34 of styles/layout.scss\A \A 1: .modal {\A 2: <<<<<<< HEAD\A 3:   margin: none;\A 4: =======\A 5: >>>>>>> f788622f0ad073cc16677a5efdfd510e597321e2\A 6: \A 7:   .modal-background {\A 8:     background-color: white;"; }

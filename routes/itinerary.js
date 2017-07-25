@@ -42,7 +42,6 @@ module.exports = (knex) => {
 
     favCards(user_id)
       .then(data => {
-        console.log(data)
         let cards = data.map((card) => {
           return {
             id: card.card_id,
@@ -51,7 +50,7 @@ module.exports = (knex) => {
             description: card.description,
             duration: card.duration,
             address: card.address,
-            category: card.category_name,
+            category: card.category_id,
             photos: card.photos
           }
         });

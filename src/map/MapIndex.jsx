@@ -107,7 +107,7 @@ class MapIndex extends Component {
         containerElement={
           <div style={{
             position: 'absolute',
-            top: '80px',
+            top: '60px',
             bottom: 0,
             left: 0,
             right: 0
