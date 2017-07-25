@@ -57,9 +57,10 @@ module.exports = (knex) => {
       .returning('id')
       .then(function (id) {
         return Promise.all(cardIds.map((cardId) => {
+          console.log(id, cardId)
           return knex('itinerary_cards')
             .insert({
-              itinerary_id: id,
+              itinerary_id: id[0],
               card_id: cardId
             })
         }))
