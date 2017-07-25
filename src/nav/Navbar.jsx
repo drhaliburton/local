@@ -31,8 +31,8 @@ class Navbar extends Component {
                   <Link to="/map"><i className="fa fa-globe"></i>&nbsp;&nbsp;export map</Link></div>
               </div>
               <div className="navbar-item">
-                <div className="itinerary" onClick={this.onClick.bind(this)}>
-                <Link maintainScrollPosition={false} to="/itinerary"><i className="fa fa-map-o"></i>&nbsp;&nbsp;itinerary</Link></div>
+                <div className="itinerary">
+                <Link to="/itinerary"><i className="fa fa-map-o"></i>&nbsp;&nbsp;itinerary</Link></div>
               </div>
             </div>
             :

@@ -101,6 +101,14 @@ module.exports = (knex) => {
       })
   }
 
+  obj.delFavorite = function (cardId, userId) {
+    console.log('inside delete')
+    return knex('favorites')
+    .where('user_id', userId)
+    .andWhere('card_id', cardId)
+    .del()
+  }
+
   return obj;
 }
 

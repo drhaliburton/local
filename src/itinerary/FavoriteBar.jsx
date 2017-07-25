@@ -22,8 +22,8 @@ class FavoriteBar extends Component {
 
   render() {
 
-     const toggledFilter = this.state.filtersVisible ? 'set-height' : '';
-     const rotatedToggle = this.state.isRotated ? '' : 'is-rotated';
+     const toggledFilter = this.state.filtersVisible ? '' : 'set-height';
+     const rotatedToggle = this.state.isRotated ? 'is-rotated' : '';
 
     return (
     <div className="filter has-text-centered">
@@ -33,7 +33,7 @@ class FavoriteBar extends Component {
           </span><div></div>
       <div className={`favorites-container ${toggledFilter}`}>
         <div className="slider-container">
-          <FavSlider cards={this.props.favCards} add={this.props.add.bind(this)}/>
+          <FavSlider cards={this.props.favCards} add={this.props.add.bind(this)} removeFavorite={this.props.removeFavorite.bind(this)}/>
       </div>
     </div>
   </div>

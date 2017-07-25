@@ -63,6 +63,7 @@ module.exports = (knex) => {
       })
   }
 
+
   obj.getFiltered = function (lat1, lng1, lat2, lng2) {
     return knex('cards AS filterCards')
       .whereRaw(`box '((${lat1}, ${lng1}),(${lat2}, ${lng2}))' @> ("location")`)
