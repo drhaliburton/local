@@ -1,8 +1,6 @@
 import '../../node_modules/rc-time-picker/assets/index.css';
 import React, { Component } from 'react';
-
 import moment from 'moment';
-
 import TimePicker from 'rc-time-picker';
 
 document.getElementById('__react-content')
@@ -29,7 +27,7 @@ constructor(props) {
   }
   componentDidUpdate(prevProps, prevState) {
     console.log('are you there?', prevProps, prevState.value)
-  } 
+  }
   render() {
     const format = 'h:mm a';
 
@@ -43,7 +41,7 @@ constructor(props) {
     const activeToggle = this.state.isActive ? 'is-active' : '';
     return (
       <div className="column has-text-centered">
-        
+
         <div className='button' onClick={this.toggleActive.bind(this)}><h6 className="title is-6">time</h6></div>
         <div className={`modal + ${activeToggle} + has-text-centered`}>
           <div className="modal-background"></div>

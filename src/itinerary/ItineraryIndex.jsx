@@ -93,8 +93,31 @@ class ItineraryIndex extends Component {
     this.setState({
       date: date
     })
-    console.log('parent set date', date)
   }
+
+  saveItinerary(){
+    event.preventDefault();
+    const itineraryCards = this.state.itineraryCards;
+    const date = this.state.date.format('YYYY-MM-DD');
+    const cardIds = itineraryCards.map((card) => {
+      return card.id;
+    })
+
+    console.log('cardIds: ', cardIds);
+
+    fetch('/itinerary/cards', {
+      method: 'POST',
+      credentials: 'include',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        date: date,
+        cardIds: cardIds
+      })
+    })
+  };
 
   render() {
     const node = document.getElementById('top');
@@ -104,7 +127,9 @@ class ItineraryIndex extends Component {
         <div className="header">
           <FavoriteBar favCards={this.state.favCards} add={this.add.bind(this)} />
         </div>
+        <p className="calendar"><i className="fa fa-calendar-check-o"></i>&nbsp;save to calendar</p>
         <div className="welcome">
+          <button onClick={() => {this.saveItinerary()}}>Save</button>
           <Set setDate={this.setDate.bind(this)} />
           <h3 className="title is-3">{this.state.date.format('LL')}</h3>
         </div>

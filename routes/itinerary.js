@@ -8,11 +8,12 @@ module.exports = (knex) => {
 
   const {
     favCards,
-    getItinerary
+    getItinerary,
+    makeItinerary
   } = queries(knex);
 
-  router.get("/", (req, res) => {
-      const user_id = req.session.userId;
+  router.get("/cards", (req, res) => {
+    const user_id = req.session.userId;
 
     getItinerary(user_id)
       .then(data => {
@@ -23,6 +24,7 @@ module.exports = (knex) => {
             user_id: card.user_id,
             title: card.title,
             location: card.location,
+            address: card.adddress,
             description: card.description,
             duration: card.duration,
             category_id: card.category_id,
@@ -63,7 +65,22 @@ module.exports = (knex) => {
       })
   });
 
-  router.post('/', (req, res) => {});
+
+  router.post('/cards', (req, res) => {
+    const userID = req.session.userId;
+    const cardIds = req.body.cardIds;
+    const date = req.body.date;
+
+    makeItinerary(date, cardIds, userID)
+      .then(() => {
+        res.json({
+          status: 'ok'
+        })
+      })
+      .catch(err => {
+        res.status(400).send("ERROR");
+      });
+  })
 
   router.get("/map", (req, res) => {
     // function initMap() {
