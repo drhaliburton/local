@@ -1,9 +1,19 @@
 .box {
-  border: 0.05px;
-  border-color: #ccffef ;
+  border: 1px;
+  border-color: $light-grey;
   border-style: solid;
   border-radius: 10px;
+  width: 90%;
+  box-shadow: none;
+  font-size: 1em;
+  font-weight: 400;
+  transition: all 1s ease-in-out !important;
+  li{
+    margin-left: 40px;
+   padding-left: 40px;
+  }
   &:hover{
+    transition: all .2s ease !important;
     border-color: $green;
     cursor: pointer;
   }

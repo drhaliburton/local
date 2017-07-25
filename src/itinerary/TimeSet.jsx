@@ -7,7 +7,7 @@ class TimeSet extends Component {
       <div className="time has-text-centered">
         <h6 className="title is-6">9:00 AM</h6>
       </div>
-    ); 
+    );
   }
 }
 

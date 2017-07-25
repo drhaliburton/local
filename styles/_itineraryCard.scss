@@ -1,7 +1,6 @@
-.columns{
-  margin-top: 7rem;
-  margin-left: 1rem;
-  margin-right: 1rem;
+.itinerary-container {
+  margin: 120px 80px;
+  .columns{
   .morning {
     margin-top: 1rem;
     height:80px;
@@ -23,25 +22,32 @@
   .article.media.large{
       height: 10rem;
   }
+  ul {
+    margin: 20px;
+  }
 
+}
+
+.set-date {
+  padding-bottom: 8px;
 }
 
 .itinerary-time{
   width: 2%;
   .fa {
-    padding-bottom: 400px;
-    font-size: 60px;
+    padding-bottom: 8em;
+    font-size: 50px;
     color: #333;
     font-weight: 1px;
   }
 }
 .welcome {
-  padding:10px;
-  margin-right: 2rem;
-  float: right;
+  padding:10px 3px;
   border-bottom: 0.5px solid $orange;
+  margin-bottom: 30px;
 }
 
 .box {
   margin: 10px;
+}
 }

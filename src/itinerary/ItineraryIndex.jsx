@@ -89,22 +89,22 @@ class ItineraryIndex extends Component {
     const node = document.getElementById('top');
     node.scrollIntoView({ behavior: "smooth" });
     return (
-      <div className="itinerary">
+      <div className="itinerary-container">
         <div className="header">
           <FavoriteBar favCards={this.state.favCards} add={this.add.bind(this)} />
         </div>
         <div className="welcome">
-          <h2 className="title is-2">{this.state.date.format('LL')}</h2>
+          <Set setDate={this.setDate.bind(this)} />
+          <h2 className="title is-4">{this.state.date.format('LL')}</h2>
         </div>
         <div className="columns">
-          <div className="column is-2">
+          <div className="column is-1">
             <ItineraryTime />
           </div>
-          <div className="column is-2">
+          <div className="column is-1">
             <TimeSet />
           </div>
-          <div className="column is-8">
-            <Set setDate={this.setDate.bind(this)} />
+          <div className="column is-10">
             <SortableComponent cards={this.state.itineraryCards} />
           </div>
         </div>
