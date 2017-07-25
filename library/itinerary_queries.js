@@ -32,7 +32,7 @@ module.exports = (knex) => {
     return knex('favorites AS favs')
       .where('favs.user_id', user)
       .select(['cards.id AS card_id', 'cards.title', 'cards.description',
-        'cards.location', 'cards.duration', 'cards.category_id'
+        'cards.location', 'cards.duration', 'cards.category_id', 'cards.address'
       ])
       .leftJoin('cards', 'favs.card_id', 'cards.id')
       .then((result) => {
