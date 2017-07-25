@@ -45,7 +45,7 @@ class SignInIndex extends Component {
         <div className="modal-content">
         <h3 className="title is-3">Please sign in with Google</h3>
           <GoogleLogin
-            clientId="658977310896-knrl3gka66fldh83dao2rhgbblmd4un9.apps.googleusercontent.com"
+            clientId="818673716139-q9jkvm6s2ikk9jv3qmboch8ee8achov0.apps.googleusercontent.com"
             buttonText="Login"
             className='button'
             scope={'https://www.googleapis.com/auth/calendar'}

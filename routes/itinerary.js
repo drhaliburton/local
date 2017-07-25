@@ -13,7 +13,7 @@ module.exports = (knex) => {
 
   router.get("/", (req, res) => {
       const user_id = req.session.userId;
-
+    console.log('current session', req.session)
     getItinerary(user_id)
       .then(data => {
         let cards = data.map((card) => {
