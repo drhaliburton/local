@@ -1,9 +1,5 @@
-<<<<<<< HEAD
 import React, {Component} from 'react';
 import Geosuggest from 'react-geosuggest';
-=======
-import React, { Component } from 'react';
->>>>>>> cb7279eed47853131d14fc392b24717af9a7686e
 
 class AddCard extends Component {
   constructor(props) {
@@ -137,6 +133,7 @@ class AddCard extends Component {
           </form>
           </div>
         </div>
+      </div>
       </div>
     );
   }

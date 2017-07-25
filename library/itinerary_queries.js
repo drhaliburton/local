@@ -7,40 +7,48 @@ module.exports = (knex) => {
   //   // .and('date', date)
   // }
 
+
   obj.getItinerary = function (user_id, date) {
 
-    //select itineraries where user_id and date
-    //leftjoin itinerary_cards at itinerary_id
-    //leftjoin cards at card_id
-    knex('itinierary_cards')
-    .where('user_id', user_id)
-    .andWhere('date', date)
-    .leftJoin('cards', 'itinerary_cards.card_id', 'cards.id')
-    .leftJoin('itinerary_cards', 'itineraries.id', 'itinerary_cards.itinerary_id')
-      .select(['cards.id AS card_id', 'cards.title', 'cards.description',
-        'cards.location', 'cards.duration', 'cards.category_id', 'cards.address'
-      ])
+    return knex('itinieraries')
+      .select('itinerary_cards.card_id', 'itineraries.id AS itn_id', 'itineraries.user_id')
+      .where('date', date)
+      .andWhere('user_id', user_id)
+      .leftJoin('itinerary_cards', 'itineraries.id', 'itinerary_cards.itinerary_id')
       .then((result) => {
+        console.log(`result1: ${result} \n...END`)
         const itineraryCards = result;
         return Promise.all(result.map((card, index) => {
-          return knex('photos')
-            .select(knex.raw('ARRAY_AGG(photos.url) as photo_urls'))
-            .where('card_id', card.card_id)
-            .then((data) => {
-              itineraryCards[index].photos = data[0].photo_urls;
-            })
-        }))
+            return knex('cards')
+              .where('card_id', card.card_id)
+              .leftJoin('photos', 'card.id', 'photos.card_id')
+              .select(['cards.title', 'cards.description',
+                'cards.location', 'cards.duration', 'cards.category_id', 'cards.address', knex.raw('ARRAY_AGG(photos.url) as photo_urls')
+              ])
+              .groupBy('cards.duration','cards.title')
+              .then((data) => {
+                itineraryCards[index].title = data[0].title;
+                itineraryCards[index].description = data[0].description;
+                itineraryCards[index].duration = data[0].duration;
+                itineraryCards[index].location = data[0].location;
+                itineraryCards[index].address = data[0].address;
+                itineraryCards[index].title = data[0].category_id;
+                itineraryCards[index].photos = data[0].photo_urls;
+              })
+          }))
           .then(() => {
+            console.log(`itineraryCards: ${itineraryCards} \n...END`)
             return Promise.all(result.map((card, index) => {
-              return knex('categories')
-                .select('name')
-                .where('id', card.category_id)
-                .then((data) => {
-                  itineraryCards[index].category_name = data[0].name;
-                })
-            }))
+                return knex('categories')
+                  .select('name')
+                  .where('id', card.category_id)
+                  .then((data) => {
+                    itineraryCards[index].category_name = data[0].name;
+                  })
+              }))
               .then(() => {
-                return favCards
+                console.log(`itineraryCards2: ${itineraryCards} \n...END`)
+                return itineraryCards
 
               })
           })
@@ -76,22 +84,22 @@ module.exports = (knex) => {
       .then((result) => {
         const favCards = result;
         return Promise.all(result.map((card, index) => {
-          return knex('photos')
-            .select(knex.raw('ARRAY_AGG(photos.url) as photo_urls'))
-            .where('card_id', card.card_id)
-            .then((data) => {
-              favCards[index].photos = data[0].photo_urls;
-            })
-        }))
+            return knex('photos')
+              .select(knex.raw('ARRAY_AGG(photos.url) as photo_urls'))
+              .where('card_id', card.card_id)
+              .then((data) => {
+                favCards[index].photos = data[0].photo_urls;
+              })
+          }))
           .then(() => {
             return Promise.all(result.map((card, index) => {
-              return knex('categories')
-                .select('name')
-                .where('id', card.category_id)
-                .then((data) => {
-                  favCards[index].category_name = data[0].name;
-                })
-            }))
+                return knex('categories')
+                  .select('name')
+                  .where('id', card.category_id)
+                  .then((data) => {
+                    favCards[index].category_name = data[0].name;
+                  })
+              }))
               .then(() => {
                 return favCards
 
