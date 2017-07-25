@@ -21,7 +21,7 @@ class ItineraryIndex extends Component {
       })
     );
 
-    Api.get('/itinerary/favorites')
+    Api.get('/itinerary/')
       .then((cards) => this.setState({
         itineraryCards: cards
       })
@@ -61,6 +61,8 @@ class ItineraryIndex extends Component {
   }
 
   render() {
+    const node = document.getElementById('top');
+    node.scrollIntoView({ behavior: "smooth" });
     return (
       <div className="itinerary">
         <div className="header">

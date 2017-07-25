@@ -65,7 +65,8 @@ class HomepageIndex extends Component {
   };
 
   newFavorite(id) {
-    Api.post('/index/favorite')
+    console.log(id)
+    Api.post('/index/favorite', id)
       .then(() => {
         this.resetCards();
     })
@@ -90,7 +91,6 @@ class HomepageIndex extends Component {
   }
   addOne(cardID){
     event.preventDefault();
-    console.log("**card id is**", cardID);
     fetch('/index/upvote', {
       method: 'POST',
       credentials: 'include',
@@ -110,7 +110,6 @@ class HomepageIndex extends Component {
 
   removeOne(cardID){
     event.preventDefault();
-      console.log("**card id is** ", cardID);
       fetch('/index/downvote', {
         method: 'POST',
         credentials: 'include',

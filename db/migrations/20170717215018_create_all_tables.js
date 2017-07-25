@@ -14,6 +14,7 @@ exports.up = function(knex, Promise) {
       table.string('title')
       table.specificType('location', 'point')
       table.string('description')
+      table.string('address')
       table.integer('duration')
       table.integer('category_id').references('categories.id')
       table.integer('user_id').references('users.id')

@@ -42,13 +42,12 @@ class FavContentContainer extends Component {
     const detailsVisible = this.state.isVisible ? 'visible'  : '';
 
     let card = this.props.cardContent;
-    console.log('PROPS to the card', card);
     return (
       <div className={`content-container ${expandedToggle}`}>
-        <FavImage />
+        <FavImage images={card.photos} />
         <div className="card-content">
-              <p className="card-title">{card.title}</p>
-               <p className="category duration"><span className={`icon is-small fa ${this.findIconCategory(card.category_id)}`}>&nbsp;</span>&nbsp;~{card.duration} minutes</p>
+              <p className="itinerary-card-title">{card.title}</p>
+               <p className="category duration"><span className={`icon is-small fa ${this.findIconCategory(card.category)}`}>&nbsp;</span>&nbsp;~{card.duration} minutes</p>
                 <FavAdd add={this.props.add.bind(this)} card={card}/>
             </div>
           </div>

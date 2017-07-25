@@ -12,13 +12,11 @@ module.exports = (knex) => {
   } = queries(knex);
 
   router.get("/", (req, res) => {
-    // let user_id = req.params.userId;
-    let user_id = 1;
+      const user_id = req.session.userId;
 
     getItinerary(user_id)
       .then(data => {
         let cards = data.map((card) => {
-          console.log("itinerary: ", card);
           return {
             id: card.id,
             card_id: card.card_id,
@@ -45,18 +43,18 @@ module.exports = (knex) => {
     favCards(user_id)
       .then(data => {
         let cards = data.map((card) => {
-          console.log(card);
           return {
-            id: card.id,
+            id: card.card_id,
             title: card.title,
             location: [card.location.x, card.location.y],
             description: card.description,
             duration: card.duration,
-            category: card.category_name,
-            user: card.given_name,
+            address: card.address,
+            category: card.category_id,
             photos: card.photos
           }
         });
+        console.log(cards)
         res.json(cards);
 
       })

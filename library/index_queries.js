@@ -54,7 +54,7 @@ module.exports = (knex) => {
       .leftJoin('users', 'filterCards.user_id', 'users.id')
       .leftJoin('categories', 'filterCards.category_id', 'categories.id')
       .select(['filterCards.id AS card_id', 'filterCards.title', 'filterCards.description', 'filterCards.total_rating',
-        'filterCards.location', 'filterCards.duration', 'users.given_name',
+        'filterCards.location', 'filterCards.address', 'filterCards.duration', 'users.given_name',
         'users.family_name', 'categories.name AS category_name',
       ])
       .then((result) => {
@@ -75,7 +75,7 @@ module.exports = (knex) => {
 
   obj.allCards = function () {
     return knex('cards')
-      .select(['cards.id AS card_id', 'cards.title', 'cards.description', 'cards.location', 'cards.total_rating',
+      .select(['cards.id AS card_id', 'cards.title', 'cards.description', 'cards.address', 'cards.location', 'cards.total_rating',
         'cards.duration', 'users.given_name', 'users.family_name', 'categories.name AS category_name',
       ])
       .leftJoin('users', 'cards.user_id', 'users.id')
