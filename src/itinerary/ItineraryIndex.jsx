@@ -2,14 +2,22 @@ import React, { Component } from 'react';
 import ItineraryTime from "./ItineraryTime.jsx";
 import FavoriteBar from "./FavoriteBar.jsx";
 import SortableComponent from "./dnd/SortableComponent.jsx";
+import SettingTime from "./SettingTime.jsx";
+import Set from "./Set.jsx";
+import TimeSetter from "./TimeSetter.jsx";
+import EventLine from "./EventLine.jsx";
+import TimeSet from "./TimeSet.jsx";
 import Api from '../../library/api.js';
+import moment from 'moment';
 
 class ItineraryIndex extends Component {
   constructor(props) {
     super(props);
     this.state = {
       favCards: [],
-      itineraryCards: []
+      itineraryCards: [],
+      time: moment(),
+      date: moment(),
     }
   }
 
@@ -18,9 +26,9 @@ class ItineraryIndex extends Component {
       .then((cards) => this.setState({
         favCards: cards
       })
-    );
+      );
 
-    Api.get('/itinerary/favorites')
+    Api.get('/itinerary/')
       .then((cards) => this.setState({
         itineraryCards: cards
       })
@@ -39,6 +47,8 @@ class ItineraryIndex extends Component {
   // }
 
   componentDidMount() {
+    var date = new Date();
+
 
     //   fetch('https://www.googleapis.com/calendar/v3/calendars/primary/events', {
     //     method: 'POST',
@@ -58,20 +68,43 @@ class ItineraryIndex extends Component {
     //     })
     //   })
   }
+  toggleActive(event) {
+    this.setState({
+      isActive: !this.state.isActive
+    });
+  }
+  setTime(time) {
+    this.setState({
+      time: time
+    })
+  }
+  setDate(date) {
+    this.setState({
+      date: date
+    })
+    console.log('parent set date', date)
+  }
 
   render() {
+    const node = document.getElementById('top');
+    node.scrollIntoView({ behavior: "smooth" });
     return (
-      <div className="itinerary">
+      <div className="itinerary-container">
         <div className="header">
           <FavoriteBar favCards={this.state.favCards} add={this.add.bind(this)} />
         </div>
-        <p className="calendar"><i className="fa fa-calendar-check-o"></i>&nbsp;save to calendar</p>
+        <div className="welcome">
+          <Set setDate={this.setDate.bind(this)} />
+          <h2 className="title is-4">{this.state.date.format('LL')}</h2>
+        </div>
         <div className="columns">
-
-          <div className="column is-2">
+          <div className="column is-1">
             <ItineraryTime />
           </div>
-          <div className="column is-9">
+          <div className="column is-1">
+            <TimeSet />
+          </div>
+          <div className="column is-10">
             <SortableComponent cards={this.state.itineraryCards} />
           </div>
         </div>

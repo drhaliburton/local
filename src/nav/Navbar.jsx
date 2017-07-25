@@ -15,6 +15,7 @@ class Navbar extends Component {
       });
   }
 
+
   render() {
     const currentRoute = window.location.href;
     return (
@@ -22,18 +23,16 @@ class Navbar extends Component {
         <div className="navbar-item">
           <a href="/"><img src="http://imgur.com/cyM42ng.png" alt="local - travel like you live there" width="75" height="28"></img></a>
         </div>
-
-        <div className="navbar-end"></div>
         <div className="navbar-brand">
           {currentRoute.includes('map') ?
             <div className="navbar-item">
               <div className="navbar-item">
                 <div className="itinerary">
-                  <Link to="#"><i className="fa fa-globe"></i>&nbsp;&nbsp;export map</Link></div>
+                  <Link to="/map"><i className="fa fa-globe"></i>&nbsp;&nbsp;export map</Link></div>
               </div>
               <div className="navbar-item">
-                <div className="itinerary">
-                <Link to="/itinerary"><i className="fa fa-map-o"></i>&nbsp;&nbsp;itinerary</Link></div>
+                <div className="itinerary" onClick={this.onClick.bind(this)}>
+                <Link maintainScrollPosition={false} to="/itinerary"><i className="fa fa-map-o"></i>&nbsp;&nbsp;itinerary</Link></div>
               </div>
             </div>
             :
@@ -73,6 +72,7 @@ class Navbar extends Component {
             </div>
           }
         </div>
+      <div className="navbar-end"></div>
       </nav>
     );
   }

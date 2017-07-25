@@ -99,6 +99,8 @@ class CardView extends Component {
           <Scrollchor animate={{offset: -58, duration: 1000}} to={pageLink}><i className={`fa fa-chevron-up ${viewToggleRotated}`}></i></Scrollchor>
         </span>
       </div>
+                <div className="columns cards-container">Recommendations</div>
+
       <div className="filter has-text-centered">
         <h5 className="filter-brand title is-6">Filters</h5>
         <span className="filter-toggle" onClick={this.toggleFilters.bind(this)}>
