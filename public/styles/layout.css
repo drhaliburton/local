@@ -430,17 +430,19 @@
     .box .fa:hover {
       color: pink; }
 
-.modal .modal-background {
-  background-color: #AADDD5;
-  opacity: 0.1; }
-.modal .title {
-  color: #363636; }
-.modal .fa {
-  color: black; }
-.modal .button {
-  border-color: #00caba; }
-  .modal .button:hover {
-    border-color: black; }
+.modal {
+  margin: none; }
+  .modal .modal-background {
+    background-color: #AADDD5;
+    opacity: 0.1; }
+  .modal .title {
+    color: #363636; }
+  .modal .fa {
+    color: black; }
+  .modal .button {
+    border-color: #00caba; }
+    .modal .button:hover {
+      border-color: black; }
 
 .columns {
   margin-top: 7rem;
@@ -513,6 +515,8 @@
     margin: 5px; }
 .modal .modal-card-foot {
   background-color: white; }
+.modal .button {
+  float: right; }
 
 .react-datepicker-popper[data-placement^="bottom"] .react-datepicker__triangle, .react-datepicker-popper[data-placement^="top"] .react-datepicker__triangle, .react-datepicker__year-read-view--down-arrow,
 .react-datepicker__month-read-view--down-arrow {
@@ -838,6 +842,9 @@
     text-align: center;
     top: 50%; }
 
+.button {
+  float: right; }
+
 .react-datepicker__today-button {
   background: #f0f0f0;
   border-top: 1px solid #CCCCCC;
@@ -926,11 +933,14 @@
 
 .time {
   background: white;
-  border: 2px solid #00caba;
+  border: 2px solid #00b0a3;
   border-radius: 2rem;
   padding: 1rem; }
   .time .title {
     color: black; }
+
+.container {
+  padding-top: 2rem; }
 
 .is-rotated {
   transform: rotate(180deg); }

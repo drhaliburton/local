@@ -32,7 +32,7 @@ class ItineraryIndex extends Component {
       .then((cards) => this.setState({
         itineraryCards: cards
       })
-    );
+      );
   }
   add(card) {
     let newCard = this.state.itineraryCards.concat(card.card);
@@ -93,19 +93,21 @@ class ItineraryIndex extends Component {
         <div className="header">
           <FavoriteBar favCards={this.state.favCards} add={this.add.bind(this)} />
         </div>
-        <div className="welcome">
-          <h2 className="title is-2">{this.state.date.format('LL')}</h2>
-        </div>
-        <div className="columns">
-          <div className="column is-2">
-            <ItineraryTime />
+        <div className="container">
+          <div className="welcome">
+            <h2 className="title is-2">{this.state.date.format('LL')}</h2>
           </div>
-          <div className="column is-2">
-            <TimeSet />
-          </div>
-          <div className="column is-8">
-            <Set setDate={this.setDate.bind(this)} />
-            <SortableComponent cards={this.state.itineraryCards} />
+          <div className="columns">
+            <div className="column is-2">
+              <ItineraryTime />
+            </div>
+            <div className="column is-2">
+              <TimeSet />
+            </div>
+            <div className="column is-8">
+              <Set setDate={this.setDate.bind(this)} />
+              <SortableComponent cards={this.state.itineraryCards} />
+            </div>
           </div>
         </div>
       </div>
