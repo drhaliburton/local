@@ -129,6 +129,7 @@ module.exports = (knex) => {
   })
 
   router.post("/", (req, res) => {
+    console.log(req.body)
     const userID = req.session.userId;
 
     const newCard = {
@@ -156,7 +157,7 @@ module.exports = (knex) => {
       //the whole response has been recieved, so we just print it out here
       response.on('end', function () {
         const result = JSON.parse(str).results[0];
-        console.log(result.formatted_address);
+        console.log(result);
         newCard.address = result.formatted_address;
         newCard.location = `(${result.geometry.location.lat}, ${result.geometry.location.lng})`
         const apiPhotosArray = findPlacePhotos(result);

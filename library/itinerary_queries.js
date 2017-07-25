@@ -64,15 +64,3 @@ module.exports = (knex) => {
 
   return obj;
 }
-
-// .then((results) => {
-//   console.log(results)
-//   return knex('cards AS favCards')
-//     // .where('id', results[0].card_id)
-// .leftJoin('categories', 'favCards.category_id', 'categories.id')
-// .leftJoin('users', 'favCards.user_id', 'users.id')
-// .select(['favCards.id AS card_id', 'favCards.title', 'favCards.description',
-//   'favCards.location', 'favCards.duration', 'users.given_name',
-//   'users.family_name', 'categories.name AS category_name',
-// ])
-// })

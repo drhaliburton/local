@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import Geosuggest from 'react-geosuggest';
 
 class AddCard extends Component {
   constructor(props) {
@@ -71,7 +72,7 @@ class AddCard extends Component {
               <div className="field">
                 <label className="label">Destination Location</label>
                 <p className="control has-icons-left">
-                  <input className="input" type="text" placeholder="Enter an Address, Neighbourhood or City" data="location" value={this.state.location} name="location" onChange={this.handleChange.bind(this)}></input>
+                  <Geosuggest type="text" placeholder="     Enter an Address, Neighbourhood or City" data="location" value={this.state.location} name="location" onChange={this.handleChange.bind(this)} />
                   <span className="icon is-small is-left">
                     <i className="fa fa-globe"></i>
                   </span>
