@@ -17,7 +17,6 @@ module.exports = (knex) => {
     getItinerary(user_id)
       .then(data => {
         let cards = data.map((card) => {
-          console.log("itinerary: ", card);
           return {
             id: card.id,
             card_id: card.card_id,
@@ -40,7 +39,7 @@ module.exports = (knex) => {
 
   router.get("/favorites", (req, res) => {
     const user_id = req.session.userId;
-  
+
     favCards(user_id)
       .then(data => {
         console.log(data)

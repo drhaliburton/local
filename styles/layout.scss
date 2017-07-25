@@ -11,13 +11,13 @@ $dark-grey: #363636;
 @import 'indexCard';
 @import 'navbar';
 @import 'filters';
-@import 'location';
 @import 'index';
 @import 'favoriteBar';
 @import 'sortableComponent';
 @import 'googleLogin';
 @import 'signInindex';
 @import 'itineraryCard';
+@import 'pageToggle';
 
 .is-rotated {
   transform: rotate(180deg);

@@ -75,7 +75,7 @@ module.exports = (knex) => {
 
   obj.allCards = function () {
     return knex('cards')
-      .select(['cards.id AS card_id', 'cards.title', 'cards.description', 'cards.location', 'cards.total_rating',
+      .select(['cards.id AS card_id', 'cards.title', 'cards.description', 'cards.address', 'cards.location', 'cards.total_rating',
         'cards.duration', 'users.given_name', 'users.family_name', 'categories.name AS category_name',
       ])
       .leftJoin('users', 'cards.user_id', 'users.id')

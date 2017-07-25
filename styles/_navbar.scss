@@ -1,8 +1,16 @@
 .navbar {
-  height: 5rem;
+  position: fixed;
+  top:0;
+  right:0;
+  left: 0;
+  z-index: 200;
+  padding: 10px;
   padding-left: 10px;
+  overflow: hidden;
   .navbar-brand {
-    margin: 13px 30px;
+    margin: 0px 30px;
+    position: fixed;
+    right: 0;
     .itinerary {
       overflow: hidden;
       a {
@@ -19,15 +27,7 @@
       }
     }
   }
-  @media screen and (max-width: 999px) {
-    overflow: visible;
-    .navbar-brand{
-      margin: auto;
-      display: inline-block;
-    }
-  }
 }
-
 .fa-share-square-o{
   transform: rotate(180deg) !important;
 }

@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import Api from '../../library/api.js';
 import AddCard from "./AddCard.jsx";
+import { BrowserRouter as Router, Link, Route } from 'react-router-dom';
+
 
 //Importing filters and searchbar components
 
@@ -16,22 +18,20 @@ class Navbar extends Component {
   render() {
     const currentRoute = window.location.href;
     return (
-      <nav className="navbar">
+      <nav className="navbar" id="top">
         <div className="navbar-item">
           <a href="/"><img src="http://imgur.com/cyM42ng.png" alt="local - travel like you live there" width="75" height="28"></img></a>
         </div>
-
-        <div className="navbar-end"></div>
         <div className="navbar-brand">
           {currentRoute.includes('map') ?
             <div className="navbar-item">
               <div className="navbar-item">
                 <div className="itinerary">
-                  <a href="#"><i className="fa fa-globe"></i>&nbsp;&nbsp;export map</a></div>
+                  <Link to="#"><i className="fa fa-globe"></i>&nbsp;&nbsp;export map</Link></div>
               </div>
               <div className="navbar-item">
                 <div className="itinerary">
-                  <a href="/#/itinerary"><i className="fa fa-map-o"></i>&nbsp;&nbsp;itinerary</a></div>
+                <Link to="/itinerary"><i className="fa fa-map-o"></i>&nbsp;&nbsp;itinerary</Link></div>
               </div>
             </div>
             :
@@ -39,11 +39,11 @@ class Navbar extends Component {
               <div className="navbar-item">
                 <div className="navbar-item">
                   <div className="itinerary">
-                    <a href="/#/"><i className="fa fa-clone"></i>&nbsp;&nbsp;all cards</a></div>
+                    <Link to="/"><i className="fa fa-clone"></i>&nbsp;&nbsp;all cards</Link></div>
                   </div>
                   <div className="navbar-item">
                     <div className="itinerary">
-                      <a href="/#/map"><i className="fa fa-map"></i>&nbsp;&nbsp;map</a></div>
+                      <Link to="/map"><i className="fa fa-map"></i>&nbsp;&nbsp;map</Link></div>
                     </div>
                 </div>
               :
@@ -54,7 +54,7 @@ class Navbar extends Component {
                 </div>
                   <div className="navbar-item">
                     <div className="itinerary">
-                      <a href="/#/itinerary"><i className="fa fa-map-o"></i>&nbsp;&nbsp;itinerary</a></div>
+                      <Link to="/itinerary"><i className="fa fa-map-o"></i>&nbsp;&nbsp;itinerary</Link></div>
                   </div>
                 </div>
           }
@@ -67,10 +67,11 @@ class Navbar extends Component {
             :
             <div className="navbar-item">
               <div className="itinerary">
-                <a href="/#/auth"><i className="fa fa-paper-plane"></i>&nbsp;&nbsp;login</a></div>
+                <Link to="/auth"><i className="fa fa-paper-plane"></i>&nbsp;&nbsp;login</Link></div>
             </div>
           }
         </div>
+      <div className="navbar-end"></div>
       </nav>
     );
   }
