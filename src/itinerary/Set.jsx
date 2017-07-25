@@ -6,7 +6,7 @@ class Set extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      startDate: moment()
+      startDate: moment(),
     };
     this.handleChange = this.handleChange.bind(this);
   }
@@ -15,6 +15,9 @@ class Set extends Component {
     this.setState({
       startDate: date
     });
+  }
+  handleInput(time) {
+    console.log(time)
   }
   toggleActive() {
     this.setState({
@@ -49,20 +52,18 @@ class Set extends Component {
                 selected={this.state.startDate}
                 onChange={this.handleChange}
               />
-            </section>
-            <section className="modal-card-foot">
-              <div className="column">
-                <div className="control has-text-centered">
-                  <button type="submit" value="submit" className="button" onClick={this.submitDate.bind(this)}>Submit</button>
+                <div className="column">
+                  <div className="control has-text-centered">
+                    <button type="submit" value="submit" className="button" onClick={this.submitDate.bind(this)}>Submit</button>
+                  </div>
                 </div>
-              </div>
             </section>
-            <div>
-            </div>
+              <div>
+              </div>
+              </div>
           </div>
         </div>
-      </div>
-    );
+        );
   }
 }
 

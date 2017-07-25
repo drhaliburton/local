@@ -89,9 +89,10 @@ class ItineraryIndex extends Component {
       time: time
     })
   }
-  setDate(date) {
+  setDate(date, time) {
     this.setState({
-      date: date
+      date: date, 
+      time: time
     })
     console.log('parent set date', date)
   }
@@ -105,7 +106,7 @@ class ItineraryIndex extends Component {
           <FavoriteBar favCards={this.state.favCards} add={this.add.bind(this)} />
         </div>
         <div className="welcome">
-          <Set setDate={this.setDate.bind(this)} />
+          <Set setDate={this.setDate.bind(this)}/>
           <h3 className="title is-3">{this.state.date.format('LL')}</h3>
         </div>
         <div className="columns">

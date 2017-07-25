@@ -1,5 +1,10 @@
 .itinerary-container {
   margin: 120px 80px;
+    .image{
+      .img{
+        height: 100%;
+      }
+  }
   .columns{
   .morning {
     margin-top: 1rem;
@@ -14,7 +19,7 @@
     height:80px;
   }
   .media-content.large{
-    height:10rem;
+    height:10rem; 
   }
   .fa {
   color:$green;

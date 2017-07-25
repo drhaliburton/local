@@ -87,6 +87,7 @@ class SortableComponent extends Component {
   render() {
 
     const items = this.props.cards;
+    console.log('items are', items)
     const renderedItems = this.state.items.map(card =>
           <div className='box'>
             <article className='media large'>
@@ -99,9 +100,8 @@ class SortableComponent extends Component {
               <div className="content">
                 <p>
                   <strong>{card.title}</strong>
-                  <br className="subtitle"></br>
-                  {card.address}
-                  <br></br><small>{card.duration}</small>
+                  <br></br>
+                  <h6 className="subtitle is-6">{card.description}</h6>
                 </p>
               </div>
             </div>
