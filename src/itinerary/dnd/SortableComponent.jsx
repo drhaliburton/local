@@ -26,14 +26,14 @@ class SortableComponent extends Component {
     }
   }
 
+  
+  
   onSortEnd = ({oldIndex, newIndex}) => {
-    console.log('before', this.state.items)
     const move = arrayMove(this.state.items, oldIndex, newIndex)
     this.setState({
       items: move,
     });
     // console.log('ITEM:', this.state.items[0].title, 'ITEM DURATION:', this.state.items[0].duration)
-    console.log('after', move)
     
   };
 
@@ -55,12 +55,29 @@ class SortableComponent extends Component {
       );
     }
   }
-
+  componentWillReceiveProps(nextProps) {
+    console.log("cWRP nextProps");
+    // To avoid reseting order on new-card-add:
+    //  0) make a copy of this.state.items
+    //  1) loop through nextProps.cards
+    //  2) for each nextProps.card, see if it already exists in this.state.items
+    //  3) if yes, *APPEND* it to the copy
+    //  4) setState to the copy
+    let last = (nextProps.cards).length - 1
+    let newProp = nextProps.cards[last]
+    let oldState = this.state.items
+    let newestAddition = oldState.concat(newProp)
+    console.log('newest', newestAddition)
+    console.log(oldState)
+    
+    this.setState({
+      items : nextProps.cards
+    })
+  }
   render() {
     
     const items = this.props.cards;
-    console.log('hai hai', items);
-    const renderedItems = items.map(card =>
+    const renderedItems = this.state.items.map(card =>
           <div className='box'>
             <article className='media large'>
             <figure className="media-left">
