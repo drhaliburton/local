@@ -12,13 +12,14 @@ module.exports = (knex) => {
     //select itineraries where user_id and date
     //leftjoin itinerary_cards at itinerary_id
     //leftjoin cards at card_id
-
-    return knex('itinerary_cards')
-      .where('itinerary_cards.user_id', user)
+    knex('itinierary_cards')
+    .where('user_id', user_id)
+    .andWhere('date', date)
+    .leftJoin('cards', 'itinerary_cards.card_id', 'cards.id')
+    .leftJoin('itinerary_cards', 'itineraries.id', 'itinerary_cards.itinerary_id')
       .select(['cards.id AS card_id', 'cards.title', 'cards.description',
         'cards.location', 'cards.duration', 'cards.category_id', 'cards.address'
       ])
-      .leftJoin('cards', 'itinerary_cards.card_id', 'cards.id')
       .then((result) => {
         const itineraryCards = result;
         return Promise.all(result.map((card, index) => {
