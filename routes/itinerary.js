@@ -12,7 +12,7 @@ module.exports = (knex) => {
     makeItinerary
   } = queries(knex);
 
-  router.get("/", (req, res) => {
+  router.get("/cards", (req, res) => {
     const user_id = req.session.userId;
 
     getItinerary(user_id)
@@ -24,6 +24,7 @@ module.exports = (knex) => {
             user_id: card.user_id,
             title: card.title,
             location: card.location,
+            address: card.adddress,
             description: card.description,
             duration: card.duration,
             category_id: card.category_id,

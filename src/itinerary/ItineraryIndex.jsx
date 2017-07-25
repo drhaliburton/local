@@ -82,7 +82,6 @@ class ItineraryIndex extends Component {
     this.setState({
       date: date
     })
-    console.log('parent set date', date)
   }
 
   saveItinerary(){
