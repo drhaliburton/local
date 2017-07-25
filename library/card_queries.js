@@ -15,6 +15,7 @@ module.exports = (knex) => {
             description: card.description,
             duration: card.duration,
             location: card.location,
+            address: card.address,
             category_id: rows[0].id,
             user_id: userId,
             total_rating: 1

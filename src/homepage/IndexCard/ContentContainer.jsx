@@ -50,7 +50,7 @@ class ContentContainer extends Component {
           <div className="media">
             <div className="media-content">
               <p className="title">{card.title}</p>
-              <p className="location">{card.location || "Location, Location Ville"}</p>
+              <a href={`http://maps.google.com/?q=${card.address}`} target="_blank"><p className="location">{card.address || "Location, Location Ville"}</p></a>
                <p className="category duration"><span className={`icon is-small fa ${this.findIconCategory(card.category)}`}>&nbsp;</span>&nbsp;~{card.duration} minutes</p>
                 <Star cardID={this.props.cardID} favorite={this.props.favorite} />
             </div>

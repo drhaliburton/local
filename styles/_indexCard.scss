@@ -94,7 +94,7 @@
       transition: all 1s ease-in-out !important;
     }
     }
-       .fa-plus {
+    .fa-plus {
       font-size: 1.4em;
       position: relative;
       padding-top: 7px;
@@ -187,6 +187,7 @@
       overflow: hidden;
       img {
         max-width: 400px;
+        min-width: 220px;
         max-height: 220px;
       }
       .cover {
@@ -200,6 +201,9 @@
       font-size: 1em;
       color: $green;
       cursor: pointer;
+      text-overflow: ellipsis;
+      overflow: hidden;
+      white-space: nowrap;
       &:hover{
         color: $dark-green;
       }

@@ -8,7 +8,7 @@ class NewImage extends Component {
     if (images === null) {
       return 'http://placekitten.com.s3.amazonaws.com/homepage-samples/408/287.jpg';
     } else {
-      let randomInt = Math.ceil(Math.random() * images.length);
+      let randomInt = Math.ceil(Math.random() * images.length) -1;
       return this.props.image[randomInt];
     }
   }
