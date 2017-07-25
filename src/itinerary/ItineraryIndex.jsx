@@ -85,9 +85,15 @@ class ItineraryIndex extends Component {
     console.log('parent set date', date)
   }
 
-  saveItinerary(date){
+  saveItinerary(){
     event.preventDefault();
     const itineraryCards = this.state.itineraryCards;
+    const date = this.state.date.format('YYYY-MM-DD');
+    const cardIds = itineraryCards.map((card) => {
+      return card.id;
+    })
+
+    console.log('cardIds: ', cardIds);
 
     fetch('/itinerary/cards', {
       method: 'POST',
@@ -98,11 +104,9 @@ class ItineraryIndex extends Component {
       },
       body: JSON.stringify({
         date: date,
-        cards: itineraryCards
+        cardIds: cardIds
       })
     })
-    .then(() => {
-      })
   };
 
   render() {
@@ -115,7 +119,7 @@ class ItineraryIndex extends Component {
         </div>
         <p className="calendar"><i className="fa fa-calendar-check-o"></i>&nbsp;save to calendar</p>
         <div className="welcome">
-          <button onClick={() => {this.saveItinerary(this.state.date)}}>Save</button>
+          <button onClick={() => {this.saveItinerary()}}>Save</button>
           <Set setDate={this.setDate.bind(this)} />
           <h2 className="title is-4">{this.state.date.format('LL')}</h2>
         </div>

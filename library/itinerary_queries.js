@@ -8,7 +8,8 @@ module.exports = (knex) => {
   }
 
   // card is an array of card objects
-  obj.makeItinerary = function (date, cards, userID) {
+  obj.makeItinerary = function (date, cardIds, userID) {
+    console.log('make itinerary: ', date, cardIds, userID)
     knex('itineraries')
       .insert({
         date: date,
@@ -16,11 +17,11 @@ module.exports = (knex) => {
       })
       .returning('id')
       .then(function (id) {
-        return Promise.all(cards.map((card) => {
+        return Promise.all(cardIds.map((cardId) => {
           return knex('itinerary_cards')
             .insert({
-              intinerary_id: id,
-              card_id: card.id
+              itinerary_id: id,
+              card_id: cardId
             })
         }))
       })

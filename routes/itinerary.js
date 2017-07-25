@@ -67,10 +67,10 @@ module.exports = (knex) => {
 
   router.post('/cards', (req, res) => {
     const userID = req.session.userId;
-    const cards = req.body.id;
+    const cardIds = req.body.cardIds;
     const date = req.body.date;
 
-    makeItinerary(date, cards, userID)
+    makeItinerary(date, cardIds, userID)
       .then(() => {
         res.json({
           status: 'ok'
