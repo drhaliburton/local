@@ -21,13 +21,20 @@ const SortableList = SortableContainer(({items}) => {
 class SortableComponent extends Component {
   constructor(props) {
     super(props);
+    this.state = {
+      items : this.props.cards
+    }
   }
 
+  
+  
   onSortEnd = ({oldIndex, newIndex}) => {
+    const move = arrayMove(this.state.items, oldIndex, newIndex)
     this.setState({
-      items: arrayMove(this.state.items, oldIndex, ),
+      items: move,
     });
-    console.log('ITEM:', this.state.items[0].title, 'ITEM DURATION:', this.state.items[0].duration)
+    // console.log('ITEM:', this.state.items[0].title, 'ITEM DURATION:', this.state.items[0].duration)
+    
   };
 
   setCardHeight(items) {
@@ -48,11 +55,35 @@ class SortableComponent extends Component {
       );
     }
   }
-
+  componentWillReceiveProps(nextProps) {
+    console.log("cWRP nextProps");
+    // To avoid reseting order on new-card-add:
+    //  0) make a copy of this.state.items
+    //  1) loop through nextProps.cards
+    //  2) for each nextProps.card, see if it already exists in this.state.items
+    //  3) if yes, *APPEND* it to the copy
+    //  4) setState to the copy
+    let last = (nextProps.cards).length - 1
+    let newProp = nextProps.cards[last]
+    let oldState = this.state.items
+    let newestAddition = oldState.concat(newProp)
+    console.log('newest', newestAddition)
+    console.log(oldState)
+    
+    this.setState({
+      items : nextProps.cards
+    })
+  }
   render() {
+<<<<<<< HEAD
 
     const cards = this.props.cards;
     const renderedItems = cards.map(card =>
+=======
+    
+    const items = this.props.cards;
+    const renderedItems = this.state.items.map(card =>
+>>>>>>> feature/timeline
           <div className='box'>
             <article className='media large'>
             <figure className="media-left">

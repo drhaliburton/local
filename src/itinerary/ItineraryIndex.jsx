@@ -3,14 +3,21 @@ import ItineraryTime from "./ItineraryTime.jsx";
 import FavoriteBar from "./FavoriteBar.jsx";
 import SortableComponent from "./dnd/SortableComponent.jsx";
 import SettingTime from "./SettingTime.jsx";
+import Set from "./Set.jsx";
+import TimeSetter from "./TimeSetter.jsx";
+import EventLine from "./EventLine.jsx";
+import TimeSet from "./TimeSet.jsx";
 import Api from '../../library/api.js';
+import moment from 'moment';
 
 class ItineraryIndex extends Component {
   constructor(props) {
     super(props);
     this.state = {
       favCards: [],
-      itineraryCards: []
+      itineraryCards: [],
+      time: moment(),
+      date: moment(),
     }
   }
 
@@ -19,7 +26,7 @@ class ItineraryIndex extends Component {
       .then((cards) => this.setState({
         favCards: cards
       })
-    );
+      );
 
     Api.get('/itinerary/')
       .then((cards) => this.setState({
@@ -40,6 +47,8 @@ class ItineraryIndex extends Component {
   // }
 
   componentDidMount() {
+    var date = new Date();
+
 
     //   fetch('https://www.googleapis.com/calendar/v3/calendars/primary/events', {
     //     method: 'POST',
@@ -59,6 +68,22 @@ class ItineraryIndex extends Component {
     //     })
     //   })
   }
+  toggleActive(event) {
+    this.setState({
+      isActive: !this.state.isActive
+    });
+  }
+  setTime(time) {
+    this.setState({
+      time: time
+    })
+  }
+  setDate(date) {
+    this.setState({
+      date: date
+    })
+    console.log('parent set date', date)
+  }
 
   render() {
     const node = document.getElementById('top');
@@ -67,14 +92,20 @@ class ItineraryIndex extends Component {
       <div className="itinerary">
         <div className="header">
           <FavoriteBar favCards={this.state.favCards} add={this.add.bind(this)} />
+          {/* <p className="calendar"><i className="fa fa-calendar-check-o"></i>&nbsp;save to calendar</p> */}
         </div>
-        <p className="calendar"><i className="fa fa-calendar-check-o"></i>&nbsp;save to calendar</p>
+        <div className="welcome">
+          <h2 className="title is-2">{this.state.date.format('LL')}</h2>
+        </div>
         <div className="columns">
-          < SettingTime /> 
           <div className="column is-2">
             <ItineraryTime />
           </div>
-          <div className="column is-9">
+          <div className="column is-2">
+            <TimeSet />
+          </div>
+          <div className="column is-8">
+            <Set setDate={this.setDate.bind(this)} />
             <SortableComponent cards={this.state.itineraryCards} />
           </div>
         </div>
