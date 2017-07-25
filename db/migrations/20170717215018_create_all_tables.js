@@ -23,8 +23,6 @@ exports.up = function(knex, Promise) {
     knex.schema.createTable('itineraries', function(table){
       table.increments('id').primary()
       table.timestamp('timestamp')
-      table.string('title')
-      table.string('itinerary_day')
       table.date('date')
       table.integer('user_id').references('users.id')
     }),
@@ -32,9 +30,8 @@ exports.up = function(knex, Promise) {
     knex.schema.createTable('itinerary_cards', function(table){
       table.increments('id').primary()
       table.timestamp('timestamp')
-      table.time('start_time')
+      table.integer('card_id').references('cards.id').onDelete('CASCADE').onUpdate('CASCADE')
       table.integer('itinerary_id').references('itineraries.id').onDelete('CASCADE').onUpdate('CASCADE')
-      table.integer('favorite_id').references('favorites.id').onDelete('CASCADE').onUpdate('CASCADE')
     }),
 
     knex.schema.createTable('ratings', function(table){

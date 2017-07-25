@@ -59,6 +59,26 @@ class ItineraryIndex extends Component {
     //   })
   }
 
+  saveItinerary(date){
+    event.preventDefault();
+    const itineraryCards = this.state.itineraryCards;
+
+    fetch('/itinerary/cards', {
+      method: 'POST',
+      credentials: 'include',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        date: date,
+        cards: itineraryCards
+      })
+    })
+    .then(() => {
+      })
+  };
+
   render() {
     const node = document.getElementById('top');
     node.scrollIntoView({ behavior: "smooth" });
@@ -68,6 +88,11 @@ class ItineraryIndex extends Component {
           <FavoriteBar favCards={this.state.favCards} add={this.add.bind(this)} />
         </div>
         <p className="calendar"><i className="fa fa-calendar-check-o"></i>&nbsp;save to calendar</p>
+        <div className="welcome">
+          <button onClick={() => {this.saveItinerary(this.state.date)}}>Save</button>
+          <Set setDate={this.setDate.bind(this)} />
+          <h2 className="title is-4">{this.state.date.format('LL')}</h2>
+        </div>
         <div className="columns">
 
           <div className="column is-2">

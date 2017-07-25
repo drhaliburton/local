@@ -8,19 +8,17 @@ module.exports = (knex) => {
   }
 
   // card is an array of card objects
-  obj.makeItinerary = function (day, title, user_id, cards) {
-    knex('itinerary')
+  obj.makeItinerary = function (date, cards, userID) {
+    knex('itineraries')
       .insert({
-        title: title,
-        intinerary_day: day,
-        user_id: user_id
+        date: date,
+        user_id: userID
       })
       .returning('id')
       .then(function (id) {
         return Promise.all(cards.map((card) => {
           return knex('itinerary_cards')
             .insert({
-              start_time: card.start_time,
               intinerary_id: id,
               card_id: card.id
             })
@@ -38,22 +36,22 @@ module.exports = (knex) => {
       .then((result) => {
         const favCards = result;
         return Promise.all(result.map((card, index) => {
-            return knex('photos')
-              .select(knex.raw('ARRAY_AGG(photos.url) as photo_urls'))
-              .where('card_id', card.card_id)
-              .then((data) => {
-                favCards[index].photos = data[0].photo_urls;
-              })
-          }))
+          return knex('photos')
+            .select(knex.raw('ARRAY_AGG(photos.url) as photo_urls'))
+            .where('card_id', card.card_id)
+            .then((data) => {
+              favCards[index].photos = data[0].photo_urls;
+            })
+        }))
           .then(() => {
             return Promise.all(result.map((card, index) => {
-                return knex('categories')
-                  .select('name')
-                  .where('id', card.category_id)
-                  .then((data) => {
-                    favCards[index].category_name = data[0].name;
-                  })
-              }))
+              return knex('categories')
+                .select('name')
+                .where('id', card.category_id)
+                .then((data) => {
+                  favCards[index].category_name = data[0].name;
+                })
+            }))
               .then(() => {
                 return favCards
 
