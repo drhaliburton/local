@@ -44,7 +44,7 @@ module.exports = (knex) => {
           }
         });
         res.json(cards)
-        console.log(cards) //contains total rating here
+        
 
       })
       .catch(err => {
@@ -79,9 +79,8 @@ module.exports = (knex) => {
         getFiltered(lat1, lng1, lat2, lng2)
           .then(data => {
             let cards = data.map((card) => {
-              console.log(card)
               return {
-                id: card.id,
+                id: card.card_id,
                 title: card.title,
                 location: [card.location.x, card.location.y],
                 description: card.description,
@@ -188,7 +187,8 @@ module.exports = (knex) => {
 
   router.post("/favorite", (req, res) => {
     console.log(req.session)
-    console.log(req.body.cardID)
+    console.log(req.body.id)
+   
     const userId = req.session.userId;
     const cardId = req.body.id;
     addFavorite(cardId, userId)
