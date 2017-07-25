@@ -1,0 +1,23 @@
+.modal{
+  .modal-card {
+    width: 500px;
+    border-radius:10px;
+    height: 300px;
+    border: 1px solid $orange;
+  }
+  .modal-card-head {
+    background-color: white;
+  }
+  .modal-card-body {
+    padding: 50px;
+    .select {
+    margin: 5px;
+  }
+  }
+  .modal-card-foot {
+    background-color: white;
+  }
+  .button {
+    float:right;
+  }
+}

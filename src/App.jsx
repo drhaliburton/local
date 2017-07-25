@@ -47,8 +47,8 @@ class App extends Component {
         <div>
           <Navbar setCurrentUser={this.getCurrentUser.bind(this)} currentUser={this.state.currentUser}/>
           <Route currentUser={this.state.currentUser} exact path="/" component={HomepageIndex} />
-          <Route currentUser={this.state.currentUser} exact path="/itinerary" component={ItineraryIndex} />
-          <Route currentUser={this.state.currentUser} exact path="/map" component={MapIndex} />
+          <Route currentUser={this.state.currentUser} path="/itinerary" component={ItineraryIndex} />
+          <Route currentUser={this.state.currentUser} path="/map" component={MapIndex} />
           <Route getCurrentUser={this.getCurrentUser.bind(this)} currentUser={this.state.currentUser} path="/auth" component={SignInIndex} />
         </div>
       </Router>

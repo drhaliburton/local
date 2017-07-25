@@ -1,0 +1,71 @@
+/*
+Error: Undefined variable: "$datepicker__triangle-size".
+        on line 2 of styles/mixins.scss
+
+1: %triangle-arrow {
+2:   margin-left: -$datepicker__triangle-size;
+3:   position: absolute;
+4: 
+5:   &,
+6:   &::before {
+7:     box-sizing: content-box;
+
+Backtrace:
+styles/mixins.scss:2
+/home/vagrant/.rvm/gems/ruby-2.3.3/gems/sass-3.4.25/lib/sass/script/tree/variable.rb:49:in `_perform'
+/home/vagrant/.rvm/gems/ruby-2.3.3/gems/sass-3.4.25/lib/sass/script/tree/node.rb:58:in `perform'
+/home/vagrant/.rvm/gems/ruby-2.3.3/gems/sass-3.4.25/lib/sass/script/tree/unary_operation.rb:62:in `_perform'
+/home/vagrant/.rvm/gems/ruby-2.3.3/gems/sass-3.4.25/lib/sass/script/tree/node.rb:58:in `perform'
+/home/vagrant/.rvm/gems/ruby-2.3.3/gems/sass-3.4.25/lib/sass/tree/visitors/perform.rb:398:in `visit_prop'
+/home/vagrant/.rvm/gems/ruby-2.3.3/gems/sass-3.4.25/lib/sass/tree/visitors/base.rb:36:in `visit'
+/home/vagrant/.rvm/gems/ruby-2.3.3/gems/sass-3.4.25/lib/sass/tree/visitors/perform.rb:162:in `block in visit'
+/home/vagrant/.rvm/gems/ruby-2.3.3/gems/sass-3.4.25/lib/sass/stack.rb:79:in `block in with_base'
+/home/vagrant/.rvm/gems/ruby-2.3.3/gems/sass-3.4.25/lib/sass/stack.rb:115:in `with_frame'
+/home/vagrant/.rvm/gems/ruby-2.3.3/gems/sass-3.4.25/lib/sass/stack.rb:79:in `with_base'
+/home/vagrant/.rvm/gems/ruby-2.3.3/gems/sass-3.4.25/lib/sass/tree/visitors/perform.rb:162:in `visit'
+/home/vagrant/.rvm/gems/ruby-2.3.3/gems/sass-3.4.25/lib/sass/tree/visitors/perform.rb:434:in `block (2 levels) in visit_rule'
+/home/vagrant/.rvm/gems/ruby-2.3.3/gems/sass-3.4.25/lib/sass/tree/visitors/perform.rb:434:in `map'
+/home/vagrant/.rvm/gems/ruby-2.3.3/gems/sass-3.4.25/lib/sass/tree/visitors/perform.rb:434:in `block in visit_rule'
+/home/vagrant/.rvm/gems/ruby-2.3.3/gems/sass-3.4.25/lib/sass/tree/visitors/perform.rb:183:in `with_environment'
+/home/vagrant/.rvm/gems/ruby-2.3.3/gems/sass-3.4.25/lib/sass/tree/visitors/perform.rb:432:in `visit_rule'
+/home/vagrant/.rvm/gems/ruby-2.3.3/gems/sass-3.4.25/lib/sass/tree/visitors/base.rb:36:in `visit'
+/home/vagrant/.rvm/gems/ruby-2.3.3/gems/sass-3.4.25/lib/sass/tree/visitors/perform.rb:162:in `block in visit'
+/home/vagrant/.rvm/gems/ruby-2.3.3/gems/sass-3.4.25/lib/sass/stack.rb:79:in `block in with_base'
+/home/vagrant/.rvm/gems/ruby-2.3.3/gems/sass-3.4.25/lib/sass/stack.rb:115:in `with_frame'
+/home/vagrant/.rvm/gems/ruby-2.3.3/gems/sass-3.4.25/lib/sass/stack.rb:79:in `with_base'
+/home/vagrant/.rvm/gems/ruby-2.3.3/gems/sass-3.4.25/lib/sass/tree/visitors/perform.rb:162:in `visit'
+/home/vagrant/.rvm/gems/ruby-2.3.3/gems/sass-3.4.25/lib/sass/tree/visitors/base.rb:52:in `block in visit_children'
+/home/vagrant/.rvm/gems/ruby-2.3.3/gems/sass-3.4.25/lib/sass/tree/visitors/base.rb:52:in `map'
+/home/vagrant/.rvm/gems/ruby-2.3.3/gems/sass-3.4.25/lib/sass/tree/visitors/base.rb:52:in `visit_children'
+/home/vagrant/.rvm/gems/ruby-2.3.3/gems/sass-3.4.25/lib/sass/tree/visitors/perform.rb:171:in `block in visit_children'
+/home/vagrant/.rvm/gems/ruby-2.3.3/gems/sass-3.4.25/lib/sass/tree/visitors/perform.rb:183:in `with_environment'
+/home/vagrant/.rvm/gems/ruby-2.3.3/gems/sass-3.4.25/lib/sass/tree/visitors/perform.rb:170:in `visit_children'
+/home/vagrant/.rvm/gems/ruby-2.3.3/gems/sass-3.4.25/lib/sass/tree/visitors/base.rb:36:in `block in visit'
+/home/vagrant/.rvm/gems/ruby-2.3.3/gems/sass-3.4.25/lib/sass/tree/visitors/perform.rb:190:in `visit_root'
+/home/vagrant/.rvm/gems/ruby-2.3.3/gems/sass-3.4.25/lib/sass/tree/visitors/base.rb:36:in `visit'
+/home/vagrant/.rvm/gems/ruby-2.3.3/gems/sass-3.4.25/lib/sass/tree/visitors/perform.rb:161:in `visit'
+/home/vagrant/.rvm/gems/ruby-2.3.3/gems/sass-3.4.25/lib/sass/tree/visitors/perform.rb:10:in `visit'
+/home/vagrant/.rvm/gems/ruby-2.3.3/gems/sass-3.4.25/lib/sass/tree/root_node.rb:36:in `css_tree'
+/home/vagrant/.rvm/gems/ruby-2.3.3/gems/sass-3.4.25/lib/sass/tree/root_node.rb:29:in `render_with_sourcemap'
+/home/vagrant/.rvm/gems/ruby-2.3.3/gems/sass-3.4.25/lib/sass/engine.rb:384:in `_render_with_sourcemap'
+/home/vagrant/.rvm/gems/ruby-2.3.3/gems/sass-3.4.25/lib/sass/engine.rb:301:in `render_with_sourcemap'
+/home/vagrant/.rvm/gems/ruby-2.3.3/gems/sass-3.4.25/lib/sass/plugin/compiler.rb:492:in `update_stylesheet'
+/home/vagrant/.rvm/gems/ruby-2.3.3/gems/sass-3.4.25/lib/sass/plugin/compiler.rb:215:in `block in update_stylesheets'
+/home/vagrant/.rvm/gems/ruby-2.3.3/gems/sass-3.4.25/lib/sass/plugin/compiler.rb:209:in `each'
+/home/vagrant/.rvm/gems/ruby-2.3.3/gems/sass-3.4.25/lib/sass/plugin/compiler.rb:209:in `update_stylesheets'
+/home/vagrant/.rvm/gems/ruby-2.3.3/gems/sass-3.4.25/lib/sass/plugin/compiler.rb:294:in `watch'
+/home/vagrant/.rvm/gems/ruby-2.3.3/gems/sass-3.4.25/lib/sass/plugin.rb:109:in `method_missing'
+/home/vagrant/.rvm/gems/ruby-2.3.3/gems/sass-3.4.25/lib/sass/exec/sass_scss.rb:360:in `watch_or_update'
+/home/vagrant/.rvm/gems/ruby-2.3.3/gems/sass-3.4.25/lib/sass/exec/sass_scss.rb:51:in `process_result'
+/home/vagrant/.rvm/gems/ruby-2.3.3/gems/sass-3.4.25/lib/sass/exec/base.rb:52:in `parse'
+/home/vagrant/.rvm/gems/ruby-2.3.3/gems/sass-3.4.25/lib/sass/exec/base.rb:19:in `parse!'
+/home/vagrant/.rvm/gems/ruby-2.3.3/gems/sass-3.4.25/bin/sass:13:in `<top (required)>'
+/home/vagrant/.rvm/gems/ruby-2.3.3/bin/sass:22:in `load'
+/home/vagrant/.rvm/gems/ruby-2.3.3/bin/sass:22:in `<main>'
+/home/vagrant/.rvm/gems/ruby-2.3.3/bin/ruby_executable_hooks:15:in `eval'
+/home/vagrant/.rvm/gems/ruby-2.3.3/bin/ruby_executable_hooks:15:in `<main>'
+*/
+body:before {
+  white-space: pre;
+  font-family: monospace;
+  content: "Error: Undefined variable: \"$datepicker__triangle-size\".\A         on line 2 of styles/mixins.scss\A \A 1: %triangle-arrow {\A 2:   margin-left: -$datepicker__triangle-size;\A 3:   position: absolute;\A 4: \A 5:   &,\A 6:   &::before {\A 7:     box-sizing: content-box;"; }
