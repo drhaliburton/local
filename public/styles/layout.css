@@ -395,6 +395,12 @@
     color: #333;
     font-weight: 1px; }
 
+.welcome {
+  padding: 10px;
+  margin-right: 2rem;
+  float: right;
+  border-bottom: 0.5px solid #FCB737; }
+
 .box {
   margin: 10px; }
 
@@ -457,8 +463,8 @@
     border-top-color: #CCCCCC; }
 
 .modal .modal-card {
-  height: 400px;
-  width: 400px;
+  height: 500px;
+  width: 500px;
   border-color: #CCCCCC; }
   .modal .modal-card .head {
     height: 100px; }
@@ -821,6 +827,11 @@
   .react-datepicker__month-read-view--down-arrow::before {
     bottom: -1px;
     border-top-color: #CCCCCC; }
+
+.span {
+  background: pink;
+  border-radius: 2rem;
+  padding: 2rem; }
 
 .is-rotated {
   transform: rotate(180deg); }

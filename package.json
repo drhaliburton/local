@@ -13,6 +13,7 @@
   "author": "Rebecca, Aisha, Shauna & Holden",
   "license": "ISC",
   "dependencies": {
+    "antd-init": "^2.0.4",
     "babel-preset-react": "^6.23.0",
     "body-parser": "^1.17.2",
     "bulma": "^0.4.3",
