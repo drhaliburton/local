@@ -1,5 +1,4 @@
 .cards {
-  position: absolute;
   transition: 2s all ease-in-out !important;
   font-size: 12px;
   .card {
@@ -208,15 +207,12 @@
         color: $dark-green;
       }
     }
-    .columns{
-      margin-top: 8em;
-    }
   }
 
 
 .columns {
-  margin-top: 1rem;
   justify-content: center;
+  margin-top: 0px !important;
   transition: all 1s ease-in-out !important;
   .column{
     padding: 8px;
