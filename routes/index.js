@@ -16,7 +16,7 @@ module.exports = (knex) => {
     allCards,
     postUpvote,
     postDownvote,
-    getRatings
+    hasVoted
   } = queries(knex);
 
   const {
@@ -111,17 +111,21 @@ module.exports = (knex) => {
     if(req.session.userId){
       // if the vote exists send flash message
       // enable downvote
-    postUpvote(card_id, user_id)
-      .then((result)=>{
-          console.log(result)
-      })
-      .catch(err => {
-          res.status(400).send("ERROR in upvoting");
-
-        });
+    if(hasVoted(card_id, user_id)){
+      console.log('has voted already')
     }
     else{
-      res.redirect('/#/signin');
+      postUpvote(card_id, user_id)
+        .then((result)=>{
+            res.json({status: 'okay', data: result})
+        })
+        .catch(err => {
+            res.status(400).send("ERROR in upvoting");
+          });
+      }
+    }
+    else{
+      res.redirect('/#/auth');
     }
   })
 
@@ -136,15 +140,15 @@ module.exports = (knex) => {
       // enable upvote
     postDownvote(card_id, user_id)
       .then((result)=>{
-          console.log(result)
+          res.json({status: 'okay', data: result})
       })
       .catch(err => {
-          res.status(400).send("ERROR in upvoting");
+          res.status(400).send("ERROR in downvoting");
 
         });
     }
     else{
-      res.redirect('/#/signin');
+      res.redirect('/#/auth');
     }
   })
 

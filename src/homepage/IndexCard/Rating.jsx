@@ -13,6 +13,9 @@ class Rating extends Component {
             }} ></i>
           </span>
           <p className="subtitle"> Recommended by {this.props.rating < 0 ? 0 : this.props.rating} travellers.</p>
+
+          <p className="subtitle"> You have already voted on this card.</p>
+
         </div>
     );
   }

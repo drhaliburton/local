@@ -1,6 +1,24 @@
 module.exports = (knex) => {
   const obj = {};
 
+  obj.hasVoted = function(card_id, user_id){
+    return knex('ratings')
+    .where({ card_id, user_id })
+    .first()
+    .then((rating) => {
+      if(!rating){
+        throw new Error(`No ratings for (card_id=${card_id}, user_id=${user_id}`);
+      }
+      return knex('ratings')
+      .where({ card_id, user_id })
+      .first()
+    })
+    .catch(() => {
+      return knex ('ratings')
+      })
+  }
+
+
   obj.postUpvote= function(card_id, user_id){
     return knex('ratings')
     .insert({
