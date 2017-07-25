@@ -3,7 +3,7 @@
     width: 500px;
     border-radius:10px;
     height: 300px;
-    border: 1px solid $green;
+    border: 1px solid $orange;
   }
   .modal-card-head {
     background-color: white;
@@ -18,5 +18,6 @@
     background-color: white;
   }
   .button {
+    float:right;
   }
 }

@@ -92,7 +92,6 @@ class ItineraryIndex extends Component {
       <div className="itinerary">
         <div className="header">
           <FavoriteBar favCards={this.state.favCards} add={this.add.bind(this)} />
-          {/* <p className="calendar"><i className="fa fa-calendar-check-o"></i>&nbsp;save to calendar</p> */}
         </div>
         <div className="welcome">
           <h2 className="title is-2">{this.state.date.format('LL')}</h2>
