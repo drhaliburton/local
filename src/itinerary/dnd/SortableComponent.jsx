@@ -75,15 +75,9 @@ class SortableComponent extends Component {
     })
   }
   render() {
-<<<<<<< HEAD
-
-    const cards = this.props.cards;
-    const renderedItems = cards.map(card =>
-=======
     
     const items = this.props.cards;
     const renderedItems = this.state.items.map(card =>
->>>>>>> feature/timeline
           <div className='box'>
             <article className='media large'>
             <figure className="media-left">

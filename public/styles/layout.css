@@ -6,7 +6,6 @@ Error: Invalid CSS after "...rt 'pageToggle'": expected "{", was ";"
 33: @import 'googleLogin';
 34: @import 'signInindex';
 35: @import 'itineraryCard';
-36: <<<<<<< HEAD
 37: @import 'pageToggle';
 38: =======
 39: @import 'settingTime';
