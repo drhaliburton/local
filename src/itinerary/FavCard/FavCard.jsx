@@ -4,7 +4,6 @@ import FavImage from "./FavImage.jsx";
 //Contains
 class FavCard extends Component {
   add(event){
-    console.log('event', event)
   }
   render() {
     const cardsArray = this.props.cards;

@@ -37,6 +37,7 @@ module.exports = (knex) => {
             location: [card.location.x, card.location.y],
             description: card.description,
             duration: card.duration,
+            address: card.address,
             category: card.category_name,
             user: card.given_name,
             photos: card.photos,
@@ -44,8 +45,6 @@ module.exports = (knex) => {
           }
         });
         res.json(cards)
-        console.log(cards) //contains total rating here
-
       })
       .catch(err => {
         console.log(err);
@@ -80,13 +79,13 @@ module.exports = (knex) => {
         getFiltered(lat1, lng1, lat2, lng2)
           .then(data => {
             let cards = data.map((card) => {
-              console.log(card)
               return {
-                id: card.id,
+                id: card.card_id,
                 title: card.title,
                 location: [card.location.x, card.location.y],
                 description: card.description,
                 duration: card.duration,
+                 address: card.address,
                 category: card.category_name,
                 user: card.given_name,
                 photos: card.photos,
@@ -107,29 +106,24 @@ module.exports = (knex) => {
   router.post("/upvote", (req, res) => {
     let card_id = req.body['cardID'];
     let user_id = req.session.userId;
-    console.log("******The card id is " + card_id)
 
     postUpvote(card_id, user_id)
-      .then((result)=>{
-          console.log(result)
+      .then((result) => {
       })
       .catch(err => {
-          res.status(400).send("ERROR in upvoting");
+        res.status(400).send("ERROR in upvoting");
 
-        });
+      });
   })
 
 
   router.post("/downvote", (req, res) => {
-    console.log(req.body.cardID)
     let card_id = req.body['cardID'];
     let user_id = req.session.userId;
-    console.log("******The card id is " + card_id)
     postDownvote(card_id, user_id)
-    .then((result)=>{
-      console.log(result);
-    })
-    .catch(err => {
+      .then((result) => {
+      })
+      .catch(err => {
         res.status(400).send("ERROR in upvoting");
 
       });
@@ -137,7 +131,6 @@ module.exports = (knex) => {
 
   router.post("/", (req, res) => {
     const userID = req.session.userId;
-    console.log('post userID: ', userID);
 
     const newCard = {
       title: req.body.title,
@@ -164,31 +157,37 @@ module.exports = (knex) => {
       //the whole response has been recieved, so we just print it out here
       response.on('end', function () {
         const result = JSON.parse(str).results[0];
+        console.log(result.formatted_address);
+        newCard.address = result.formatted_address;
         newCard.location = `(${result.geometry.location.lat}, ${result.geometry.location.lng})`
         const apiPhotosArray = findPlacePhotos(result);
-        console.log('API photos: ', apiPhotosArray);
-      postCard(newCard, userID)
-        .then(([cardID]) => {
-          const photosArray = getFinalImageURL(apiPhotosArray);
-          return photosArray
-          .then((images) => {
-            postPhotos(images, cardID);
+        apiPhotosArray.then(imageURLs => console.log('****IMG URLS: ', imageURLs)).catch(err => console.log('**ERR: ', err));
+        console.log('no sanity found');
+        postCard(newCard, userID)
+          .then(([cardID]) => {
+            const photosArray = apiPhotosArray;
+            return photosArray
+              .then((images) => {
+                postPhotos(images, cardID);
+              })
+              .then(() => {
+                res.json({
+                  status: 'ok'
+                });
+              })
           })
-            .then(() => {
-            res.json({
-              status: 'ok'
-            });
+          .catch(err => {
+            res.status(400).send("ERROR");
           })
-        })
-        .catch(err => {
-          res.status(400).send("ERROR");
-        })
       })
     }
     https.request(options, callback).end();
   });
 
   router.post("/favorite", (req, res) => {
+    console.log(req.session)
+    console.log(req.body.id)
+   
     const userId = req.session.userId;
     const cardId = req.body.id;
     addFavorite(cardId, userId)

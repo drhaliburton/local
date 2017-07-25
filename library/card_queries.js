@@ -15,8 +15,10 @@ module.exports = (knex) => {
             description: card.description,
             duration: card.duration,
             location: card.location,
+            address: card.address,
             category_id: rows[0].id,
-            user_id: userId
+            user_id: userId,
+            total_rating: 1
           })
           .returning('id')
       })
@@ -49,6 +51,8 @@ module.exports = (knex) => {
     return uniquePhotosArray;
   }
 
+
+
   obj.findPlacePhotos = function (result) {
     return new Promise(function (resolve, reject) {
       request({
@@ -63,23 +67,36 @@ module.exports = (knex) => {
         let placesResponse = JSON.parse(body);
         let placesArray = placesResponse.results.slice(0, 5);
         let images = obj.createImageUrl(placesArray);
-        console.log(images)
-        resolve(images);
+
+        const imageUrlPromises = images.map((url) => {
+          return new Promise((resolve, reject) => {
+            request({
+              url: url,
+              followRedirect: false
+            }, (err, res, body) => {
+              if (err) reject(err);
+
+              resolve(res.headers.location);
+            });
+          });
+        });
+        const allImages = Promise.all(imageUrlPromises);
+        resolve(allImages);
       });
     });
   }
 
-    obj.getFinalImageURL = function (imageArray) {
-      return Promise.all(imageArr.map((image) => {
-      return request({
-        url: image
-      }, (err, res, body) => {
-        let imageURLs = JSON.parse(body);
-        console.log(imageURLs)
-        resolve(imageURLs);
-      });
-    }));
-  }
+  //   obj.getFinalImageURL = function (imageArray) {
+  //     return Promise.all(imageArr.map((image) => {
+  //     return request({
+  //       url: image
+  //     }, (err, res, body) => {
+  //       let imageURLs = JSON.parse(body);
+  //       console.log(imageURLs)
+  //       resolve(imageURLs);
+  //     });
+  //   }));
+  // }
 
 return obj;
 }

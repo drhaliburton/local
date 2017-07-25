@@ -65,7 +65,8 @@ class HomepageIndex extends Component {
   };
 
   newFavorite(id) {
-    Api.post('/index/favorite')
+    console.log(id)
+    Api.post('/index/favorite', id)
       .then(() => {
         this.resetCards();
     })
@@ -90,7 +91,6 @@ class HomepageIndex extends Component {
   }
   addOne(cardID){
     event.preventDefault();
-    console.log("**card id is**", cardID);
     fetch('/index/upvote', {
       method: 'POST',
       credentials: 'include',
@@ -110,7 +110,6 @@ class HomepageIndex extends Component {
 
   removeOne(cardID){
     event.preventDefault();
-      console.log("**card id is** ", cardID);
       fetch('/index/downvote', {
         method: 'POST',
         credentials: 'include',
@@ -134,9 +133,7 @@ class HomepageIndex extends Component {
         <Img src={this.state.homepageImage || 'http://i.imgur.com/AYwlpde.jpg'} className="homepage-image"/>
         <Search locate={this.locationSearch.bind(this)} />
         </div>
-         <CardView cards={this.state.cards} categoryFilter={this.categoryFilter.bind(this)} resetCards={ this.resetCards.bind(this) } />
-        {/*<IndexCard cards={this.state.cards} favorite={this.newFavorite.bind(this)}/>*/}
-        {/*<Filter cards={this.state.cards} categoryFilter={this.categoryFilter.bind(this)} resetCards={ this.resetCards.bind(this) } />*/}
+        <CardView cards={this.state.cards} favorite={this.newFavorite.bind(this)} categoryFilter={this.categoryFilter.bind(this)} resetCards={ this.resetCards.bind(this) } />
         <IndexCard addOne={this.addOne.bind(this)} removeOne={this.removeOne.bind(this)} cards={this.state.cards} favorite={this.newFavorite.bind(this)}/>
       </div>
     );
