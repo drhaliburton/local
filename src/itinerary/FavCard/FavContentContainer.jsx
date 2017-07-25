@@ -17,7 +17,6 @@ class FavContentContainer extends Component {
   }
 
   findIconCategory(categoryName){
-    console.log(categoryName);
     const iconCategories = {
       1: 'fa-tree',
       4: 'fa-binoculars',
@@ -35,7 +34,7 @@ class FavContentContainer extends Component {
       isVisible: !this.state.isVisible
     });
   }
-  
+
 
   render() {
     const expandedToggle = this.state.isExpanded ? 'expanded'  : '';
@@ -43,13 +42,12 @@ class FavContentContainer extends Component {
     const detailsVisible = this.state.isVisible ? 'visible'  : '';
 
     let card = this.props.cardContent;
-    console.log('PROPS to the card', card);
     return (
       <div className={`content-container ${expandedToggle}`}>
-        <FavImage />
+        <FavImage images={card.photos} />
         <div className="card-content">
-              <p className="title">{card.title}</p>
-               <p className="category duration"><span className={`icon is-small fa ${this.findIconCategory(card.category_id)}`}>&nbsp;</span>&nbsp;~{card.duration} minutes</p>
+              <p className="itinerary-card-title">{card.title}</p>
+               <p className="category duration"><span className={`icon is-small fa ${this.findIconCategory(card.category)}`}>&nbsp;</span>&nbsp;~{card.duration} minutes</p>
                 <FavAdd add={this.props.add.bind(this)} card={card}/>
             </div>
           </div>

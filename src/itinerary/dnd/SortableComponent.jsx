@@ -21,13 +21,20 @@ const SortableList = SortableContainer(({items}) => {
 class SortableComponent extends Component {
   constructor(props) {
     super(props);
+    this.state = {
+      items : this.props.cards
+    }
   }
 
+
+
   onSortEnd = ({oldIndex, newIndex}) => {
+    const move = arrayMove(this.state.items, oldIndex, newIndex)
     this.setState({
-      items: arrayMove(this.state.items, oldIndex, ),
+      items: move,
     });
-    console.log('ITEM:', this.state.items[0].title, 'ITEM DURATION:', this.state.items[0].duration)
+    // console.log('ITEM:', this.state.items[0].title, 'ITEM DURATION:', this.state.items[0].duration)
+
   };
 
   setCardHeight(items) {
@@ -48,17 +55,44 @@ class SortableComponent extends Component {
       );
     }
   }
+  componentWillReceiveProps(nextProps) {
+    console.log("cWRP nextProps");
+    // To avoid reseting order on new-card-add:
+    //  0) make a copy of this.state.items
+    //  1) loop through nextProps.cards
+    //  2) for each nextProps.card, see if it already exists in this.state.items
+    //  3) if yes, *APPEND* it to the copy
+    //  4) setState to the copy
+    let last = (nextProps.cards).length - 1
+    let newProp = nextProps.cards[last]
+    let oldState = this.state.items
+    let newestAddition = oldState.concat(newProp)
+    console.log('newest', newestAddition)
+    console.log(oldState)
+
+    this.setState({
+      items : nextProps.cards
+    })
+  }
+
+  renderImage(images) {
+    if (images === null) {
+      return 'http://placekitten.com.s3.amazonaws.com/homepage-samples/408/287.jpg';
+    } else {
+      let randomInt = Math.ceil(Math.random() * images.length) -1;
+      return images[randomInt];
+    }
+  }
 
   render() {
 
-    const cards = this.props.cards;
-    console.log('hai hai', cards);
-    const renderedItems = cards.map(card =>
+    const items = this.props.cards;
+    const renderedItems = this.state.items.map(card =>
           <div className='box'>
             <article className='media large'>
             <figure className="media-left">
               <p className="image is-64x64">
-                <img src="http://bulma.io/images/placeholders/128x128.png"></img>
+                <img src={this.renderImage(card.photos)}></img>
               </p>
             </figure>
             <div className={`media-content ${this.renderSize(card.duration)}`}>
@@ -66,7 +100,7 @@ class SortableComponent extends Component {
                 <p>
                   <strong>{card.title}</strong>
                   <br className="subtitle"></br>
-                  {card.location.x + card.location.y}
+                  {card.address}
                   <br></br><small>{card.duration}</small>
                 </p>
               </div>

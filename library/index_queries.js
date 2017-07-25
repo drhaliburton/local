@@ -36,12 +36,9 @@ module.exports = (knex) => {
 
   obj.postDownvote= function(card_id, user_id){
     return knex('ratings')
-    .insert({
-      rating: -1,
-      user_id: user_id,
-      card_id: card_id
-    })
-    .where('card_id', card_id)
+    .where('user_id', user_id)
+    .andWhere('card_id', card_id)
+    .del()
     .then(() => {
       return knex('cards')
       .where('id', card_id)
@@ -72,7 +69,7 @@ module.exports = (knex) => {
       .leftJoin('users', 'filterCards.user_id', 'users.id')
       .leftJoin('categories', 'filterCards.category_id', 'categories.id')
       .select(['filterCards.id AS card_id', 'filterCards.title', 'filterCards.description', 'filterCards.total_rating',
-        'filterCards.location', 'filterCards.duration', 'users.given_name',
+        'filterCards.location', 'filterCards.address', 'filterCards.duration', 'users.given_name',
         'users.family_name', 'categories.name AS category_name',
       ])
       .then((result) => {
@@ -93,11 +90,12 @@ module.exports = (knex) => {
 
   obj.allCards = function () {
     return knex('cards')
-      .select(['cards.id AS card_id', 'cards.title', 'cards.description', 'cards.location', 'cards.total_rating',
+      .select(['cards.id AS card_id', 'cards.title', 'cards.description', 'cards.address', 'cards.location', 'cards.total_rating',
         'cards.duration', 'users.given_name', 'users.family_name', 'categories.name AS category_name',
       ])
       .leftJoin('users', 'cards.user_id', 'users.id')
       .leftJoin('categories', 'cards.category_id', 'categories.id')
+      .orderBy('cards.id')
       .then((result) => {
         const allCards = result;
         return Promise.all(result.map((card, index) => {

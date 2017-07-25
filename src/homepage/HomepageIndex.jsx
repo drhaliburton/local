@@ -1,16 +1,19 @@
 import React, {Component} from 'react';
 import IndexCard from "./IndexCard/IndexCard.jsx";
 import Search from "./Search.jsx";
-import Filter from "./Filter.jsx";
+import CardView from "./CardView.jsx";
 import Styles from "../../styles/layout.scss";
 import Api from '../../library/api.js';
+import Img from 'react-image'
+import ReactDOM from 'react-dom';
 
 class HomepageIndex extends Component {
   constructor(props) {
     super(props);
     this.state = {
       cards: [],
-      allCards: []
+      allCards: [],
+      homepageImage: false
     }
   }
 
@@ -20,6 +23,7 @@ class HomepageIndex extends Component {
         cards: cardsArr,
       })
     );
+    this.renderHomePageImage();
   }
 
   componentDidMount() {
@@ -30,13 +34,15 @@ class HomepageIndex extends Component {
     );
   }
 
-
   locationSearch(event) {
     Api.get(`/index/locate?find=${event}`)
       .then((cards) => this.setState({
-        cards: cards
+        cards: cards,
+        allCards: cards
       })
     );
+    const node = document.getElementById('view-all');
+    node.scrollIntoView({ behavior: "smooth" });
   }
 
   resetCards() {
@@ -44,6 +50,14 @@ class HomepageIndex extends Component {
       cards: this.state.allCards
     })
   };
+
+  reRenderHomepageCards() {
+    Api.get('/index')
+      .then((cardsArr) => this.setState({
+        cards: cardsArr,
+      })
+    );
+  }
 
   categoryFilter(category) {
     let cards = this.state.allCards;
@@ -54,20 +68,37 @@ class HomepageIndex extends Component {
       }
     })
     this.setState({
-      cards: filteredCards
+      cards: filteredCards,
     });
   };
 
   newFavorite(id) {
-    Api.post('/index/favorite')
+    console.log(id)
+    Api.post('/index/favorite', id)
       .then(() => {
         this.resetCards();
     })
   }
 
+ renderHomePageImage(){
+    let images = {
+      1: 'http://i.imgur.com/AYwlpde.jpg',
+      2: 'http://i.imgur.com/W399SYI.jpg',
+      3: 'http://i.imgur.com/tBNrHVE.jpg',
+      4: 'http://i.imgur.com/9voihyL.jpg',
+      5: 'http://i.imgur.com/13R59WI.jpg',
+      6: 'http://i.imgur.com/tdiyFfG.jpg',
+      7: 'http://i.imgur.com/iyzC6fn.jpg'
+    }
+    let randomInt = Math.ceil(Math.random() * 7);
+    let image = images[randomInt];
+    this.setState({
+      homepageImage: image
+    })
+
+  }
   addOne(cardID){
     event.preventDefault();
-    console.log("**card id is**", cardID);
     fetch('/index/upvote', {
       method: 'POST',
       credentials: 'include',
@@ -80,14 +111,14 @@ class HomepageIndex extends Component {
       })
     })
     .then(() => {
-        this.resetCards()
-      })
+      console.log('Added vote');
+      this.reRenderHomepageCards();
+    })
   };
 
 
   removeOne(cardID){
     event.preventDefault();
-      console.log("**card id is** ", cardID);
       fetch('/index/downvote', {
         method: 'POST',
         credentials: 'include',
@@ -99,16 +130,21 @@ class HomepageIndex extends Component {
           cardID: cardID
         })
       }).then(() => {
-        this.resetCards()
+        console.log('Removed vote!');
+      this.reRenderHomepageCards();
+      // window.location.href = '/';
       })
-
     }
 
   render() {
+    console.log(this.state.cards);
     return (
       <div>
+        <div className="landing-content">
+        <Img src={this.state.homepageImage || 'http://i.imgur.com/AYwlpde.jpg'} className="homepage-image"/>
         <Search locate={this.locationSearch.bind(this)} />
-        <Filter cards={this.state.cards} categoryFilter={this.categoryFilter.bind(this)} resetCards={ this.resetCards.bind(this) } />
+        </div>
+        <CardView cards={this.state.cards} favorite={this.newFavorite.bind(this)} categoryFilter={this.categoryFilter.bind(this)} resetCards={ this.resetCards.bind(this) } />
         <IndexCard addOne={this.addOne.bind(this)} removeOne={this.removeOne.bind(this)} cards={this.state.cards} favorite={this.newFavorite.bind(this)}/>
       </div>
     );

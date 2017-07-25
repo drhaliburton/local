@@ -42,7 +42,7 @@ class ContentContainer extends Component {
     let card = this.props.cardContent;
     return (
       <div className={`content-container ${expandedToggle}`}>
-        <NewImage image={card.photos} />
+        <NewImage image={card.photos}/>
         <span className="card-toggle">
           <a><span className={`icon fa fa-chevron-up ${rotatedToggle}`}onClick={this.toggleDescription.bind(this)}></span></a>
         </span>
@@ -50,9 +50,9 @@ class ContentContainer extends Component {
           <div className="media">
             <div className="media-content">
               <p className="title">{card.title}</p>
-              <p className="location">{card.location || "Location, Location Ville"}</p>
+              <a href={`http://maps.google.com/?q=${card.address}`} target="_blank"><p className="location">{card.address || "Location, Location Ville"}</p></a>
                <p className="category duration"><span className={`icon is-small fa ${this.findIconCategory(card.category)}`}>&nbsp;</span>&nbsp;~{card.duration} minutes</p>
-                <Star image={card.photos} cardID={this.props.cardID} favorite={this.props.favorite} />
+                <Star cardID={this.props.cardID} favorite={this.props.favorite} />
             </div>
           </div>
           <div className={`card-details ${detailsVisible}`}>
