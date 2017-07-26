@@ -47,6 +47,7 @@ class AddCard extends Component {
 
 
   handleChange(event) {
+    event.preventDefault();
     let name = event.target.name;
     this.setState({ [name]: event.target.value }, () => { console.log(this.state) });
   }
@@ -100,11 +101,11 @@ class AddCard extends Component {
 
                 <div className="field">
                   <label className="label">How much time should I spend there?</label>
-                  <p className="control has-icons-left">
-                    <input className="input" type="number" placeholder="Enter a value in minutes, eg: 30 or 120" value={this.state.duration} name="duration" onChange={this.handleChange.bind(this)}></input>
-                    <span className="icon is-small is-left">
-                      <i className="fa fa-hourglass-half"></i>
-                    </span>
+                  <p className="control">
+                    <button className="button" value="30" name="duration" onClick={this.handleChange.bind(this)}>30 mins</button>
+                    <button className="button" value="60" name="duration" onClick={this.handleChange.bind(this)}>60 mins</button>
+                    <button className="button" value="120" name="duration" onClick={this.handleChange.bind(this)}>120 mins</button>
+                    <button className="button" value="180" name="duration" onClick={this.handleChange.bind(this)}>180 mins</button>
                   </p>
                 </div>
 
