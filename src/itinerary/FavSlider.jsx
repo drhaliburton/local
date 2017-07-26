@@ -7,14 +7,6 @@ var Carousel = require('nuka-carousel');
 
 const FavSlider = React.createClass({
 
-
-   noCardsMessage() {
-      console.log('nocardsmessage');
-      if (this.props.cards.length === 0) {
-        return 'No favorites! Go back and makes some plans or add your own recommendations.';
-      }
-    },
-
   mixins: [Carousel.ControllerMixin],
 
 
@@ -24,7 +16,6 @@ const FavSlider = React.createClass({
 
     return (
       <Carousel decorators={Carousel.getDefaultProps().decorators.slice(0, 2)} slidesToShow={1} slidesToScroll={2} cellSpacing={10} dragging={true} wrapAround={true} easing="easeInOut" slideWidth="200px" height="300" cellAlign="left">
-        <h1>{this.noCardsMessage()}</h1>
         {
           cardsArray.map((card, index) => {
             return <div key={index} className="card">

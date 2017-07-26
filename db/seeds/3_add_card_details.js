@@ -17,8 +17,6 @@ exports.seed = function(knex, Promise) {
         const ids = (res || []).map(x =>{
             return x[0] ? x[0].id : {}
         });
-
-        console.log(JSON.stringify(ids,null,2))
         const [
             aishaID,
             holdenID,

@@ -70,16 +70,12 @@ module.exports = (knex) => {
   });
 
   router.post("/favorite", (req, res) => {
-    console.log(req.session)
-    console.log(req.body.id)
 
     const userId = req.session.userId;
     const cardId = req.body.cardId;
 
-    console.log('inside post:', userId, cardId);
     delFavorite(cardId, userId)
       .then(() => {
-        console.log('after delete');
         res.json({
           status: 'ok'
         })

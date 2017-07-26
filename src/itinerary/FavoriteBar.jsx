@@ -26,12 +26,10 @@ class FavoriteBar extends Component {
 
   hideIfNoCards() {
     if (this.props.favCards.length === 0) {
-      console.log('no cards');
       this.setState({
         filtersVisible: true,
         isRotated: true
       })
-      return 'No favorites! Go back and makes some plans or add your own recommendations.';
     }
   }
 
@@ -51,7 +49,7 @@ class FavoriteBar extends Component {
         </span><div></div>
         <div className={`favorites-container ${toggledFilter}`}>
           <div className="slider-container">
-            <FavSlider hideIfNoCards={this.hideIfNoCards.bind(this)} cards={this.props.favCards} add={this.props.add.bind(this)} removeFavorite={this.props.removeFavorite.bind(this)} />
+            <FavSlider cards={this.props.favCards} add={this.props.add.bind(this)} removeFavorite={this.props.removeFavorite.bind(this)} />
           </div>
         </div>
       </div>

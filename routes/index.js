@@ -110,7 +110,6 @@ module.exports = (knex) => {
     let card_id = req.body['cardID'];
     let user_id = req.session.userId;
 
-    console.log("******The card id is " + card_id)
     postUpvote(card_id, user_id)
       .then(() => {
         res.json({
@@ -149,7 +148,6 @@ module.exports = (knex) => {
   router.post("/downvote", (req, res) => {
     let card_id = req.body['cardID'];
     let user_id = req.session.userId;
-    console.log("******The card id is " + card_id)
 
     // if(hasVoted(card_id, user_id)){
     //   console.log('has voted already')
