@@ -42,7 +42,7 @@ class HomepageIndex extends Component {
       })
     );
     const node = document.getElementById('view-all');
-    node.scrollIntoView({ behavior: "smooth" });
+    setTimeout(function(){node.scrollIntoView({ behavior: "smooth" })}, 200);
   }
 
   resetCards() {

@@ -75,6 +75,7 @@ module.exports = (knex) => {
         const lng1 = result.geometry.viewport.northeast.lng;
         const lat2 = result.geometry.viewport.southwest.lat;
         const lng2 = result.geometry.viewport.southwest.lng;
+        if (lng1) {
         getFiltered(lat1, lng1, lat2, lng2)
           .then(data => {
             let cards = data.map((card) => {
@@ -97,6 +98,9 @@ module.exports = (knex) => {
             res.status(400).send("ERROR");
 
           });
+        } else {
+          res.rendirect('/');
+        }
       })
     }
     https.request(options, callback).end();
