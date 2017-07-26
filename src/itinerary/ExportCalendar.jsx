@@ -40,8 +40,35 @@ class ExportCalendar extends Component {
   //     isHidden: !this.state.isHidden
   //   });
   // }
+  calculateTimes() {
+    const { events, date } = this.props;
+    
+    let startTime = moment(date);
+
+    const timedEvents = events.map(event => {
+      const eventStart = moment(startTime);
+      const eventEnd = moment(startTime).add(event.duration, 'm');
+
+      startTime = eventEnd; 
+
+      return {
+        description: event.description,
+        start: {
+          dateTime: eventStart
+        },
+        end: {
+          dateTime: eventEnd
+        }
+      };
+    });
+
+    return timedEvents;
+  }
+
   handleClick(event) {
-    //loop through state and post each event  
+    //
+    //for each event do a fetch to google api with the proper credentials attached
+    console.log('the array after mapping', this.calculateTimes());
     let newBody = this.state
     fetch('https://www.googleapis.com/calendar/v3/calendars/primary/events', {
       method: 'POST',
@@ -51,14 +78,16 @@ class ExportCalendar extends Component {
         'Content-Type': 'application/json',
         'Authorization': 'Bearer ' + this.props.token
       },
-      body: JSON.stringify(<newBody></newBody>)
+      body: JSON.stringify(newBody)
     })
   }
   componentWillReceiveProps(nextProps) {
+//Receiving content of itinerary cards, the startdate, and starttime of the itinerary
     let incomingEvents = nextProps.events
     let dateArray = nextProps.date
-    let props = nextProps
-    console.log('yo', props)
+//TODO calculate the start time for each card based on the relationship between the final position of the card and the
+    let momentStartTime = nextProps.momentStartTime
+    console.log('yo', nextProps)
     //map into new array 
     
     const mappedEvents = incomingEvents.map((event) => {
