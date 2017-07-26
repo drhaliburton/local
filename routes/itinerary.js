@@ -24,8 +24,8 @@ module.exports = (knex) => {
         .then(data => {
           let cards = data.map((card) => {
             return {
+              id: card.card_id,
               itinerary_id: card.itn_id,
-              card_id: card.card_id,
               user_id: card.user_id,
               title: card.title,
               location: card.location,
