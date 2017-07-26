@@ -29,19 +29,27 @@ class Set extends Component {
   }
   submitDate(event) {
     this.props.setDate(this.state.startDate)
+    this.props.setTime(this.state)
     this.toggleActive()
+    this.submitTime()
+    console.log('that final state pal ', this.state)
   }
-  submitTime(event) {
-    this.setState({
-      startTime: event.target.value
-    })
-    console.log('STATE THAT', this.state)
+  submitTime() {
+    // this.setState({
+    //   startTime: event.target.value
+    // })
+    console.log('understated', event)
   }
   submitAM(event) {
     this.setState({
       timeOfDay: event.target.value
     })
     console.log('STATE THAT', this.state)
+  }
+  timeChange(event) {
+    this.setState({
+      startTime: event.target.value
+    })
   }
   // toggleHidden(event){
   //   this.setState({
@@ -67,21 +75,25 @@ class Set extends Component {
                 selected={this.state.startDate}
                 onChange={this.handleChange}
               />
-              </section>
-              <section className="modal-card-footer">
-                <div className="column">
-                  <TimeSet submitTime={this.submitTime.bind(this)} submitAM={this.submitAM.bind(this)}/> 
-                  <div className="control has-text-centered">
-                    <button type="submit" value="submit" className="button" onClick={this.submitDate.bind(this)}>Submit</button>
+            </section>
+            <section className="modal-card-foot">
+              <div className="columns">
+                <div className="column time-set is-6 has-text-centered">
+                  <TimeSet submitTime={this.submitTime.bind(this)} submitAM={this.submitAM.bind(this)} handleChange={this.timeChange.bind(this)} />
+                  </div>
+                  <div className="column submit is-6">
+                    <div className="control has-text-centered">
+                      <button type="submit" value="submit" className="button" onClick={this.submitDate.bind(this)}>Submit</button>
+                    </div>
                   </div>
                 </div>
             </section>
-              <div>
-              </div>
-              </div>
+            <div>
+            </div>
           </div>
         </div>
-        );
+      </div>
+    );
   }
 }
 

@@ -7,27 +7,21 @@ class TimeSet extends Component {
     };
   }
 
+
+
+
   render() {
     return (
 
       <div className="time-input">
-        <div className="column">
-          <input className="input" type="number" placeholder="9" onKeyDown={(event) => {
-            if (event.key === 1|2|3|4|5|6|7|8|9|0) {
-              this.props.submitTime(event)
-            }
-          }}
-          />
-        </div>
-        <div className="column">
+          <input className="input has-text-centered" type="number" placeholder="9" onChange={this.props.handleChange.bind(this)}/>
           <div className="select is-multiple" >
             <select multiple size="2" onClick={this.props.submitAM.bind(this)}>
               <option value="AM">AM</option>
               <option value="PM">PM</option>
             </select>
+            </div>
           </div>
-        </div>
-      </div>
     );
   }
 }

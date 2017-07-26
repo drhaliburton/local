@@ -16,7 +16,8 @@ class ItineraryIndex extends Component {
     this.state = {
       favCards: [],
       itineraryCards: [],
-      time: [],
+      startTime: 9,
+      timeOfDay: 'AM',
       date: moment(),
     }
   }
@@ -33,9 +34,9 @@ class ItineraryIndex extends Component {
         itineraryCards: cards
       })
       );
-    this.setState({time : [9] })
+    this.setState({ time: [9] })
   }
-    
+
 
   add(card) {
     let newCard = this.state.itineraryCards.concat(card.card);
@@ -45,7 +46,7 @@ class ItineraryIndex extends Component {
     console.log('old times', oldTime)
     let timePassed = (card.card.duration / 60)
     let newTime = Math.floor((oldTime + timePassed))
-    let latest =  this.state.time.concat(newTime);
+    let latest = this.state.time.concat(newTime);
     this.setState({ itineraryCards: newCard, favCards: removeCard, time: latest });
     console.log('what time is it?', this.state.time[0])
     console.log('new state', this.state.time)
@@ -67,15 +68,16 @@ class ItineraryIndex extends Component {
   }
   setTime(time) {
     this.setState({
-      time: time
+      startTime: time.startTime,
+      timeOfDay: time.timeOfDay,
     })
   }
   setDate(date) {
     this.setState({
-      date: date, 
+      date: date,
     })
-    console.log('parent set date', date)
   }
+
 
   render() {
     const node = document.getElementById('top');
@@ -86,17 +88,18 @@ class ItineraryIndex extends Component {
           <FavoriteBar favCards={this.state.favCards} add={this.add.bind(this)} />
         </div>
         <div className="welcome">
-          <ExportCalendar token={this.props.currentUser.token} events={this.state.itineraryCards} date={this.state.date}/>
-          <Set setDate={this.setDate.bind(this)} time={this.state.time} cards={this.state.itineraryCards}/>
+          <ExportCalendar token={this.props.currentUser.token} events={this.state.itineraryCards} date={this.state.date} />
+          <Set setDate={this.setDate.bind(this)} setTime={this.setTime.bind(this)} cards={this.state.itineraryCards} />
           <h3 className="title is-3">{this.state.date.format('LL')}</h3>
         </div>
         <div className="columns">
-          <div className="column is-1">
+          <div className="time-image column is-1">
             <ItineraryTime />
           </div>
-          <div className="column is-1">
+          <div className="start-time column is-2 has-text-centered">
+            <h5 className="start-time title is-5">{this.state.startTime} {this.state.timeOfDay}</h5>
           </div>
-          <div className="column is-10">
+          <div className="it-card column is-9">
             <SortableComponent cards={this.state.itineraryCards} />
           </div>
         </div>
