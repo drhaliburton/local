@@ -32,19 +32,16 @@ class Set extends Component {
     this.props.setTime(this.state)
     this.toggleActive()
     this.submitTime()
-    console.log('that final state pal ', this.state)
   }
   submitTime() {
     // this.setState({
     //   startTime: event.target.value
     // })
-    console.log('understated', event)
   }
   submitAM(event) {
     this.setState({
       timeOfDay: event.target.value
     })
-    console.log('STATE THAT', this.state)
   }
   timeChange(event) {
     this.setState({

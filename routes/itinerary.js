@@ -13,15 +13,9 @@ module.exports = (knex) => {
     delFavorite
   } = queries(knex);
 
-<<<<<<< HEAD
-  router.get("/", (req, res) => {
-      const user_id = req.session.userId;
-    console.log('current session', req.session)
-=======
   router.get("/cards", (req, res) => {
     const user_id = req.session.userId;
 
->>>>>>> 49be7cfdc8aae4abf89b893db655bf6c01af2a30
     getItinerary(user_id)
       .then(data => {
         let cards = data.map((card) => {

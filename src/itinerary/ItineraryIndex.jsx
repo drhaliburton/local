@@ -138,7 +138,7 @@ class ItineraryIndex extends Component {
         <div className="welcome">
           <ExportCalendar token={this.props.currentUser.token} events={this.state.itineraryCards} date={this.state.date} />
           <Set setDate={this.setDate.bind(this)} setTime={this.setTime.bind(this)} cards={this.state.itineraryCards} />
-          <button onClick={() => {this.saveItinerary()}}>Save</button>
+          {/* <button onClick={() => {this.saveItinerary()}}>Save</button> */}
           <h3 className="title is-3">{this.state.date.format('LL')}</h3>
         </div>
         <div className="columns">
