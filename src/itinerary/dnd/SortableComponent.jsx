@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import ItineraryCard from "./ItineraryCard.jsx";
+// import ItineraryCard from "./ItineraryCard.jsx";
 import {render} from '../../../node_modules/react-dom';
 import {SortableContainer, SortableElement, arrayMove} from '../../../node_modules/react-sortable-hoc';
 import RemoveCard from "./RemoveCard.jsx";
@@ -66,8 +66,6 @@ class SortableComponent extends Component {
     let newProp = nextProps.cards[last]
     let oldState = this.state.items
     let newestAddition = oldState.concat(newProp)
-    console.log('newest', newestAddition)
-    console.log(oldState)
 
     this.setState({
       items : nextProps.cards
@@ -105,7 +103,7 @@ class SortableComponent extends Component {
               </div>
             </div>
               <div className="media-right">
-                <RemoveCard  />
+                <RemoveCard remove={this.props.remove} card={card} />
               </div>
           </article>
         </div>

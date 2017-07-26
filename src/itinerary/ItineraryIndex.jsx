@@ -27,14 +27,14 @@ class ItineraryIndex extends Component {
       .then((cards) => this.setState({
         favCards: cards
       })
-      );
+    );
 
-    Api.get('/itinerary/')
-      .then((cards) => this.setState({
-        itineraryCards: cards
-      })
-      );
-    this.setState({ time: [9] })
+    // Api.get('/itinerary/cards')
+    //   .then((cards) => this.setState({
+    //     itineraryCards: cards
+    //   })
+    // );
+    this.setState({time : [9] })
   }
 
 
@@ -43,20 +43,19 @@ class ItineraryIndex extends Component {
     let removeCard = this.state.favCards.splice(0)
     let index = (this.state.time.length - 1)
     let oldTime = (this.state.time[index])
-    console.log('old times', oldTime)
     let timePassed = (card.card.duration / 60)
     let newTime = Math.floor((oldTime + timePassed))
     let latest = this.state.time.concat(newTime);
     this.setState({ itineraryCards: newCard, favCards: removeCard, time: latest });
-    console.log('what time is it?', this.state.time[0])
-    console.log('new state', this.state.time)
   }
-  // delete(card) {
-  //   let removeCard = this.state.itineraryCards.splice(card.card);
-  //   let newCard = this.state.favCards.concat(card.card);
-  //   this.setState({ itineraryCards: removeCard });
-  //   this.setState({ favCards: newCard })
-  // }
+
+  removeItineraryCard(card) {
+    let removeCard = this.state.itineraryCards.splice(card.card, 1);
+    let newCard = this.state.favCards.concat(card.card);
+    console.log(removeCard);
+    this.setState({ itineraryCards: removeCard });
+    this.setState({ favCards: newCard })
+  }
 
   componentDidMount() {
     var date = new Date();
@@ -78,18 +77,68 @@ class ItineraryIndex extends Component {
     })
   }
 
+  saveItinerary(){
+    event.preventDefault();
+    const itineraryCards = this.state.itineraryCards;
+    const date = this.state.date.format('YYYY-MM-DD');
+    const cardIds = itineraryCards.map((card) => {
+      return card.id;
+    })
+
+
+    fetch('/itinerary/cards', {
+      method: 'POST',
+      credentials: 'include',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        date: date,
+        cardIds: cardIds
+      })
+    })
+  };
+
+  removeFavorite(id) {
+
+     fetch('/itinerary/favorite', {
+      method: 'POST',
+      credentials: 'include',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        cardId: id
+      })
+    })
+    this.reRenderFavorites();
+  }
+
+  reRenderFavorites() {
+    Api.get('/itinerary/favorites')
+      .then((cards) => this.setState({
+        favCards: cards
+      })
+    );
+  }
+
 
   render() {
     const node = document.getElementById('top');
     node.scrollIntoView({ behavior: "smooth" });
     return (
-      <div className="itinerary-container">
+
+      <div className="itinerary-container">      {console.log('state', this.state)}
         <div className="header">
-          <FavoriteBar favCards={this.state.favCards} add={this.add.bind(this)} />
+          <FavoriteBar favCards={this.state.favCards} add={this.add.bind(this)} removeFavorite={this.removeFavorite.bind(this)} />
         </div>
+        <p className="calendar"><i className="fa fa-calendar-check-o"></i>&nbsp;save to calendar</p>
         <div className="welcome">
           <ExportCalendar token={this.props.currentUser.token} events={this.state.itineraryCards} date={this.state.date} />
           <Set setDate={this.setDate.bind(this)} setTime={this.setTime.bind(this)} cards={this.state.itineraryCards} />
+          <button onClick={() => {this.saveItinerary()}}>Save</button>
           <h3 className="title is-3">{this.state.date.format('LL')}</h3>
         </div>
         <div className="columns">
@@ -100,7 +149,7 @@ class ItineraryIndex extends Component {
             <h5 className="start-time title is-5">{this.state.startTime} {this.state.timeOfDay}</h5>
           </div>
           <div className="it-card column is-9">
-            <SortableComponent cards={this.state.itineraryCards} />
+            <SortableComponent cards={this.state.itineraryCards} remove={this.removeItineraryCard.bind(this)}/>
           </div>
         </div>
       </div>

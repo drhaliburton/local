@@ -8,26 +8,39 @@ module.exports = (knex) => {
 
   const {
     favCards,
-    getItinerary
+    getItinerary,
+    makeItinerary,
+    delFavorite
   } = queries(knex);
 
+<<<<<<< HEAD
   router.get("/", (req, res) => {
       const user_id = req.session.userId;
     console.log('current session', req.session)
+=======
+  router.get("/cards", (req, res) => {
+    const user_id = req.session.userId;
+
+>>>>>>> 49be7cfdc8aae4abf89b893db655bf6c01af2a30
     getItinerary(user_id)
       .then(data => {
         let cards = data.map((card) => {
           return {
-            id: card.id,
+            itinerary_id: card.itn_id,
             card_id: card.card_id,
             user_id: card.user_id,
             title: card.title,
             location: card.location,
+            address: card.adddress,
             description: card.description,
             duration: card.duration,
+            date: card.date,
             category_id: card.category_id,
+            category: card.category_name,
+            photos: card.photos
           }
         });
+
         res.json(cards);
 
       })
@@ -54,7 +67,7 @@ module.exports = (knex) => {
             photos: card.photos
           }
         });
-        console.log(cards)
+
         res.json(cards);
 
       })
@@ -63,32 +76,72 @@ module.exports = (knex) => {
       })
   });
 
-  router.post('/', (req, res) => {});
+  router.post("/favorite", (req, res) => {
+
+    const userId = req.session.userId;
+    const cardId = req.body.cardId;
+
+    delFavorite(cardId, userId)
+      .then(() => {
+        res.json({
+          status: 'ok'
+        })
+      })
+      .catch(err => {
+        res.status(400).send("ERROR");
+      });
+  })
+
+
+  router.post('/cards', (req, res) => {
+    const userID = req.session.userId;
+    const cardIds = req.body.cardIds;
+    const date = req.body.date;
+
+    makeItinerary(date, cardIds, userID)
+      .then(() => {
+        res.json({
+          status: 'ok'
+        })
+      })
+      .catch(err => {
+        res.status(400).send("ERROR");
+      });
+  })
 
   router.get("/map", (req, res) => {
-    // function initMap() {
-    // var places = [
-    //   {lat: -25.0264017, lng: 115.1772893},
-    //   {lat: -25.363, lng: 131.044},
-    //   {lat: -33.8470219, lng: 150.3715133},
-    //   {lat:-37.971237, lng: 144.4926879}
-    //   ]
+    function initMap() {
+      var places = [{
+        lat: -25.0264017,
+        lng: 115.1772893
+      },
+      {
+        lat: -25.363,
+        lng: 131.044
+      },
+      {
+        lat: -33.8470219,
+        lng: 150.3715133
+      },
+      {
+        lat: -37.971237,
+        lng: 144.4926879
+      }
+      ]
 
-    //   var map = new google.maps.Map(document.getElementById('map'), {
-    //     zoom: 4,
-    //     center: places[0]
-    //   })
+      var map = new google.maps.Map(document.getElementById('map'), {
+        zoom: 4,
+        center: places[0]
+      })
 
-    //   places.forEach(function(geolocation){
-    //     var marker = new google.maps.Marker({
-    //       position: places.geolocation,
-    //       map: map
-    //     })
-    //   })
-    // return map;
-    // }
-
-
+      places.forEach(function (geolocation) {
+        var marker = new google.maps.Marker({
+          position: places.geolocation,
+          map: map
+        })
+      })
+      return map;
+    }
     res.render("maps")
   });
 
