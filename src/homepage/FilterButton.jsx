@@ -1,6 +1,9 @@
 import React from 'react';
 
-function FilterButton({ id, active, name, icon, handleFilterClick, color }) {
+function FilterButton({ id, active, name, icon, handleFilterClick, color}) {
+
+  let iconColor = true;
+
   return (
     <span className="filter-button" onClick={() => handleFilterClick(id) }>
       <a className={ `button ${name} ${ active ? 'is-active' : '' }` }>

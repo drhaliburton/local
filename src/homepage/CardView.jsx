@@ -100,13 +100,7 @@ class CardView extends Component {
       </div>
                 <div className="columns cards-container">Recommendations</div>
 
-      <div className="filter has-text-centered">
-        <h5 className="filter-brand title is-6">Filters</h5>
-        <span className="filter-toggle" onClick={this.toggleFilters.bind(this)}>
-          <a className="icon is-medium"><i className={`fa fa-chevron-up ${rotatedToggle}`}></i></a>
-        </span><div></div>
-
-        <div className={`filter-content ${toggledFilter}`}>
+        <div className="filter-content toggled-filter">
 
           <div className="columns">
             <div className="column"></div>
@@ -117,7 +111,6 @@ class CardView extends Component {
             <div className="column"></div>
           </div>
         </div>
-      </div>
       </span>
     );
   }

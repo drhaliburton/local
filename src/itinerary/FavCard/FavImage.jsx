@@ -4,7 +4,7 @@ class FavImage extends Component {
 
   renderImage(images) {
     if (images == null) {
-      return 'http://placekitten.com.s3.amazonaws.com/homepage-samples/408/287.jpg';
+      return 'https://unsplash.it/200/300/?random';
     } else {
       return this.props.images[0];
     }

@@ -52,6 +52,20 @@ class Filter extends Component {
     });
   }
 
+
+  function setColor(icon) {
+      console.log(icon);
+      let colors = {
+      'tree': 'is-green',
+      'shopping-bag': 'is-pink',
+      'cutlery': 'is-orange',
+      'binoculars': 'is-grey',
+    }
+      console.log(colors[icon]);
+      return colors[icon];
+    }
+  }
+
   render() {
 
     const toggledFilter = this.state.filtersVisible ? 'toggled-filter' : '';
@@ -72,28 +86,9 @@ class Filter extends Component {
     return (
       <div className="filter has-text-centered">
         <h5 className="filter-brand title is-6">Filters</h5>
-        <span className="filter-toggle" onClick={this.toggleFilters.bind(this)}>
-          <a className="icon is-medium"><i className={`fa fa-chevron-up ${rotatedToggle}`}></i></a>
-        </span><div></div>
-
-          <div className={`filter-content ${toggledFilter}`}>
-
-            <div className="columns">
-              <div className="column"></div>
-              {/*<div className="column is-one-third">
-              <h5 className="title is-6">Radius</h5>
-                <span className="filter-button"><a className="button">Street</a></span>
-                <span className="filter-button"><a className="button">Neighborhood</a></span>
-                <span className="filter-button"><a className="button">City</a></span>
-              </div>*/}
-              <div className="column is-one-third">
-                {/*<h5 className="title is-6">Category</h5>*/}
                 { filters }
-              </div>
               <div className="column"></div>
             </div>
-          </div>
-        </div>
     );
   }
 }
