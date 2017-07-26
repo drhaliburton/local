@@ -6,7 +6,7 @@ class NewImage extends Component {
 
   renderImage(images) {
     if (images === null) {
-      return 'https://unsplash.it/200/300/?random';
+      return 'https://source.unsplash.com/random/400';
     } else {
       let randomInt = Math.ceil(Math.random() * images.length) -1;
       return this.props.image[randomInt];
@@ -16,9 +16,7 @@ class NewImage extends Component {
   render() {
     return (
       <div className="card-image">
-        <figure className="cover">
-          <img src={this.renderImage(this.props.image)} alt="Image"></img>
-        </figure>
+        <img src={this.renderImage(this.props.image)} alt="Image"></img>
       </div>
     );
   }

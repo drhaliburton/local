@@ -1,0 +1,23 @@
+.add-card{
+  .modal {
+  overflow: visible;
+  min-width: 350px;
+  margin-left: 32%;
+  margin-right: 32%;
+  .icon{
+    height: 30px !important;
+    font-size: 12px;
+    .fa{
+      color: $light-grey;
+    }
+    }
+    label{
+      font-size: .9em !important;
+    }
+    .modal-card-body{
+      padding: 25px !important;
+      min-height: 100% !important;
+      padding-bottom: 40px;
+    }
+  }
+}

@@ -52,20 +52,6 @@ class Filter extends Component {
     });
   }
 
-
-  function setColor(icon) {
-      console.log(icon);
-      let colors = {
-      'tree': 'is-green',
-      'shopping-bag': 'is-pink',
-      'cutlery': 'is-orange',
-      'binoculars': 'is-grey',
-    }
-      console.log(colors[icon]);
-      return colors[icon];
-    }
-  }
-
   render() {
 
     const toggledFilter = this.state.filtersVisible ? 'toggled-filter' : '';
@@ -84,12 +70,11 @@ class Filter extends Component {
       });
 
     return (
-      <div className="filter has-text-centered">
-        <h5 className="filter-brand title is-6">Filters</h5>
+      <div className="filter">
                 { filters }
-              <div className="column"></div>
             </div>
     );
   }
 }
+
 export default Filter;

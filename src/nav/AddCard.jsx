@@ -64,7 +64,7 @@ class AddCard extends Component {
     return (
       <div>
         <p onClick={this.toggleActive.bind(this)}><a><i className="fa fa-plus-square-o"></i>&nbsp;&nbsp;add card</a></p>
-        <div className={`modal ${activeToggle}`}>
+        <div className={`add-card modal ${activeToggle}`}>
         <div className="modal-background"></div>
         <div className="modal-card">
           <header className="modal-card-head">

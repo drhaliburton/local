@@ -90,26 +90,23 @@ class CardView extends Component {
 
     return (
       <span>
-      <div className="page-toggle">
-        <h1>Skip the lines & tourist traps - discover hidden gems and build a trip itinerary curated by locals.</h1>
-        <h2>Browse recommendations, favourite your must-do's and save your map + calendar to view on the fly.</h2>
-        <h5 className="toggle-title" id="view-all">{pageLinkText}</h5>
-        <span className="toggle-arrow" onClick={this.togglePageView.bind(this)}>
-          <Scrollchor animate={{offset: -58, duration: 1000}} to={pageLink}><i className={`fa fa-chevron-up ${viewToggleRotated}`}></i></Scrollchor>
-        </span>
-      </div>
-                <div className="columns cards-container">Recommendations</div>
-
-        <div className="filter-content toggled-filter">
-
-          <div className="columns">
-            <div className="column"></div>
-
-            <div className="column is-one-third">
-              {filters}
-            </div>
-            <div className="column"></div>
-          </div>
+        <div className="page-toggle">
+          <h1>Skip the lines & tourist traps - discover hidden gems and build a trip itinerary curated by locals.</h1>
+          <h2>Browse recommendations, favourite your must-do's and save your map + calendar to view on the fly.</h2>
+          <h5 className="toggle-title" id="view-all">{pageLinkText}</h5>
+          <span className="toggle-arrow" onClick={this.togglePageView.bind(this)}>
+            <Scrollchor animate={{ offset: -58, duration: 1000 }} to={pageLink}><i className={`fa fa-chevron-up ${viewToggleRotated}`}></i></Scrollchor>
+          </span>
+        </div>
+        <div className="columns cards-container has-text-centered">
+          <h3 className="column">Recommendations</h3>
+        </div>
+        <div className="columns has-text-centered">
+        <div className="column is-3"></div>
+        <div className="column is-6 homepage-filters">
+          {filters}
+        </div>
+        <div className="column is-3"></div>
         </div>
       </span>
     );

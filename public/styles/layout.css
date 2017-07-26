@@ -360,7 +360,7 @@
   text-align: left; }
 
 .geosuggest__input {
-  border-color: pink !important;
+  border-color: $orange !important;
   font-size: .8em;
   border: 1px solid transparent;
   border-radius: 3px;
