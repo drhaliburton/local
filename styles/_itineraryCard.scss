@@ -1,5 +1,5 @@
 .itinerary-container {
-  margin: 120px 80px;
+  margin: 50px 80px;
   .columns{
   .morning {
     margin-top: 1rem;
@@ -27,6 +27,12 @@
   }
 
 }
+.delete {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  opacity: .8;
+}
 
 .set-date {
   padding-bottom: 8px;
@@ -44,7 +50,7 @@
 .welcome {
   padding:10px 3px;
   border-bottom: 0.5px solid $orange;
-  margin-bottom: 30px;
+  margin-bottom: 10px;
 }
 
 .box {

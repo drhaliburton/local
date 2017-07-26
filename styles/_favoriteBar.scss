@@ -3,6 +3,12 @@
   height: 0px;
   font-size: 10px;
   overflow: hidden;
+  .slider-frame{
+    padding: 50px;
+  }
+  .slider-list{
+    height: 500px !important;
+  }
   .slider-container {
     transition: 1s all ease-in-out;
     margin: 0px 10%;
@@ -12,8 +18,9 @@
         color: $light-grey !important;
       }
     .slider {
+      overflow: hidden;
       padding: 0px 70px 20px;
-      height: 400px;
+      height: 250px !important;
     }
     .card {
       transition: 2s all ease-in-out;
