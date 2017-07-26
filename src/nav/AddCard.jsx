@@ -45,7 +45,10 @@ class AddCard extends Component {
     })
     this.reloadPage()
   };
-
+  
+  setLocation(event) {
+    this.setState({location: event})
+  }
 
   handleChange(event) {
     let name = event.target.name;
@@ -72,7 +75,9 @@ class AddCard extends Component {
               <div className="field">
                 <label className="label">Destination Location</label>
                 <p className="control has-icons-left">
-                  <Geosuggest type="text" placeholder="     Enter an Address, Neighbourhood or City" data="location" value={this.state.location} name="location" onChange={this.handleChange.bind(this)} />
+                  <Geosuggest type="text" placeholder="Enter an Address, Neighbourhood or City" onSuggestSelect={event => {
+                    this.setLocation(event)
+                  }} />
                   <span className="icon is-small is-left">
                     <i className="fa fa-globe"></i>
                   </span>

@@ -47,7 +47,6 @@ module.exports = (knex) => {
         res.json(cards)
       })
       .catch(err => {
-        console.log(err);
         res.status(400).send("ERROR");
       })
   });
@@ -85,7 +84,7 @@ module.exports = (knex) => {
                 location: [card.location.x, card.location.y],
                 description: card.description,
                 duration: card.duration,
-                 address: card.address,
+                address: card.address,
                 category: card.category_name,
                 user: card.given_name,
                 photos: card.photos,
@@ -112,13 +111,16 @@ module.exports = (knex) => {
     //   console.log('has voted already')
     // }
     // else{
-      postUpvote(card_id, user_id)
-        .then((result)=>{
-            res.json({status: 'okay', data: result})
+    postUpvote(card_id, user_id)
+      .then((result) => {
+        res.json({
+          status: 'okay',
+          data: result
         })
-        .catch(err => {
-            res.status(400).send("ERROR in upvoting");
-          });
+      })
+      .catch(err => {
+        res.status(400).send("ERROR in upvoting");
+      });
     // }
     // else{
     //   res.redirect('/#/auth');
@@ -129,7 +131,7 @@ module.exports = (knex) => {
     //   .catch(err => {
     //     res.status(400).send("ERROR in upvoting");
 
-      // });
+    // });
   });
 
 
@@ -142,13 +144,16 @@ module.exports = (knex) => {
     //   console.log('has voted already')
 
     postDownvote(card_id, user_id)
-      .then((result)=>{
-          res.json({status: 'okay', data: result})
+      .then((result) => {
+        res.json({
+          status: 'okay',
+          data: result
+        })
       })
       .catch(err => {
-          res.status(400).send("ERROR in downvoting");
+        res.status(400).send("ERROR in downvoting");
 
-        });
+      });
     //  } else {
     //    console.log('User has already downvoted');
     // }
@@ -158,64 +163,37 @@ module.exports = (knex) => {
   });
 
   router.post("/", (req, res) => {
-    console.log(req.body)
+  
     const userID = req.session.userId;
-
+    const geoInfo = req.body.location.gmaps
     const newCard = {
       title: req.body.title,
       description: req.body.description,
       duration: req.body.duration,
       category: req.body.category,
-      user_id: req.session.userId
+      user_id: req.session.userId,
+      location: `(${geoInfo.geometry.location.lat}, ${geoInfo.geometry.location.lng})`,
+      address: geoInfo.formatted_address
     }
-    const geoKey = process.env.GEO_API_KEY
-    const request = encodeURIComponent(req.body.location)
-    const options = {
-      host: 'maps.googleapis.com',
-      path: `/maps/api/geocode/json?address=${request}&key=${geoKey}`
-    };
 
-    const callback = function (response) {
-      let str = '';
-
-      //another chunk of data has been recieved, so append it to `str`
-      response.on('data', function (chunk) {
-        str += chunk;
-      });
-
-      //the whole response has been recieved, so we just print it out here
-      response.on('end', function () {
-        const result = JSON.parse(str).results[0];
-        console.log(result);
-        newCard.address = result.formatted_address;
-        newCard.location = `(${result.geometry.location.lat}, ${result.geometry.location.lng})`
-        const apiPhotosArray = findPlacePhotos(result);
-        apiPhotosArray.then(imageURLs => console.log('****IMG URLS: ', imageURLs)).catch(err => console.log('**ERR: ', err));
-        console.log('no sanity found');
-        postCard(newCard, userID)
-          .then(([cardID]) => {
-            const photosArray = apiPhotosArray;
-            return photosArray
-              .then((images) => {
-                postPhotos(images, cardID);
-              })
-              .then(() => {
-                res.json({
-                  status: 'ok'
-                });
-              })
+    postCard(newCard, userID)
+      .then(([cardID]) => {
+        findPlacePhotos(geoInfo)
+          .then((images) => {
+            postPhotos(images, cardID);
           })
-          .catch(err => {
-            res.status(400).send("ERROR");
+          .then(() => {
+            res.json({
+              status: 'ok'
+            });
           })
       })
-    }
-    https.request(options, callback).end();
+      .catch(err => {
+        res.status(400).send("ERROR");
+      })
   });
 
   router.post("/favorite", (req, res) => {
-    console.log(req.session)
-    console.log(req.body.id)
 
     const userId = req.session.userId;
     const cardId = req.body.id;

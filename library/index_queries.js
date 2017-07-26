@@ -2,6 +2,7 @@ module.exports = (knex) => {
   const obj = {};
 
   obj.hasVoted = function(card_id, user_id){
+    
     return knex('ratings')
     .where({ card_id, user_id })
     .first()
@@ -20,6 +21,7 @@ module.exports = (knex) => {
 
 
   obj.postUpvote= function(card_id, user_id){
+
     return knex('ratings')
     .insert({
       rating: 1,
@@ -35,6 +37,7 @@ module.exports = (knex) => {
   }
 
   obj.postDownvote= function(card_id, user_id){
+
     return knex('ratings')
     .where('user_id', user_id)
     .andWhere('card_id', card_id)
@@ -48,6 +51,7 @@ module.exports = (knex) => {
 
 
   obj.getRatings= function(card_id){
+
     const data = {}
     return knex('cards')
     .where('id', card_id)
@@ -56,6 +60,7 @@ module.exports = (knex) => {
 
 
   obj.addFavorite = function (cardId, userId) {
+
     return knex('favorites')
       .insert({
         card_id: cardId,
@@ -64,6 +69,7 @@ module.exports = (knex) => {
   }
 
   obj.getFiltered = function (lat1, lng1, lat2, lng2) {
+
     return knex('cards AS filterCards')
       .whereRaw(`box '((${lat1}, ${lng1}),(${lat2}, ${lng2}))' @> ("location")`)
       .leftJoin('users', 'filterCards.user_id', 'users.id')
@@ -89,6 +95,7 @@ module.exports = (knex) => {
   }
 
   obj.allCards = function () {
+
     return knex('cards')
       .select(['cards.id AS card_id', 'cards.title', 'cards.description', 'cards.address', 'cards.location', 'cards.total_rating',
         'cards.duration', 'users.given_name', 'users.family_name', 'categories.name AS category_name',
