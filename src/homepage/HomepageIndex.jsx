@@ -165,10 +165,10 @@ class HomepageIndex extends Component {
     const { filters, currentFilter } = this.state;
 
     if (currentFilter === index) {
-      this.props.resetCards();
+      this.resetCards();
       index = null;
     } else {
-      this.props.categoryFilter(filters[index].name);
+      this.categoryFilter(filters[index].name);
     }
 
     this.setState({

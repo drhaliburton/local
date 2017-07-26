@@ -1044,6 +1044,7 @@
       padding: 10px; }
 
 .is-rotated {
+  transition: all .4s ease-in-out;
   transform: rotate(180deg); }
 
 .visible {
