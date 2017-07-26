@@ -19,6 +19,7 @@ class ItineraryIndex extends Component {
       startTime: 9,
       timeOfDay: 'AM',
       date: moment(),
+      momentStartTime: null, 
     }
   }
 
@@ -66,9 +67,14 @@ class ItineraryIndex extends Component {
     });
   }
   setTime(time) {
+  let unformattedStartTime = (time.startTime + ' ' + time.timeOfDay)
+  var formattedStartTime = moment(unformattedStartTime, 'HH:mm A');
+  console.log('hey format', formattedStartTime)
+
     this.setState({
       startTime: time.startTime,
       timeOfDay: time.timeOfDay,
+      momentStartTime: formattedStartTime,
     })
   }
   setDate(date) {

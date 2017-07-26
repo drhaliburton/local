@@ -55,14 +55,15 @@ class ExportCalendar extends Component {
     })
   }
   componentWillReceiveProps(nextProps) {
-    let eventArray = nextProps.events
+    let incomingEvents = nextProps.events
     let dateArray = nextProps.date
     let props = nextProps
     console.log('yo', props)
     //map into new array 
     
-    eventArray.map((event) => {
-    this.setState({
+    const mappedEvents = incomingEvents.map((event) => {
+      return [
+        {
       "summary": event.title,
       "description": event.description,
       "start": {
@@ -71,9 +72,9 @@ class ExportCalendar extends Component {
       "end": {
         "dateTime": "2017-09-10T22:47:31-07:00"
       }
-    })
+    }]
   });
-  console.log('update state', this.state)
+  console.log('update state', mappedEvents)
   }
   render() {
     // const activeToggle = this.state.isActive ? 'is-active' : ''
