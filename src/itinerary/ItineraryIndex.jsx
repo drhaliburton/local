@@ -4,6 +4,7 @@ import FavoriteBar from "./FavoriteBar.jsx";
 import SortableComponent from "./dnd/SortableComponent.jsx";
 import Set from "./Set.jsx";
 import TimeSetter from "./TimeSetter.jsx";
+import ExportCalendar from "./ExportCalendar.jsx";
 import EventLine from "./EventLine.jsx";
 import TimeSet from "./TimeSet.jsx";
 import Api from '../../library/api.js';
@@ -58,25 +59,6 @@ class ItineraryIndex extends Component {
 
   componentDidMount() {
     var date = new Date();
-
-
-      fetch('https://www.googleapis.com/calendar/v3/calendars/primary/events', {
-        method: 'POST',
-        credentials: 'include',
-        headers: {
-          'Accept': 'application/json',
-          'Content-Type': 'application/json',
-          'Authorization': 'Bearer ' + this.props.currentUser.token
-        },
-        body: JSON.stringify({
-          "start": {
-            "dateTime": "2017-09-08T22:47:31-07:00"
-          },
-          "end": {
-            "dateTime": "2017-09-08T23:47:31-07:00"
-          }
-        })
-      })
   }
   toggleActive(event) {
     this.setState({
@@ -88,10 +70,9 @@ class ItineraryIndex extends Component {
       time: time
     })
   }
-  setDate(date, time) {
+  setDate(date) {
     this.setState({
       date: date, 
-      time: time
     })
     console.log('parent set date', date)
   }
@@ -105,6 +86,7 @@ class ItineraryIndex extends Component {
           <FavoriteBar favCards={this.state.favCards} add={this.add.bind(this)} />
         </div>
         <div className="welcome">
+          <ExportCalendar token={this.props.currentUser.token} events={this.state.itineraryCards} date={this.state.date}/>
           <Set setDate={this.setDate.bind(this)}/>
           <h3 className="title is-3">{this.state.date.format('LL')}</h3>
         </div>

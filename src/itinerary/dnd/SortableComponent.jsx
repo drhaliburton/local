@@ -56,7 +56,6 @@ class SortableComponent extends Component {
     }
   }
   componentWillReceiveProps(nextProps) {
-    console.log("cWRP nextProps");
     // To avoid reseting order on new-card-add:
     //  0) make a copy of this.state.items
     //  1) loop through nextProps.cards
