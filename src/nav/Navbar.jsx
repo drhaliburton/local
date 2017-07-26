@@ -32,7 +32,11 @@ class Navbar extends Component {
               </div>
               <div className="navbar-item">
                 <div className="itinerary">
+<<<<<<< HEAD
                 <Link maintainScrollPosition={false} to="/itinerary"><i className="fa fa-map-o"></i>&nbsp;&nbsp;itinerary</Link></div>
+=======
+                <Link to="/itinerary"><i className="fa fa-map-o"></i>&nbsp;&nbsp;itinerary</Link></div>
+>>>>>>> 07ae1574c936b1bdf3672194af13780141516aff
               </div>
             </div>
             :

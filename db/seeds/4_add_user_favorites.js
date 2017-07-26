@@ -9,7 +9,6 @@ exports.seed = function(knex, Promise) {
             return x[0] ? x[0].id : {}
         });
 
-        console.log(JSON.stringify(ids,null,2))
         const [
             aishaID
         ] = ids;

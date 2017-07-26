@@ -36,7 +36,7 @@ class Set extends Component {
     const day = this.state.startDate
     return (
       <div className="set-date">
-        <div className='button' onClick={this.toggleActive.bind(this)} ><h6 className="title is-6">set date</h6></div>
+        <div className='button' onClick={this.toggleActive.bind(this)}><span className="fa fa-calendar-o"></span><h6 className="title is-6">&nbsp;&nbsp;set date</h6></div>
         <div className={`modal + ${activeToggle} + has-text-centered`}>
           <div className="modal-background"></div>
           <div className="modal-card">

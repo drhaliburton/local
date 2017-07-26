@@ -46,7 +46,6 @@ class Filter extends Component {
   }
   // grab the button with c
   toggleFilters(event){
-    console.log('filters clicked');
     this.setState({
       filtersVisible: !this.state.filtersVisible,
       isRotated: !this.state.isRotated
@@ -82,7 +81,7 @@ class Filter extends Component {
             <div className="columns">
               <div className="column"></div>
               {/*<div className="column is-one-third">
-                <h5 className="title is-6">Radius</h5>
+              <h5 className="title is-6">Radius</h5>
                 <span className="filter-button"><a className="button">Street</a></span>
                 <span className="filter-button"><a className="button">Neighborhood</a></span>
                 <span className="filter-button"><a className="button">City</a></span>

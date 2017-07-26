@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import Geosuggest from 'react-geosuggest';
 //TODO Add Event Listener to Search bar to extract input and use it to query database
 class Search extends Component {
   render() {
@@ -7,10 +8,9 @@ class Search extends Component {
           <div className="column is-6">
             <div className="accent-font">Travel Like You Live There.</div>
             <p className="control landing"></p>
-              <input className="input" type="text" placeholder="Where are you off to? ✈︎ " onKeyDown={(event) => {
+              <Geosuggest type="text" placeholder="Where are you off to? ✈︎ " onKeyDown={(event) => {
                 if (event.key === 'Enter') {
-                  this.props.locate(event.target.value)}}}
-              />
+                  this.props.locate(event.target.value)}}}  />
           </div>
         </div>
     );

@@ -44,7 +44,7 @@ class FavContentContainer extends Component {
     let card = this.props.cardContent;
     return (
       <div className={`content-container ${expandedToggle}`}>
-        <FavImage images={card.photos} />
+        <FavImage images={card.photos} id={card.id} removeFavorite={this.props.removeFavorite.bind(this)}/>
         <div className="card-content">
               <p className="itinerary-card-title">{card.title}</p>
                <p className="category duration"><span className={`icon is-small fa ${this.findIconCategory(card.category)}`}>&nbsp;</span>&nbsp;~{card.duration} minutes</p>
