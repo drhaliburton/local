@@ -35,7 +35,7 @@ class ItineraryIndex extends Component {
       );
     this.setState({time : [9] })
   }
-    
+
 
   add(card) {
     let newCard = this.state.itineraryCards.concat(card.card);
