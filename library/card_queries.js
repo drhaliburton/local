@@ -98,5 +98,5 @@ module.exports = (knex) => {
   //   }));
   // }
 
-return obj;
+  return obj;
 }

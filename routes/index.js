@@ -4,8 +4,6 @@ const router = express.Router();
 const https = require('https');
 const queries = require("../library/index_queries.js");
 const cardQueries = require("../library/card_queries.js");
-const request = require('request');
-const cookieSession = require('cookie-session');
 
 
 module.exports = (knex) => {
@@ -110,38 +108,23 @@ module.exports = (knex) => {
     let card_id = req.body['cardID'];
     let user_id = req.session.userId;
 
-    postUpvote(card_id, user_id)
-      .then(() => {
-        res.json({
-          status: 'okay'
-        })
+    if (!user_id) {
+      res.json({
+        status: 'userID does not exist'
       })
-      .catch(err => {
-        res.status(400).send("ERROR in upvoting");
-      });
-
-    // if(hasVoted(card_id, user_id)){
-    //   console.log('has voted already')
-    // }
-    // else{
-    //   postUpvote(card_id, user_id)
-    //     .then((result)=>{
-    //         res.json({status: 'okay', data: result})
-    //     })
-    //     .catch(err => {
-    //         res.status(400).send("ERROR in upvoting");
-    //       });
-    // // }
-    // else{
-    //   res.redirect('/#/auth');
-    // }
-    // postUpvote(card_id, user_id)
-    //   .then((result) => {
-    //   })
-    //   .catch(err => {
-    //     res.status(400).send("ERROR in upvoting");
-
-    // });
+      return
+    } else {
+      console.log("******The card id is " + card_id)
+      postUpvote(card_id, user_id)
+        .then(() => {
+          res.json({
+            status: 'okay'
+          })
+        })
+        .catch(err => {
+          res.status(400).send("ERROR in upvoting");
+        });
+    }
   });
 
 
@@ -149,33 +132,22 @@ module.exports = (knex) => {
     let card_id = req.body['cardID'];
     let user_id = req.session.userId;
 
-    // if(hasVoted(card_id, user_id)){
-    //   console.log('has voted already')
-
-    postDownvote(card_id, user_id)
-      .then(() => {
-        res.json({
-          status: 'okay'
-        })
+    if (!user_id) {
+      res.json({
+        status: 'userID does not exist'
       })
-      .catch(err => {
-        res.status(400).send("ERROR in downvoting");
-      });
-    // =======
-    //       .then((result)=>{
-    //           res.json({status: 'okay', data: result})
-    //       })
-    //       .catch(err => {
-    //           res.status(400).send("ERROR in downvoting");
-    // >>>>>>> 94befa7ab7077db67cd17ba38f014077c370141f
-
-
-    //  } else {
-    //    console.log('User has already downvoted');
-    // }
-    // else{
-    //   res.redirect('/');
-    // }
+      return
+    } else {
+      postDownvote(card_id, user_id)
+        .then(() => {
+          res.json({
+            status: 'okay'
+          })
+        })
+        .catch(err => {
+          res.status(400).send("ERROR in downvoting");
+        });
+    }
   });
 
   router.post("/", (req, res) => {
@@ -192,36 +164,53 @@ module.exports = (knex) => {
       address: geoInfo.formatted_address
     }
 
-    postCard(newCard, userID)
-      .then(([cardID]) => {
-        findPlacePhotos(geoInfo)
-          .then((images) => {
-            postPhotos(images, cardID);
-          })
-          .then(() => {
-            res.json({
-              status: 'ok'
-            });
-          })
+    if (!userID) {
+      res.json({
+        status: 'userID does not exist'
       })
-      .catch(err => {
-        res.status(400).send("ERROR");
-      })
+      return
+    } else {
+
+      postCard(newCard, userID)
+        .then(([cardID]) => {
+          findPlacePhotos(geoInfo)
+            .then((images) => {
+              postPhotos(images, cardID);
+            })
+            .then(() => {
+              res.json({
+                status: 'ok'
+              });
+            })
+        })
+        .catch(err => {
+          res.status(400).send("ERROR");
+        })
+    }
   });
 
   router.post("/favorite", (req, res) => {
 
     const userId = req.session.userId;
     const cardId = req.body.id;
-    addFavorite(cardId, userId)
-      .then(() => {
-        res.json({
-          status: 'ok'
-        })
+
+    if (!userId || !cardId) {
+      res.json({
+        status: 'Missing userID and/or cardID'
       })
-      .catch(err => {
-        res.status(400).send("ERROR");
-      });
+      return
+    } else {
+
+      addFavorite(cardId, userId)
+        .then(() => {
+          res.json({
+            status: 'ok'
+          })
+        })
+        .catch(err => {
+          res.status(400).send("ERROR");
+        });
+    }
   })
 
 
