@@ -1,9 +1,11 @@
 .add-card{
+    width: 60%;
+    margin: auto;
+    max-width: 40%;
   .modal {
-  overflow: visible;
-  min-width: 350px;
-  margin-left: 32%;
-  margin-right: 32%;
+    overflow: visible;
+    margin-left: 32%;
+    margin-right: 32%;
   .icon{
     height: 30px !important;
     font-size: 12px;
@@ -15,9 +17,25 @@
       font-size: .9em !important;
     }
     .modal-card-body{
-      padding: 25px !important;
+      padding: 15px !important;
+      padding-top: 3px !important;
       min-height: 100% !important;
       padding-bottom: 40px;
+    }
+  }
+  .geosuggest{
+    margin: 0px;
+  }
+  .geosuggest__input{
+    padding-left: 30px;
+  }
+  .fa {
+    padding-bottom: 6px;
+  }
+  input{
+    border-color: $orange !important;
+    &:focus{
+      border-color: $green !important;
     }
   }
 }

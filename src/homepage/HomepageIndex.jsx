@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import IndexCard from "./IndexCard/IndexCard.jsx";
 import Search from "./Search.jsx";
-import CardView from "./CardView.jsx";
 import Styles from "../../styles/layout.scss";
 import Api from '../../library/api.js';
 import Img from 'react-image'
@@ -200,8 +199,6 @@ class HomepageIndex extends Component {
     const viewToggleRotated = this.state.viewToggleRotated ? '' : 'is-rotated';
     const pageLink = this.state.linkURL ? '#' : '#view-all';
     const pageLinkText = this.state.linkText ? 'Search' : 'View All';
-
-
 
     const filters = this.state.filters.map((filter, index) => {
       const active = this.state.currentFilter === index;
