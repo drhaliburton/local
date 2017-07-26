@@ -45,12 +45,13 @@ class AddCard extends Component {
     })
     this.reloadPage()
   };
-  
+
   setLocation(event) {
     this.setState({location: event})
   }
 
   handleChange(event) {
+    event.preventDefault();
     let name = event.target.name;
     this.setState({ [name]: event.target.value }, () => { console.log(this.state) });
   }

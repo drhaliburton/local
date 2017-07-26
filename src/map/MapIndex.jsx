@@ -1,16 +1,42 @@
 import React, {Component} from 'react';
-import { withGoogleMap, GoogleMap, InfoWindow, Marker } from "react-google-maps";
+import {withGoogleMap, GoogleMap, InfoWindow, Marker} from "react-google-maps";
 import Api from '../../library/api.js';
-import fancyMapStyles from "../constants/fancyMapStyle.json";
+import fancyMapStyles from "../constants/fancyMapStyle.json"
+import ItineraryIndex from "../itinerary/ItineraryIndex.jsx";
+import SearchBox from "react-google-maps/lib/places/SearchBox";
+
+const INPUT_STYLE = {
+  boxSizing: `border-box`,
+  MozBoxSizing: `border-box`,
+  border: `1px solid transparent`,
+  width: `240px`,
+  height: `32px`,
+  marginTop: `27px`,
+  padding: `0 12px`,
+  borderRadius: `1px`,
+  boxShadow: `0 2px 6px rgba(0, 0, 0, 0.3)`,
+  fontSize: `14px`,
+  outline: `none`,
+  textOverflow: `ellipses`,
+};
 
 
 const GettingStartedGoogleMap = withGoogleMap(props => (
  <GoogleMap
     ref={props.onMapLoad}
-    defaultZoom={6}
     center={props.center}
+    onBoundsChanged={props.onBoundsChanged}
+    zoom={props.zoom}
 
   >
+  <SearchBox
+      ref={props.onSearchBoxMounted}
+      bounds={props.bounds}
+      controlPosition={google.maps.ControlPosition.TOP_LEFT}
+      onPlacesChanged={props.onPlacesChanged}
+      inputPlaceholder="Type in a location!"
+      inputStyle={INPUT_STYLE}
+    />
     {props.markers.map((marker, index) => (
       <Marker
         { ...marker }
@@ -40,12 +66,15 @@ class MapIndex extends Component {
     super(props);
     this.state = {
       cards: [],
-      markers:[]
+      markers:[],
+      bounds: null,
+      zoom: 6
     }
+
   }
 
   componentDidMount() {
-    Api.get('/index')
+    Api.get('/itinerary/favorites')
       .then((cards) => this.setState({
         cards: cards[0],
         markers: cards.map((card) => {
@@ -72,6 +101,34 @@ class MapIndex extends Component {
     }
   }
 
+  handleBoundsChanged() {
+    this.setState({
+      bounds: this._map.getBounds(),
+      center: this._map.getCenter(),
+    });
+  }
+
+    handleSearchBoxMounted(searchBox) {
+      this._searchBox = searchBox;
+    }
+
+    handlePlacesChanged() {
+    const places = this._searchBox.getPlaces();
+
+    // Add a marker for each place returned from search bar
+    const markers = places.map(place => ({
+      position: place.geometry.location,
+    }));
+
+    // Set markers; set map center to first search result
+    const mapCenter = markers.length > 0 ? markers[0].position : this.state.center;
+
+    this.setState({
+      center: mapCenter,
+      zoom: 15
+
+    });
+  }
 
   handleMarkerClick(targetMarker) {
     this.setState({
@@ -119,9 +176,15 @@ class MapIndex extends Component {
         onMapLoad={this.handleMapLoad.bind(this)}
         center={this.state.center}
         markers={this.state.markers}
+        onBoundsChanged={this.handleBoundsChanged.bind(this)}
+        onSearchBoxMounted={this.handleSearchBoxMounted.bind(this)}
+        bounds={this.state.bounds}
+        onPlacesChanged={this.handlePlacesChanged.bind(this)}
         onMarkerClick={this.handleMarkerClick.bind(this)}
         onMarkerClose={this.handleMarkerClose.bind(this)}
+        zoom={this.state.zoom}
          />
+
     );
   }
 }

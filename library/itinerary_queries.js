@@ -61,7 +61,6 @@ module.exports = (knex) => {
       .returning('id')
       .then((id) => {
         return Promise.all(cardIds.map((cardId) => {
-          console.log(id, cardId)
           return knex('itinerary_cards')
             .insert({
               itinerary_id: id[0],
@@ -107,7 +106,6 @@ module.exports = (knex) => {
   }
 
   obj.delFavorite = function (cardId, userId) {
-    console.log('inside delete')
     return knex('favorites')
       .where('user_id', userId)
       .andWhere('card_id', cardId)

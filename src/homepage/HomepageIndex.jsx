@@ -42,7 +42,7 @@ class HomepageIndex extends Component {
       })
     );
     const node = document.getElementById('view-all');
-    node.scrollIntoView({ behavior: "smooth" });
+    setTimeout(function(){node.scrollIntoView({ behavior: "smooth" })}, 200);
   }
 
   resetCards() {
@@ -73,7 +73,6 @@ class HomepageIndex extends Component {
   };
 
   newFavorite(id) {
-    console.log(id)
     Api.post('/index/favorite', id)
       .then(() => {
         this.resetCards();
@@ -111,7 +110,6 @@ class HomepageIndex extends Component {
       })
     })
     .then(() => {
-      console.log('Added vote');
       this.reRenderHomepageCards();
     })
   };
@@ -130,13 +128,11 @@ class HomepageIndex extends Component {
           cardID: cardID
         })
       }).then(() => {
-        console.log('Removed vote!');
       this.reRenderHomepageCards();
       })
     }
 
   render() {
-    console.log(this.state.cards);
     return (
       <div>
         <div className="landing-content">

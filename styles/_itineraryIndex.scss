@@ -1,3 +1,20 @@
-.container{
+.itinerary-container{
   padding-top: 2rem;
+  .it-card.column {
+    padding-top: 0px;
+  }
+  .start-time.column{
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+    padding-top: 1.2rem;
+     .start-time {
+    border-bottom: $light-grey 0.2px solid;
+    border-top: $light-grey 0.2px solid;
+    // border-left: $light-grey 0.2px solid;
+    // border-right: $light-grey 0.2px solid;
+    // border-radius: 5px;
+    padding: 10px;
+  }
+  }
+ 
 }

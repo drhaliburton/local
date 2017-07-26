@@ -73,28 +73,32 @@ module.exports = (knex) => {
         const lng1 = result.geometry.viewport.northeast.lng;
         const lat2 = result.geometry.viewport.southwest.lat;
         const lng2 = result.geometry.viewport.southwest.lng;
-        getFiltered(lat1, lng1, lat2, lng2)
-          .then(data => {
-            let cards = data.map((card) => {
-              return {
-                id: card.card_id,
-                title: card.title,
-                location: [card.location.x, card.location.y],
-                description: card.description,
-                duration: card.duration,
-                address: card.address,
-                category: card.category_name,
-                user: card.given_name,
-                photos: card.photos,
-                rating: card.total_rating
-              }
+        if (lng1) {
+          getFiltered(lat1, lng1, lat2, lng2)
+            .then(data => {
+              let cards = data.map((card) => {
+                return {
+                  id: card.card_id,
+                  title: card.title,
+                  location: [card.location.x, card.location.y],
+                  description: card.description,
+                  duration: card.duration,
+                  address: card.address,
+                  category: card.category_name,
+                  user: card.given_name,
+                  photos: card.photos,
+                  rating: card.total_rating
+                }
+              })
+              res.json(cards)
             })
-            res.json(cards)
-          })
-          .catch(err => {
-            res.status(400).send("ERROR");
+            .catch(err => {
+              res.status(400).send("ERROR");
 
-          });
+            });
+        } else {
+          res.rendirect('/');
+        }
       })
     }
     https.request(options, callback).end();

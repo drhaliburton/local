@@ -1,12 +1,15 @@
 import React, { Component } from 'react';
 import DatePicker from '../../node_modules/react-datepicker';
 import moment from 'moment';
+import TimeSet from './TimeSet.jsx'
 
 class Set extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      startDate: moment()
+      startDate: moment(),
+      startTime: 9,
+      timeOfDay: 'AM',
     };
     this.handleChange = this.handleChange.bind(this);
   }
@@ -16,6 +19,9 @@ class Set extends Component {
       startDate: date
     });
   }
+  handleInput(time) {
+    console.log(time)
+  }
   toggleActive() {
     this.setState({
       isActive: !this.state.isActive
@@ -23,7 +29,24 @@ class Set extends Component {
   }
   submitDate(event) {
     this.props.setDate(this.state.startDate)
+    this.props.setTime(this.state)
     this.toggleActive()
+    this.submitTime()
+  }
+  submitTime() {
+    // this.setState({
+    //   startTime: event.target.value
+    // })
+  }
+  submitAM(event) {
+    this.setState({
+      timeOfDay: event.target.value
+    })
+  }
+  timeChange(event) {
+    this.setState({
+      startTime: event.target.value
+    })
   }
   // toggleHidden(event){
   //   this.setState({
@@ -41,7 +64,7 @@ class Set extends Component {
           <div className="modal-background"></div>
           <div className="modal-card">
             <header className="modal-card-head">
-              <p className="modal-card-title">What day do you want to plan?</p>
+              <h6 className="modal-card-title">What day do you want to plan?</h6>
             </header>
             <section className="modal-card-body">
               <DatePicker
@@ -51,11 +74,17 @@ class Set extends Component {
               />
             </section>
             <section className="modal-card-foot">
-              <div className="column">
-                <div className="control has-text-centered">
-                  <button type="submit" value="submit" className="button" onClick={this.submitDate.bind(this)}>Submit</button>
+              <h6 className="subtitle is-6">What time do you want to start?</h6>
+              <div className="columns">
+                <div className="column time-set is-6 has-text-centered">
+                  <TimeSet submitTime={this.submitTime.bind(this)} submitAM={this.submitAM.bind(this)} handleChange={this.timeChange.bind(this)} />
                 </div>
-              </div>
+                <div className="column submit is-6">
+                  <div className="control has-text-centered">
+                    <button type="submit" value="submit" className="button" onClick={this.submitDate.bind(this)}>Submit</button>
+                  </div>
+                </div>
+                </div>
             </section>
             <div>
             </div>

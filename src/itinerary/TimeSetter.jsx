@@ -20,13 +20,10 @@ constructor(props) {
   }
 
   onChange(value){
-    console.log('do you have any value?', value)
   }
   componentWillReceiveProps(nextProps) {
-    console.log('props', nextProps)
   }
   componentDidUpdate(prevProps, prevState) {
-    console.log('are you there?', prevProps, prevState.value)
   }
   render() {
     const format = 'h:mm a';

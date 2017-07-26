@@ -86,7 +86,6 @@ module.exports = (knex) => {
     const userId = req.session.userId;
     const cardId = req.body.cardId;
 
-    console.log('inside post:', userId, cardId);
     if (!userId) {
       res.json({
         status: 'userID does not exist'
@@ -95,7 +94,6 @@ module.exports = (knex) => {
     } else {
       delFavorite(cardId, userId)
         .then(() => {
-          console.log('after delete');
           res.json({
             status: 'ok'
           })
@@ -134,21 +132,21 @@ module.exports = (knex) => {
   router.get("/map", (req, res) => {
     function initMap() {
       var places = [{
-          lat: -25.0264017,
-          lng: 115.1772893
-        },
-        {
-          lat: -25.363,
-          lng: 131.044
-        },
-        {
-          lat: -33.8470219,
-          lng: 150.3715133
-        },
-        {
-          lat: -37.971237,
-          lng: 144.4926879
-        }
+        lat: -25.0264017,
+        lng: 115.1772893
+      },
+      {
+        lat: -25.363,
+        lng: 131.044
+      },
+      {
+        lat: -33.8470219,
+        lng: 150.3715133
+      },
+      {
+        lat: -37.971237,
+        lng: 144.4926879
+      }
       ]
 
       var map = new google.maps.Map(document.getElementById('map'), {

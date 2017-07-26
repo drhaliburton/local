@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import FavContentContainer from "./FavCard/FavContentContainer.jsx";
 
 
@@ -6,15 +6,20 @@ import FavContentContainer from "./FavCard/FavContentContainer.jsx";
 var Carousel = require('nuka-carousel');
 
 const FavSlider = React.createClass({
+
   mixins: [Carousel.ControllerMixin],
+
+
   render() {
     let cardsArray = this.props.cards;
+
+
     return (
       <Carousel decorators={Carousel.getDefaultProps().decorators.slice(0, 2)} slidesToShow={1} slidesToScroll={2} cellSpacing={10} dragging={true} wrapAround={true} easing="easeInOut" slideWidth="200px" height="300" cellAlign="left">
-         {
+        {
           cardsArray.map((card, index) => {
             return <div key={index} className="card">
-              <FavContentContainer key={card.id} cardContent={card} add={this.props.add.bind(this)} removeFavorite={this.props.removeFavorite.bind(this)}/>
+              <FavContentContainer key={card.id} cardContent={card} add={this.props.add.bind(this)} removeFavorite={this.props.removeFavorite.bind(this)} />
             </div>;
           })
         }
