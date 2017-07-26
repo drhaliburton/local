@@ -28,7 +28,7 @@ class ItineraryIndex extends Component {
       })
       );
 
-    Api.get('/itinerary/')
+    Api.get('/itinerary/cards')
       .then((cards) => this.setState({
         itineraryCards: cards
       })

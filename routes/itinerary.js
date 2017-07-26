@@ -20,7 +20,7 @@ module.exports = (knex) => {
       .then(data => {
         let cards = data.map((card) => {
           return {
-            id: card.id,
+            itinerary_id: card.itn_id,
             card_id: card.card_id,
             user_id: card.user_id,
             title: card.title,
@@ -28,9 +28,12 @@ module.exports = (knex) => {
             address: card.adddress,
             description: card.description,
             duration: card.duration,
+            date: card.date,
             category_id: card.category_id,
+            category: card.category_name
           }
         });
+
         res.json(cards);
 
       })
@@ -57,7 +60,7 @@ module.exports = (knex) => {
             photos: card.photos
           }
         });
-        console.log(cards)
+
         res.json(cards);
 
       })
@@ -105,11 +108,22 @@ module.exports = (knex) => {
 
   router.get("/map", (req, res) => {
     function initMap() {
-    var places = [
-      {lat: -25.0264017, lng: 115.1772893},
-      {lat: -25.363, lng: 131.044},
-      {lat: -33.8470219, lng: 150.3715133},
-      {lat:-37.971237, lng: 144.4926879}
+      var places = [{
+          lat: -25.0264017,
+          lng: 115.1772893
+        },
+        {
+          lat: -25.363,
+          lng: 131.044
+        },
+        {
+          lat: -33.8470219,
+          lng: 150.3715133
+        },
+        {
+          lat: -37.971237,
+          lng: 144.4926879
+        }
       ]
 
       var map = new google.maps.Map(document.getElementById('map'), {
@@ -117,13 +131,13 @@ module.exports = (knex) => {
         center: places[0]
       })
 
-      places.forEach(function(geolocation){
+      places.forEach(function (geolocation) {
         var marker = new google.maps.Marker({
           position: places.geolocation,
           map: map
         })
       })
-    return map;
+      return map;
     }
     res.render("maps")
   });

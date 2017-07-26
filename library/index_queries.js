@@ -1,61 +1,72 @@
 module.exports = (knex) => {
   const obj = {};
 
-  obj.hasVoted = function(card_id, user_id){
+  obj.hasVoted = function (card_id, user_id) {
+
     return knex('ratings')
-    .where({ card_id, user_id })
-    .first()
-    .then((rating) => {
-      if(!rating){
-        throw new Error(`No ratings for (card_id=${card_id}, user_id=${user_id}`);
-      }
-      return knex('ratings')
-      .where({ card_id, user_id })
+      .where({
+        card_id,
+        user_id
+      })
       .first()
-    })
-    .catch(() => {
-      return knex ('ratings')
+      .then((rating) => {
+        if (!rating) {
+          throw new Error(`No ratings for (card_id=${card_id}, user_id=${user_id}`);
+        }
+        return knex('ratings')
+          .where({
+            card_id,
+            user_id
+          })
+          .first()
+      })
+      .catch(() => {
+        return knex('ratings')
       })
   }
 
 
-  obj.postUpvote= function(card_id, user_id){
+  obj.postUpvote = function (card_id, user_id) {
+
     return knex('ratings')
-    .insert({
-      rating: 1,
-      user_id: user_id,
-      card_id: card_id
-    })
-    .where('card_id', card_id)
-    .then(() => {
-      return knex('cards')
-      .where('id', card_id)
-      .increment('total_rating', 1)
-    })
+      .insert({
+        rating: 1,
+        user_id: user_id,
+        card_id: card_id
+      })
+      .where('card_id', card_id)
+      .then(() => {
+        return knex('cards')
+          .where('id', card_id)
+          .increment('total_rating', 1)
+      })
   }
 
-  obj.postDownvote= function(card_id, user_id){
+  obj.postDownvote = function (card_id, user_id) {
+
     return knex('ratings')
-    .where('user_id', user_id)
-    .andWhere('card_id', card_id)
-    .del()
-    .then(() => {
-      return knex('cards')
-      .where('id', card_id)
-      .decrement('total_rating', 1)
-    })
+      .where('user_id', user_id)
+      .andWhere('card_id', card_id)
+      .del()
+      .then(() => {
+        return knex('cards')
+          .where('id', card_id)
+          .decrement('total_rating', 1)
+      })
   }
 
 
-  obj.getRatings= function(card_id){
+  obj.getRatings = function (card_id) {
+
     const data = {}
     return knex('cards')
-    .where('id', card_id)
-    .select('total_rating')
+      .where('id', card_id)
+      .select('total_rating')
   }
 
 
   obj.addFavorite = function (cardId, userId) {
+
     return knex('favorites')
       .insert({
         card_id: cardId,
@@ -65,6 +76,7 @@ module.exports = (knex) => {
 
 
   obj.getFiltered = function (lat1, lng1, lat2, lng2) {
+
     return knex('cards AS filterCards')
       .whereRaw(`box '((${lat1}, ${lng1}),(${lat2}, ${lng2}))' @> ("location")`)
       .leftJoin('users', 'filterCards.user_id', 'users.id')
@@ -90,6 +102,7 @@ module.exports = (knex) => {
   }
 
   obj.allCards = function () {
+
     return knex('cards')
       .select(['cards.id AS card_id', 'cards.title', 'cards.description', 'cards.address', 'cards.location', 'cards.total_rating',
         'cards.duration', 'users.given_name', 'users.family_name', 'categories.name AS category_name',
