@@ -77,15 +77,16 @@ class Set extends Component {
               />
             </section>
             <section className="modal-card-foot">
+              <h6 className="subtitle is-6">What time do you want to start?</h6>
               <div className="columns">
                 <div className="column time-set is-6 has-text-centered">
                   <TimeSet submitTime={this.submitTime.bind(this)} submitAM={this.submitAM.bind(this)} handleChange={this.timeChange.bind(this)} />
+                </div>
+                <div className="column submit is-6">
+                  <div className="control has-text-centered">
+                    <button type="submit" value="submit" className="button" onClick={this.submitDate.bind(this)}>Submit</button>
                   </div>
-                  <div className="column submit is-6">
-                    <div className="control has-text-centered">
-                      <button type="submit" value="submit" className="button" onClick={this.submitDate.bind(this)}>Submit</button>
-                    </div>
-                  </div>
+                </div>
                 </div>
             </section>
             <div>
