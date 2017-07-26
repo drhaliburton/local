@@ -30,7 +30,8 @@ module.exports = (knex) => {
             duration: card.duration,
             date: card.date,
             category_id: card.category_id,
-            category: card.category_name
+            category: card.category_name,
+            photos: card.photos
           }
         });
 
