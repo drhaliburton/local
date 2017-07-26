@@ -41,6 +41,7 @@ class ExportCalendar extends Component {
   //   });
   // }
   handleClick(event) {
+    //loop through state and post each event  
     let newBody = this.state
     fetch('https://www.googleapis.com/calendar/v3/calendars/primary/events', {
       method: 'POST',
@@ -58,6 +59,8 @@ class ExportCalendar extends Component {
     let dateArray = nextProps.date
     let props = nextProps
     console.log('yo', props)
+    //map into new array 
+    
     eventArray.map((event) => {
     this.setState({
       "summary": event.title,

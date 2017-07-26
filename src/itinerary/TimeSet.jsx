@@ -4,34 +4,28 @@ class TimeSet extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      startTime: 9
     };
   }
+
   render() {
     return (
+
       <div className="time-input">
-        <input className="input" type="number" placeholder="9" onKeyDown={(event) => {
-          if (event.key === 'Enter') {
-            console.log('new time!!!!!', event.target.value)
-          }
-        }} />
-        <div className="select is-multiple"onClick={(event) => {
-              if (event.key === 'Enter') {
-                console.log('new time!!!!!', event.target.value)
-              }
-            }}>
-          <select multiple size="2">
-            <option value="AM" onClick={(event) => {
-              if (event.key === 'Enter') {
-                console.log('new time!!!!!', event.target.value)
-              }
-            }}>AM</option>
-            <option value="PM" onClick={(event) => {
-              if (event.key === 'Enter') {
-                console.log('new time!!!!!', event.target.value)
-              }
-            }}>PM</option>
-          </select>
+        <div className="column">
+          <input className="input" type="number" placeholder="9" onKeyDown={(event) => {
+            if (event.key === 1|2|3|4|5|6|7|8|9|0) {
+              this.props.submitTime(event)
+            }
+          }}
+          />
+        </div>
+        <div className="column">
+          <div className="select is-multiple" >
+            <select multiple size="2" onClick={this.props.submitAM.bind(this)}>
+              <option value="AM">AM</option>
+              <option value="PM">PM</option>
+            </select>
+          </div>
         </div>
       </div>
     );

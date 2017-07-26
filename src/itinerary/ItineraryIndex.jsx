@@ -87,7 +87,7 @@ class ItineraryIndex extends Component {
         </div>
         <div className="welcome">
           <ExportCalendar token={this.props.currentUser.token} events={this.state.itineraryCards} date={this.state.date}/>
-          <Set setDate={this.setDate.bind(this)}/>
+          <Set setDate={this.setDate.bind(this)} time={this.state.time} cards={this.state.itineraryCards}/>
           <h3 className="title is-3">{this.state.date.format('LL')}</h3>
         </div>
         <div className="columns">
@@ -95,7 +95,6 @@ class ItineraryIndex extends Component {
             <ItineraryTime />
           </div>
           <div className="column is-1">
-            <TimeSet time={this.state.time} cards={this.state.itineraryCards}/>
           </div>
           <div className="column is-10">
             <SortableComponent cards={this.state.itineraryCards} />

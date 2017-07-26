@@ -1,12 +1,15 @@
 import React, { Component } from 'react';
 import DatePicker from '../../node_modules/react-datepicker';
 import moment from 'moment';
+import TimeSet from './TimeSet.jsx'
 
 class Set extends Component {
   constructor(props) {
     super(props)
     this.state = {
       startDate: moment(),
+      startTime: 9,
+      timeOfDay: 'AM',
     };
     this.handleChange = this.handleChange.bind(this);
   }
@@ -28,6 +31,18 @@ class Set extends Component {
     this.props.setDate(this.state.startDate)
     this.toggleActive()
   }
+  submitTime(event) {
+    this.setState({
+      startTime: event.target.value
+    })
+    console.log('STATE THAT', this.state)
+  }
+  submitAM(event) {
+    this.setState({
+      timeOfDay: event.target.value
+    })
+    console.log('STATE THAT', this.state)
+  }
   // toggleHidden(event){
   //   this.setState({
   //     isHidden: !this.state.isHidden
@@ -44,7 +59,7 @@ class Set extends Component {
           <div className="modal-background"></div>
           <div className="modal-card">
             <header className="modal-card-head">
-              <p className="modal-card-title">What day do you want to plan?</p>
+              <h6 className="modal-card-title">What day do you want to plan?</h6>
             </header>
             <section className="modal-card-body">
               <DatePicker
@@ -52,7 +67,10 @@ class Set extends Component {
                 selected={this.state.startDate}
                 onChange={this.handleChange}
               />
+              </section>
+              <section className="modal-card-footer">
                 <div className="column">
+                  <TimeSet submitTime={this.submitTime.bind(this)} submitAM={this.submitAM.bind(this)}/> 
                   <div className="control has-text-centered">
                     <button type="submit" value="submit" className="button" onClick={this.submitDate.bind(this)}>Submit</button>
                   </div>
