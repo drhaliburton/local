@@ -35,7 +35,7 @@ class ItineraryIndex extends Component {
       );
     this.setState({time : [9] })
   }
-    
+
 
   add(card) {
     let newCard = this.state.itineraryCards.concat(card.card);
@@ -119,13 +119,39 @@ class ItineraryIndex extends Component {
     })
   };
 
+  removeFavorite(id) {
+    console.log(id)
+
+     fetch('/itinerary/favorite', {
+      method: 'POST',
+      credentials: 'include',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        cardId: id
+      })
+    })
+    this.reRenderFavorites();
+  }
+
+  reRenderFavorites() {
+    Api.get('/itinerary/favorites')
+      .then((cards) => this.setState({
+        favCards: cards
+      })
+    );
+  }
+
+
   render() {
     const node = document.getElementById('top');
     node.scrollIntoView({ behavior: "smooth" });
     return (
       <div className="itinerary-container">
         <div className="header">
-          <FavoriteBar favCards={this.state.favCards} add={this.add.bind(this)} />
+          <FavoriteBar favCards={this.state.favCards} add={this.add.bind(this)} removeFavorite={this.removeFavorite.bind(this)} />
         </div>
         <p className="calendar"><i className="fa fa-calendar-check-o"></i>&nbsp;save to calendar</p>
         <div className="welcome">
@@ -141,7 +167,7 @@ class ItineraryIndex extends Component {
             <TimeSet time={this.state.time} cards={this.state.itineraryCards}/>
           </div>
           <div className="column is-10">
-            <SortableComponent cards={this.state.itineraryCards} />
+            <SortableComponent cards={this.state.itineraryCards}/>
           </div>
         </div>
       </div>

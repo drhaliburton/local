@@ -106,22 +106,29 @@ module.exports = (knex) => {
     let card_id = req.body['cardID'];
     let user_id = req.session.userId;
 
-
-    // if(hasVoted(card_id, user_id)){
-    //   console.log('has voted already')
-    // }
-    // else{
+    console.log("******The card id is " + card_id)
     postUpvote(card_id, user_id)
-      .then((result) => {
+      .then(() => {
         res.json({
-          status: 'okay',
-          data: result
+          status: 'okay'
         })
       })
       .catch(err => {
         res.status(400).send("ERROR in upvoting");
       });
+
+    // if(hasVoted(card_id, user_id)){
+    //   console.log('has voted already')
     // }
+    // else{
+    //   postUpvote(card_id, user_id)
+    //     .then((result)=>{
+    //         res.json({status: 'okay', data: result})
+    //     })
+    //     .catch(err => {
+    //         res.status(400).send("ERROR in upvoting");
+    //       });
+    // // }
     // else{
     //   res.redirect('/#/auth');
     // }
@@ -144,16 +151,23 @@ module.exports = (knex) => {
     //   console.log('has voted already')
 
     postDownvote(card_id, user_id)
-      .then((result) => {
+      .then(() => {
         res.json({
-          status: 'okay',
-          data: result
+          status: 'okay'
         })
       })
       .catch(err => {
         res.status(400).send("ERROR in downvoting");
-
       });
+    // =======
+    //       .then((result)=>{
+    //           res.json({status: 'okay', data: result})
+    //       })
+    //       .catch(err => {
+    //           res.status(400).send("ERROR in downvoting");
+    // >>>>>>> 94befa7ab7077db67cd17ba38f014077c370141f
+
+
     //  } else {
     //    console.log('User has already downvoted');
     // }
@@ -163,7 +177,7 @@ module.exports = (knex) => {
   });
 
   router.post("/", (req, res) => {
-  
+
     const userID = req.session.userId;
     const geoInfo = req.body.location.gmaps
     const newCard = {

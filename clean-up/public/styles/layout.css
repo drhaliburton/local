@@ -22,7 +22,7 @@
       .cards .card a:hover {
         color: #00645c; }
     .cards .card .content {
-      height: auto; }
+      height: 100%; }
     .cards .card .fa-star {
       position: relative;
       top: 12px;

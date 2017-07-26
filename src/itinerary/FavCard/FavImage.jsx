@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 
 class FavImage extends Component {
-  
+
   renderImage(images) {
     if (images == null) {
       return 'http://placekitten.com.s3.amazonaws.com/homepage-samples/408/287.jpg';
@@ -13,6 +13,7 @@ class FavImage extends Component {
     return (
       <div className="card-image">
         <figure className="image">
+                  <a className="delete" onClick={(event) => {this.props.removeFavorite(this.props.id)}}></a>
           <img src={this.renderImage(this.props.images)} alt="Image"></img>
         </figure>
       </div>

@@ -132,7 +132,6 @@ class HomepageIndex extends Component {
       }).then(() => {
         console.log('Removed vote!');
       this.reRenderHomepageCards();
-      // window.location.href = '/';
       })
     }
 

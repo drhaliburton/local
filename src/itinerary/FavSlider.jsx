@@ -14,7 +14,7 @@ const FavSlider = React.createClass({
          {
           cardsArray.map((card, index) => {
             return <div key={index} className="card">
-              <FavContentContainer key={card.id} cardContent={card} add={this.props.add.bind(this)}/>
+              <FavContentContainer key={card.id} cardContent={card} add={this.props.add.bind(this)} removeFavorite={this.props.removeFavorite.bind(this)}/>
             </div>;
           })
         }

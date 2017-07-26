@@ -1,5 +1,5 @@
 .itinerary-container {
-  margin: 120px 80px;
+  margin: 50px 80px;
   .columns{
   .morning {
     margin-top: 1rem;
@@ -26,6 +26,12 @@
     margin: 20px;
   }
 
+}
+.delete {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  opacity: .8;
 }
 
 .set-date {
