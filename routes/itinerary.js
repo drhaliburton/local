@@ -109,21 +109,21 @@ module.exports = (knex) => {
   router.get("/map", (req, res) => {
     function initMap() {
       var places = [{
-          lat: -25.0264017,
-          lng: 115.1772893
-        },
-        {
-          lat: -25.363,
-          lng: 131.044
-        },
-        {
-          lat: -33.8470219,
-          lng: 150.3715133
-        },
-        {
-          lat: -37.971237,
-          lng: 144.4926879
-        }
+        lat: -25.0264017,
+        lng: 115.1772893
+      },
+      {
+        lat: -25.363,
+        lng: 131.044
+      },
+      {
+        lat: -33.8470219,
+        lng: 150.3715133
+      },
+      {
+        lat: -37.971237,
+        lng: 144.4926879
+      }
       ]
 
       var map = new google.maps.Map(document.getElementById('map'), {

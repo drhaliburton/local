@@ -47,7 +47,8 @@
 }
 
 .modal {
-  min-width: 370px;
+  overflow: visible;
+  min-width: 350px;
   margin-left: 32%;
   margin-right: 32%;
   .icon{
@@ -56,6 +57,14 @@
     .fa{
       color: $light-grey;
     }
+  }
+  label{
+    font-size: .9em !important;
+  }
+  .modal-card-body{
+    padding: 25px !important;
+    min-height: 100% !important;
+    padding-bottom: 40px;
   }
 }
 
@@ -75,12 +84,7 @@
 }
 .geosuggest__input {
   border-color: pink !important;
-  font-size: .75em;
-  -moz-appearance: none;
-  -webkit-appearance: none;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
+  font-size: .8em;
   border: 1px solid transparent;
   border-radius: 3px;
   -webkit-box-shadow: none;
@@ -89,23 +93,11 @@
   display: -ms-inline-flexbox;
   display: inline-flex;
   height: 2.25em;
-  -webkit-box-pack: start;
-  -ms-flex-pack: start;
-  justify-content: flex-start;
-  line-height: 1.5;
-  padding-bottom: calc(0.375em - 1px);
-  padding-left: calc(0.625em - 1px);
-  padding-right: calc(0.625em - 1px);
-  padding-top: calc(0.375em - 1px);
-  position: relative;
-  vertical-align: top;
-  -webkit-box-shadow: inset 0 1px 2px rgba(10, 10, 10, 0.1);
-  box-shadow: inset 0 1px 2px rgba(10, 10, 10, 0.1);
   max-width: 100%;
   width: 100%;
   width: 100%;
   border: 1px solid transparent;
-  padding: .9em 2.5em;
+  padding-left: 2.4em;
   -webkit-transition: border 0.2s, box-shadow 0.2s;
   transition: border 0.2s, box-shadow 0.2s;
 }
