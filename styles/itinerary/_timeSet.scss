@@ -10,4 +10,15 @@
     color: black;
     font-size: 12px;
   }
+  .time-set{
+    padding-left: 2rem;
+    .column.time-input{
+      padding:1.3rem;
+      .input {
+      padding: 1rem;
+      width: 1rem;
+    }
+    }
+    
+  }
 }
