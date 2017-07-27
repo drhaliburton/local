@@ -57,19 +57,10 @@
     font-size: .9em;
     padding-bottom:10px;
   }
-  .toggle-title{
-    font-size: 1em;
-    transition: all 0.5s ease-in-out;
-    font-weight: 400;
-    }
-  }
-  .toggle-arrow{
-    .fa{
-      transition: all 0.5s ease-in-out;
-      margin-top: 6px;
-      color: $green;
-      font-size: 1.6em;
-    }
+  .modal-card-body{
+    padding: 25px !important;
+    // min-height: 100% !important;
+    padding-bottom: 40px;
   }
 
 .cards-container {

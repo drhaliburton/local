@@ -30,9 +30,11 @@ class SortableComponent extends Component {
 
   onSortEnd = ({oldIndex, newIndex}) => {
     const move = arrayMove(this.state.items, oldIndex, newIndex)
-    this.setState({
-      items: move,
-    });
+    // this.setState({
+    //   items: move,
+    // });
+
+    this.props.reorderCards(move);
     // console.log('ITEM:', this.state.items[0].title, 'ITEM DURATION:', this.state.items[0].duration)
 
   };
