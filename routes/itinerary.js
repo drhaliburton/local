@@ -8,7 +8,8 @@ module.exports = (knex) => {
     favCards,
     getItinerary,
     makeItinerary,
-    delFavorite
+    delFavorite,
+    delItnCard
   } = queries(knex);
 
   router.get("/cards", (req, res) => {
@@ -26,6 +27,7 @@ module.exports = (knex) => {
             return {
               id: card.card_id,
               itinerary_id: card.itn_id,
+              itnCardId: card.itn_card_id,
               user_id: card.user_id,
               title: card.title,
               location: card.location,
@@ -132,21 +134,21 @@ module.exports = (knex) => {
   router.get("/map", (req, res) => {
     function initMap() {
       var places = [{
-        lat: -25.0264017,
-        lng: 115.1772893
-      },
-      {
-        lat: -25.363,
-        lng: 131.044
-      },
-      {
-        lat: -33.8470219,
-        lng: 150.3715133
-      },
-      {
-        lat: -37.971237,
-        lng: 144.4926879
-      }
+          lat: -25.0264017,
+          lng: 115.1772893
+        },
+        {
+          lat: -25.363,
+          lng: 131.044
+        },
+        {
+          lat: -33.8470219,
+          lng: 150.3715133
+        },
+        {
+          lat: -37.971237,
+          lng: 144.4926879
+        }
       ]
 
       var map = new google.maps.Map(document.getElementById('map'), {
@@ -165,10 +167,27 @@ module.exports = (knex) => {
     res.render("maps")
   });
 
-  router.post("/:id", (req, res) => {
-    // Save itinerary to DB
-    // Form will include favorite.card_id, itinerary-card.start_time, itinerary.date
-    // Delete each card used from favorite
+  router.post("/delete", (req, res) => {
+    console.log(req.body.itnID)
+    const itnCardID = req.body.itnCardID;
+    const userID = req.session.userId;
+    if (!userID) {
+      res.json({
+        status: 'userID does not exist'
+      })
+      return
+    } else {
+      delItnCard(itnCardID)
+        .then(() => {
+          res.json({
+            status: 'ok'
+          })
+        })
+        .catch(err => {
+          console.log(err);
+          res.status(400).send("ERROR");
+        });
+    }
   });
 
 

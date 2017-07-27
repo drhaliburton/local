@@ -58,7 +58,7 @@ class ExportCalendar extends Component {
     let eventArray = nextProps.events
     let dateArray = nextProps.date
     let props = nextProps
-    console.log('yo', props)
+
     //map into new array 
     
     eventArray.map((event) => {
@@ -73,7 +73,7 @@ class ExportCalendar extends Component {
       }
     })
   });
-  console.log('update state', this.state)
+
   }
   render() {
     // const activeToggle = this.state.isActive ? 'is-active' : ''

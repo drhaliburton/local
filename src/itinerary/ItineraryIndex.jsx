@@ -30,9 +30,10 @@ class ItineraryIndex extends Component {
     );
 
     Api.get('/itinerary/cards')
-      .then((cards) => this.setState({
+      .then((cards) => {this.setState({
         itineraryCards: cards
       })
+    console.log(this.state.itineraryCards)}
     );
     this.setState({time : [9] })
   }
@@ -50,11 +51,11 @@ class ItineraryIndex extends Component {
   }
 
   removeItineraryCard(card) {
-    let removeCard = this.state.itineraryCards.splice(card.card, 1);
-    let newCard = this.state.favCards.concat(card.card);
-    console.log(removeCard);
-    this.setState({ itineraryCards: removeCard });
-    this.setState({ favCards: newCard })
+    let target = this.state.itineraryCards.indexOf(card.card);
+
+    this.setState({ 
+      itineraryCards: this.state.itineraryCards.slice(0, target).concat(this.state.itineraryCards.slice(target + 1))
+    });
   }
 
   componentDidMount() {
@@ -99,7 +100,10 @@ class ItineraryIndex extends Component {
       })
     })
   };
-
+  sortCards(cards){
+    console.log(cards)
+    this.setState({itineraryCards: cards})
+  }
   removeFavorite(id) {
 
      fetch('/itinerary/favorite', {
@@ -130,7 +134,7 @@ class ItineraryIndex extends Component {
     node.scrollIntoView({ behavior: "smooth" });
     return (
 
-      <div className="itinerary-container">      {console.log('state', this.state)}
+      <div className="itinerary-container">      
         <div className="header">
           <FavoriteBar favCards={this.state.favCards} add={this.add.bind(this)} removeFavorite={this.removeFavorite.bind(this)} />
         </div>
@@ -149,7 +153,7 @@ class ItineraryIndex extends Component {
             <h5 className="start-time title is-5">{this.state.startTime} {this.state.timeOfDay}</h5>
           </div>
           <div className="it-card column is-9">
-            <SortableComponent cards={this.state.itineraryCards} remove={this.removeItineraryCard.bind(this)}/>
+            <SortableComponent cards={this.state.itineraryCards} sortCards={this.sortCards.bind(this)} remove={this.removeItineraryCard.bind(this)}/>
           </div>
         </div>
       </div>
