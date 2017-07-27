@@ -4,20 +4,19 @@
   float: right;
   padding: 1rem;
   border:none;
-  &:hover{
-    border:none;
-    color: pink;
-  }
-} .button.calendar{
   height:100%;
-}
-  .icon.is-medium{
-    .fa.calendar{
-       &:hover{
-      color: pink !important;
+    &:hover{
+      border:none;
+      color: pink;
     }
-    }
+    .icon.is-medium.fa {
+        .fa-clock-o {
+          &:hover{
+          color: pink !important;
+      }
+    } 
   }
+}
 
 .modal{
   .modal-card {

@@ -61,7 +61,7 @@ class Set extends Component {
       <div className="set-date">
         <div className='button calendar' onClick={this.toggleActive.bind(this)}>
           <span className="icon is-medium calendar">
-            <i className="fa fa-calendar-o calendar"></i>
+            <i className="fa fa-clock-o"></i>
           </span>
           {/* <h6 className="title is-6">&nbsp;&nbsp;set date</h6> */}
         </div>
