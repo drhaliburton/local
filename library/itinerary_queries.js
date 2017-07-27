@@ -54,11 +54,16 @@ module.exports = (knex) => {
   obj.makeItinerary = function (date, cardIds, userID) {
 
     return knex('itineraries')
-      .insert({
-        date: date,
-        user_id: userID
+      .del()
+      .where('user_id', userID)
+      .then(()=>{
+        return knex('itineraries')
+          .insert({
+            date: date,
+            user_id: userID
+          })
+          .returning('id')
       })
-      .returning('id')
       .then((id) => {
         return Promise.all(cardIds.map((cardId) => {
           return knex('itinerary_cards')

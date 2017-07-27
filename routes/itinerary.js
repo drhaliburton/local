@@ -1,5 +1,3 @@
-"use strict";
-
 const express = require('express');
 const router = express.Router();
 const queries = require("../library/itinerary_queries.js")
@@ -16,58 +14,71 @@ module.exports = (knex) => {
   router.get("/cards", (req, res) => {
     const user_id = req.session.userId;
 
-    getItinerary(user_id)
-      .then(data => {
-        let cards = data.map((card) => {
-          return {
-            itinerary_id: card.itn_id,
-            card_id: card.card_id,
-            user_id: card.user_id,
-            title: card.title,
-            location: card.location,
-            address: card.adddress,
-            description: card.description,
-            duration: card.duration,
-            date: card.date,
-            category_id: card.category_id,
-            category: card.category_name,
-            photos: card.photos
-          }
-        });
-
-        res.json(cards);
-
+    if (!user_id) {
+      res.json({
+        status: 'userID does not exist'
       })
-      .catch(err => {
-        res.status(400).send("ERROR");
-      })
+      return
+    } else {
+      getItinerary(user_id)
+        .then(data => {
+          let cards = data.map((card) => {
+            return {
+              id: card.card_id,
+              itinerary_id: card.itn_id,
+              user_id: card.user_id,
+              title: card.title,
+              location: card.location,
+              address: card.adddress,
+              description: card.description,
+              duration: card.duration,
+              date: card.date,
+              category_id: card.category_id,
+              category: card.category_name,
+              photos: card.photos
+            }
+          });
+
+          res.json(cards);
+
+        })
+        .catch(err => {
+          res.status(400).send("ERROR");
+        })
+    }
   });
 
 
   router.get("/favorites", (req, res) => {
     const user_id = req.session.userId;
-
-    favCards(user_id)
-      .then(data => {
-        let cards = data.map((card) => {
-          return {
-            id: card.card_id,
-            title: card.title,
-            location: [card.location.x, card.location.y],
-            description: card.description,
-            duration: card.duration,
-            address: card.address,
-            category: card.category_id,
-            photos: card.photos
-          }
-        });
-
-        res.json(cards);
-
+    if (!user_id) {
+      res.json({
+        status: 'userID does not exist'
       })
-      .catch(err => {
-        res.status(400).send("ERROR");
-      })
+      return
+    } else {
+      favCards(user_id)
+        .then(data => {
+          let cards = data.map((card) => {
+            return {
+              id: card.card_id,
+              title: card.title,
+              location: [card.location.x, card.location.y],
+              description: card.description,
+              duration: card.duration,
+              address: card.address,
+              category: card.category_id,
+              photos: card.photos
+            }
+          });
+
+          res.json(cards);
+
+        })
+        .catch(err => {
+          res.status(400).send("ERROR");
+        })
+    }
   });
 
   router.post("/favorite", (req, res) => {
@@ -75,32 +86,47 @@ module.exports = (knex) => {
     const userId = req.session.userId;
     const cardId = req.body.cardId;
 
-    delFavorite(cardId, userId)
-      .then(() => {
-        res.json({
-          status: 'ok'
-        })
+    if (!userId) {
+      res.json({
+        status: 'userID does not exist'
       })
-      .catch(err => {
-        res.status(400).send("ERROR");
-      });
+      return
+    } else {
+      delFavorite(cardId, userId)
+        .then(() => {
+          res.json({
+            status: 'ok'
+          })
+        })
+        .catch(err => {
+          res.status(400).send("ERROR");
+        });
+    }
   })
 
 
   router.post('/cards', (req, res) => {
-    const userID = req.session.userId;
+    const userId = req.session.userId;
     const cardIds = req.body.cardIds;
     const date = req.body.date;
 
-    makeItinerary(date, cardIds, userID)
-      .then(() => {
-        res.json({
-          status: 'ok'
-        })
+    if (!userId || cardIds.includes(null)) {
+      res.json({
+        status: 'Missing userID and/or cardID'
       })
-      .catch(err => {
-        res.status(400).send("ERROR");
-      });
+      return
+    } else {
+
+      makeItinerary(date, cardIds, userId)
+        .then(() => {
+          res.json({
+            status: 'ok'
+          })
+        })
+        .catch(err => {
+          res.status(400).send("ERROR");
+        });
+    }
   })
 
   router.get("/map", (req, res) => {

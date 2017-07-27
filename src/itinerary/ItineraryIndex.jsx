@@ -30,13 +30,15 @@ class ItineraryIndex extends Component {
       })
       );
 
-    // Api.get('/itinerary/cards')
-    //   .then((cards) => this.setState({
-    //     itineraryCards: cards
-    //   })
-    // );
     let defaultStartTime = moment().hour(9);
     this.setState(({ time: [9], momentStartTime: defaultStartTime }))
+    
+    Api.get('/itinerary/cards')
+      .then((cards) => this.setState({
+        itineraryCards: cards
+      })
+    );
+    this.setState({time : [9] })
   }
 
 
@@ -153,7 +155,7 @@ class ItineraryIndex extends Component {
         <div className="welcome">
           <ExportCalendar token={this.props.currentUser.token} events={this.state.itineraryCards} date={this.state.date}/>
           <Set setDate={this.setDate.bind(this)} setTime={this.setTime.bind(this)} cards={this.state.itineraryCards} />
-          {/* <button onClick={() => {this.saveItinerary()}}>Save</button> */}
+           <button onClick={() => {this.saveItinerary()}}>Save</button> 
           <h3 className="title is-3">{this.state.date.format('LL')}</h3>
         </div>
         <div className="columns">
