@@ -1,26 +1,67 @@
-.box {
-  border: 1px;
-  border-color: $light-grey;
-  border-style: solid;
-  border-radius: 10px;
-  width: 90%;
-  box-shadow: none;
-  font-size: 1em;
-  font-weight: 400;
-  transition: all 1s ease-in-out !important;
-  li{
-    margin-left: 40px;
-   padding-left: 40px;
+.media{
+  margin: 25px 100px 25px 40px;
+  padding: 10px;
+  border: 1px $light-grey solid;
+  border-radius: 5px;
+  overflow: hidden;
+  background-color: white;
+  .large-itinerary-image{
+    max-width: 200px;
+    height: 130px;
+    img{
+      object-fit: cover;
+      width: auto;
+      height: 100%;
+    }
   }
-  &:hover{
-    transition: all .2s ease !important;
-    border-color: $green;
-    cursor: pointer;
+  .small-itinerary-image{
+    max-width: 150px;
+    height: 110px;
+    img{
+      object-fit: cover;
+      width: 100%;
+      height: 100%;
+    }
+  }
+  .title{
+    padding-top: 3px;
+    font-size: 1.1em;
+  }
+  .subtitle{
+    padding-top: 5px;
+    font-size: .8em;
+    color: $green;
+    margin-bottom: 8px;
+  }
+  p{
+    font-size: .8em;
+  }
+  .long-event{
+    height: 130px;
+    img{
+      width: 130px;
+      height: 130px;
+    }
+  }
+  .short-event{
+    height: 100px;
+  }
+  .duration{
+    padding-top: 5px;
+    font-style: italic;
+    font-size: .7em;
+  }
+  .itinerary-delete{
+    padding: 10px;
+    color: $light-grey;
+    float: right;
+    &:hover{
+      cursor: pointer;
+      color: $dark-grey;
+    }
   }
   .fa {
     color: $light-grey;
-      &:hover{
-        color:pink;
-      }
   }
 }
+

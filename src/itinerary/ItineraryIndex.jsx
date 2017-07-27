@@ -36,7 +36,7 @@ class ItineraryIndex extends Component {
       .then((cards) => this.setState({
         itineraryCards: cards
       })
-    );
+      );
     // this.setState({time : [9] })
   }
 
@@ -53,6 +53,7 @@ class ItineraryIndex extends Component {
   }
 
   removeItineraryCard(card) {
+    event.preventDefault();
     let target = this.state.itineraryCards.indexOf(card.card);
 
     this.setState({
@@ -140,6 +141,8 @@ class ItineraryIndex extends Component {
   }
 
   render() {
+    console.log(this.state.itineraryCards);
+
     const node = document.getElementById('top');
     node.scrollIntoView({ behavior: "smooth" });
     return (
@@ -150,8 +153,14 @@ class ItineraryIndex extends Component {
         </div>
         <div className="welcome">
           <ExportCalendar token={this.props.currentUser.token} events={this.state.itineraryCards} date={this.state.date} />
+          <div className="save-itinerary">
+            <a className='button export' onClick={() => { this.saveItinerary() }}>
+              <p className="icon is-medium">
+                <i className="fa fa-floppy-o"></i>&nbsp;&nbsp;save
+              </p>
+            </a>
+          </div>
           <Set setDate={this.setDate.bind(this)} setTime={this.setTime.bind(this)} cards={this.state.itineraryCards} />
-          <button onClick={() => { this.saveItinerary() }}>Save</button>
           <h3 className="title is-3">{this.state.date.format('LL')}</h3>
         </div>
         <div className="columns">

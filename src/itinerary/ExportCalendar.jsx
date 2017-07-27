@@ -127,11 +127,10 @@ class ExportCalendar extends Component {
     // const activeToggle = this.state.isActive ? 'is-active' : ''
     // const day = this.state.startDate
     return (
-      <div className="set-date">
-        <a className='button export' onClick={this.handleClick.bind(this)}>
+      <div className="export-calendar">
+        <a className="button export" onClick={this.handleClick.bind(this)}>
         <p className="icon is-medium">
-          <i className="fa fa-calendar-check-o"></i>
-          &nbsp;save to calendar
+          <i className="fa fa-calendar-plus-o"></i>&nbsp;&nbsp;export
         </p>
           </a>
       </div>
