@@ -12,16 +12,21 @@ class TimeSet extends Component {
 
   render() {
     return (
-
-      <div className="time-input">
-          <input className="input has-text-centered" type="number" placeholder="9" onChange={this.props.handleChange.bind(this)}/>
+      <div className="time-set has-text-centered">
+        <div className="column is-6 time-input">
+          <input className="input has-text-centered" type="number" placeholder="9" onChange={this.props.handleChange.bind(this)} />
           <div className="select is-multiple" >
+          </div>
+        </div>
+        <div className="column is-6 am">
+          <div className="select is-multiple day-night">
             <select multiple size="2" onClick={this.props.submitAM.bind(this)}>
               <option value="AM">AM</option>
               <option value="PM">PM</option>
             </select>
-            </div>
           </div>
+        </div>
+      </div>
     );
   }
 }

@@ -6,10 +6,21 @@
   z-index: 200;
   padding: 5px 10px;
   padding-left: 10px;
-  .navbar-brand {
+
+    .navbar-logo{
+    position: fixed;
+    height: 35px;
+    width: 180px;
+    margin-top: 7px;
+    margin-left: 1rem;
+    }
+
+  
+    .navbar-brand {
     margin: 0px 30px;
     position: fixed;
     right: 0;
+    
     .itinerary {
       overflow: hidden;
       a {

@@ -37,10 +37,14 @@ class ItineraryIndex extends Component {
         itineraryCards: cards
       })
 <<<<<<< HEAD
+<<<<<<< HEAD
       );
     this.setState({ time: [9] })
 =======
     );
+=======
+      );
+>>>>>>> 1607300d5a9657245147ec88ecbcae0093a7b23e
     // this.setState({time : [9] })
 >>>>>>> e1a34ec5b5b93d67c464dc00faf723fab65fe79d
   }
@@ -60,7 +64,7 @@ class ItineraryIndex extends Component {
   removeItineraryCard(card) {
     let target = this.state.itineraryCards.indexOf(card.card);
 
-    this.setState({ 
+    this.setState({
       itineraryCards: this.state.itineraryCards.slice(0, target).concat(this.state.itineraryCards.slice(target + 1))
     });
   }
@@ -73,7 +77,7 @@ class ItineraryIndex extends Component {
       isActive: !this.state.isActive
     });
   }
-  
+
   setTime(time) {
     let unformattedStartTime = (time.startTime + ' ' + time.timeOfDay)
     var formattedStartTime = moment(unformattedStartTime, 'HH:mm A');
@@ -113,7 +117,7 @@ class ItineraryIndex extends Component {
       })
     })
   };
-  
+
   removeFavorite(id) {
 
     fetch('/itinerary/favorite', {
@@ -149,15 +153,24 @@ class ItineraryIndex extends Component {
     node.scrollIntoView({ behavior: "smooth" });
     return (
 
-      <div className="itinerary-container">      
+      <div className="itinerary-container">
         <div className="header">
           <FavoriteBar favCards={this.state.favCards} add={this.add.bind(this)} removeFavorite={this.removeFavorite.bind(this)} />
         </div>
-        <p className="calendar"><i className="fa fa-calendar-check-o"></i>&nbsp;save to calendar</p>
         <div className="welcome">
+<<<<<<< HEAD
           <ExportCalendar token={this.props.currentUser.token} events={this.state.itineraryCards} date={this.state.date} />
           <Set setDate={this.setDate.bind(this)} setTime={this.setTime.bind(this)} cards={this.state.itineraryCards} />
           <button onClick={() => { this.saveItinerary() }}>Save</button>
+=======
+          <div className='button save' onClick={() => { this.saveItinerary() }}>
+            <span className="icon is-medium calendar">
+              <i className="fa fa-bookmark-o"></i>
+            </span>
+          </div>
+          <ExportCalendar token={this.props.currentUser.token} events={this.state.itineraryCards} date={this.state.date} />
+          <Set setDate={this.setDate.bind(this)} setTime={this.setTime.bind(this)} cards={this.state.itineraryCards} />
+>>>>>>> 1607300d5a9657245147ec88ecbcae0093a7b23e
           <h3 className="title is-3">{this.state.date.format('LL')}</h3>
         </div>
         <div className="columns">

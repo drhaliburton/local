@@ -108,27 +108,31 @@ class ExportCalendar extends Component {
     let momentStartTime = nextProps.momentStartTime
     //map into new array 
 
-  //   const mappedEvents = incomingEvents.map((event) => {
-  //     return [
-  //       {
-  //         "summary": event.title,
-  //         "description": event.description,
-  //         "start": {
-  //           "dateTime": "2017-09-10T18:47:31-07:00"
-  //         },
-  //         "end": {
-  //           "dateTime": "2017-09-10T22:47:31-07:00"
-  //         }
-  //       }]
-  //   });
-  //   console.log('update state', mappedEvents)
+    //   const mappedEvents = incomingEvents.map((event) => {
+    //     return [
+    //       {
+    //         "summary": event.title,
+    //         "description": event.description,
+    //         "start": {
+    //           "dateTime": "2017-09-10T18:47:31-07:00"
+    //         },
+    //         "end": {
+    //           "dateTime": "2017-09-10T22:47:31-07:00"
+    //         }
+    //       }]
+    //   });
+    //   console.log('update state', mappedEvents)
   }
   render() {
     // const activeToggle = this.state.isActive ? 'is-active' : ''
     // const day = this.state.startDate
     return (
       <div className="export">
-        <div className='button' onClick={this.handleClick.bind(this)}><h6 className="title is-6">export calendar</h6></div>
+        <a className='button export' onClick={this.handleClick.bind(this)}> 
+        <span className="icon is-medium">
+          <i className="fa fa-google-plus-square"></i>
+        </span>
+          </a>
       </div>
     );
   }
