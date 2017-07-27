@@ -5,7 +5,8 @@ module.exports = (knex) => {
 
     return knex('itineraries')
       .where('user_id', user_id)
-      .select('itineraries.id AS itn_id', 'itineraries.user_id', 'itineraries.date', 'itinerary_cards.card_id')
+      .select('itineraries.id AS itn_id', 'itineraries.user_id', 'itineraries.date', 
+      'itinerary_cards.card_id', 'itinerary_cards.id AS itn_card_id')
       .leftJoin('itinerary_cards', 'itineraries.id', 'itinerary_cards.itinerary_id')
       .then((result) => {
         const itineraryCards = result;
@@ -56,7 +57,7 @@ module.exports = (knex) => {
     return knex('itineraries')
       .del()
       .where('user_id', userID)
-      .then(()=>{
+      .then(() => {
         return knex('itineraries')
           .insert({
             date: date,
@@ -114,6 +115,11 @@ module.exports = (knex) => {
     return knex('favorites')
       .where('user_id', userId)
       .andWhere('card_id', cardId)
+      .del()
+  }
+  obj.delItnCard = function (itnCardId) {
+    return knex('itinerary_card')
+      .where('id', itnCardId)
       .del()
   }
 

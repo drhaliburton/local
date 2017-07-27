@@ -27,8 +27,7 @@ class ItineraryIndex extends Component {
     Api.get('/itinerary/favorites')
       .then((cards) => this.setState({
         favCards: cards
-      })
-      );
+      }));
 
     let defaultStartTime = moment().hour(9);
     this.setState(({ time: [9], momentStartTime: defaultStartTime }))
@@ -37,10 +36,14 @@ class ItineraryIndex extends Component {
       .then((cards) => this.setState({
         itineraryCards: cards
       })
+<<<<<<< HEAD
       );
     this.setState({ time: [9] })
+=======
+    );
+    // this.setState({time : [9] })
+>>>>>>> e1a34ec5b5b93d67c464dc00faf723fab65fe79d
   }
-
 
   add(card) {
     //Adding itinerary card from favorite bar
@@ -55,11 +58,11 @@ class ItineraryIndex extends Component {
   }
 
   removeItineraryCard(card) {
-    let removeCard = this.state.itineraryCards.splice(card.card, 1);
-    let newCard = this.state.favCards.concat(card.card);
-    console.log(removeCard);
-    this.setState({ itineraryCards: removeCard });
-    this.setState({ favCards: newCard })
+    let target = this.state.itineraryCards.indexOf(card.card);
+
+    this.setState({ 
+      itineraryCards: this.state.itineraryCards.slice(0, target).concat(this.state.itineraryCards.slice(target + 1))
+    });
   }
 
   componentDidMount() {
@@ -70,6 +73,7 @@ class ItineraryIndex extends Component {
       isActive: !this.state.isActive
     });
   }
+  
   setTime(time) {
     let unformattedStartTime = (time.startTime + ' ' + time.timeOfDay)
     var formattedStartTime = moment(unformattedStartTime, 'HH:mm A');
@@ -109,7 +113,7 @@ class ItineraryIndex extends Component {
       })
     })
   };
-
+  
   removeFavorite(id) {
 
     fetch('/itinerary/favorite', {
@@ -145,7 +149,7 @@ class ItineraryIndex extends Component {
     node.scrollIntoView({ behavior: "smooth" });
     return (
 
-      <div className="itinerary-container">      {console.log('state', this.state)}
+      <div className="itinerary-container">      
         <div className="header">
           <FavoriteBar favCards={this.state.favCards} add={this.add.bind(this)} removeFavorite={this.removeFavorite.bind(this)} />
         </div>
