@@ -20,8 +20,8 @@ class Navbar extends Component {
     const currentRoute = window.location.href;
     return (
       <nav className="navbar" id="top">
-        <div className="navbar-item">
-          <a href="/"><img src="http://imgur.com/cyM42ng.png" alt="local - travel like you live there" width="75" height="28"></img></a>
+        <div className="navbar-logo-container">
+          <a href="/"><img className="navbar-logo" src="http://imgur.com/MeVtgKR.png" alt="local - travel like you live there" width="75" height="28"></img></a>
         </div>
         <div className="navbar-brand">
           {currentRoute.includes('map') ?
