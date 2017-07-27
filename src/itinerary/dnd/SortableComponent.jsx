@@ -93,6 +93,7 @@ class SortableComponent extends Component {
 
     const items = this.props.cards;
     const renderedItems = this.state.items.map(card =>
+    <div className="itinerary-cards-container">
       <article className="media">
         <figure className="media-left">
           <p className={`itinerary-image ${this.setImageHeight(card.duration)}`}>
@@ -114,6 +115,7 @@ class SortableComponent extends Component {
         </div>
       <RemoveCard remove={this.props.remove} card={card} />
     </article >
+    </div>
     )
 
     return <SortableList items={renderedItems} onSortEnd={this.onSortEnd} shouldCancelStart={this.shouldCancelStart} />;

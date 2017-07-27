@@ -6,18 +6,10 @@
   border:none;
   &:hover{
     border:none;
-    color: pink;
   }
 } .button.calendar{
   height:100%;
 }
-  .icon.is-medium{
-    .fa.calendar{
-       &:hover{
-      color: pink !important;
-    }
-    }
-  }
 
 .modal{
   .modal-card {
