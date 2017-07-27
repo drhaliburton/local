@@ -2,10 +2,14 @@
     width: 60%;
     margin: auto;
     max-width: 40%;
+    .modal-card-head, .modal-card-foot {
+      background-color: white !important;
+    }
   .modal {
     overflow: visible;
     margin-left: 32%;
     margin-right: 32%;
+
   .icon{
     height: 30px !important;
     font-size: 12px;
@@ -25,9 +29,13 @@
   }
   .geosuggest{
     margin: 0px;
+    background-color: white;
   }
   .geosuggest__input{
     padding-left: 30px;
+  }
+  .geosuggest_suggests{
+    position: relative !important;
   }
   .fa {
     padding-bottom: 6px;

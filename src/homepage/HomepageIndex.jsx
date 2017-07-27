@@ -43,12 +43,12 @@ class HomepageIndex extends Component {
   }
 
   componentWillMount() {
+    this.renderHomePageImage();
     Api.get('/index')
       .then((cardsArr) => this.setState({
         cards: cardsArr,
       })
       );
-    this.renderHomePageImage();
   }
 
   componentDidMount() {
@@ -61,6 +61,7 @@ class HomepageIndex extends Component {
 
   locationSearch(event) {
     if (event) {
+      console.log(event);
       Api.get(`/index/locate?find=${event}`)
         .then((cards) => this.setState({
           cards: cards,
@@ -110,15 +111,14 @@ class HomepageIndex extends Component {
 
   renderHomePageImage() {
     let images = {
-      1: 'http://i.imgur.com/AYwlpde.jpg',
-      2: 'http://i.imgur.com/W399SYI.jpg',
-      3: 'http://i.imgur.com/tBNrHVE.jpg',
-      4: 'http://i.imgur.com/9voihyL.jpg',
-      5: 'http://i.imgur.com/13R59WI.jpg',
-      6: 'http://i.imgur.com/tdiyFfG.jpg',
-      7: 'http://i.imgur.com/iyzC6fn.jpg'
+      1: 'http://i.imgur.com/lRfK3l1.jpg',
+      2: 'http://i.imgur.com/UhNSTA5.jpg',
+      3: 'http://i.imgur.com/G9nBudL.jpg',
+      4: 'http://i.imgur.com/EwxHOmS.jpg',
+      5: 'http://i.imgur.com/QBNYDIP.jpg',
+      6: 'http://i.imgur.com/S8qzxqS.jpg'
     }
-    let randomInt = Math.ceil(Math.random() * 7);
+    let randomInt = Math.ceil(Math.random() * 6);
     let image = images[randomInt];
     this.setState({
       homepageImage: image
@@ -214,8 +214,8 @@ class HomepageIndex extends Component {
 
     return (
       <div>
+        <Img src={this.state.homepageImage || 'http://i.imgur.com/AYwlpde.jpg'} className="homepage-image" />
         <div className="landing-content">
-          <Img src={this.state.homepageImage || 'http://i.imgur.com/AYwlpde.jpg'} className="homepage-image" />
           <Search locate={this.locationSearch.bind(this)} />
         </div>
          <div className="page-toggle">

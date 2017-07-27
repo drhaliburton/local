@@ -4,34 +4,65 @@
   float: right;
   padding: 1rem;
   border:none;
-  height:100%;
-    &:hover{
-      border:none;
-      color: pink;
-    }
-    .icon.is-medium.fa {
-        .fa-clock-o {
-          &:hover{
-          color: pink !important;
-      }
-    } 
+  &:hover{
+    border:none;
   }
+} .button.calendar{
+  height:100%;
 }
 
-.modal{
-  .modal-card {
-  height: 550px;
-  border-color: $light-grey;
-  .head {
-    height: 100px;
-  }
-  .button.submit-date{
-      padding:1rem;
+.calendar-set-time{
+  .modal{
+    h6{
+      padding-top: 5px;
+      font-size: 1.2em;
+      margin-bottom: 10px;
+    }
+    .modal-card {
+    border: 1px solid $light-grey;
+    border-radius: 10px;
+    padding-top: 1.5rem;
+    height: 500px;
+    width: 450px;
+    background-color:white;
+    border-color: $light-grey;
+    .head {
+      height: 100px;
+    }
+    .input {
+      margin: 5px;
+      width: 20%;
+      border-color: $light-grey;
+      height: 31px;
+      font-size: 15px;
+      &:focus{
+        border-color: pink;
+      }
+    }
+    .button{
+      margin-top: 5px;
+      border-color: $light-grey;
+      font-size: .87em;
+      padding: 1.2rem;
+      &:hover{
+        border-color: pink;
+        cursor: pointer;
+      }
     }
   }
   .modal-card-body{
-    padding:30px;
+    padding:20px;
+    padding-top: 5px;
   }
+  .select{
+    select{
+    margin: 5px;
+    margin-left: 0px;
+    padding: 5px 10px;
+    font-size: .85em;
+    }
+  }
+}
 }
 .react-datepicker-wrapper {
   display: inline-block;

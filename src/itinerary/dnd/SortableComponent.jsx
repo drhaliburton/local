@@ -1,14 +1,14 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 // import ItineraryCard from "./ItineraryCard.jsx";
-import {render} from '../../../node_modules/react-dom';
-import {SortableContainer, SortableElement, arrayMove} from '../../../node_modules/react-sortable-hoc';
+import { render } from '../../../node_modules/react-dom';
+import { SortableContainer, SortableElement, arrayMove } from '../../../node_modules/react-sortable-hoc';
 import RemoveCard from "./RemoveCard.jsx";
 
-const SortableItem = SortableElement(({value}) =>
+const SortableItem = SortableElement(({ value }) =>
   <li>{value}</li>
 );
 
-const SortableList = SortableContainer(({items}) => {
+const SortableList = SortableContainer(({ items }) => {
   return (
     <ul>
       {items.map((value, index) => (
@@ -22,11 +22,11 @@ class SortableComponent extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      items : this.props.cards
+      items: this.props.cards
     }
   }
 
-  onSortEnd = ({oldIndex, newIndex}) => {
+  onSortEnd = ({ oldIndex, newIndex }) => {
 
     const move = arrayMove(this.state.items, oldIndex, newIndex)
     this.setState({
@@ -36,26 +36,33 @@ class SortableComponent extends Component {
     this.props.reorderCards(move);
   };
 
-  setCardHeight(items) {
-    if (items.duration > 100) {
-      return 'big-card';
-    } else {
-      return 'small-card';
+  shouldCancelStart(e) {
+    // Cancel sorting if the event target is an anchor tag (`a`)
+    if (e.target.tagName.toLowerCase() === 'i') {
+        return true; // Return true to cancel sorting
     }
   }
 
-  renderSize(duration){
-    if (  duration > 100) {
+  setImageHeight(duration) {
+    if (duration > 100) {
+      return 'large-itinerary-image';
+    } else {
+      return 'small-itinerary-image';
+    }
+  }
+
+  renderSize(duration) {
+    if (duration > 100) {
       return (
-        'large'
+        'long-event'
       );
     } else {
       return (
-       'small'
+        'short-event'
       );
     }
   }
-  
+
   componentWillReceiveProps(nextProps) {
     // To avoid reseting order on new-card-add:
     //  0) make a copy of this.state.items
@@ -69,7 +76,7 @@ class SortableComponent extends Component {
     let newestAddition = oldState.concat(newProp)
 
     this.setState({
-      items : nextProps.cards
+      items: nextProps.cards
     })
   }
 
@@ -77,7 +84,7 @@ class SortableComponent extends Component {
     if (images === null) {
       return 'https://source.unsplash.com/random/400';
     } else {
-      let randomInt = Math.ceil(Math.random() * images.length) -1;
+      let randomInt = Math.ceil(Math.random() * images.length) - 1;
       return images[randomInt];
     }
   }
@@ -86,30 +93,32 @@ class SortableComponent extends Component {
 
     const items = this.props.cards;
     const renderedItems = this.state.items.map(card =>
-          <div className='box'>
-            <article className='media large'>
-            <figure className="media-left">
-              <p className="image is-64x64">
-                <img src={this.renderImage(card.photos)}></img>
-              </p>
-            </figure>
-            <div className={`media-content ${this.renderSize(card.duration)}`}>
-              <div className="content">
-                <p>
-                  <strong>{card.title}</strong>
-                  <br></br>
-                  <h6 className="subtitle is-6">{card.description}</h6>
-                </p>
-              </div>
-            </div>
-              <div className="media-right">
-                <RemoveCard remove={this.props.remove} card={card} />
-              </div>
-          </article>
+    <div className="itinerary-cards-container">
+      <article className="media">
+        <figure className="media-left">
+          <p className={`itinerary-image ${this.setImageHeight(card.duration)}`}>
+            <img src={this.renderImage(card.photos)}></img>
+          </p>
+        </figure>
+        <div className={`media-content ${this.renderSize(card.duration)}`}>
+          {/*<div className="itinerary-delete" onClick={(event) => {this.props.remove({card:this.props.card})}}>✖︎</div>*/}
+          <p className="title">
+            {card.title}
+          </p>
+          <p className="subtitle">
+            {card.address || "128 Main Street, Realtown"}
+          </p>
+          <p>
+            {card.description}
+          </p>
+          <p className="duration">Recommended time: ~ {card.duration} minutes</p>
         </div>
+      <RemoveCard remove={this.props.remove} card={card} />
+    </article >
+    </div>
     )
 
-    return <SortableList items={renderedItems} onSortEnd={this.onSortEnd} />;
+    return <SortableList items={renderedItems} onSortEnd={this.onSortEnd} shouldCancelStart={this.shouldCancelStart} />;
   }
 }
 
