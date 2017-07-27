@@ -106,7 +106,7 @@ class ExportCalendar extends Component {
     let dateArray = nextProps.date
     //TODO calculate the start time for each card based on the relationship between the final position of the card and the
     let momentStartTime = nextProps.momentStartTime
-    //map into new array 
+    //map into new array
 
     //   const mappedEvents = incomingEvents.map((event) => {
     //     return [
@@ -127,11 +127,12 @@ class ExportCalendar extends Component {
     // const activeToggle = this.state.isActive ? 'is-active' : ''
     // const day = this.state.startDate
     return (
-      <div className="export">
-        <a className='button export' onClick={this.handleClick.bind(this)}> 
-        <span className="icon is-medium">
-          <i className="fa fa-google-plus-square"></i>
-        </span>
+      <div className="set-date">
+        <a className='button export' onClick={this.handleClick.bind(this)}>
+        <p className="icon is-medium">
+          <i className="fa fa-calendar-check-o"></i>
+          &nbsp;save to calendar
+        </p>
           </a>
       </div>
     );
@@ -139,4 +140,3 @@ class ExportCalendar extends Component {
 }
 
 export default ExportCalendar;
-

@@ -215,8 +215,8 @@ class HomepageIndex extends Component {
 
     return (
       <div>
+        <Img src={this.state.homepageImage || 'http://i.imgur.com/AYwlpde.jpg'} className="homepage-image" />
         <div className="landing-content">
-          <Img src={this.state.homepageImage || 'http://i.imgur.com/AYwlpde.jpg'} className="homepage-image" />
           <Search locate={this.locationSearch.bind(this)} />
         </div>
          <div className="page-toggle">

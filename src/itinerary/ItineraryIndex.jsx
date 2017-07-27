@@ -36,17 +36,8 @@ class ItineraryIndex extends Component {
       .then((cards) => this.setState({
         itineraryCards: cards
       })
-<<<<<<< HEAD
-<<<<<<< HEAD
-      );
-    this.setState({ time: [9] })
-=======
     );
-=======
-      );
->>>>>>> 1607300d5a9657245147ec88ecbcae0093a7b23e
     // this.setState({time : [9] })
->>>>>>> e1a34ec5b5b93d67c464dc00faf723fab65fe79d
   }
 
   add(card) {
@@ -158,19 +149,9 @@ class ItineraryIndex extends Component {
           <FavoriteBar favCards={this.state.favCards} add={this.add.bind(this)} removeFavorite={this.removeFavorite.bind(this)} />
         </div>
         <div className="welcome">
-<<<<<<< HEAD
           <ExportCalendar token={this.props.currentUser.token} events={this.state.itineraryCards} date={this.state.date} />
           <Set setDate={this.setDate.bind(this)} setTime={this.setTime.bind(this)} cards={this.state.itineraryCards} />
           <button onClick={() => { this.saveItinerary() }}>Save</button>
-=======
-          <div className='button save' onClick={() => { this.saveItinerary() }}>
-            <span className="icon is-medium calendar">
-              <i className="fa fa-bookmark-o"></i>
-            </span>
-          </div>
-          <ExportCalendar token={this.props.currentUser.token} events={this.state.itineraryCards} date={this.state.date} />
-          <Set setDate={this.setDate.bind(this)} setTime={this.setTime.bind(this)} cards={this.state.itineraryCards} />
->>>>>>> 1607300d5a9657245147ec88ecbcae0093a7b23e
           <h3 className="title is-3">{this.state.date.format('LL')}</h3>
         </div>
         <div className="columns">
