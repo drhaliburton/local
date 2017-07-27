@@ -43,12 +43,12 @@ class HomepageIndex extends Component {
   }
 
   componentWillMount() {
+    this.renderHomePageImage();
     Api.get('/index')
       .then((cardsArr) => this.setState({
         cards: cardsArr,
       })
       );
-    this.renderHomePageImage();
   }
 
   componentDidMount() {
