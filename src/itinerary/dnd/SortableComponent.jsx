@@ -75,7 +75,7 @@ class SortableComponent extends Component {
 
   renderImage(images) {
     if (images === null) {
-      return 'http://placekitten.com.s3.amazonaws.com/homepage-samples/408/287.jpg';
+      return 'https://source.unsplash.com/random/400';
     } else {
       let randomInt = Math.ceil(Math.random() * images.length) -1;
       return images[randomInt];

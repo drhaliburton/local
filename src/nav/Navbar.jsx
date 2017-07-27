@@ -28,11 +28,11 @@ class Navbar extends Component {
             <div className="navbar-item">
               <div className="navbar-item">
                 <div className="itinerary">
-                  <Link to="/map"><i className="fa fa-globe"></i>&nbsp;&nbsp;export map</Link></div>
+                  <Link to="/"><i className="fa fa-clone"></i>&nbsp;&nbsp;all cards</Link></div>
               </div>
               <div className="navbar-item">
                 <div className="itinerary">
-                <Link to="/itinerary"><i className="fa fa-map-o"></i>&nbsp;&nbsp;itinerary</Link></div>
+                  <Link to="/itinerary"><i className="fa fa-map-o"></i>&nbsp;&nbsp;itinerary</Link></div>
               </div>
             </div>
             :
@@ -41,23 +41,27 @@ class Navbar extends Component {
                 <div className="navbar-item">
                   <div className="itinerary">
                     <Link to="/"><i className="fa fa-clone"></i>&nbsp;&nbsp;all cards</Link></div>
-                  </div>
-                  <div className="navbar-item">
-                    <div className="itinerary">
-                      <Link to="/map"><i className="fa fa-map"></i>&nbsp;&nbsp;map</Link></div>
-                    </div>
                 </div>
-              :
                 <div className="navbar-item">
-                  <div className="navbar-item">
+                  <div className="itinerary">
+                    <Link to="/map"><i className="fa fa-map"></i>&nbsp;&nbsp;map</Link></div>
+                </div>
+              </div>
+              :
+              <div className="navbar-item">
+                <div className="navbar-item">
                   <div className="itinerary">
                     <AddCard /></div>
                 </div>
-                  <div className="navbar-item">
-                    <div className="itinerary">
-                      <Link to="/itinerary"><i className="fa fa-map-o"></i>&nbsp;&nbsp;itinerary</Link></div>
-                  </div>
+                <div className="navbar-item">
+                  <div className="itinerary">
+                    <Link to="/itinerary"><i className="fa fa-map-o"></i>&nbsp;&nbsp;itinerary</Link></div>
                 </div>
+                <div className="navbar-item">
+                  <div className="itinerary">
+                    <Link to="/map"><i className="fa fa-map"></i>&nbsp;&nbsp;map</Link></div>
+                </div>
+              </div>
           }
           <p className="navbar-item">|</p>
           {this.props.currentUser ?
@@ -72,7 +76,7 @@ class Navbar extends Component {
             </div>
           }
         </div>
-      <div className="navbar-end"></div>
+        <div className="navbar-end"></div>
       </nav>
     );
   }

@@ -1,0 +1,11 @@
+.homepage-filters{
+  margin: 20px;
+  .button {
+    color: $dark-grey;
+    margin: -10px 5px;
+    font-size: 13px;
+  }
+  .is-active{
+    border-color: $green !important;
+  }
+}

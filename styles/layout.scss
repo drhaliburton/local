@@ -24,20 +24,22 @@ $datepicker__margin: .4rem !default;
 $datepicker__navigation-size: .45rem !default;
 $datepicker__triangle-size: 10px !default;
 
-@import 'indexCard';
-@import 'navbar';
-@import 'filters';
-@import 'index';
-@import 'favoriteBar';
-@import 'sortableComponent';
-@import 'googleLogin';
-@import 'signInindex';
-@import 'itineraryCard';
+@import './index/indexCard';
+@import './index/addCard';
+@import './navbar/navbar';
+@import './index/filters';
+@import './index/index';
+@import './itinerary/favoriteBar';
+@import './itinerary/sortableComponent';
+@import './itinerary/itineraryFilters';
+@import './auth/googleLogin';
+@import './auth/signInindex';
+@import './itinerary/itineraryCard';
 // @import 'pageToggle';
-@import 'settingTime';
-@import 'set';
-@import 'timeSet';
-@import 'itineraryIndex';
+@import './itinerary/settingTime';
+@import './itinerary/set';
+@import './itinerary/timeSet';
+@import './itinerary/itineraryIndex';
 
 .is-rotated {
   transform: rotate(180deg);
@@ -45,4 +47,18 @@ $datepicker__triangle-size: 10px !default;
 
 .visible {
   height: 100% !important;
+}
+
+
+.is-green{
+ color: $green;
+}
+.is-orange{
+  color: $orange;
+}
+.is-pink{
+  color: $dark-pink;
+}
+.is-grey{
+ color: $dark-grey;
 }

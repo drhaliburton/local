@@ -1,8 +1,8 @@
 .accent-font {
   font-family: 'Amatic SC', cursive;
-  margin-top: 10px;
-  font-size: 2.5em;
-  padding-bottom: 10px;
+  margin-top: 5px;
+  font-size: 3em;
+  padding-bottom: 0px;
   width: 100%;
   color: white;
 }
@@ -30,36 +30,32 @@
 }
 
 .landing-content{
+  justify-content: center;
   transition: all 0.7s ease-in-out;
-  margin: 15% 2% 15%;
-  .columns {
-    margin-top:0px;
+  margin: 15% 2% 14%;
+  .input {
+    border-color:$dark-orange !important;
+    &:focus{
+      border-color:$green;
+    }
   }
-.input {
-  border-color:$dark-orange !important;
-  &:focus{
-    border-color:$green;
-  }
-}
   .brand img {
     width: 80%;
   }
 }
 
-.modal {
-  overflow: visible;
-  min-width: 350px;
-  margin-left: 32%;
-  margin-right: 32%;
-  .icon{
-    height: 30px !important;
-    font-size: 12px;
-    .fa{
-      color: $light-grey;
-    }
+.page-toggle{
+  text-align: center;
+  margin: 20px 40px 20px;
+  line-height: 28px;
+
+  h1 {
+    padding-top: 15px;
+    font-size: 1.3em;
   }
-  label{
-    font-size: .9em !important;
+  h2 {
+    font-size: .9em;
+    padding-bottom:10px;
   }
   .modal-card-body{
     padding: 25px !important;
@@ -69,8 +65,13 @@
 }
 
 .cards-container {
-  font-family: 'Amatic SC', cursive;
+  margin-bottom: 0px !important;
   font-size: 2.5em;
+  h3{
+    font-size: 1em;
+    color: $dark-grey;
+    font-family: 'Amatic SC', cursive !important;
+  }
 }
 
 .geosuggest {
@@ -83,7 +84,7 @@
   text-align: left;
 }
 .geosuggest__input {
-  border-color: pink !important;
+  border-color: #FCB737 !important;
   font-size: .8em;
   border: 1px solid transparent;
   border-radius: 3px;
@@ -97,7 +98,7 @@
   width: 100%;
   width: 100%;
   border: 1px solid transparent;
-  padding-left: 2.4em;
+  padding-left: 1em;
   -webkit-transition: border 0.2s, box-shadow 0.2s;
   transition: border 0.2s, box-shadow 0.2s;
 }

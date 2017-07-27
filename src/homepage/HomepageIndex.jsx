@@ -1,11 +1,12 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import IndexCard from "./IndexCard/IndexCard.jsx";
 import Search from "./Search.jsx";
-import CardView from "./CardView.jsx";
 import Styles from "../../styles/layout.scss";
 import Api from '../../library/api.js';
 import Img from 'react-image'
 import ReactDOM from 'react-dom';
+import Scrollchor from 'react-scrollchor';
+import FilterButton from './FilterButton.jsx';
 
 class HomepageIndex extends Component {
   constructor(props) {
@@ -13,7 +14,31 @@ class HomepageIndex extends Component {
     this.state = {
       cards: [],
       allCards: [],
-      homepageImage: false
+      homepageImage: false,
+      filtersVisible: false,
+      isRotated: false,
+      viewToggleRotated: false,
+      linkURL: false,
+      linkText: false,
+      filters: [
+        {
+          name: 'Nature',
+          icon: 'tree'
+        },
+        {
+          name: 'Shopping',
+          icon: 'shopping-bag'
+        },
+        {
+          name: 'Food',
+          icon: 'cutlery'
+        },
+        {
+          name: 'Sights',
+          icon: 'binoculars'
+        }
+      ],
+      currentFilter: null
     }
   }
 
@@ -22,7 +47,7 @@ class HomepageIndex extends Component {
       .then((cardsArr) => this.setState({
         cards: cardsArr,
       })
-    );
+      );
     this.renderHomePageImage();
   }
 
@@ -31,19 +56,23 @@ class HomepageIndex extends Component {
       .then((cardsArr) => this.setState({
         allCards: cardsArr
       })
-    );
+      );
   }
 
   locationSearch(event) {
-    Api.get(`/index/locate?find=${event}`)
-      .then((cards) => this.setState({
-        cards: cards,
-        allCards: cards
-      })
-    );
+    if (event) {
+      Api.get(`/index/locate?find=${event}`)
+        .then((cards) => this.setState({
+          cards: cards,
+          allCards: cards
+        })
+        );
+    }
     const node = document.getElementById('view-all');
-    setTimeout(function(){node.scrollIntoView({ behavior: "smooth" })}, 200);
+    setTimeout(function () { node.scrollIntoView({ behavior: "smooth" }) }, 400);
+    this.togglePageView(event);
   }
+
 
   resetCards() {
     this.setState({
@@ -56,7 +85,7 @@ class HomepageIndex extends Component {
       .then((cardsArr) => this.setState({
         cards: cardsArr,
       })
-    );
+      );
   }
 
   categoryFilter(category) {
@@ -76,10 +105,10 @@ class HomepageIndex extends Component {
     Api.post('/index/favorite', id)
       .then(() => {
         this.resetCards();
-    })
+      })
   }
 
- renderHomePageImage(){
+  renderHomePageImage() {
     let images = {
       1: 'http://i.imgur.com/AYwlpde.jpg',
       2: 'http://i.imgur.com/W399SYI.jpg',
@@ -96,7 +125,7 @@ class HomepageIndex extends Component {
     })
 
   }
-  addOne(cardID){
+  addOne(cardID) {
     event.preventDefault();
     fetch('/index/upvote', {
       method: 'POST',
@@ -109,38 +138,105 @@ class HomepageIndex extends Component {
         cardID: cardID
       })
     })
-    .then(() => {
-      this.reRenderHomepageCards();
-    })
+      .then(() => {
+        this.reRenderHomepageCards();
+      })
   };
 
-
-  removeOne(cardID){
+  removeOne(cardID) {
     event.preventDefault();
-      fetch('/index/downvote', {
-        method: 'POST',
-        credentials: 'include',
-        headers: {
-          'Accept': 'application/json',
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          cardID: cardID
-        })
-      }).then(() => {
-      this.reRenderHomepageCards();
+    fetch('/index/downvote', {
+      method: 'POST',
+      credentials: 'include',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        cardID: cardID
       })
+    }).then(() => {
+      this.reRenderHomepageCards();
+    })
+  }
+
+  handleFilterClick(index) {
+    event.preventDefault();
+    const { filters, currentFilter } = this.state;
+
+    if (currentFilter === index) {
+      this.resetCards();
+      index = null;
+    } else {
+      this.categoryFilter(filters[index].name);
     }
 
+    this.setState({
+      currentFilter: index
+    });
+  }
+  // grab the button with c
+  toggleFilters(event) {
+    this.setState({
+      filtersVisible: !this.state.filtersVisible,
+      isRotated: !this.state.isRotated
+    });
+  }
+
+  togglePageView(event) {
+    event.preventDefault
+    this.setState({
+      viewToggleRotated: !this.state.viewToggleRotated,
+      linkURL: !this.state.linkURL,
+      linkText: !this.state.linkText
+    });
+  }
+
   render() {
+
+    const toggledFilter = this.state.filtersVisible ? 'toggled-filter' : '';
+    const rotatedToggle = this.state.isRotated ? '' : 'is-rotated';
+    const viewToggleRotated = this.state.viewToggleRotated ? '' : 'is-rotated';
+    const pageLink = this.state.linkURL ? '#' : '#view-all';
+    const pageLinkText = this.state.linkText ? 'Search' : 'View All';
+
+    const filters = this.state.filters.map((filter, index) => {
+      const active = this.state.currentFilter === index;
+      return (
+        <FilterButton
+          key={index}
+          id={index}
+          active={active}
+          handleFilterClick={this.handleFilterClick.bind(this)}
+          { ...filter } />
+      )
+    });
+
     return (
       <div>
         <div className="landing-content">
-        <Img src={this.state.homepageImage || 'http://i.imgur.com/AYwlpde.jpg'} className="homepage-image"/>
-        <Search locate={this.locationSearch.bind(this)} />
+          <Img src={this.state.homepageImage || 'http://i.imgur.com/AYwlpde.jpg'} className="homepage-image" />
+          <Search locate={this.locationSearch.bind(this)} />
         </div>
-        <CardView cards={this.state.cards} favorite={this.newFavorite.bind(this)} categoryFilter={this.categoryFilter.bind(this)} resetCards={ this.resetCards.bind(this) } />
-        <IndexCard addOne={this.addOne.bind(this)} removeOne={this.removeOne.bind(this)} cards={this.state.cards} favorite={this.newFavorite.bind(this)}/>
+         <div className="page-toggle">
+          <h1>Skip the lines & tourist traps - discover hidden gems and build a trip itinerary curated by locals.</h1>
+          <h2 id="view-all">Browse recommendations, favourite your must-do's and save your map + calendar to view on the fly.</h2>
+          <h5 className="toggle-title">{pageLinkText}</h5>
+          <span className="toggle-arrow" onClick={this.togglePageView.bind(this)}>
+            <Scrollchor animate={{ offset: -58, duration: 1000 }} to={pageLink}><i className={`fa fa-chevron-up ${viewToggleRotated}`}></i></Scrollchor>
+          </span>
+        </div>
+        <div className="columns cards-container has-text-centered">
+          <h3 className="column">Recommendations</h3>
+        </div>
+        <div className="columns has-text-centered">
+        <div className="column is-3"></div>
+        <div className="column is-6 homepage-filters">
+          {filters}
+        </div>
+        <div className="column is-3"></div>
+        </div>
+        <IndexCard addOne={this.addOne.bind(this)} removeOne={this.removeOne.bind(this)} cards={this.state.cards} favorite={this.newFavorite.bind(this)} />
       </div>
     );
   }
