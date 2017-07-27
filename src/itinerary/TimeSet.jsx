@@ -12,27 +12,23 @@ class TimeSet extends Component {
 
   render() {
     return (
-      <div className="time-set has-text-centered">
-        <div className="column is-6 time-input">
+      <span>
+        <div className="time-set has-text-centered">
           <input className="input has-text-centered" type="number" placeholder="9" onChange={this.props.handleChange.bind(this)} />
-          <div className="select is-multiple" >
-          </div>
-        </div>
-        <div className="column is-6 am">
-          <div className="select is-multiple day-night">
-            <select multiple size="2" onClick={this.props.submitAM.bind(this)}>
-              <option value="AM">AM</option>
-              <option value="PM">PM</option>
+          <div className="select is-multiple">
+            <select onClick={this.props.submitAM.bind(this)}>
+              <option value="PM">AM</option>
+              <option value="AM">PM</option>
             </select>
           </div>
         </div>
-      </div>
+      </span>
     );
   }
 }
 
 export default TimeSet;
-// Logic for rendering times based on start time and duration of card 
+// Logic for rendering times based on start time and duration of card
 //       <div className="has-text-centered">
 //          {
 //           timeArray.map((time) => {
@@ -46,7 +42,7 @@ export default TimeSet;
 //             </div>;
 //             }
 //           })
-//         } 
+//         }
 //         </div>
 //     );
 //   }
