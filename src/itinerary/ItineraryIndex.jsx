@@ -18,7 +18,8 @@ class ItineraryIndex extends Component {
       itineraryCards: [],
       startTime: 9,
       timeOfDay: 'AM',
-      date: moment(),
+      date: moment().hour(9).minute(0).seconds(0),
+      momentStartTime: null,
     }
   }
 
@@ -26,19 +27,21 @@ class ItineraryIndex extends Component {
     Api.get('/itinerary/favorites')
       .then((cards) => this.setState({
         favCards: cards
-      })
-    );
+      }));
+
+    let defaultStartTime = moment().hour(9);
+    this.setState(({ time: [9], momentStartTime: defaultStartTime }))
 
     Api.get('/itinerary/cards')
       .then((cards) => this.setState({
         itineraryCards: cards
       })
     );
-    this.setState({time : [9] })
+    // this.setState({time : [9] })
   }
 
-
   add(card) {
+    //Adding itinerary card from favorite bar
     let newCard = this.state.itineraryCards.concat(card.card);
     let removeCard = this.state.favCards.splice(0)
     let index = (this.state.time.length - 1)
@@ -50,11 +53,11 @@ class ItineraryIndex extends Component {
   }
 
   removeItineraryCard(card) {
-    let removeCard = this.state.itineraryCards.splice(card.card, 1);
-    let newCard = this.state.favCards.concat(card.card);
-    console.log(removeCard);
-    this.setState({ itineraryCards: removeCard });
-    this.setState({ favCards: newCard })
+    let target = this.state.itineraryCards.indexOf(card.card);
+
+    this.setState({
+      itineraryCards: this.state.itineraryCards.slice(0, target).concat(this.state.itineraryCards.slice(target + 1))
+    });
   }
 
   componentDidMount() {
@@ -65,10 +68,18 @@ class ItineraryIndex extends Component {
       isActive: !this.state.isActive
     });
   }
+
   setTime(time) {
+    let unformattedStartTime = (time.startTime + ' ' + time.timeOfDay)
+    var formattedStartTime = moment(unformattedStartTime, 'HH:mm A');
+    console.log('hey format', formattedStartTime)
+    moment(this.state.date).hour(this.state.startTime)
+    console.log()
+
     this.setState({
       startTime: time.startTime,
       timeOfDay: time.timeOfDay,
+      momentStartTime: formattedStartTime,
     })
   }
   setDate(date) {
@@ -77,15 +88,13 @@ class ItineraryIndex extends Component {
     })
   }
 
-  saveItinerary(){
+  saveItinerary() {
     event.preventDefault();
     const itineraryCards = this.state.itineraryCards;
     const date = this.state.date.format('YYYY-MM-DD');
     const cardIds = itineraryCards.map((card) => {
       return card.id;
     })
-
-
     fetch('/itinerary/cards', {
       method: 'POST',
       credentials: 'include',
@@ -102,7 +111,7 @@ class ItineraryIndex extends Component {
 
   removeFavorite(id) {
 
-     fetch('/itinerary/favorite', {
+    fetch('/itinerary/favorite', {
       method: 'POST',
       credentials: 'include',
       headers: {
@@ -121,24 +130,28 @@ class ItineraryIndex extends Component {
       .then((cards) => this.setState({
         favCards: cards
       })
-    );
+      );
   }
 
+  reorderCards(cards) {
+    this.setState({
+      itineraryCards: cards
+    })
+  }
 
   render() {
     const node = document.getElementById('top');
     node.scrollIntoView({ behavior: "smooth" });
     return (
 
-      <div className="itinerary-container">      {console.log('state', this.state)}
+      <div className="itinerary-container">
         <div className="header">
           <FavoriteBar favCards={this.state.favCards} add={this.add.bind(this)} removeFavorite={this.removeFavorite.bind(this)} />
         </div>
-        <p className="calendar"><i className="fa fa-calendar-check-o"></i>&nbsp;save to calendar</p>
         <div className="welcome">
           <ExportCalendar token={this.props.currentUser.token} events={this.state.itineraryCards} date={this.state.date} />
           <Set setDate={this.setDate.bind(this)} setTime={this.setTime.bind(this)} cards={this.state.itineraryCards} />
-           <button onClick={() => {this.saveItinerary()}}>Save</button> 
+          <button onClick={() => { this.saveItinerary() }}>Save</button>
           <h3 className="title is-3">{this.state.date.format('LL')}</h3>
         </div>
         <div className="columns">
@@ -149,7 +162,7 @@ class ItineraryIndex extends Component {
             <h5 className="start-time title is-5">{this.state.startTime} {this.state.timeOfDay}</h5>
           </div>
           <div className="it-card column is-9">
-            <SortableComponent cards={this.state.itineraryCards} remove={this.removeItineraryCard.bind(this)}/>
+            <SortableComponent cards={this.state.itineraryCards} remove={this.removeItineraryCard.bind(this)} reorderCards={this.reorderCards.bind(this)} />
           </div>
         </div>
       </div>

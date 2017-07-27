@@ -58,8 +58,12 @@ class Set extends Component {
     const activeToggle = this.state.isActive ? 'is-active' : ''
     const day = this.state.startDate
     return (
-      <div className="set-date">
-        <div className='button' onClick={this.toggleActive.bind(this)}><span className="fa fa-calendar-o"></span><h6 className="title is-6">&nbsp;&nbsp;set date</h6></div>
+      <div>
+        <button className="button calendar" onClick={this.toggleActive.bind(this)}>
+          <span className="icon is-small calendar">
+            <div className="button"><i className="fa fa-calendar-o calendar"></i><h6 className="title is-6">&nbsp;&nbsp;set date</h6></div>
+          </span>
+        </button>
         <div className={`modal + ${activeToggle} + has-text-centered`}>
           <div className="modal-background"></div>
           <div className="modal-card">
@@ -74,17 +78,13 @@ class Set extends Component {
               />
             </section>
             <section className="modal-card-foot">
-              <h6 className="subtitle is-6">What time do you want to start?</h6>
-              <div className="columns">
-                <div className="column time-set is-6 has-text-centered">
+                <div className="header">
+                  <h6 className="subtitle is-6">What time do you want to start?</h6>
+                </div>
                   <TimeSet submitTime={this.submitTime.bind(this)} submitAM={this.submitAM.bind(this)} handleChange={this.timeChange.bind(this)} />
-                </div>
-                <div className="column submit is-6">
                   <div className="control has-text-centered">
-                    <button type="submit" value="submit" className="button" onClick={this.submitDate.bind(this)}>Submit</button>
+                    <a type="submit" value="submit" className="button submit-date" onClick={this.submitDate.bind(this)}><h5 className="subtitle is-h5">submit</h5></a>
                   </div>
-                </div>
-                </div>
             </section>
             <div>
             </div>

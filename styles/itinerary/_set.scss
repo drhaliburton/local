@@ -1,13 +1,34 @@
 @import "variables";
 @import "mixins";
+.button.calendar{
+  float: right;
+  padding: 1rem;
+  border:none;
+  &:hover{
+    border:none;
+    color: pink;
+  }
+} .button.calendar{
+  height:100%;
+}
+  .icon.is-medium{
+    .fa.calendar{
+       &:hover{
+      color: pink !important;
+    }
+    }
+  }
+
 .modal{
   .modal-card {
-  height: 500px;
-  width: 2000px;
+  height: 550px;
   border-color: $light-grey;
   .head {
     height: 100px;
   }
+  .button.submit-date{
+      padding:1rem;
+    }
   }
   .modal-card-body{
     padding:30px;

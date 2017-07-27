@@ -16,5 +16,21 @@
     padding: 10px;
   }
   }
- 
+  .button.save{
+    height: 100%;
+    border: none;
+    float: right;
+    margin-left: 28px;
+    margin-top: 15px;
+    .icon.is-medium{
+      .fa {
+        &:hover{
+          color:$green !important;
+        }
+      }
+    }
+  }
+  .modal.button {
+    padding: 1.5rem;
+  }
 }

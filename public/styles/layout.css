@@ -1,4 +1,5 @@
 .cards {
+  margin-bottom: 50px !important;
   transition: 2s all ease-in-out !important;
   font-size: 12px; }
   .cards .card {
@@ -135,7 +136,7 @@
     overflow: hidden; }
     .cards .card-image img {
       max-width: 400px;
-      min-width: 220px;
+      min-width: 250px;
       max-height: 220px; }
     .cards .card-image .cover {
       object-fit: cover;
@@ -179,6 +180,37 @@
   color: #fba505 !important;
   cursor: pointer; }
 
+.add-card {
+  width: 60%;
+  margin: auto;
+  max-width: 40%; }
+  .add-card .modal {
+    overflow: visible;
+    margin-left: 32%;
+    margin-right: 32%; }
+    .add-card .modal .icon {
+      height: 30px !important;
+      font-size: 12px; }
+      .add-card .modal .icon .fa {
+        color: #CCCCCC; }
+    .add-card .modal label {
+      font-size: .9em !important; }
+    .add-card .modal .modal-card-body {
+      padding: 15px !important;
+      padding-top: 3px !important;
+      min-height: 100% !important;
+      padding-bottom: 40px; }
+  .add-card .geosuggest {
+    margin: 0px; }
+  .add-card .geosuggest__input {
+    padding-left: 30px; }
+  .add-card .fa {
+    padding-bottom: 6px; }
+  .add-card input {
+    border-color: #FCB737 !important; }
+    .add-card input:focus {
+      border-color: #00caba !important; }
+
 .navbar {
   position: fixed;
   top: 0;
@@ -187,6 +219,14 @@
   z-index: 200;
   padding: 5px 10px;
   padding-left: 10px; }
+  .navbar .navbar-logo-container {
+    padding-bottom: 20px; }
+  .navbar .navbar-logo {
+    position: fixed;
+    height: 35px;
+    width: 180px;
+    margin-top: 7px;
+    margin-left: 1rem; }
   .navbar .navbar-brand {
     margin: 0px 30px;
     position: fixed;
@@ -206,94 +246,20 @@
 .fa-share-square-o {
   transform: rotate(180deg) !important; }
 
-.filter h5 {
-  font-size: .5em; }
-.filter .columns {
-  margin-top: 10px;
-  margin-bototm: 100px; }
-  .filter .columns .column {
-    padding-top: 0px; }
-.filter .filter-toggle {
-  margin: auto;
-  top: 5px;
-  padding-top: 10px;
-  color: #00caba; }
-  .filter .filter-toggle .fa-chevron-up {
-    transition: all 1s ease-in-out;
-    color: #FCB737;
-    left: 35%;
-    font-size: 1em; }
-    .filter .filter-toggle .fa-chevron-up:hover {
-      transition: all .3s ease-in-out;
-      color: #fba505 !important;
-      cursor: pointer; }
-.filter .filter-button {
-  margin: 0px 5px;
-  line-height: 2.5; }
-  .filter .filter-button .button {
-    font-size: .6em;
-    opacity: .9;
+.homepage-filters {
+  margin: 20px; }
+  .homepage-filters .button {
     color: #363636;
-    border-color: #363636; }
-    .filter .filter-button .button .fa {
-      color: #363636; }
-    .filter .filter-button .buttonhover {
-      opacity: .1; }
-    .filter .filter-button .button.is-active {
-      background-color: white;
-      color: #00caba;
-      border-color: #00caba; }
-    .filter .filter-button .button.is-active .fa {
-      color: #00caba; }
-.filter .filter-brand {
-  margin: 0.1rem;
-  font-size: .9em; }
-.filter .title {
-  margin-top: 10px;
-  color: #363636;
-  font-weight: 400; }
-.filter .title-itinerary {
-  margin-top: 30px;
-  color: #363636;
-  font-weight: 400; }
-.filter .card-title {
-  margin-top: 0px;
-  color: #363636;
-  font-weight: 400;
-  font-size: 1.3em; }
-.filter .filter-toggle-itinerary {
-  margin: auto;
-  top: 5px;
-  padding-top: 10px;
-  color: #00caba; }
-  .filter .filter-toggle-itinerary .fa-chevron-up {
-    transition: all .7s ease-in-out;
-    color: #00caba;
-    left: 35%;
-    opacity: .7;
-    font-size: 1em; }
-    .filter .filter-toggle-itinerary .fa-chevron-up:hover {
-      transition: all .3s ease-in-out;
-      color: #00caba !important;
-      opacity: .9;
-      cursor: pointer; }
-.filter .button {
-  margin: auto;
-  border-radius: 10px; }
-  .filter .button:hover {
-    border-color: white; }
-.filter .filter-content {
-  transition: all 1s ease-in-out;
-  max-height: 0px;
-  overflow: hidden; }
-.filter .toggled-filter {
-  max-height: 100px; }
+    margin: -10px 5px;
+    font-size: 13px; }
+  .homepage-filters .is-active {
+    border-color: #00caba !important; }
 
 .accent-font {
   font-family: 'Amatic SC', cursive;
-  margin-top: 10px;
-  font-size: 2.5em;
-  padding-bottom: 10px;
+  margin-top: 5px;
+  font-size: 3em;
+  padding-bottom: 0px;
   width: 100%;
   color: white; }
 
@@ -318,10 +284,9 @@
   -ms-backface-visibility: hidden; }
 
 .landing-content {
+  justify-content: center;
   transition: all 0.7s ease-in-out;
-  margin: 15% 2% 15%; }
-  .landing-content .columns {
-    margin-top: 0px; }
+  margin: 15% 2% 14%; }
   .landing-content .input {
     border-color: #fba505 !important; }
     .landing-content .input:focus {
@@ -329,26 +294,27 @@
   .landing-content .brand img {
     width: 80%; }
 
-.modal {
-  overflow: visible;
-  min-width: 350px;
-  margin-left: 32%;
-  margin-right: 32%; }
-  .modal .icon {
-    height: 30px !important;
-    font-size: 12px; }
-    .modal .icon .fa {
-      color: #CCCCCC; }
-  .modal label {
-    font-size: .9em !important; }
-  .modal .modal-card-body {
+.page-toggle {
+  text-align: center;
+  margin: 20px 40px 20px;
+  line-height: 28px; }
+  .page-toggle h1 {
+    padding-top: 15px;
+    font-size: 1.3em; }
+  .page-toggle h2 {
+    font-size: .9em;
+    padding-bottom: 10px; }
+  .page-toggle .modal-card-body {
     padding: 25px !important;
-    /* min-height: 100% !important; */
     padding-bottom: 40px; }
 
 .cards-container {
-  font-family: 'Amatic SC', cursive;
+  margin-bottom: 0px !important;
   font-size: 2.5em; }
+  .cards-container h3 {
+    font-size: 1em;
+    color: #363636;
+    font-family: 'Amatic SC', cursive !important; }
 
 .geosuggest {
   font-family: BlinkMacSystemFont, -apple-system, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", "Helvetica", "Arial", sans-serif;
@@ -360,7 +326,7 @@
   text-align: left; }
 
 .geosuggest__input {
-  border-color: $orange !important;
+  border-color: #FCB737 !important;
   font-size: .8em;
   border: 1px solid transparent;
   border-radius: 3px;
@@ -374,7 +340,7 @@
   width: 100%;
   width: 100%;
   border: 1px solid transparent;
-  padding-left: 2.4em;
+  padding-left: 1em;
   -webkit-transition: border 0.2s, box-shadow 0.2s;
   transition: border 0.2s, box-shadow 0.2s; }
 
@@ -531,6 +497,84 @@
     .box .fa:hover {
       color: pink; }
 
+.itinerary-container .filter {
+  transition: all .3s ease-in-out !important; }
+  .itinerary-container .filter h5 {
+    font-size: .5em; }
+  .itinerary-container .filter .columns {
+    margin-top: 10px;
+    margin-bottom: 100px; }
+    .itinerary-container .filter .columns .column {
+      padding-top: 0px; }
+  .itinerary-container .filter .filter-toggle {
+    margin: auto;
+    top: 5px;
+    padding-top: 10px;
+    color: #00caba;
+    transition: all .3s ease-in-out !important; }
+  .itinerary-container .filter .filter-button {
+    margin: 0px 5px;
+    line-height: 2.5; }
+    .itinerary-container .filter .filter-button .button {
+      font-size: .6em;
+      opacity: .9;
+      color: #363636;
+      border-color: #363636; }
+      .itinerary-container .filter .filter-button .button .fa {
+        color: #363636; }
+      .itinerary-container .filter .filter-button .buttonhover {
+        opacity: .1; }
+      .itinerary-container .filter .filter-button .button.is-active {
+        background-color: white;
+        color: #00caba;
+        border-color: #00caba; }
+      .itinerary-container .filter .filter-button .button.is-active .fa {
+        color: #00caba; }
+  .itinerary-container .filter .filter-brand {
+    margin: 0.1rem;
+    font-size: .9em; }
+  .itinerary-container .filter .title {
+    margin-top: 10px;
+    color: #363636;
+    font-weight: 400; }
+  .itinerary-container .filter .title-itinerary {
+    margin-top: 30px;
+    color: #363636;
+    font-weight: 400; }
+  .itinerary-container .filter .card-title {
+    margin-top: 0px;
+    color: #363636;
+    font-weight: 400;
+    font-size: 1.3em; }
+  .itinerary-container .filter .filter-toggle-itinerary {
+    margin: auto;
+    top: 5px;
+    padding-top: 10px;
+    color: #00caba; }
+    .itinerary-container .filter .filter-toggle-itinerary .fa-chevron-up {
+      transition: all .7s ease-in-out !important;
+      color: #00caba;
+      left: 35%;
+      opacity: .7;
+      font-size: 1em; }
+      .itinerary-container .filter .filter-toggle-itinerary .fa-chevron-up:hover {
+        transition: all .7s ease-in-out !important;
+        color: #00caba !important;
+        opacity: .9;
+        cursor: pointer; }
+  .itinerary-container .filter .button {
+    margin: auto;
+    border-radius: 10px; }
+    .itinerary-container .filter .button:hover {
+      border-color: white; }
+  .itinerary-container .filter .filter-content {
+    transition: all 1s ease-in-out;
+    max-height: 0px;
+    overflow: hidden; }
+  .itinerary-container .filter .toggled-filter {
+    transition: all .3s ease-in-out !important;
+    max-height: 100px; }
+
 .modal {
   margin: none; }
   .modal .modal-background {
@@ -546,7 +590,7 @@
       border-color: black; }
 
 .itinerary-container {
-  margin: 120px 80px; }
+  margin: 70px 80px; }
   .itinerary-container .image .img {
     height: 100%; }
   .itinerary-container .columns .morning {
@@ -648,6 +692,12 @@
   .react-datepicker__month-read-view--down-arrow::before {
     bottom: -1px;
     border-top-color: #CCCCCC; }
+
+.button.calendar {
+  padding: 1rem;
+  border: none; }
+  .button.calendar:hover {
+    border: none; }
 
 .modal .modal-card {
   height: 500px;
@@ -929,9 +979,6 @@
     text-align: center;
     top: 50%; }
 
-.button {
-  float: right; }
-
 .react-datepicker__today-button {
   background: #f0f0f0;
   border-top: 1px solid #CCCCCC;
@@ -1043,11 +1090,28 @@
       border-top: #CCCCCC 0.2px solid;
       padding: 10px; }
 
+.button.export {
+  padding: 1rem;
+  border: none;
+  padding: 2rem;
+  float: right; }
+
 .is-rotated {
-  transition: all .4s ease-in-out;
   transform: rotate(180deg); }
 
 .visible {
   height: 100% !important; }
+
+.is-green {
+  color: #00caba; }
+
+.is-orange {
+  color: #FCB737; }
+
+.is-pink {
+  color: #ff8da1; }
+
+.is-grey {
+  color: #363636; }
 
 /*# sourceMappingURL=layout.css.map */

@@ -40,6 +40,7 @@ $datepicker__triangle-size: 10px !default;
 @import './itinerary/set';
 @import './itinerary/timeSet';
 @import './itinerary/itineraryIndex';
+@import './itinerary/exportCalendar';
 
 .is-rotated {
   transform: rotate(180deg);
