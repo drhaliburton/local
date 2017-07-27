@@ -29,19 +29,16 @@ class ItineraryIndex extends Component {
         favCards: cards
       }));
 
+    let defaultStartTime = moment().hour(9);
+    this.setState(({ time: [9], momentStartTime: defaultStartTime }))
+    
     Api.get('/itinerary/cards')
       .then((cards) => this.setState({
         itineraryCards: cards
-      }));
-      
-    let defaultStartTime = moment().hour(9);
-    this.setState(({
-      time: [9],
-      momentStartTime: defaultStartTime
-    }))
+      })
+    );
+    // this.setState({time : [9] })
   }
-
-
 
   add(card) {
     //Adding itinerary card from favorite bar
@@ -71,6 +68,7 @@ class ItineraryIndex extends Component {
       isActive: !this.state.isActive
     });
   }
+  
   setTime(time) {
     let unformattedStartTime = (time.startTime + ' ' + time.timeOfDay)
     var formattedStartTime = moment(unformattedStartTime, 'HH:mm A');

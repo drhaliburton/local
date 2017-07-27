@@ -69,6 +69,7 @@ class ExportCalendar extends Component {
 
       return {
         description: event.description,
+        summary: event.title,
         start: {
           dateTime: started
         },
