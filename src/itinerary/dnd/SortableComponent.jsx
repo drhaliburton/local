@@ -26,17 +26,14 @@ class SortableComponent extends Component {
     }
   }
 
-
-
   onSortEnd = ({oldIndex, newIndex}) => {
 
     const move = arrayMove(this.state.items, oldIndex, newIndex)
     this.setState({
       items: move,
     });
-    this.props.sortCards(move)
-    // console.log('ITEM:', this.state.items[0].title, 'ITEM DURATION:', this.state.items[0].duration)
 
+    this.props.reorderCards(move);
   };
 
   setCardHeight(items) {
@@ -46,6 +43,7 @@ class SortableComponent extends Component {
       return 'small-card';
     }
   }
+
   renderSize(duration){
     if (  duration > 100) {
       return (
@@ -57,6 +55,7 @@ class SortableComponent extends Component {
       );
     }
   }
+  
   componentWillReceiveProps(nextProps) {
     // To avoid reseting order on new-card-add:
     //  0) make a copy of this.state.items
