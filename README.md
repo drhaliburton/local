@@ -29,7 +29,7 @@ We used Google Maps API for the rendering maps.
 
 ![image](https://github.com/drhaliburton/local/blob/master/assets/filters.png?raw=true)
 
-#### Card detials
+#### Card details
 
 ![image](https://github.com/drhaliburton/local/blob/master/assets/carddetails.png?raw=true)
 
