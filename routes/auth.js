@@ -10,7 +10,6 @@ module.exports = (knex) => {
     knex('users').where({
       googleId: req.body.googleId
     }).select('id')
-      .then(x => { console.log('-- 1 - selected [{id}] maybe', x); return x; })
       .then(userResult => {
         if (userResult.length > 0) {
           return [userResult[0].id];
@@ -55,11 +54,6 @@ module.exports = (knex) => {
       token: req.session.token
     }).status(200);
   });
-
-  //   router.get('/', (req, res) => {
-  //     res.send(`https://www.googleapis.com/oauth2/v3/tokeninfo?id_token=${req.body.tokenId}`)
-  // })
-
 
   return router;
 }

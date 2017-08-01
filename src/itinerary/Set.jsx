@@ -19,9 +19,6 @@ class Set extends Component {
       startDate: date
     });
   }
-  handleInput(time) {
-    console.log(time)
-  }
   toggleActive() {
     this.setState({
       isActive: !this.state.isActive

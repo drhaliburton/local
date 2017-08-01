@@ -114,7 +114,6 @@ module.exports = (knex) => {
       })
       return
     } else {
-      console.log("******The card id is " + card_id)
       postUpvote(card_id, user_id)
         .then(() => {
           res.json({

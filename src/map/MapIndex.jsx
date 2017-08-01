@@ -97,7 +97,6 @@ class MapIndex extends Component {
   handleMapLoad(map) {
     this._mapComponent = map;
     if (map) {
-      console.log(map.getZoom());
     }
   }
 

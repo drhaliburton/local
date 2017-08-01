@@ -168,7 +168,6 @@ module.exports = (knex) => {
   });
 
   router.post("/delete", (req, res) => {
-    console.log(req.body.itnID)
     const itnCardID = req.body.itnCardID;
     const userID = req.session.userId;
     if (!userID) {
@@ -184,7 +183,6 @@ module.exports = (knex) => {
           })
         })
         .catch(err => {
-          console.log(err);
           res.status(400).send("ERROR");
         });
     }

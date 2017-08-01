@@ -61,7 +61,6 @@ class HomepageIndex extends Component {
 
   locationSearch(event) {
     if (event) {
-      console.log(event);
       Api.get(`/index/locate?find=${event}`)
         .then((cards) => this.setState({
           cards: cards,

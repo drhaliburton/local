@@ -73,9 +73,7 @@ class ItineraryIndex extends Component {
   setTime(time) {
     let unformattedStartTime = (time.startTime + ' ' + time.timeOfDay)
     var formattedStartTime = moment(unformattedStartTime, 'HH:mm A');
-    console.log('hey format', formattedStartTime)
     moment(this.state.date).hour(this.state.startTime)
-    console.log()
 
     this.setState({
       startTime: time.startTime,
@@ -141,7 +139,6 @@ class ItineraryIndex extends Component {
   }
 
   render() {
-    console.log(this.state.itineraryCards);
 
     const node = document.getElementById('top');
     node.scrollIntoView({ behavior: "smooth" });
