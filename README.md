@@ -1,29 +1,21 @@
-# Node Skeleton
+# local
 
-## Project Setup
+## About
+Local is a travel itinerary builder with recommendations that don't suck. It allows you to plan your day based around tips from the people who live in the places you're going.
 
-1. Create your own empty repo on GitHub
-2. Clone this repository (do not fork)
-  - Suggestion: When cloning, specify a different folder name that is relevant to your project
-3. Remove the git remote: `git remote rm origin`
-4. Add a remote for your origin: `git remote add origin <your github repo URL>`
-5. Push to the new origin: `git push -u origin master`
-6. Verify that the skeleton code now shows up in your repo on GitHub
+## Features
+The Homepage is viewable to anyone - you can see all the resources organized by highest to lowest rated. You can filter them further by category. Each card has details about the location, description offered by the local, how many other travellers have rated it, and a recommendation for how long you should spend there. As a logged in user you can favorite cards which allows you to save them for later. There's a searchbar which allows you to filter by the place that you're visiting.
 
-## Getting Started
+The Itinerary view allows you to build a daily itinerary from your favorited cards. You can drag and drop to reorganize and save the itinerary for later. You can also export it to your Google Calendar when you're done planning.
 
-1. Create the `.env` by using `.env.example` as a reference: `cp .env.example .env`
-2. Update the .env file with your correct local information
-3. Install dependencies: `npm i`
-4. Fix to binaries for sass: `npm rebuild node-sass`
-5. Run migrations: `npm run knex migrate:latest`
-  - Check the migrations folder to see what gets created in the DB
-6. Run the seed: `npm run knex seed:run`
-  - Check the seeds file to see what gets seeded in the DB
-7. Run the server: `npm run local`
-8. Visit `http://localhost:8080/`
+The Map view renders a Google map view of all your favorited cards. It makes it easy to see what you can fit into one day and how far each point is in relationship to another.
 
-## Dependencies
+## Stack
+local is built with Express, Postrgres, Node.js, and Javascript in the backend. We used ReactJS for front-end and Bulma and SASS for styling.
 
-- Node 5.10.x or above
-- NPM 3.8.x or above
+The Search function used Google's Geolocation API and the react-geosuggest library for the auto-complete.
+For the Itinerary we used react-sortable for the drag and drop https://github.com/clauderic/react-sortable-hoc , Google Calendar API, and Google OAuth2.0.
+
+For the cards we used Google Places to generate the images based off of the location.
+We used Google Maps API for the rendering maps.
+
